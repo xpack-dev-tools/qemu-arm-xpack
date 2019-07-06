@@ -1,2 +1,2 @@
-# gnuarmeclipse-qemu-xpack
-A binary xPack with GNU ARM Eclipse QEMU.
+This project does not use the `master` branch, please
+switch to the `xpack` branch to get the project files.
