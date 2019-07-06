@@ -287,7 +287,7 @@ fi
 # -----------------------------------------------------------------------------
 
 QEMU_SRC_FOLDER_NAME=${QEMU_SRC_FOLDER_NAME:-"${QEMU_PROJECT_NAME}.git"}
-QEMU_GIT_URL=${QEMU_GIT_URL:-"https://github.com/gnu-mcu-eclipse/qemu.git"}
+QEMU_GIT_URL=${QEMU_GIT_URL:-"https://github.com/xpack-dev-tools/qemu.git"}
 
 # Used in the licenses folder.
 QEMU_FOLDER_NAME="qemu-${QEMU_VERSION}"

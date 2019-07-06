@@ -87,7 +87,7 @@ QEMU_PROJECT_NAME="qemu"
 QEMU_VERSION="2.8"
 
 QEMU_SRC_FOLDER_NAME=${QEMU_SRC_FOLDER_NAME:-"${QEMU_PROJECT_NAME}.git"}
-QEMU_GIT_URL="https://github.com/gnu-mcu-eclipse/qemu.git"
+QEMU_GIT_URL="https://github.com/xpack-dev-tools/qemu.git"
 
 if [ "${IS_DEVELOP}" == "y" ]
 then
