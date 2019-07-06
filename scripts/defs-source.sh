@@ -16,22 +16,18 @@
 # -----------------------------------------------------------------------------
 
 # Used to display the application name.
-APP_NAME=${APP_NAME:-"QEMU"}
-# Possible future name?
-# APP_NAME=${APP_NAME:-"QEMU ARM"}
+APP_NAME=${APP_NAME:-"QEMU ARM"}
 
 # Used as part of file/folder paths.
-APP_UC_NAME=${APP_UC_NAME:-"QEMU"}
-APP_LC_NAME=${APP_LC_NAME:-"qemu"}
-# Future names.
-# APP_UC_NAME=${APP_UC_NAME:-"QEMU ARM"}
-# APP_LC_NAME=${APP_LC_NAME:-"qemu-arm"}
+APP_UC_NAME=${APP_UC_NAME:-"QEMU ARM"}
+APP_LC_NAME=${APP_LC_NAME:-"qemu-arm"}
 
-DISTRO_UC_NAME=${DISTRO_UC_NAME:-"GNU MCU Eclipse"}
-DISTRO_LC_NAME=${DISTRO_LC_NAME:-"gnu-mcu-eclipse"}
+DISTRO_UC_NAME=${DISTRO_UC_NAME:-"xPack"}
+DISTRO_LC_NAME=${DISTRO_LC_NAME:-"xpack"}
+DISTRO_TOP_FOLDER=${DISTRO_TOP_FOLDER:-"xPacks"}
 
-# TODO: remove it.
-DISTRO_INFO_NAME=${DISTRO_INFO_NAME:-"${DISTRO_LC_NAME}"}
+# Use the new xPack naming convention.
+HAS_NAME_ARCH="y"
 
 BRANDING=${BRANDING:-"${DISTRO_UC_NAME} ${APP_UC_NAME}"}
 
