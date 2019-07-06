@@ -273,6 +273,43 @@ then
     # LIBXML2_VERSION="2.9.8"
 
     HAS_WINPTHREAD="y"
+  elif [[ "${RELEASE_VERSION}" =~ 2\.8\.0-7 ]]
+  then
+    QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack-develop"}
+    QEMU_GIT_COMMIT=${QEMU_GIT_COMMIT:-"743693888b8ac728035511f0f698305e41346bca"}
+    QEMU_GIT_PATCH="qemu-2.8.0.git-patch"
+
+    ZLIB_VERSION="1.2.11"
+
+    # LIBPNG_VERSION="1.6.34"
+    LIBPNG_VERSION="1.6.36"
+    LIBPNG_SFOLDER="libpng16"
+
+    JPEG_VERSION="9b"
+
+    # SDL2_VERSION="2.0.8"
+    SDL2_VERSION="2.0.9"
+
+    # SDL2_IMAGE_VERSION="2.0.3"
+    SDL2_IMAGE_VERSION="2.0.4"
+
+    LIBFFI_VERSION="3.2.1"
+
+    LIBICONV_VERSION="1.15"
+
+    GETTEXT_VERSION="0.19.8.1"
+
+    # The last one without meson & ninja.
+    # 2.56.0 fails on mingw.
+    GLIB_MVERSION="2.56"
+    GLIB_VERSION="${GLIB_MVERSION}.4"
+
+    # PIXMAN_VERSION="0.34.0"
+    PIXMAN_VERSION="0.38.0"
+
+    # LIBXML2_VERSION="2.9.8"
+
+    HAS_WINPTHREAD="y"
   else
     echo "Unsupported version ${RELEASE_VERSION}."
     exit 1
