@@ -2,9 +2,9 @@
 
 ## Introduction
 
-This project also includes the scripts and additional files required to 
+This project includes the scripts and additional files required to 
 build and publish the
-[xPack QEMU ARM](https://github.com/xpack-dev-tools/qemu-arm-xpack) binaries.
+[xPack QEMU ARM](https://xpack.github.io/qemu-arm/) binaries.
 
 The build scripts use the
 [xPack Build Box (XBB)](https://github.com/xpack/xpack-build-box), 
@@ -22,7 +22,7 @@ There are two types of builds:
 ## Repository URLs
 
 - `https://github.com/xpack-dev-tools/qemu.git` - the URL of the 
-  [xPack QEMU ARM fork](https://github.com/xpack-dev-tools/qemu)
+  [xPack QEMU ARM](https://github.com/xpack-dev-tools/qemu-arm-xpack) fork
 - `git://git.qemu.org/qemu.git` - the URL of the upstream
   [QEMU](https://www.qemu.org)
 
@@ -35,7 +35,7 @@ changes from upstream it is necessary to add a remote named
 - `xpack` - the updated content, used during builds
 - `xpack-develop` - the updated content, used during development
 - `master` - the original content; it follows the upstream master (but
-  currently it is several versions behind)
+  currently merges from it are several versions behind)
 
 ## Download the build scripts
 
@@ -46,7 +46,7 @@ Git repo.
 To download them, the following shortcut is available: 
 
 ```console
-$ curl -L https://github.com/xpack-dev-tools/qemu-arm-xpack/raw/master/scripts/git-clone.sh | bash
+$ curl -L https://github.com/xpack-dev-tools/qemu-arm-xpack/raw/xpack/scripts/git-clone.sh | bash
 ```
 
 This small script issues the following two commands:
@@ -70,89 +70,20 @@ $ git clone --recurse-submodules -b xpack-develop https://github.com/xpack-dev-t
 
 ## The `Work` folder
 
-The script creates a temporary build `Work/qemu-${version}` folder in 
+The script creates a temporary build `Work/qemu-arm-${version}` folder in 
 the user home. Although not recommended, if for any reasons you need to 
 change the location of the `Work` folder, 
 you can redefine `WORK_FOLDER_PATH` variable before invoking the script.
 
 ## How to run a local/native build
 
-### Prerequisites
-
-For the moment the native build scripts were tested only on Ubuntu 18 LTS and macOS.
-Details on how to prepare the development environment are in the 
-[macOS](https://github.com/xpack/xpack-build-box/tree/master/macos)
-and [Ubuntu](https://github.com/xpack/xpack-build-box/tree/master/ubuntu)
-page of the [XBB project](https://github.com/xpack/xpack-build-box).
-
-The Windows binaries are cross compiled with mingw-w64; this works on 
-Ubuntu 18 LTS, including when running it under WSL (Windows System for Linux).
-
-### Build
-
-To build a macOS or Ubuntu binary based on the latest sources, run the
-script without any options:
-
-```console
-$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh
-```
-
-To create the Windows binaries, use:
-
-```console
-$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --win
-```
-
-The result is in `Work/qemu-dev/${platform}-${arch}/install/qemu-arm`, 
-with the executable in the `bin` folder.
-
-For development builds, use:
-
-```console
-$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --develop --debug
-```
-
-or, for Windows:
-
-```console
-$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --develop --debug --win
-```
-
-### Clean
-
-To clean the folders in preparation for a new build:
-
-```console
-$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh clean
-```
-
-```console
-$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh cleanlibs
-```
-
-```console
-$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh cleanall
-```
-
-Similarly for Windows:
-
-```console
-$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --win clean
-```
-
-```console
-$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --win cleanlibs
-```
-
-```console
-$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --win cleanall
-```
-
 ### DEVELOP.md
 
-More details on the development environment for QEMU are in the separate
-[DEVELOP](https://github.com/xpack-dev-tools/qemu/blob/xpack-devel/DEVELOP.md)
-page.
+The details on how to prepare the development environment for QEMU are in the
+[`DEVELOP.md`](https://github.com/xpack-dev-tools/qemu/blob/xpack-develop/DEVELOP.md)
+file available in the separate 
+[`xpack-dev-tools/qemu`](https://github.com/xpack-dev-tools/qemu) project, 
+the `xpack-develop` branch being probably the most up to date.
 
 ## How to build distributions
 
@@ -163,17 +94,17 @@ instructions in the separate
 [Prerequisites for building binaries](https://gnu-mcu-eclipse.github.io/developer/build-binaries-prerequisites-xbb/) 
 page and return when ready.
 
-### Update git repos
+### Update Git repos
 
 To keep the development repository in sync with the original QEMU 
 repository:
 
 - checkout `master`
 - pull from `qemu/master`
-- checkout `gnu-mcu-eclipse-dev`
+- checkout `xpack-develop`
 - merge `master`
-- add a tag like `v2.8.0-3-20180512` after each public release (mind the 
-inner version `-3-`)
+- add a tag like `v2.8.0-3` after each public release (mind the 
+inner version `-3`)
 
 ### Prepare release
 
@@ -255,21 +186,21 @@ $ bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --all
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
 `screen -r qemu`; to kill the session use `Ctrl-a` `Ctrl-\` and confirm.
 
-Several tens of minutes minutes later, the output of the build script
+About 30 minutes minutes later, the output of the build script
 is a set of 4 
 archives and their SHA signatures, created in the `deploy` folder:
 
 ```console
 $ ls -l deploy
-total 30536
--rw-r--r-- 1 ilg ilg 7820067 May 23 10:45 gnu-mcu-eclipse-qemu-2.8.0-3-20180523-0703-centos32.tgz
--rw-r--r-- 1 ilg ilg     122 May 23 10:45 gnu-mcu-eclipse-qemu-2.8.0-3-20180523-0703-centos32.tgz.sha
--rw-r--r-- 1 ilg ilg 7505548 May 23 10:17 gnu-mcu-eclipse-qemu-2.8.0-3-20180523-0703-centos64.tgz
--rw-r--r-- 1 ilg ilg     122 May 23 10:17 gnu-mcu-eclipse-qemu-2.8.0-3-20180523-0703-centos64.tgz.sha
--rw-r--r-- 1 ilg ilg 7818371 May 23 11:00 gnu-mcu-eclipse-qemu-2.8.0-3-20180523-0703-win32.zip
--rw-r--r-- 1 ilg ilg     119 May 23 11:00 gnu-mcu-eclipse-qemu-2.8.0-3-20180523-0703-win32.zip.sha
--rw-r--r-- 1 ilg ilg 8026132 May 23 10:33 gnu-mcu-eclipse-qemu-2.8.0-3-20180523-0703-win64.zip
--rw-r--r-- 1 ilg ilg     119 May 23 10:33 gnu-mcu-eclipse-qemu-2.8.0-3-20180523-0703-win64.zip.sha
+total 27052
+-rw-rw-rw- 1 ilg  staff  7089023 Jul  6 21:57 xpack-qemu-arm-2.8.0-7-linux-x32.tgz
+-rw-rw-rw- 1 ilg  staff      103 Jul  6 21:57 xpack-qemu-arm-2.8.0-7-linux-x32.tgz.sha
+-rw-rw-rw- 1 ilg  staff  6876990 Jul  6 21:43 xpack-qemu-arm-2.8.0-7-linux-x64.tgz
+-rw-rw-rw- 1 ilg  staff      103 Jul  6 21:43 xpack-qemu-arm-2.8.0-7-linux-x64.tgz.sha
+-rw-rw-rw- 1 ilg  staff  6734763 Jul  6 22:03 xpack-qemu-arm-2.8.0-7-win32-x32.zip
+-rw-rw-rw- 1 ilg  staff      103 Jul  6 22:03 xpack-qemu-arm-2.8.0-7-win32-x32.zip.sha
+-rw-rw-rw- 1 ilg  staff  6975708 Jul  6 21:51 xpack-qemu-arm-2.8.0-7-win32-x64.zip
+-rw-rw-rw- 1 ilg  staff      103 Jul  6 21:51 xpack-qemu-arm-2.8.0-7-win32-x64.zip.sha
 ```
 
 To copy the files from the build machine to the current development 
