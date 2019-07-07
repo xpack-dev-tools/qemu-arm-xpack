@@ -69,7 +69,7 @@ host_native_options "${help_message}" $@
 host_common
 
 prepare_xbb_env
-prepare_xbb_xtras
+prepare_xbb_extras
 
 # -----------------------------------------------------------------------------
 
@@ -91,9 +91,9 @@ QEMU_GIT_URL="https://github.com/xpack-dev-tools/qemu.git"
 
 if [ "${IS_DEVELOP}" == "y" ]
 then
-  QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"gnuarmeclipse-dev"}
+  QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack-develop"}
 else
-  QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"gnuarmeclipse"}
+  QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack"}
 fi
 
 QEMU_GIT_COMMIT=${QEMU_GIT_COMMIT:-""}
