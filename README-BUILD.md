@@ -21,14 +21,13 @@ There are two types of builds:
 
 ## Repository URLs
 
-- `https://github.com/xpack-dev-tools/qemu.git` - the URL of the 
-  [xPack QEMU ARM](https://github.com/xpack-dev-tools/qemu-arm-xpack) fork
-- `git://git.qemu.org/qemu.git` - the URL of the upstream
-  [QEMU](https://www.qemu.org)
+- `https://github.com/xpack-dev-tools/qemu.git` - the URL of the QEMU Git fork
+  used by the xPack QEMU ARM
+- `git://git.qemu.org/qemu.git` - the URL of the upstream QEMU Git
 
 The build scripts use the first repo; to merge
-changes from upstream it is necessary to add a remote named
-`upstream`, and merge the `upstream/master` into the local `master`.
+changes from upstream it is necessary to add a remote (like
+`upstream`), and merge the `upstream/master` into the local `master`.
 
 ## Branches
 
@@ -77,20 +76,17 @@ you can redefine `WORK_FOLDER_PATH` variable before invoking the script.
 
 ## How to run a local/native build
 
-### DEVELOP.md
+### README-DEVELOP.md
 
 The details on how to prepare the development environment for QEMU are in the
-[`DEVELOP.md`](https://github.com/xpack-dev-tools/qemu/blob/xpack-develop/DEVELOP.md)
-file available in the separate 
-[`xpack-dev-tools/qemu`](https://github.com/xpack-dev-tools/qemu) project, 
-the `xpack-develop` branch being probably the most up to date.
+[`README-DEVELOP.md`](../README-DEVELOP.md) file.
 
 ## How to build distributions
 
 ### Prerequisites
 
 The prerequisites are common to all binary builds. Please follow the 
-instructions in the separate 
+instructions from the separate 
 [Prerequisites for building binaries](https://gnu-mcu-eclipse.github.io/developer/build-binaries-prerequisites-xbb/) 
 page and return when ready.
 
@@ -103,14 +99,14 @@ repository:
 - pull from `qemu/master`
 - checkout `xpack-develop`
 - merge `master`
-- add a tag like `v2.8.0-3` after each public release (mind the 
-inner version `-3`)
+- add a tag like `v2.8.0-7` after each public release (mind the 
+inner version `-7`)
 
 ### Prepare release
 
 To prepare a new release, first determine the QEMU version 
-(like `2.8.0-3`) and update the `scripts/VERSION` file. The format is 
-`2.8.0-3`. The fourth digit is the GNU MCU Eclipse release number 
+(like `2.8.0`) and update the `scripts/VERSION` file. The format is 
+`2.8.0-7`. The fourth digit is the xPack QEMU ARM release number 
 of this version.
 
 Add a new set of definitions in the `scripts/container-build.sh`, with 
@@ -232,8 +228,8 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l deploy
 total 13760
--rw-r--r--  1 ilg  staff  7037439 Jul  6 20:36 xpack-qemu-arm-2.8.0-6-darwin-x64.tgz
--rw-r--r--  1 ilg  staff      104 Jul  6 20:36 xpack-qemu-arm-2.8.0-6-darwin-x64.tgz.sha
+-rw-r--r--  1 ilg  staff  7037439 Jul  6 20:36 xpack-qemu-arm-2.8.0-7-darwin-x64.tgz
+-rw-r--r--  1 ilg  staff      104 Jul  6 20:36 xpack-qemu-arm-2.8.0-7-darwin-x64.tgz.sha
 ```
 
 To copy the files from the build machine to the current development 
@@ -316,15 +312,15 @@ The result of the `configure` step on CentOS 6, with most of the
 options disabled, is:
 
 ```
-Source path       /Host/Work/qemu-2.8.0-4/qemu.git
+Source path       /Host/Work/qemu-arm-2.8.0-7/qemu.git
 C compiler        gcc
 Host C compiler   cc
 C++ compiler      g++
 Objective-C compiler gcc
 ARFLAGS           rv
 CFLAGS            -O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -g -ffunction-sections -fdata-sections -m64 -pipe -O2 -Wno-format-truncation -Wno-incompatible-pointer-types -Wno-unused-function -Wno-unused-but-set-variable -Wno-unused-result
-QEMU_CFLAGS       -I/Host/Work/qemu-2.8.0-4/install/centos64/include/pixman-1 -I$(SRC_PATH)/dtc/libfdt -pthread -I/Host/Work/qemu-2.8.0-4/install/centos64/include/glib-2.0 -I/Host/Work/qemu-2.8.0-4/install/centos64/lib/glib-2.0/include -fPIE -DPIE -m64 -mcx16 -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Wstrict-prototypes -Wredundant-decls -Wall -Wundef -Wwrite-strings -Wmissing-prototypes -fno-strict-aliasing -fno-common -fwrapv  -ffunction-sections -fdata-sections -m64 -pipe -O2 -Wno-format-truncation -Wno-incompatible-pointer-types -Wno-unused-function -Wno-unused-but-set-variable -Wno-unused-result -I/Host/Work/qemu-2.8.0-4/install/centos64/include -Wendif-labels -Wno-shift-negative-value -Wmissing-include-dirs -Wempty-body -Wnested-externs -Wformat-security -Wformat-y2k -Winit-self -Wignored-qualifiers -Wold-style-declaration -Wold-style-definition -Wtype-limits -fstack-protector-strong
-LDFLAGS           -Wl,--warn-common -Wl,-z,relro -Wl,-z,now -pie -m64 -g -L/Host/Work/qemu-2.8.0-4/install/centos64/lib -L/Host/Work/qemu-2.8.0-4/install/centos64/lib
+QEMU_CFLAGS       -I/Host/Work/qemu-arm-2.8.0-7/install/centos64/include/pixman-1 -I$(SRC_PATH)/dtc/libfdt -pthread -I/Host/Work/qemu-arm-2.8.0-7/install/centos64/include/glib-2.0 -I/Host/Work/qemu-arm-2.8.0-7/install/centos64/lib/glib-2.0/include -fPIE -DPIE -m64 -mcx16 -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Wstrict-prototypes -Wredundant-decls -Wall -Wundef -Wwrite-strings -Wmissing-prototypes -fno-strict-aliasing -fno-common -fwrapv  -ffunction-sections -fdata-sections -m64 -pipe -O2 -Wno-format-truncation -Wno-incompatible-pointer-types -Wno-unused-function -Wno-unused-but-set-variable -Wno-unused-result -I/Host/Work/qemu-arm-2.8.0-7/install/centos64/include -Wendif-labels -Wno-shift-negative-value -Wmissing-include-dirs -Wempty-body -Wnested-externs -Wformat-security -Wformat-y2k -Winit-self -Wignored-qualifiers -Wold-style-declaration -Wold-style-definition -Wtype-limits -fstack-protector-strong
+LDFLAGS           -Wl,--warn-common -Wl,-z,relro -Wl,-z,now -pie -m64 -g -L/Host/Work/qemu-arm-2.8.0-7/install/centos64/lib -L/Host/Work/qemu-arm-2.8.0-7/install/centos64/lib
 make              make
 install           install
 python            python -B
@@ -432,8 +428,9 @@ look like:
 ```console
 $ xpm install --global @xpack-dev-tools/qemu-arm
 
-$ /Users/ilg/Library/xPacks/\@xpack-dev-tools/qemu-arm/2.8.0-6.1/.content/bin/qemu-system-gnuarmeclipse --version
-xPack 64-bit QEMU ...
+$ /Users/ilg/Library/xPacks/\@xpack-dev-tools/qemu-arm/2.8.0-7.1/.content/bin/qemu-system-gnuarmeclipse --version
+xPack 64-bit QEMU emulator version 2.8.0-7 (v2.8.0-4-20190211-44-g743693888b-dirty)
+Copyright (c) 2003-2016 Fabrice Bellard and the QEMU Project developers
 ```
 
 ## More build details

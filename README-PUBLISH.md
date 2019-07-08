@@ -1,44 +1,50 @@
-# How to publish the GNU MCU Eclipse QEMU binaries?
-
-## Update the Change log
-
-Open the `CHANGELOG.txt` file from  
-`gnu-mcu-eclipse/qemu-build.git` project git, and copy 
-entries to the web git.
-
-In the web git, add new entries to the 
-[Change log](https://gnu-mcu-eclipse.github.io/qemu/change-log/) 
-(`pages/qemu/change-log.md`), grouped by days.
-
-Note: if you missed to update the `CHANGELOG.txt` before starting the build, 
-edit the file and rerun the build, it should take only a few minutes to 
-recreate the archives with the correct file.
-
-## Edit the build script
-
-Edit the `VERSION` file to refer to the actual release.
-
-## Push the build script git
-
-Push `gnu-mcu-eclipse/qemu-build.git` to GitHub.
-
-Possibly push the helper project too.
+# How to publish the xPack QEMU ARM?
 
 ## Build
 
-Follow the instructions on the 
-[build](https://github.com/gnu-mcu-eclipse/qemu-build/blob/master/README.md) 
+Before starting the build, perform some checks.
+
+### Check the CHANGELOG file
+
+Open the `CHANGELOG.md` file and and check if all 
+new entries are in.
+
+Note: if you missed to update the `CHANGELOG.md` before starting the build, 
+edit the file and rerun the build, it should take only a few minutes to 
+recreate the archives with the correct file.
+
+### Check the version
+
+The `VERSION` file should refer to the actual release.
+
+## Push the build script git
+
+In the `xpack-dev-tools/qemu-arm-xpack.git` Git repo:
+
+- if necessary, merge the `xpack-develop` branch into `xpack`.
+- push it to GitHub.
+- possibly push the helper project too.
+
+### Run the build scripts
+
+When everything is ready, follow the instructions in the 
+[build](https://github.com/xpack-dev-tools/qemu-arm-xpack/blob/master/README.md) 
 page.
+
+## Test
+
+Install the binaries on all supported platforms and check if they are 
+functional, using the Eclipse STM32F4DISCOVERY blinky test.
 
 ## Create a new GitHub pre-release
 
-- go to the [GitHub Releases](https://github.com/gnu-mcu-eclipse/qemu/releases) page
+- go to the [GitHub Releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases) page
 - click **Draft a new release**
-- name the tag like **v2.8.0-3-20180523** (mind the dashes in the middle!)
-- name the release like **GNU MCU Eclipse QEMU v2.8.0-3-20180523** 
+- name the tag like **v2.8.0-7** (mind the dashes in the middle!)
+- name the release like **xPack QEMU ARM v2.8.0-7** 
 (mind the dashes)
 - as description
-  - add a downloads badge like `[![Github Releases (by Release)](https://img.shields.io/github/downloads/gnu-mcu-eclipse/qemu/v2.8.0-3-20180523/total.svg)]()`; use empty URL for now
+  - add a downloads badge like `[![Github Releases (by Release)](https://img.shields.io/github/downloads/xpack-dev-tools/qemu-arm-xpack/v2.8.0-7/total.svg)]()`; use empty URL for now
   - draft a short paragraph explaining what are the main changes
 - **attach binaries** and SHA (drag and drop from the archives folder will do it)
 - enable the pre-release button
@@ -46,21 +52,24 @@ page.
 
 Note: at this moment the system should send a notification to all clients watching this project.
 
-
 ## Prepare a new blog post 
 
-In the `gnu-mcu-eclipse.github.io-source.git` web git:
+In the `xpack.github.io.git` web git:
 
-- add a new file to `_posts/qemu/releases`
-- name the file like `2018-05-23-qemu-v2-8-0-3-20180523-released.md`
-- name the post like: **GNU MCU Eclipse QEMU v2.8.0-3-20180523 released**.
-- as `download_url` use the tagged URL like `https://github.com/gnu-mcu-eclipse/qemu/releases/tag/v2.8.0-3-20180523/` 
+- add a new file to `_posts/qemu-arm/releases`
+- name the file like `2018-05-23-qemu-v2-8-0-7-released.md`
+- name the post like: **xPack QEMU ARM v2.8.0-7 released**.
+- as `download_url` use the tagged URL like `https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/tag/v2.8.0-7/` 
 - update the `date:` field with the current date
 
-If any, close [issues](https://github.com/gnu-mcu-eclipse/qemu/issues) 
+If any, close 
+[build issues](https://github.com/xpack-dev-tools/qemu-arm-xpack/issues) 
 on the way. Refer to them as:
 
 - **[Issue:\[#1\]\(...\)]**.
+
+Also close 
+[functional issues](https://github.com/xpack-dev-tools/qemu/issues).
 
 ## Update the SHA sums
 
@@ -70,71 +79,55 @@ Copy/paste the build report at the end of the post as:
 ## Checksums
 The SHA-256 hashes for the files are:
 
-1e93a4fe2c661cace1b28fb633a9e7eb2c20f352b717205ac22cd338fcee101b ?
-gnu-mcu-eclipse-qemu-2.8.0-3-20180523-0703-centos32.tgz
+956da5f621df33b3c881b50316f197afb0df1edf59a87e295b8632085ccdd6a2 
+xpack-qemu-arm-2.8.0-7-darwin-x64.tgz
 
-d4260a47b3322bce6d8d74feb2409b04c45f0b18a2958bb04ed2c802abf60793 ?
-gnu-mcu-eclipse-qemu-2.8.0-3-20180523-0703-centos64.tgz
+c116a9dcd220e66258d2e9842d672fbe065dedad7ae3e09b1afe4f254bd5ac6e 
+xpack-qemu-arm-2.8.0-7-linux-x32.tgz
 
-0a910c2548513cbbead6f4dd3366ccd72ecc1d75a6aee65e40fd92bdc1e5587e ?
-gnu-mcu-eclipse-qemu-2.8.0-3-20180523-0703-macos.tgz
+cb1c2b9e9b4256e0d3ae29582e684364ec100bfb5a5bb814842f774855f8f9ac 
+xpack-qemu-arm-2.8.0-7-linux-x64.tgz
 
-065bac74d9d70ae240167936f155abb43097e29b7a4d14c53e473e2d76aa7cb9 ?
-gnu-mcu-eclipse-qemu-2.8.0-3-20180523-0703-win32.zip
+8ae176c652bf281a8868b8fcc69bdd27ea995736b62aa4ffb8762a95e40fd742 
+xpack-qemu-arm-2.8.0-7-win32-x32.zip
 
-7b90e76a0705e9c15fe80373f9028934f179b5c75ea3d2f60dc709adc280e021 ?
-gnu-mcu-eclipse-qemu-2.8.0-3-20180523-0703-win64.zip
+24a68b94b347169428041ec1b09f40774ca9afa7d52caa979efeabece33596b1 
+xpack-qemu-arm-2.8.0-7-win32-x64.zip
 ```
 
 ## Update the Web
 
-- commit the `gnu-mcu-eclipse.github.io-source` project; use a message 
-like **GNU MCU Eclipse QEMU v2.8.0-3 released**
-- wait for the Travis build to complete; occasionally links to not work,
- and might need to restart the build.
+- commit the `xpack.github.io` project; use a message 
+  like **xPack QEMU ARM v2.8.0-7 released**
+- wait for the GitHub Pages build to complete
 - remember the post URL, since it must be updated in the release page
 
-## Create the xPack release
+## Publish on the npmjs server
 
-Follow the instructions on the 
-[qemu-xpack](https://github.com/gnu-mcu-eclipse/qemu-xpack/blob/xpack/README.md#maintainer-info)
-page.
+- open [GitHub Releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases) 
+  and select the latest release
+- update the `baseUrl:` with the file URLs (including the tag/version)
+- from the release, copy the SHA & file names
+- commit all changes, use a message like `package.json: update urls for 2.8.0-7 release` (without `v`)
+- update `CHANGELOG.md`; commit with a message like 
+  _CHANGELOG: prepare npm v2.8.0-7.1_
+- `npm version 2.8.0-7.1`; the first 4 numbers are the same as the 
+  GitHub release; the fifth number is the npm specific version
+- push all changes to GitHub
+- `npm publish` (use `--access public` when publishing for the first time)
 
 ## Create the final GitHub release
 
-- go to the [GitHub Releases](https://github.com/gnu-mcu-eclipse/qemu/releases) page
+- go to the [GitHub Releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases) page
 - update the link behind the badge with the blog URL
 - add a link to the Web page `[Continue reading »]()`; use an same blog URL
-- copy/paste the **Easy install** section
-- update the current release version
-- copy/paste the **Download analytics** section
-- update the current release version
 - disable the pre-release button
 - click the **Update Release** button
 
-## Tag the build commit
-
-In the [gnu-mcu-eclipse/qemu-build](https://github.com/gnu-mcu-eclipse/qemu-build)
-project, add a tag with the current version, like `v2.8.0-3-20180523` (with *v*).
-
-## Update the README.md
-
-List the new release in the project README.md.
-
-## Share on Facebook
-
-- go to the new post and follow the Share link.
-- DO NOT select **On your own Timeline**, but **On a Page you manage**
-- select GNU MCU Eclipse
-- posting as GNU MCU Eclipse
-- click **Post to Facebook**
-- check the post in the [Facebook page](https://www.facebook.com/gnu-mcu-eclipse)
-
 ## Share on Twitter
 
-* go to the new post and follow the Tweet link
-* copy the content to the clipboard
-* DO NOT click the Tweet button here, it'll not use the right account
-* in a separate browser windows, open [TweetDeck](https://tweetdeck.twitter.com/)
-* using the `@gnu_mcu_eclipse` account, paste the content
-* click the Tweet button
+- in a separate browser windows, open [TweetDeck](https://tweetdeck.twitter.com/)
+- using the `@xpack_project` account
+- paste the release name like **xPack OpenOCD v0.10.0-12 released**
+- paste the link to the Github release
+- click the **Tweet** button
