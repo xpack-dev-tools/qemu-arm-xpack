@@ -19,7 +19,7 @@ The `VERSION` file should refer to the actual release.
 
 ## Push the build script git
 
-In the `xpack-dev-tools/qemu-arm-xpack.git` Git repo:
+In the `xpack-dev-tools/qemu-arm-xpack` Git repo:
 
 - if necessary, merge the `xpack-develop` branch into `xpack`.
 - push it to GitHub.
@@ -28,7 +28,7 @@ In the `xpack-dev-tools/qemu-arm-xpack.git` Git repo:
 ### Run the build scripts
 
 When everything is ready, follow the instructions in the 
-[build](https://github.com/xpack-dev-tools/qemu-arm-xpack/blob/master/README.md) 
+[build](https://github.com/xpack-dev-tools/qemu-arm-xpack/blob/master/README-BUILD.md) 
 page.
 
 ## Test
@@ -41,6 +41,7 @@ functional, using the Eclipse STM32F4DISCOVERY blinky test.
 - go to the [GitHub Releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases) page
 - click **Draft a new release**
 - name the tag like **v2.8.0-7** (mind the dashes in the middle!)
+- select the `xpack` branch
 - name the release like **xPack QEMU ARM v2.8.0-7** 
 (mind the dashes)
 - as description
@@ -54,10 +55,10 @@ Note: at this moment the system should send a notification to all clients watchi
 
 ## Prepare a new blog post 
 
-In the `xpack.github.io.git` web git:
+In the `xpack.github.io` web Git:
 
 - add a new file to `_posts/qemu-arm/releases`
-- name the file like `2018-05-23-qemu-v2-8-0-7-released.md`
+- name the file like `2018-05-23-qemu-arm-v2-8-0-7-released.md`
 - name the post like: **xPack QEMU ARM v2.8.0-7 released**.
 - as `download_url` use the tagged URL like `https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/tag/v2.8.0-7/` 
 - update the `date:` field with the current date
@@ -95,6 +96,13 @@ xpack-qemu-arm-2.8.0-7-win32-x32.zip
 xpack-qemu-arm-2.8.0-7-win32-x64.zip
 ```
 
+If you missed this, `cat` the content of the `.sha` files:
+
+```console
+$ cd deploy
+$ cat *.sha
+```
+
 ## Update the Web
 
 - commit the `xpack.github.io` project; use a message 
@@ -128,6 +136,6 @@ xpack-qemu-arm-2.8.0-7-win32-x64.zip
 
 - in a separate browser windows, open [TweetDeck](https://tweetdeck.twitter.com/)
 - using the `@xpack_project` account
-- paste the release name like **xPack OpenOCD v0.10.0-12 released**
+- paste the release name like **xPack QEMU ARM v2.8.0-7.1 released**
 - paste the link to the Github release
 - click the **Tweet** button
