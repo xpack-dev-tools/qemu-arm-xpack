@@ -79,7 +79,7 @@ you can redefine `WORK_FOLDER_PATH` variable before invoking the script.
 ### README-DEVELOP.md
 
 The details on how to prepare the development environment for QEMU are in the
-[`README-DEVELOP.md`](../README-DEVELOP.md) file.
+[`README-DEVELOP.md`](https://github.com/xpack-dev-tools/qemu-arm-xpack/blob/xpack/README-DEVELOP.md) file.
 
 ## How to build distributions
 
