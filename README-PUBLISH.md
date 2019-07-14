@@ -4,7 +4,7 @@
 
 Before starting the build, perform some checks.
 
-### Check the CHANGELOG file
+### Check the `CHANGELOG.md` file
 
 Open the `CHANGELOG.md` file and and check if all 
 new entries are in.
@@ -19,7 +19,7 @@ The `VERSION` file should refer to the actual release.
 
 ## Push the build script git
 
-In the `xpack-dev-tools/qemu-arm-xpack` Git repo:
+In this Git repo:
 
 - if necessary, merge the `xpack-develop` branch into `xpack`.
 - push it to GitHub.
@@ -27,8 +27,8 @@ In the `xpack-dev-tools/qemu-arm-xpack` Git repo:
 
 ### Run the build scripts
 
-When everything is ready, follow the instructions in the 
-[build](https://github.com/xpack-dev-tools/qemu-arm-xpack/blob/master/README-BUILD.md) 
+When everything is ready, follow the instructions from the 
+[build](https://github.com/xpack-dev-tools/qemu-arm-xpack/blob/xpack/README-BUILD.md) 
 page.
 
 ## Test
@@ -48,7 +48,7 @@ functional, using the Eclipse STM32F4DISCOVERY blinky test.
   - add a downloads badge like `[![Github Releases (by Release)](https://img.shields.io/github/downloads/xpack-dev-tools/qemu-arm-xpack/v2.8.0-7/total.svg)]()`; use empty URL for now
   - draft a short paragraph explaining what are the main changes
 - **attach binaries** and SHA (drag and drop from the archives folder will do it)
-- enable the pre-release button
+- **enable** the **pre-release** button
 - click the **Publish Release** button
 
 Note: at this moment the system should send a notification to all clients watching this project.
@@ -105,7 +105,7 @@ $ cat *.sha
 
 ## Update the Web
 
-- commit the `xpack.github.io` project; use a message 
+- commit the `xpack.github.io` web Git; use a message 
   like **xPack QEMU ARM v2.8.0-7 released**
 - wait for the GitHub Pages build to complete
 - remember the post URL, since it must be updated in the release page
@@ -129,7 +129,7 @@ $ cat *.sha
 - go to the [GitHub Releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases) page
 - update the link behind the badge with the blog URL
 - add a link to the Web page `[Continue reading »]()`; use an same blog URL
-- disable the pre-release button
+- **disable** the **pre-release** button
 - click the **Update Release** button
 
 ## Share on Twitter

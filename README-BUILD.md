@@ -1,4 +1,4 @@
-# How to build the xPack QEMU ARM
+# How to build the xPack QEMU ARM?
 
 ## Introduction
 
@@ -74,9 +74,18 @@ the user home. Although not recommended, if for any reasons you need to
 change the location of the `Work` folder, 
 you can redefine `WORK_FOLDER_PATH` variable before invoking the script.
 
+## Customizations
+
+There are many other settings that can be redefined via
+environment variables. If necessary,
+place them in a file and pass it via `--env-file`. This file is
+either passed to Docker or sourced to shell. The Docker syntax 
+**is not** identical to shell, so some files may
+not be accepted by bash.
+
 ## How to run a local/native build
 
-### README-DEVELOP.md
+### `README-DEVELOP.md`
 
 The details on how to prepare the development environment for QEMU are in the
 [`README-DEVELOP.md`](https://github.com/xpack-dev-tools/qemu-arm-xpack/blob/xpack/README-DEVELOP.md) file.
@@ -87,7 +96,7 @@ The details on how to prepare the development environment for QEMU are in the
 
 The prerequisites are common to all binary builds. Please follow the 
 instructions from the separate 
-[Prerequisites for building binaries](https://gnu-mcu-eclipse.github.io/developer/build-binaries-prerequisites-xbb/) 
+[Prerequisites for building xPack binaries](https://xpack.github.io/xbb/prerequisites/) 
 page and return when ready.
 
 ### Update Git repos
@@ -125,7 +134,7 @@ Git commit and possible other details.
 
 ### Update `CHANGELOG.md`
 
-Check `qemu-arm-xpack.git/CHANGELOG.txt` and add the new release.
+Check `CHANGELOG.md` and add the new release.
 
 ### Build
 
@@ -166,6 +175,12 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 ilegeul/centos32    6-xbb-v2.2          956eb2963946        5 weeks ago         3.03GB
 ilegeul/centos      6-xbb-v2.2          6b1234f2ac44        5 weeks ago         3.12GB
 hello-world         latest              fce289e99eb9        5 months ago        1.84kB
+```
+
+To download the build scripts:
+
+```console
+$ curl -L https://github.com/xpack-dev-tools/arm-none-eabi-gcc-xpack/raw/xpack/scripts/git-clone.sh | bash
 ```
 
 Since the build takes a while, use `screen` to isolate the build session
@@ -214,8 +229,7 @@ The current platform for macOS production builds is a macOS 10.10.5
 VirtualBox image running on the same macMini with 16 GB of RAM and a 
 fast SSD.
 
-To build the latest macOS version, with the same timestamp as the 
-previous build:
+To build the latest macOS version:
 
 ```console
 $ rm -rf ~/Work/qemu-arm-*
@@ -432,6 +446,20 @@ $ /Users/ilg/Library/xPacks/\@xpack-dev-tools/qemu-arm/2.8.0-7.1/.content/bin/qe
 xPack 64-bit QEMU emulator version 2.8.0-7 (v2.8.0-4-20190211-44-g743693888b-dirty)
 Copyright (c) 2003-2016 Fabrice Bellard and the QEMU Project developers
 ```
+
+## Files cache
+
+The XBB build scripts use a local cache such that files are downloaded only
+during the first run, later runs being able to use the cached files.
+
+However, occasionally some servers may not be available, and the builds
+may fail.
+
+The workaround is to manually download the files from an alternate
+location (like 
+https://github.com/xpack-dev-tools/files-cache/tree/master/libs),
+place them in the XBB cache (`Work/cache`) and restart the build.
+
 
 ## More build details
 

@@ -53,7 +53,7 @@ PS> Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsyst
 
 #### Install Ubuntu
 
-Then follow the instruction in the [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
+Then follow the instruction from the [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 page and install Ubuntu.
 
 Start the new `ubuntu.exe` (there is also a graphical shortcut).
