@@ -30,8 +30,7 @@ function do_zlib()
   ZLIB_SRC_FOLDER_NAME="zlib-${ZLIB_VERSION}"
   ZLIB_FOLDER_NAME="${ZLIB_SRC_FOLDER_NAME}"
   local zlib_archive="${ZLIB_FOLDER_NAME}.tar.gz"
-  # local zlib_url="http://zlib.net/fossils/${zlib_archive}"
-  local zlib_url="https://github.com/gnu-mcu-eclipse/files/raw/master/libs/${zlib_archive}"
+  local zlib_url="http://zlib.net/fossils/${zlib_archive}"
 
   local zlib_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-zlib-${ZLIB_VERSION}-installed"
   if [ ! -f "${zlib_stamp_file_path}" -o ! -d "${LIBS_BUILD_FOLDER_PATH}/${ZLIB_FOLDER_NAME}" ]
