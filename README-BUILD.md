@@ -188,7 +188,7 @@ hello-world         latest              fce289e99eb9        5 months ago        
 To download the build scripts:
 
 ```console
-$ curl -L https://github.com/xpack-dev-tools/arm-none-eabi-gcc-xpack/raw/xpack/scripts/git-clone.sh | bash
+$ curl -L https://github.com/xpack-dev-tools/qemu-arm-xpack/raw/xpack/scripts/git-clone.sh | bash
 ```
 
 Since the build takes a while, use `screen` to isolate the build session
@@ -237,12 +237,29 @@ The current platform for macOS production builds is a macOS 10.10.5
 VirtualBox image running on the same macMini with 16 GB of RAM and a 
 fast SSD.
 
-To build the latest macOS version:
+```console
+$ ssh ilg-xbb-mac.local
+```
+
+To download the build scripts:
 
 ```console
-$ rm -rf ~/Work/qemu-arm-*
+$ curl -L https://github.com/xpack-dev-tools/qemu-arm-xpack/raw/xpack/scripts/git-clone.sh | bash
+```
+
+Since the build takes a while, use `screen` to isolate the build session
+from unexpected events, like a broken
+network connection or a computer entering sleep.
+
+```console
+$ screen -S qemu
+
+$ sudo rm -rf ~/Work/qemu-arm-*
 $ caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --osx
 ```
+
+To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
+`screen -r qemu`; to kill the session use `Ctrl-a` `Ctrl-\` and confirm.
 
 About 30 minutes later, the output of the build script is a compressed 
 archive and its SHA signature, created in the `deploy` folder:
@@ -443,15 +460,14 @@ replication support yes
 A simple test is performed by the script at the end, by launching the 
 executable to check if all shared/dynamic libraries are correctly used.
 
-For a true test you need to first install the package and then run the 
-program from the final location. For example on macOS the output should 
+For a true test you need to unpack the archive in a temporary location 
+(like `~/Downloads`) and then run the 
+program from there. For example on macOS the output should 
 look like:
 
 ```console
-$ xpm install --global @xpack-dev-tools/qemu-arm@latest
-
-$ /Users/ilg/Library/xPacks/\@xpack-dev-tools/qemu-arm/2.8.0-7.1/.content/bin/qemu-system-gnuarmeclipse --version
-xPack 64-bit QEMU emulator version 2.8.0-7 (v2.8.0-7-44-g743693888b-dirty)
+$ /Users/ilg/Downloads/xPacks/qemu-arm/2.8.0-7/bin/qemu-system-gnuarmeclipse --version
+xPack 64-bit QEMU emulator version 2.8.0-7 (v2.8.0-4-20190211-44-g743693888b-dirty)
 Copyright (c) 2003-2016 Fabrice Bellard and the QEMU Project developers
 ```
 
