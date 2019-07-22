@@ -41,7 +41,7 @@ script_folder_name="$(basename "${script_folder_path}")"
 # =============================================================================
 
 # Inner script to run inside Docker containers to build the 
-# GNU MCU Eclipse QEMU ARM distribution packages.
+# xPack QEMU ARM distribution packages.
 
 # For native builds, it runs on the host (macOS build cases,
 # and development builds for GNU/Linux).
@@ -177,103 +177,7 @@ then
   # ---------------------------------------------------------------------------
 
   QEMU_VERSION="2.8"
-  if [ "${RELEASE_VERSION}" == "2.8.0-3" ]
-  then
-    QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"gnuarmeclipse"}
-    QEMU_GIT_COMMIT=${QEMU_GIT_COMMIT:-"b01e4c3bd5dc1715c684e600c1a3d634a0672b2c"}
-    
-    ZLIB_VERSION="1.2.8"
-
-    LIBPNG_VERSION="1.6.23"
-    LIBPNG_SFOLDER="libpng16"
-
-    JPEG_VERSION="9b"
-
-    SDL2_VERSION="2.0.5"
-
-    SDL2_IMAGE_VERSION="2.0.1"
-
-    LIBFFI_VERSION="3.2.1"
-
-    LIBICONV_VERSION="1.14"
-
-    LIBXML2_VERSION="2.9.8"
-
-    GETTEXT_VERSION="0.19.8.1"
-
-    GLIB_MVERSION="2.51"
-    GLIB_VERSION="${GLIB_MVERSION}.0"
-
-    PIXMAN_VERSION="0.34.0"
-
-  elif [ "${RELEASE_VERSION}" == "2.8.0-4" ]
-  then
-    QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"gnuarmeclipse"}
-    QEMU_GIT_COMMIT=${QEMU_GIT_COMMIT:-"ee07085299a4ec1edc92453eef9b3c3bd0c4ab92"}
-    QEMU_GIT_PATCH="qemu-2.8.0.git-patch"
-
-    ZLIB_VERSION="1.2.8"
-
-    LIBPNG_VERSION="1.6.23"
-    LIBPNG_SFOLDER="libpng16"
-
-    JPEG_VERSION="9b"
-
-    SDL2_VERSION="2.0.5"
-
-    SDL2_IMAGE_VERSION="2.0.1"
-
-    LIBFFI_VERSION="3.2.1"
-
-    LIBICONV_VERSION="1.14"
-
-    LIBXML2_VERSION="2.9.8"
-
-    GETTEXT_VERSION="0.19.8.1"
-
-    GLIB_MVERSION="2.51"
-    GLIB_VERSION="${GLIB_MVERSION}.0"
-
-    PIXMAN_VERSION="0.34.0"
-
-  elif [[ "${RELEASE_VERSION}" =~ 2\.8\.0-[56] ]]
-  then
-    QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"gnuarmeclipse-dev"}
-    QEMU_GIT_COMMIT=${QEMU_GIT_COMMIT:-"b8a0a8bc9850acbf5763d2e5d526c250de6ff809"}
-    QEMU_GIT_PATCH="qemu-2.8.0.git-patch"
-
-    ZLIB_VERSION="1.2.11"
-
-    # LIBPNG_VERSION="1.6.34"
-    LIBPNG_VERSION="1.6.36"
-    LIBPNG_SFOLDER="libpng16"
-
-    JPEG_VERSION="9b"
-
-    # SDL2_VERSION="2.0.8"
-    SDL2_VERSION="2.0.9"
-
-    # SDL2_IMAGE_VERSION="2.0.3"
-    SDL2_IMAGE_VERSION="2.0.4"
-
-    LIBFFI_VERSION="3.2.1"
-
-    LIBICONV_VERSION="1.15"
-
-    GETTEXT_VERSION="0.19.8.1"
-
-    # The last one without meson & ninja.
-    # 2.56.0 fails on mingw.
-    GLIB_MVERSION="2.56"
-    GLIB_VERSION="${GLIB_MVERSION}.4"
-
-    # PIXMAN_VERSION="0.34.0"
-    PIXMAN_VERSION="0.38.0"
-
-    # LIBXML2_VERSION="2.9.8"
-
-    HAS_WINPTHREAD="y"
-  elif [[ "${RELEASE_VERSION}" =~ 2\.8\.0-7 ]]
+  if [[ "${RELEASE_VERSION}" =~ 2\.8\.0-7 ]]
   then
     QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack-develop"}
     QEMU_GIT_COMMIT=${QEMU_GIT_COMMIT:-"743693888b8ac728035511f0f698305e41346bca"}

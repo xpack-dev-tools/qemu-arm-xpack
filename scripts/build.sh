@@ -40,7 +40,7 @@ script_folder_name="$(basename "${script_folder_path}")"
 
 # =============================================================================
 
-# Script to build the GNU MCU Eclipse ARM QEMU distribution packages.
+# Script to build the xPack QEMU ARM distribution packages.
 #
 # Developed on macOS 10.13 High Sierra, but intended to run on
 # macOS 10.10 Yosemite and CentOS 6 XBB. 
@@ -48,7 +48,7 @@ script_folder_name="$(basename "${script_folder_path}")"
 # -----------------------------------------------------------------------------
 
 echo
-echo "GNU MCU Eclipse QEMU distribution build script."
+echo "xPack QEMU ARM distribution build script."
 
 host_functions_script_path="${script_folder_path}/helper/host-functions-source.sh"
 source "${host_functions_script_path}"

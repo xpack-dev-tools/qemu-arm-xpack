@@ -40,7 +40,7 @@ script_folder_name="$(basename "${script_folder_path}")"
 
 # =============================================================================
 
-# Script to build a native GNU MCU Eclipse ARM QEMU, which uses the
+# Script to build a native xPack QEMU ARM, which uses the
 # tools and libraries available on the host machine. It is generally
 # intended for development and creating customised versions (as opposed
 # to the build intended for creating distribution packages).
@@ -50,7 +50,7 @@ script_folder_name="$(basename "${script_folder_path}")"
 # -----------------------------------------------------------------------------
 
 echo
-echo "GNU MCU Eclipse QEMU native build script."
+echo "xPack QEMU ARM native build script."
 
 echo
 host_functions_script_path="${script_folder_path}/helper/host-functions-source.sh"
