@@ -135,6 +135,7 @@ $ xpm install --global @xpack-dev-tools/qemu-arm@latest
 ## Create the final GitHub release
 
 - go to the [GitHub Releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases) page
+- check the download counter, it should match the number of tests
 - update the link behind the badge with the blog URL
 - add a link to the Web page `[Continue reading »]()`; use an same blog URL
 - **disable** the **pre-release** button
@@ -145,5 +146,5 @@ $ xpm install --global @xpack-dev-tools/qemu-arm@latest
 - in a separate browser windows, open [TweetDeck](https://tweetdeck.twitter.com/)
 - using the `@xpack_project` account
 - paste the release name like **xPack QEMU ARM v2.8.0-7.1 released**
-- paste the link to the Github release
+- paste the link to the blog release URL
 - click the **Tweet** button
