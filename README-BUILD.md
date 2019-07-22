@@ -440,7 +440,7 @@ program from the final location. For example on macOS the output should
 look like:
 
 ```console
-$ xpm install --global @xpack-dev-tools/qemu-arm
+$ xpm install --global @xpack-dev-tools/qemu-arm@latest
 
 $ /Users/ilg/Library/xPacks/\@xpack-dev-tools/qemu-arm/2.8.0-7.1/.content/bin/qemu-system-gnuarmeclipse --version
 xPack 64-bit QEMU emulator version 2.8.0-7 (v2.8.0-4-20190211-44-g743693888b-dirty)
