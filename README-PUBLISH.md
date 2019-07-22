@@ -17,7 +17,7 @@ recreate the archives with the correct file.
 
 The `VERSION` file should refer to the actual release.
 
-## Push the build script git
+## Push the build script
 
 In this Git repo:
 
@@ -58,7 +58,7 @@ Note: at this moment the system should send a notification to all clients watchi
 In the `xpack.github.io` web Git:
 
 - add a new file to `_posts/qemu-arm/releases`
-- name the file like `2018-05-23-qemu-arm-v2-8-0-7-released.md`
+- name the file like `2018-07-22-qemu-arm-v2-8-0-7-released.md`
 - name the post like: **xPack QEMU ARM v2.8.0-7 released**.
 - as `download_url` use the tagged URL like `https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/tag/v2.8.0-7/` 
 - update the `date:` field with the current date
@@ -123,6 +123,14 @@ $ cat *.sha
   GitHub release; the fifth number is the npm specific version
 - push all changes to GitHub
 - `npm publish` (use `--access public` when publishing for the first time)
+
+## Test npm binaries
+
+Install the binaries on all platforms.
+
+```console
+$ xpm install --global @xpack-dev-tools/qemu-arm@latest
+```
 
 ## Create the final GitHub release
 

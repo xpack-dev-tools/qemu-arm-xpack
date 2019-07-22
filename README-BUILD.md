@@ -83,6 +83,14 @@ either passed to Docker or sourced to shell. The Docker syntax
 **is not** identical to shell, so some files may
 not be accepted by bash.
 
+## Changes
+
+Compared to the original QEMU distribution, there are major
+changes in the Cortex-M emulation. 
+
+The actual changes for each version are documented in the 
+`scripts/README-<version>.md` files.
+
 ## How to run a local/native build
 
 ### `README-DEVELOP.md`
@@ -443,9 +451,49 @@ look like:
 $ xpm install --global @xpack-dev-tools/qemu-arm@latest
 
 $ /Users/ilg/Library/xPacks/\@xpack-dev-tools/qemu-arm/2.8.0-7.1/.content/bin/qemu-system-gnuarmeclipse --version
-xPack 64-bit QEMU emulator version 2.8.0-7 (v2.8.0-4-20190211-44-g743693888b-dirty)
+xPack 64-bit QEMU emulator version 2.8.0-7 (v2.8.0-7-44-g743693888b-dirty)
 Copyright (c) 2003-2016 Fabrice Bellard and the QEMU Project developers
 ```
+
+## Installed folders
+
+After install, the package should create a structure like this (macOS files;
+only the first two depth levels are shown):
+
+```console
+$ tree -L 2 /Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-7.1/.content 
+/Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-7.1/.content
+├── README.md
+├── bin
+│   ├── libSDL2-2.0.0.dylib
+│   ├── libSDL2_image-2.0.0.dylib
+│   ├── libgcc_s.1.dylib
+│   ├── libglib-2.0.0.dylib
+│   ├── libgthread-2.0.0.dylib
+│   ├── libiconv.2.dylib
+│   ├── libintl.8.dylib
+│   ├── libpixman-1.0.dylib
+│   ├── libstdc++.6.dylib
+│   ├── libz.1.2.11.dylib
+│   ├── libz.1.dylib -> libz.1.2.11.dylib
+│   └── qemu-system-gnuarmeclipse
+├── distro-info
+│   ├── CHANGELOG.txt
+│   ├── licenses
+│   ├── patches
+│   └── scripts
+└── share
+    ├── doc
+    └── qemu
+
+8 directories, 14 files
+```
+
+## Uninstall
+
+The binaries are distributed as portable archives; thus they do not need 
+to run a setup and do not require an uninstall; simply removing the
+folder is enough.
 
 ## Files cache
 
