@@ -32,27 +32,27 @@
   "xpack": {
     "binaries": {
       "destination": "./.content",
-      "baseUrl": "https://github.com/xpack-dev-tool/qemu-arm/releases/download/v2.8.0-6",
+      "baseUrl": "https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/download/v2.8.0-7",
       "skip": 3,
       "platforms": {
+        "darwin-x64": {
+          "sha256": "feae25ec1944044ce2c2feb6fb0d76e67e9d93e811b5091cf4d3ffdf5a320d37",
+          "fileName": "xpack-qemu-arm-2.8.0-7-darwin-x64.tgz"
+        },
         "linux-x86": {
-          "sha256": "e5d2e1beffc0b19d422c90ec98c4bd76e6e4036d6b2e1625cd8d93f6ac6f046a",
+          "sha256": "d094ac6236ebf8b0356e159b596bddb225b943d3a8accfed5368f0ed86e86fa4",
           "fileName": "xpack-qemu-arm-2.8.0-7-linux-x32.tgz"
         },
         "linux-x64": {
-          "sha256": "ab94e8d71f54e1d28fdae63b5f0d0cbd792234de371e3883583aaf920d9f64cf",
+          "sha256": "83e531bfb466430d3eff1039e4da0fb56bd6495e9439bc5945449bddf27bd690",
           "fileName": "xpack-qemu-arm-2.8.0-7-linux-x64.tgz"
         },
-        "darwin-x64": {
-          "sha256": "85c787c9d20751ba03b0557d47c268b5f06fde3dfb245b83fe1b44f45362a7b1",
-          "fileName": "xpack-qemu-arm-2.8.0-7-darwin-x64.tgz"
-        },
         "win32-x86": {
-          "sha256": "4bf582db378aeaa40f324c34f80356b36c4016365607f3c7d820182de853f76f",
+          "sha256": "90ac3421c40c05fd8ebf0925e919e02f679886e047fa0e8e1ed53cd17bc9bb5f",
           "fileName": "xpack-qemu-arm-2.8.0-7-win32-x32.zip"
         },
         "win32-x64": {
-          "sha256": "894c25c79cdc9b0017e3d977725496192f37f6d536d4107e8e07a9cf4fbf9d22",
+          "sha256": "aa57590576b136956d3ccad56a175c6de94864b977235b018c42ad21d7667c67",
           "fileName": "xpack-qemu-arm-2.8.0-7-win32-x64.zip"
         }
       },
