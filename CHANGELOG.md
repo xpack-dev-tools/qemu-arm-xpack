@@ -6,6 +6,10 @@ Releases in reverse chronological order.
 
 - v2.8.0-7 released
 
+### 2019-06-28
+
+- [#70]  io/channel-watch.c: Correctly associate socket handle with 
+  its corresponding event. (#71)
 ___
 
 ## Historical GNU MCU Eclipse change log
