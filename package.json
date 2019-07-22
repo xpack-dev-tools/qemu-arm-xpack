@@ -1,5 +1,5 @@
 {
-  "name": "@xpack-dev-tool/qemu-arm",
+  "name": "@xpack-dev-tools/qemu-arm",
   "version": "2.8.0-7.1",
   "description": "A binary xPack with QEMU ARM",
   "main": "",
