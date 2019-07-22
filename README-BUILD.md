@@ -116,8 +116,8 @@ repository:
 - pull from `qemu/master`
 - checkout `xpack-develop`
 - merge `master`
-- add a tag like `v2.8.0-7` after each public release (mind the 
-inner version `-7`)
+
+No need to add a tag here, it'll be added when the release is created.
 
 ### Prepare release
 
