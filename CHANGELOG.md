@@ -4,6 +4,7 @@ Releases in reverse chronological order.
 
 ### 2019-07-22
 
+- v2.8.0-7.1 published on npmjs.com
 - v2.8.0-7 released
 
 ### 2019-06-28
