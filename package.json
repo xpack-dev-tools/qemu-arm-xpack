@@ -37,23 +37,23 @@
       "platforms": {
         "linux-x86": {
           "sha256": "e5d2e1beffc0b19d422c90ec98c4bd76e6e4036d6b2e1625cd8d93f6ac6f046a",
-          "fileName": "gnu-mcu-eclipse-qemu-2.8.0-6-20190517-1329-centos32.tgz"
+          "fileName": "xpack-qemu-arm-2.8.0-7-linux-x32.tgz"
         },
         "linux-x64": {
           "sha256": "ab94e8d71f54e1d28fdae63b5f0d0cbd792234de371e3883583aaf920d9f64cf",
-          "fileName": "gnu-mcu-eclipse-qemu-2.8.0-6-20190517-1329-centos64.tgz"
+          "fileName": "xpack-qemu-arm-2.8.0-7-linux-x64.tgz"
         },
         "darwin-x64": {
           "sha256": "85c787c9d20751ba03b0557d47c268b5f06fde3dfb245b83fe1b44f45362a7b1",
-          "fileName": "gnu-mcu-eclipse-qemu-2.8.0-6-20190517-1329-macos.tgz"
+          "fileName": "xpack-qemu-arm-2.8.0-7-darwin-x64.tgz"
         },
         "win32-x86": {
           "sha256": "4bf582db378aeaa40f324c34f80356b36c4016365607f3c7d820182de853f76f",
-          "fileName": "gnu-mcu-eclipse-qemu-2.8.0-6-20190517-1329-win32.zip"
+          "fileName": "xpack-qemu-arm-2.8.0-7-win32-x32.zip"
         },
         "win32-x64": {
           "sha256": "894c25c79cdc9b0017e3d977725496192f37f6d536d4107e8e07a9cf4fbf9d22",
-          "fileName": "gnu-mcu-eclipse-qemu-2.8.0-6-20190517-1329-win64.zip"
+          "fileName": "xpack-qemu-arm-2.8.0-7-win32-x64.zip"
         }
       },
       "bin": {
