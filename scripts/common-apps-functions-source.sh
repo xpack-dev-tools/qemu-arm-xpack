@@ -263,7 +263,7 @@ function strip_binaries()
       xbb_activate
 
       echo
-      echo "Striping binaries..."
+      echo "Stripping binaries..."
 
       if [ "${TARGET_PLATFORM}" == "win32" ]
       then
