@@ -3,23 +3,23 @@
 
 #### Check the support page
 
-In case you encounter problems while using the **xPack QEMU ARM**, please 
+In case you encounter problems while using the **xPack QEMU ARM**, please
 read carefully the [support](https://xpack.github.io/qemu-arm/support/) page.
 
 #### Discuss the problem in the forums
 
-If you still could not find a solution, if you have interesting use cases, 
-if you have custom configurations, and generally if you have any 
-experience that you want to share with others, 
+If you still could not find a solution, if you have interesting use cases,
+if you have custom configurations, and generally if you have any
+experience that you want to share with others,
 use the [xPacks forums](https://www.tapatalk.com/groups/xpack/).
 
-If the forum discussions concluded that you identified a bug, or you have a 
+If the forum discussions concluded that you identified a bug, or you have a
 pertinent suggestion how to enhance xPack QEMU ARM, continue and register
 an issue.
 
 > Note: This project is dedicated to building the xPack QEMU ARM and only
 issues related to these topics should be registered here; for functional
-issues please use the separate 
+issues please use the separate
 [xpack-dev-tools/qemu](https://github.com/xpack-dev-tools/qemu/)
 project.
 
@@ -44,13 +44,13 @@ project.
 * toolchain version
 * the **detailed and complete list of steps to reproduce the bug** (mandatory)
 
-Please understand that without being able to reproduce the bug we cannot 
+Please understand that without being able to reproduce the bug we cannot
 identify your problem.
 
 To be allowed to enter issues, you need first to login to GitHub.
 
-Note: the text should respect the markdown syntax; preview the message 
-before posting and correct if it does not look as expected, especially 
+Note: the text should respect the markdown syntax; preview the message
+before posting and correct if it does not look as expected, especially
 inline code or other quoted text.
 
 ---
