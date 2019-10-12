@@ -3,7 +3,7 @@
 
 #### Check the support page
 
-In case you encounter problems while using the **xPack QEMU ARM**, please
+In case you encounter problems while using the **xPack QEMU Arm**, please
 read carefully the [support](https://xpack.github.io/qemu-arm/support/) page.
 
 #### Discuss the problem in the forums
@@ -14,10 +14,10 @@ experience that you want to share with others,
 use the [xPacks forums](https://www.tapatalk.com/groups/xpack/).
 
 If the forum discussions concluded that you identified a bug, or you have a
-pertinent suggestion how to enhance xPack QEMU ARM, continue and register
+pertinent suggestion how to enhance xPack QEMU Arm, continue and register
 an issue.
 
-> Note: This project is dedicated to building the xPack QEMU ARM and only
+> Note: This project is dedicated to building the xPack QEMU Arm and only
 issues related to these topics should be registered here; for functional
 issues please use the separate
 [xpack-dev-tools/qemu](https://github.com/xpack-dev-tools/qemu/)

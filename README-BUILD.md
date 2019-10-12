@@ -1,10 +1,10 @@
-# How to build the xPack QEMU ARM?
+# How to build the xPack QEMU Arm?
 
 ## Introduction
 
 This project includes the scripts and additional files required to
 build and publish the
-[xPack QEMU ARM](https://xpack.github.io/qemu-arm/) binaries.
+[xPack QEMU Arm](https://xpack.github.io/qemu-arm/) binaries.
 
 The build scripts use the
 [xPack Build Box (XBB)](https://github.com/xpack/xpack-build-box),
@@ -22,7 +22,7 @@ There are two types of builds:
 ## Repository URLs
 
 - `https://github.com/xpack-dev-tools/qemu.git` - the URL of the QEMU Git fork
-  used by the xPack QEMU ARM
+  used by the xPack QEMU Arm
 - `git://git.qemu.org/qemu.git` - the URL of the upstream QEMU Git
 
 The build scripts use the first repo; to merge
@@ -123,7 +123,7 @@ No need to add a tag here, it'll be added when the release is created.
 
 To prepare a new release, first determine the QEMU version
 (like `2.8.0`) and update the `scripts/VERSION` file. The format is
-`2.8.0-7`. The fourth digit is the xPack QEMU ARM release number
+`2.8.0-7`. The fourth digit is the xPack QEMU Arm release number
 of this version.
 
 Add a new set of definitions in the `scripts/container-build.sh`, with

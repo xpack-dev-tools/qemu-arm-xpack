@@ -2,12 +2,12 @@
 [![npm (scoped)](https://img.shields.io/npm/v/@xpack-dev-tools/qemu-arm.svg)](https://www.npmjs.com/package/@xpack-dev-tools/qemu-arm)
 [![npm](https://img.shields.io/npm/dt/@xpack-dev-tools/qemu-arm.svg)](https://www.npmjs.com/package/@xpack-dev-tools/qemu-arm/)
 
-# The xPack QEMU ARM
+# The xPack QEMU Arm
 
 This open source project is hosted on GitHub as
 [`xpack-dev-tools/qemu-arm-xpack`](https://github.com/xpack-dev-tools/qemu-arm-xpack)
 and provides the platform specific binaries for the
-[xPack QEMU ARM](https://xpack.github.io/qemu-arm/).
+[xPack QEMU Arm](https://xpack.github.io/qemu-arm/).
 
 This distribution plans to follow the official [QEMU](https://www.qemu.org),
 but currently is several versions behind it.
@@ -21,12 +21,12 @@ the build scripts.
 ## User info
 
 This section is intended as a shortcut for those who plan
-to use the QEMU ARM binaries. For full details please read the
-[xPack QEMU ARM](https://xpack.github.io/qemu-arm/) pages.
+to use the QEMU Arm binaries. For full details please read the
+[xPack QEMU Arm](https://xpack.github.io/qemu-arm/) pages.
 
 ### Easy install
 
-The easiest way to install QEMU ARM is using the **binary xPack**, available as
+The easiest way to install QEMU Arm is using the **binary xPack**, available as
 [`@xpack-dev-tools/qemu-arm`](https://www.npmjs.com/package/@xpack-dev-tools/qemu-arm)
 from the [`npmjs.com`](https://www.npmjs.com) registry.
 
@@ -74,7 +74,7 @@ subfolders.)
 
 ### Manual install
 
-For all platforms, the **xPack QEMU ARM** binaries are released as portable
+For all platforms, the **xPack QEMU Arm** binaries are released as portable
 archives that can be installed in any location.
 
 The archives can be downloaded from the

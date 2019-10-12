@@ -1,4 +1,4 @@
-# How to publish the xPack QEMU ARM?
+# How to publish the xPack QEMU Arm?
 
 ## Build
 
@@ -42,7 +42,7 @@ functional, using the Eclipse STM32F4DISCOVERY blinky test.
 - click **Draft a new release**
 - name the tag like **v2.8.0-7** (mind the dashes in the middle!)
 - select the `xpack` branch
-- name the release like **xPack QEMU ARM v2.8.0-7**
+- name the release like **xPack QEMU Arm v2.8.0-7**
 (mind the dashes)
 - as description
   - add a downloads badge like `![Github Releases (by Release)](https://img.shields.io/github/downloads/xpack-dev-tools/qemu-arm-xpack/v2.8.0-7/total.svg)`
@@ -59,7 +59,7 @@ In the `xpack.github.io` web Git:
 
 - add a new file to `_posts/qemu-arm/releases`
 - name the file like `2018-07-22-qemu-arm-v2-8-0-7-released.md`
-- name the post like: **xPack QEMU ARM v2.8.0-7 released**.
+- name the post like: **xPack QEMU Arm v2.8.0-7 released**.
 - as `download_url` use the tagged URL like `https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/tag/v2.8.0-7/`
 - update the `date:` field with the current date
 
@@ -106,7 +106,7 @@ $ cat *.sha
 ## Update the Web
 
 - commit the `xpack.github.io` web Git; use a message
-  like **xPack QEMU ARM v2.8.0-7 released**
+  like **xPack QEMU Arm v2.8.0-7 released**
 - wait for the GitHub Pages build to complete
 - remember the post URL, since it must be updated in the release page
 
@@ -145,6 +145,6 @@ $ xpm install --global @xpack-dev-tools/qemu-arm@latest
 
 - in a separate browser windows, open [TweetDeck](https://tweetdeck.twitter.com/)
 - using the `@xpack_project` account
-- paste the release name like **xPack QEMU ARM v2.8.0-7.1 released**
+- paste the release name like **xPack QEMU Arm v2.8.0-7.1 released**
 - paste the link to the blog release URL
 - click the **Tweet** button

@@ -16,9 +16,9 @@
 # -----------------------------------------------------------------------------
 
 # Used to display the application name.
-APP_NAME=${APP_NAME:-"QEMU ARM"}
+APP_NAME=${APP_NAME:-"QEMU Arm"}
 
-# Used as part of file/folder paths.
+# Used as part of file/folder paths (keep uppercase).
 APP_UC_NAME=${APP_UC_NAME:-"QEMU ARM"}
 APP_LC_NAME=${APP_LC_NAME:-"qemu-arm"}
 

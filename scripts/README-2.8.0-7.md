@@ -1,15 +1,15 @@
-# The xPack QEMU ARM
+# The xPack QEMU Arm
 
 This is the **xPack** version of **QEMU**
-for ARM Cortex-M devices (formerly part of the
+for Arm Cortex-M devices (formerly part of the
 GNU MCU Eclipse project).
 
 For details, see
-[The xPack QEMU ARM](https://xpack.github.io/qemu-arm/) pages.
+[The xPack QEMU Arm](https://xpack.github.io/qemu-arm/) pages.
 
 ## Compliance
 
-xPack QEMU ARM currently is based on the official [QEMU](http://www.qemu.org),
+xPack QEMU Arm currently is based on the official [QEMU](http://www.qemu.org),
 with major changes.
 
 The current version is based on:
@@ -19,7 +19,7 @@ The current version is based on:
 ## Changes
 
 Compared to the master `qemu-system-arm`, the changes are major, all
-application class ARM
+application class Arm
 devices were removed and replaced by several Cortex-M devices.
 
 The supported boards are:

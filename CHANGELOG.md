@@ -45,7 +45,7 @@ ___
 
 ### 2017-06-15
 
-- rebranded as xPack QEMU ARM
+- rebranded as xPack QEMU Arm
 
 ### 2016-12-27
 
