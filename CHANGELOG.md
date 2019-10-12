@@ -9,8 +9,9 @@ Releases in reverse chronological order.
 
 ### 2019-06-28
 
-- [#70]  io/channel-watch.c: Correctly associate socket handle with 
+- [#70] io/channel-watch.c: Correctly associate socket handle with
   its corresponding event. (#71)
+
 ___
 
 ## Historical GNU MCU Eclipse change log
@@ -66,12 +67,12 @@ ___
 ### 2016-12-24
 
 - stm32/gpio: fix exti check
-- NUCLEO-F103RB with functional buttons 
+- NUCLEO-F103RB with functional buttons
 - stm32: afio & syscfg with enable bit
 
 ### 2016-12-22
 
-- stm32f429i-discovery with functional buttons 
+- stm32f429i-discovery with functional buttons
 
 ### 2016-12-18
 
@@ -89,7 +90,7 @@ ___
 - stm32/afio added; F1 gpio uses it
 - stm32 & cortexm reset all children devices
 - add scripts to process SVD files
-- STM32-H103 with functional buttons 
+- STM32-H103 with functional buttons
 
 ### 2016-12-13
 

@@ -2,21 +2,21 @@
 
 ## Introduction
 
-This project includes the scripts and additional files required to 
+This project includes the scripts and additional files required to
 build and publish the
 [xPack QEMU ARM](https://xpack.github.io/qemu-arm/) binaries.
 
 The build scripts use the
-[xPack Build Box (XBB)](https://github.com/xpack/xpack-build-box), 
+[xPack Build Box (XBB)](https://github.com/xpack/xpack-build-box),
 a set of elaborate build environments based on GCC 7.4 (Docker containers
 for GNU/Linux and Windows or a custom folder for MacOS).
 
 There are two types of builds:
 
-- local/native builds, which use the tools available on the 
-  host machine; generally the binaries do not run on a different system 
+- local/native builds, which use the tools available on the
+  host machine; generally the binaries do not run on a different system
   distribution/version; intended mostly for development purposes.
-- distribution builds, which create the archives distributed as 
+- distribution builds, which create the archives distributed as
   binaries; expected to run on most modern systems.
 
 ## Repository URLs
@@ -38,11 +38,11 @@ changes from upstream it is necessary to add a remote (like
 
 ## Download the build scripts
 
-The build scripts are available in the `scripts` folder of the 
-[`xpack-dev-tools/qemu-arm-xpack`](https://github.com/xpack-dev-tools/qemu-arm-xpack) 
+The build scripts are available in the `scripts` folder of the
+[`xpack-dev-tools/qemu-arm-xpack`](https://github.com/xpack-dev-tools/qemu-arm-xpack)
 Git repo.
 
-To download them, the following shortcut is available: 
+To download them, the following shortcut is available:
 
 ```console
 $ curl -L https://github.com/xpack-dev-tools/qemu-arm-xpack/raw/xpack/scripts/git-clone.sh | bash
@@ -56,7 +56,7 @@ $ git clone --recurse-submodules https://github.com/xpack-dev-tools/qemu-arm-xpa
   ~/Downloads/qemu-arm-xpack.git
 ```
 
-> Note: the repository uses submodules; for a successful build it is 
+> Note: the repository uses submodules; for a successful build it is
 > mandatory to recurse the submodules.
 
 To use the `xpack-develop` branch of the build scripts, use:
@@ -69,9 +69,9 @@ $ git clone --recurse-submodules -b xpack-develop https://github.com/xpack-dev-t
 
 ## The `Work` folder
 
-The script creates a temporary build `Work/qemu-arm-${version}` folder in 
-the user home. Although not recommended, if for any reasons you need to 
-change the location of the `Work` folder, 
+The script creates a temporary build `Work/qemu-arm-${version}` folder in
+the user home. Although not recommended, if for any reasons you need to
+change the location of the `Work` folder,
 you can redefine `WORK_FOLDER_PATH` variable before invoking the script.
 
 ## Customizations
@@ -79,16 +79,16 @@ you can redefine `WORK_FOLDER_PATH` variable before invoking the script.
 There are many other settings that can be redefined via
 environment variables. If necessary,
 place them in a file and pass it via `--env-file`. This file is
-either passed to Docker or sourced to shell. The Docker syntax 
+either passed to Docker or sourced to shell. The Docker syntax
 **is not** identical to shell, so some files may
 not be accepted by bash.
 
 ## Changes
 
 Compared to the original QEMU distribution, there are major
-changes in the Cortex-M emulation. 
+changes in the Cortex-M emulation.
 
-The actual changes for each version are documented in the 
+The actual changes for each version are documented in the
 `scripts/README-<version>.md` files.
 
 ## How to run a local/native build
@@ -102,14 +102,14 @@ The details on how to prepare the development environment for QEMU are in the
 
 ### Prerequisites
 
-The prerequisites are common to all binary builds. Please follow the 
-instructions from the separate 
-[Prerequisites for building xPack binaries](https://xpack.github.io/xbb/prerequisites/) 
+The prerequisites are common to all binary builds. Please follow the
+instructions from the separate
+[Prerequisites for building xPack binaries](https://xpack.github.io/xbb/prerequisites/)
 page and return when ready.
 
 ### Update Git repos
 
-To keep the development repository in sync with the original QEMU 
+To keep the development repository in sync with the original QEMU
 repository:
 
 - checkout `master`
@@ -121,12 +121,12 @@ No need to add a tag here, it'll be added when the release is created.
 
 ### Prepare release
 
-To prepare a new release, first determine the QEMU version 
-(like `2.8.0`) and update the `scripts/VERSION` file. The format is 
-`2.8.0-7`. The fourth digit is the xPack QEMU ARM release number 
+To prepare a new release, first determine the QEMU version
+(like `2.8.0`) and update the `scripts/VERSION` file. The format is
+`2.8.0-7`. The fourth digit is the xPack QEMU ARM release number
 of this version.
 
-Add a new set of definitions in the `scripts/container-build.sh`, with 
+Add a new set of definitions in the `scripts/container-build.sh`, with
 the versions of various components.
 
 ### Update `README.md`
@@ -146,15 +146,15 @@ Check `CHANGELOG.md` and add the new release.
 
 ### Build
 
-Although it is perfectly possible to build all binaries in a single step 
-on a macOS system, due to Docker specifics, it is faster to build the 
-GNU/Linux and Windows binaries on a GNU/Linux system and the macOS binary 
+Although it is perfectly possible to build all binaries in a single step
+on a macOS system, due to Docker specifics, it is faster to build the
+GNU/Linux and Windows binaries on a GNU/Linux system and the macOS binary
 separately.
 
 #### Build the GNU/Linux and Windows binaries
 
-The current platform for GNU/Linux and Windows production builds is an 
-Ubuntu Server 18 LTS, running on an Intel NUC8i7BEH mini PC with 32 GB of RAM 
+The current platform for GNU/Linux and Windows production builds is an
+Ubuntu Server 18 LTS, running on an Intel NUC8i7BEH mini PC with 32 GB of RAM
 and 512 GB of fast M.2 SSD.
 
 ```console
@@ -203,10 +203,10 @@ $ bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --all
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
-`screen -r qemu`; to kill the session use `Ctrl-a` `Ctrl-\` and confirm.
+`screen -r qemu`; to kill the session use `Ctrl-a` `Ctrl-k` and confirm.
 
 About 30 minutes minutes later, the output of the build script
-is a set of 4 
+is a set of 4
 archives and their SHA signatures, created in the `deploy` folder:
 
 ```console
@@ -222,8 +222,8 @@ total 27052
 -rw-rw-rw- 1 ilg  staff      103 Jul  6 21:51 xpack-qemu-arm-2.8.0-7-win32-x64.zip.sha
 ```
 
-To copy the files from the build machine to the current development 
-machine, either use NFS to mount the entire folder, or open the `deploy` 
+To copy the files from the build machine to the current development
+machine, either use NFS to mount the entire folder, or open the `deploy`
 folder in a terminal and use `scp`:
 
 ```console
@@ -233,8 +233,8 @@ $ scp * ilg@ilg-mbp.local:Downloads/xpack-binaries/qemu
 
 #### Build the macOS binary
 
-The current platform for macOS production builds is a macOS 10.10.5 
-VirtualBox image running on the same macMini with 16 GB of RAM and a 
+The current platform for macOS production builds is a macOS 10.10.5
+VirtualBox image running on the same macMini with 16 GB of RAM and a
 fast SSD.
 
 ```console
@@ -259,9 +259,9 @@ $ caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --osx
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
-`screen -r qemu`; to kill the session use `Ctrl-a` `Ctrl-\` and confirm.
+`screen -r qemu`; to kill the session use `Ctrl-a` `Ctrl-k` and confirm.
 
-About 30 minutes later, the output of the build script is a compressed 
+About 30 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
@@ -271,8 +271,8 @@ total 13760
 -rw-r--r--  1 ilg  staff      104 Jul  6 20:36 xpack-qemu-arm-2.8.0-7-darwin-x64.tgz.sha
 ```
 
-To copy the files from the build machine to the current development 
-machine, either use NFS to mount the entire folder, or open the `deploy` 
+To copy the files from the build machine to the current development
+machine, either use NFS to mount the entire folder, or open the `deploy`
 folder in a terminal and use `scp`:
 
 ```console
@@ -317,37 +317,37 @@ For production builds it is recommended to completely remove the build folder.
 
 #### --develop
 
-For performance reasons, the actual build folders are internal to each 
-Docker run, and are not persistent. This gives the best speed, but has 
+For performance reasons, the actual build folders are internal to each
+Docker run, and are not persistent. This gives the best speed, but has
 the disadvantage that interrupted builds cannot be resumed.
 
-For development builds, it is possible to define the build folders in 
+For development builds, it is possible to define the build folders in
 the host file system, and resume an interrupted build.
 
 #### --debug
 
-For development builds, it is also possible to create everything with 
+For development builds, it is also possible to create everything with
 `-g -O0` and be able to run debug sessions.
 
 #### Interrupted builds
 
-The Docker scripts run with root privileges. This is generally not a 
-problem, since at the end of the script the output files are reassigned 
+The Docker scripts run with root privileges. This is generally not a
+problem, since at the end of the script the output files are reassigned
 to the actual user.
 
-However, for an interrupted build, this step is skipped, and files in 
-the install folder will remain owned by root. Thus, before removing 
+However, for an interrupted build, this step is skipped, and files in
+the install folder will remain owned by root. Thus, before removing
 the build folder, it might be necessary to run a recursive `chown`.
 
 ## Uninstall
 
-The binaries are distributed as portable archives; thus they do not need 
+The binaries are distributed as portable archives; thus they do not need
 to run a setup and do not require an uninstall; simply removing the
 folder is enough.
 
 ## Actual configuration
 
-The result of the `configure` step on CentOS 6, with most of the 
+The result of the `configure` step on CentOS 6, with most of the
 options disabled, is:
 
 ```
@@ -375,24 +375,24 @@ profiler          no
 static build      no
 pixman            system
 SDL support       yes (2.0.5)
-GTK support       no 
+GTK support       no
 GTK GL support    no
-VTE support       no 
+VTE support       no
 TLS priority      NORMAL
 GNUTLS support    no
 GNUTLS rnd        no
 libgcrypt         no
 libgcrypt kdf     no
-nettle            no 
+nettle            no
 nettle kdf        no
 libtasn1          no
 curses support    no
 virgl support     no
 curl support      no
 mingw32 support   no
-Audio drivers     
-Block whitelist (rw) 
-Block whitelist (ro) 
+Audio drivers  
+Block whitelist (rw)
+Block whitelist (ro)
 VirtFS support    no
 VNC support       no
 xen support       no
@@ -419,7 +419,7 @@ vhost-net support yes
 vhost-scsi support yes
 vhost-vsock support yes
 Trace backends    log
-spice support     no 
+spice support     no
 rbd support       no
 xfsctl support    no
 smartcard support no
@@ -457,12 +457,12 @@ replication support yes
 
 ## Test
 
-A simple test is performed by the script at the end, by launching the 
+A simple test is performed by the script at the end, by launching the
 executable to check if all shared/dynamic libraries are correctly used.
 
-For a true test you need to unpack the archive in a temporary location 
-(like `~/Downloads`) and then run the 
-program from there. For example on macOS the output should 
+For a true test you need to unpack the archive in a temporary location
+(like `~/Downloads`) and then run the
+program from there. For example on macOS the output should
 look like:
 
 ```console
@@ -477,7 +477,7 @@ After install, the package should create a structure like this (macOS files;
 only the first two depth levels are shown):
 
 ```console
-$ tree -L 2 /Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-7.1/.content 
+$ tree -L 2 /Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-7.1/.content
 /Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-7.1/.content
 ├── README.md
 ├── bin
@@ -507,7 +507,7 @@ $ tree -L 2 /Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-7.1/.conte
 
 ## Uninstall
 
-The binaries are distributed as portable archives; thus they do not need 
+The binaries are distributed as portable archives; thus they do not need
 to run a setup and do not require an uninstall; simply removing the
 folder is enough.
 
@@ -520,17 +520,17 @@ However, occasionally some servers may not be available, and the builds
 may fail.
 
 The workaround is to manually download the files from an alternate
-location (like 
+location (like
 https://github.com/xpack-dev-tools/files-cache/tree/master/libs),
 place them in the XBB cache (`Work/cache`) and restart the build.
 
 
 ## More build details
 
-The build process is split into several scripts. The build starts on 
-the host, with `build.sh`, which runs `container-build.sh` several 
-times, once for each target, in one of the two docker containers. 
-Both scripts include several other helper scripts. The entire process 
-is quite complex, and an attempt to explain its functionality in a few 
-words would not be realistic. Thus, the authoritative source of details 
+The build process is split into several scripts. The build starts on
+the host, with `build.sh`, which runs `container-build.sh` several
+times, once for each target, in one of the two docker containers.
+Both scripts include several other helper scripts. The entire process
+is quite complex, and an attempt to explain its functionality in a few
+words would not be realistic. Thus, the authoritative source of details
 remains the source code.
