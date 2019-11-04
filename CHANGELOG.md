@@ -4,6 +4,7 @@ Releases in reverse chronological order.
 
 ### 2019-11-04
 
+- v2.8.0-8.1 published on npmjs.com
 - v2.8.0-8 released
 - [#1] Blinky with STM32F1 fails
 - [#2] Boards do not use the capabilities RAM size, but 128.
