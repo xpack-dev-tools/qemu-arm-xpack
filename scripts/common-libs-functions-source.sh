@@ -185,6 +185,7 @@ function do_libpng()
 
         # Build.
         make -j ${JOBS}
+
         if [ "${WITH_STRIP}" == "y" ]
         then
           make install-strip
@@ -266,6 +267,7 @@ function do_jpeg()
 
         # Build.
         make -j ${JOBS}
+
         if [ "${WITH_STRIP}" == "y" ]
         then
           make install-strip
@@ -379,6 +381,7 @@ function do_sdl2()
 
         # Build.
         make -j ${JOBS}
+
         make install
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-sdl2-output.txt"
     )
@@ -494,6 +497,7 @@ function do_sdl2_image()
 
         # Build.
         make -j ${JOBS}
+
         if [ "${WITH_STRIP}" == "y" ]
         then
           make install-strip
@@ -576,6 +580,7 @@ function do_libffi()
 
         # Build.
         make -j ${JOBS}
+
         if [ "${WITH_STRIP}" == "y" ]
         then
           make install-strip
@@ -662,6 +667,7 @@ function do_libiconv()
 
         # Build.
         make -j ${JOBS}
+
         if [ "${WITH_STRIP}" == "y" ]
         then
           make install-strip
@@ -770,6 +776,7 @@ function do_gettext()
 
         # Build.
         make -j ${JOBS}
+
         if [ "${WITH_STRIP}" == "y" ]
         then
           make install-strip
@@ -893,8 +900,10 @@ function do_glib()
         echo "Running glib make..."
 
         # Build.
-        # make -j ${JOBS}
-        make
+        # Parallel builds may fail.
+        make -j ${JOBS}
+        # make
+
         if [ "${WITH_STRIP}" == "y" ]
         then
           make install-strip
@@ -984,6 +993,7 @@ function do_pixman()
 
         # Build.
         make -j ${JOBS}
+
         if [ "${WITH_STRIP}" == "y" ]
         then
           make install-strip
@@ -1083,6 +1093,7 @@ function do_libxml2()
 
         # Build.
         make -j ${JOBS}
+
         if [ "${WITH_STRIP}" == "y" ]
         then
           make install-strip

@@ -136,9 +136,10 @@ function do_qemu()
       echo
       echo "Running qemu make..."
 
-      # Parallel builds fail.
-      # make -j ${JOBS}
-      make
+      # Parallel builds may fail.
+      make -j ${JOBS}
+      # make
+
       make install
       make install-gme
 
