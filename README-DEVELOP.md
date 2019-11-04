@@ -166,19 +166,24 @@ $ curl -L https://github.com/xpack-dev-tools/qemu-arm-xpack/raw/xpack/scripts/gi
 
 For more details please read the `README-BUILD.md` file.
 
+### Check if the remote development branch is up-to-date
+
+Open the local copy of `qemu.git` and check if the development branch is
+pushed to the remote, since the script will use it when `--develop` is passed.
+
 ### Initial build
 
 To build a binary which is suitable for debug sessions, run the
 `build-native.sh` script with the shown options:
 
 ```console
-$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --debug --develop
+$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --debug --develop --jobs 8
 ```
 
 To build the Windows binaries, use:
 
 ```console
-$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --debug --develop --win
+$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --debug --develop --win --jobs 8
 ```
 
 The result is the `${HOME}/Work/qemu-arm-dev/${platform}-${arch}` folder. The build
@@ -256,17 +261,17 @@ selection window that appears on top, select the desired configuration.
 ### The emulated images
 
 There are multiple Cortex-M test projects in the separate GitHub project
-[`gnu-mcu-eclipse/qemu-eclipse-test-projects`](https://github.com/gnu-mcu-eclipse/qemu-eclipse-test-projects.git)
+[`xpack-dev-tools/qemu-eclipse-test-projects`](https://github.com/xpack-dev-tools/qemu-eclipse-test-projects.git)
 
 The default one is `f407-disc-blink-tutorial`, the STM32F4-DISCOVERY Blinky,
 as described in the
-[blinky tutorial](https://gnu-mcu-eclipse.github.io/tutorials/blinky-arm/).
+[blinky tutorial](https://xpack-dev-tools.github.io/tutorials/blinky-arm/).
 
 Clone the repository in the same `Work` folder:
 
 ```console
 $ cd ~/Work
-$ git clone https://github.com/gnu-mcu-eclipse/qemu-eclipse-test-projects.git qemu-eclipse-test-projects.git
+$ git clone https://github.com/xpack-dev-tools/qemu-eclipse-test-projects.git qemu-eclipse-test-projects.git
 ```
 
 ### Debug

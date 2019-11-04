@@ -63,7 +63,7 @@ To use the `xpack-develop` branch of the build scripts, use:
 
 ```console
 $ rm -rf ~/Downloads/qemu-arm-xpack.git
-$ git clone --recurse-submodules -b xpack-develop https://github.com/xpack-dev-tools/qemu-arm-xpack.git \
+$ git clone --recurse-submodules --branch xpack-develop https://github.com/xpack-dev-tools/qemu-arm-xpack.git \
   ~/Downloads/qemu-arm-xpack.git
 ```
 
@@ -73,6 +73,15 @@ The script creates a temporary build `Work/qemu-arm-${version}` folder in
 the user home. Although not recommended, if for any reasons you need to
 change the location of the `Work` folder,
 you can redefine `WORK_FOLDER_PATH` variable before invoking the script.
+
+## Spaces in folder names
+
+Due to the limitations of `make`, builds started in folders which
+include spaces in the names are known to fail.
+
+If on your system the work folder in in such a location, redefine it in a
+folder without spaces and set the `WORK_FOLDER_PATH` variable before invoking 
+the script.
 
 ## Customizations
 
@@ -199,7 +208,7 @@ network connection or a computer entering sleep.
 $ screen -S qemu
 
 $ sudo rm -rf ~/Work/qemu-arm-*
-$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --all
+$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --all --jobs 8
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -255,7 +264,7 @@ network connection or a computer entering sleep.
 $ screen -S qemu
 
 $ sudo rm -rf ~/Work/qemu-arm-*
-$ caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --osx
+$ caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --osx --jobs 8
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
