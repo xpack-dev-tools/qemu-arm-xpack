@@ -36,6 +36,13 @@ page.
 Install the binaries on all supported platforms and check if they are
 functional, using the Eclipse STM32F4DISCOVERY blinky test.
 
+The QEMU tests are available in a separate repo:
+
+```
+$ cd Downloads
+$ git clone https://github.com/xpack-dev-tools/qemu-eclipse-test-projects.git qemu-eclipse-test-projects.git
+```
+
 ## Create a new GitHub pre-release
 
 - go to the [GitHub Releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases) page

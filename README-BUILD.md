@@ -237,7 +237,7 @@ folder in a terminal and use `scp`:
 
 ```console
 $ cd ~/Work/qemu-arm-*/deploy
-$ scp * ilg@ilg-mbp.local:Downloads/xpack-binaries/qemu
+$ scp * ilg@ilg-wks.local:Downloads/xpack-binaries/qemu
 ```
 
 #### Build the macOS binary
@@ -286,7 +286,7 @@ folder in a terminal and use `scp`:
 
 ```console
 $ cd ~/Work/qemu-arm-*/deploy
-$ scp * ilg@ilg-mbp.local:Downloads/xpack-binaries/qemu
+$ scp * ilg@ilg-wks.local:Downloads/xpack-binaries/qemu
 ```
 
 ### Subsequent runs
