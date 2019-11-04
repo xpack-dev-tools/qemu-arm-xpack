@@ -45,6 +45,8 @@ $ git clone https://github.com/xpack-dev-tools/qemu-eclipse-test-projects.git qe
 
 ## Create a new GitHub pre-release
 
+- in `CHANGELOG.md`, add release date
+- commit and push the repo
 - go to the [GitHub Releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases) page
 - click **Draft a new release**
 - name the tag like **v2.8.0-7** (mind the dashes in the middle!)
@@ -114,6 +116,7 @@ $ cat *.sha
 
 - commit the `xpack.github.io` web Git; use a message
   like **xPack QEMU Arm v2.8.0-7 released**
+- adjust timestamps
 - wait for the GitHub Pages build to complete
 - remember the post URL, since it must be updated in the release page
 
