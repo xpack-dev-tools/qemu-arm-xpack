@@ -2,6 +2,11 @@
 
 Releases in reverse chronological order.
 
+### 2019-12-27
+
+- bump v2.8.0-9
+- add support for Arm binaries
+
 ### 2019-11-04
 
 - v2.8.0-8.1 published on npmjs.com
