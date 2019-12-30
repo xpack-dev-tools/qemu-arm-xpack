@@ -52,10 +52,14 @@ script_folder_name="$(basename "${script_folder_path}")"
 echo
 echo "xPack QEMU Arm native build script."
 
-echo
 host_functions_script_path="${script_folder_path}/helper/host-functions-source.sh"
-echo "Host helper functions source script: \"${host_functions_script_path}\"."
 source "${host_functions_script_path}"
+
+common_functions_script_path="${script_folder_path}/common-functions-source.sh"
+source "${common_functions_script_path}"
+
+defines_script_path="${script_folder_path}/defs-source.sh"
+source "${defines_script_path}"
 
 host_detect
 
@@ -63,6 +67,11 @@ host_detect
 
 help_message="    bash $0 [--win] [--debug] [--develop] [--jobs N] [--help] [clean|cleanlibs|cleanall]"
 host_native_options "${help_message}" $@
+
+echo
+echo "Host helper functions source script: \"${host_functions_script_path}\"."
+echo "Common functions source script: \"${common_functions_script_path}\"."
+echo "Definitions source script: \"${defines_script_path}\"."
 
 # -----------------------------------------------------------------------------
 
