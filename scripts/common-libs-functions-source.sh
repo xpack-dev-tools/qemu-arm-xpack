@@ -33,7 +33,7 @@ function do_zlib()
   local zlib_url="http://zlib.net/fossils/${zlib_archive}"
 
   local zlib_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-zlib-${ZLIB_VERSION}-installed"
-  if [ ! -f "${zlib_stamp_file_path}" -o ! -d "${LIBS_BUILD_FOLDER_PATH}/${ZLIB_FOLDER_NAME}" ]
+  if [ ! -f "${zlib_stamp_file_path}" ]
   then
 
     cd "${SOURCES_FOLDER_PATH}"
@@ -133,7 +133,7 @@ function do_libpng()
   local libpng_url="https://sourceforge.net/projects/libpng/files/${LIBPNG_SFOLDER}/${LIBPNG_VERSION}/${libpng_archive}"
 
   local libpng_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-libpng-${LIBPNG_VERSION}-installed"
-  if [ ! -f "${libpng_stamp_file_path}" -o ! -d "${LIBS_BUILD_FOLDER_PATH}/${LIBPNG_FOLDER_NAME}" ]
+  if [ ! -f "${libpng_stamp_file_path}" ]
   then
 
     cd "${SOURCES_FOLDER_PATH}"
@@ -217,7 +217,7 @@ function do_jpeg()
   local jpeg_url="http://www.ijg.org/files/${jpeg_archive}"
 
   local jpeg_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-jpeg-${JPEG_VERSION}-installed"
-  if [ ! -f "${jpeg_stamp_file_path}" -o ! -d "${LIBS_BUILD_FOLDER_PATH}/${JPEG_FOLDER_NAME}" ]
+  if [ ! -f "${jpeg_stamp_file_path}" ]
   then
 
     cd "${SOURCES_FOLDER_PATH}"
@@ -301,7 +301,7 @@ function do_sdl2()
   local sdl2_url="https://www.libsdl.org/release/${sdl2_archive}"
 
   local sdl2_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-sdl2-${SDL2_VERSION}-installed"
-  if [ ! -f "${sdl2_stamp_file_path}" -o ! -d "${LIBS_BUILD_FOLDER_PATH}/${SDL2_FOLDER_NAME}" ]
+  if [ ! -f "${sdl2_stamp_file_path}" ]
   then
 
     cd "${SOURCES_FOLDER_PATH}"
@@ -410,7 +410,7 @@ function do_sdl2_image()
   local sdl2_image_url="https://www.libsdl.org/projects/SDL_image/release/${sdl2_image_archive}"
 
   local sdl2_image_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-sdl2-image-${SDL2_IMAGE_VERSION}-installed"
-  if [ ! -f "${sdl2_image_stamp_file_path}" -o ! -d "${LIBS_BUILD_FOLDER_PATH}/${SDL2_IMAGE_FOLDER_NAME}" ]
+  if [ ! -f "${sdl2_image_stamp_file_path}" ]
   then
 
     cd "${SOURCES_FOLDER_PATH}"
@@ -529,7 +529,7 @@ function do_libffi()
   local libffi_url="ftp://sourceware.org/pub/libffi/${libffi_archive}"
 
   local libffi_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-libffi-${LIBFFI_VERSION}-installed"
-  if [ ! -f "${libffi_stamp_file_path}" -o ! -d "${LIBS_BUILD_FOLDER_PATH}/${LIBFFI_FOLDER_NAME}" ]
+  if [ ! -f "${libffi_stamp_file_path}" ]
   then
 
     cd "${SOURCES_FOLDER_PATH}"
@@ -614,7 +614,7 @@ function do_libiconv()
   local libiconv_url="https://ftp.gnu.org/pub/gnu/libiconv/${libiconv_archive}"
 
   local libiconv_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-libiconv-${LIBICONV_VERSION}-installed"
-  if [ ! -f "${libiconv_stamp_file_path}" -o ! -d "${LIBS_BUILD_FOLDER_PATH}/${LIBICONV_FOLDER_NAME}" ]
+  if [ ! -f "${libiconv_stamp_file_path}" ]
   then
 
     cd "${SOURCES_FOLDER_PATH}"
@@ -700,7 +700,7 @@ function do_gettext()
   local gettext_url="http://ftp.gnu.org/pub/gnu/gettext/${gettext_archive}"
 
   local gettext_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-gettext-${GETTEXT_VERSION}-installed"
-  if [ ! -f "${gettext_stamp_file_path}" -o ! -d "${LIBS_BUILD_FOLDER_PATH}/${GETTEXT_FOLDER_NAME}" ]
+  if [ ! -f "${gettext_stamp_file_path}" ]
   then
 
     cd "${SOURCES_FOLDER_PATH}"
@@ -813,7 +813,7 @@ function do_glib()
   local glib_url="http://ftp.gnome.org/pub/GNOME/sources/glib/${GLIB_MVERSION}/${glib_archive}"
 
   local glib_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-glib-${GLIB_VERSION}-installed"
-  if [ ! -f "${glib_stamp_file_path}" -o ! -d "${LIBS_BUILD_FOLDER_PATH}/${GLIB_FOLDER_NAME}" ]
+  if [ ! -f "${glib_stamp_file_path}" ]
   then
 
     cd "${SOURCES_FOLDER_PATH}"
@@ -937,7 +937,7 @@ function do_pixman()
   local pixman_url="http://cairographics.org/releases/${pixman_archive}"
 
   local pixman_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-pixman-${PIXMAN_VERSION}-installed"
-  if [ ! -f "${pixman_stamp_file_path}" -o ! -d "${LIBS_BUILD_FOLDER_PATH}/${PIXMAN_FOLDER_NAME}" ]
+  if [ ! -f "${pixman_stamp_file_path}" ]
   then
 
     cd "${SOURCES_FOLDER_PATH}"
@@ -1027,7 +1027,7 @@ function do_libxml2()
   local libxml2_url="ftp://xmlsoft.org/libxml2/${libxml2_archive}"
 
   local libxml2_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-libxml2-${LIBXML2_VERSION}-installed"
-  if [ ! -f "${libxml2_stamp_file_path}" -o ! -d "${LIBS_BUILD_FOLDER_PATH}/${LIBXML2_FOLDER_NAME}" ]
+  if [ ! -f "${libxml2_stamp_file_path}" ]
   then
 
     cd "${SOURCES_FOLDER_PATH}"
