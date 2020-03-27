@@ -55,7 +55,7 @@ function do_qemu()
     xbb_activate
     xbb_activate_installed_dev
 
-    CFLAGS="${XBB_CFLAGS} -Wno-format-truncation -Wno-incompatible-pointer-types -Wno-unused-function -Wno-unused-but-set-variable -Wno-unused-result"
+    CFLAGS="${XBB_CFLAGS} -Wno-format-truncation -Wno-incompatible-pointer-types -Wno-unused-function -Wno-unused-but-set-variable -Wno-unused-result -Wno-stringop-truncation -Wno-address-of-packed-member -Wno-address-of-packed-member"
 
     CPPFLAGS="${XBB_CPPFLAGS}"
     if [ "${IS_DEBUG}" == "y" ]
