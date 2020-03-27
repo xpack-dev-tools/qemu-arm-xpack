@@ -52,7 +52,8 @@ This small script issues the following two commands:
 
 ```console
 $ rm -rf ~/Downloads/qemu-arm-xpack.git
-$ git clone --recurse-submodules https://github.com/xpack-dev-tools/qemu-arm-xpack.git \
+$ git clone --recurse-submodules \
+  https://github.com/xpack-dev-tools/qemu-arm-xpack.git \
   ~/Downloads/qemu-arm-xpack.git
 ```
 
@@ -63,7 +64,8 @@ To use the `xpack-develop` branch of the build scripts, use:
 
 ```console
 $ rm -rf ~/Downloads/qemu-arm-xpack.git
-$ git clone --recurse-submodules --branch xpack-develop https://github.com/xpack-dev-tools/qemu-arm-xpack.git \
+$ git clone --recurse-submodules --branch xpack-develop \
+  https://github.com/xpack-dev-tools/qemu-arm-xpack.git \
   ~/Downloads/qemu-arm-xpack.git
 ```
 
@@ -167,7 +169,7 @@ Ubuntu Server 18 LTS, running on an Intel NUC8i7BEH mini PC with 32 GB of RAM
 and 512 GB of fast M.2 SSD.
 
 ```console
-$ ssh ilg-xbb-linux.local
+$ ssh xbbi
 ```
 
 Before starting a multi-platform build, check if Docker is started:
@@ -219,6 +221,7 @@ is a set of 4
 archives and their SHA signatures, created in the `deploy` folder:
 
 ```console
+$ cd ~/Work/qemu-arm-*
 $ ls -l deploy
 total 27052
 -rw-rw-rw- 1 ilg  staff  7089023 Jul  6 21:57 xpack-qemu-arm-2.8.0-7-linux-x32.tgz
@@ -237,7 +240,7 @@ folder in a terminal and use `scp`:
 
 ```console
 $ cd ~/Work/qemu-arm-*/deploy
-$ scp * ilg@ilg-wks.local:Downloads/xpack-binaries/qemu
+$ scp * ilg@wks:Downloads/xpack-binaries/qemu
 ```
 
 #### Build the macOS binary
@@ -247,7 +250,7 @@ VirtualBox image running on the same macMini with 16 GB of RAM and a
 fast SSD.
 
 ```console
-$ ssh ilg-xbb-mac.local
+$ ssh xbbm
 ```
 
 To download the build scripts:
@@ -264,8 +267,8 @@ network connection or a computer entering sleep.
 $ screen -S qemu
 
 $ sudo rm -rf ~/Work/qemu-arm-*
-$ nproc=$(sysctl hw.ncpu | sed 's/hw.ncpu: //')
-$ caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --osx --jobs ${nproc}
+$ caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --osx \
+  --jobs $(sysctl hw.ncpu | sed 's/hw.ncpu: //')
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -275,6 +278,7 @@ About 30 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
+$ cd ~/Work/qemu-arm-*
 $ ls -l deploy
 total 13760
 -rw-r--r--  1 ilg  staff  7037439 Jul  6 20:36 xpack-qemu-arm-2.8.0-7-darwin-x64.tgz

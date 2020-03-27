@@ -14,7 +14,9 @@ with major changes.
 
 The current version is based on:
 
-- QEMU version 2.8.0, commit [0737f32](https://github.com/xpack-dev-tools/qemu/commit/0737f32daf35f3730ed2461ddfaaf034c2ec7ff0) from Dec 20th, 2016
+- QEMU version 2.8.0, commit
+[0737f32](https://github.com/xpack-dev-tools/qemu/commit/0737f32daf35f3730ed2461ddfaaf034c2ec7ff0)
+from Dec 20th, 2016
 
 ## Changes
 
