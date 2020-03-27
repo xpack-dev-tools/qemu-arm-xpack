@@ -210,7 +210,7 @@ network connection or a computer entering sleep.
 $ screen -S qemu
 
 $ sudo rm -rf ~/Work/qemu-arm-*
-$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --all --jobs $(nproc)
+$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --all
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -267,8 +267,7 @@ network connection or a computer entering sleep.
 $ screen -S qemu
 
 $ sudo rm -rf ~/Work/qemu-arm-*
-$ caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --osx \
-  --jobs $(sysctl hw.ncpu | sed 's/hw.ncpu: //')
+$ caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --osx
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
