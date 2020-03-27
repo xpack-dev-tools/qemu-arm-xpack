@@ -22,16 +22,17 @@ function prepare_versions()
 
   README_OUT_FILE_NAME="README-${RELEASE_VERSION}.md"
 
-  USE_SINGLE_FOLDER="y"
+  USE_SINGLE_FOLDER_PATH="y"
   USE_TAR_GZ="y"
 
   # Keep them in sync with combo archive content.
   if [[ "${RELEASE_VERSION}" =~ 2\.8\.0-* ]]
   then
 
-    # ---------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
 
     QEMU_VERSION="2.8"
+
     if [[ "${RELEASE_VERSION}" =~ 2\.8\.0-9 ]]
     then
       QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack"}
@@ -109,7 +110,7 @@ function prepare_versions()
 
       HAS_WINPTHREAD="y"
 
-      USE_SINGLE_FOLDER=""
+      USE_SINGLE_FOLDER_PATH=""
       USE_TAR_GZ=""
     elif [[ "${RELEASE_VERSION}" =~ 2\.8\.0-7 ]]
     then
@@ -150,14 +151,14 @@ function prepare_versions()
 
       HAS_WINPTHREAD="y"
 
-      USE_SINGLE_FOLDER=""
+      USE_SINGLE_FOLDER_PATH=""
       USE_TAR_GZ=""
     else
       echo "Unsupported version ${RELEASE_VERSION}."
       exit 1
     fi
 
-    # ---------------------------------------------------------------------------
+    # -------------------------------------------------------------------------
   else
     echo "Unsupported version ${RELEASE_VERSION}."
     exit 1
