@@ -218,6 +218,11 @@ function do_qemu()
       )
 
     ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-qemu-output.txt"
+
+    copy_license \
+      "${WORK_FOLDER_PATH}/${QEMU_SRC_FOLDER_NAME}" \
+      "${QEMU_FOLDER_NAME}"
+
   )
 }
 
@@ -283,53 +288,6 @@ function copy_distro_files()
 {
   rm -rf "${APP_PREFIX}/${DISTRO_INFO_NAME}"
   mkdir -p "${APP_PREFIX}/${DISTRO_INFO_NAME}"
-
-  echo
-  echo "Copying license files..."
-
-  copy_license \
-    "${SOURCES_FOLDER_PATH}/${ZLIB_SRC_FOLDER_NAME}" \
-    "${ZLIB_FOLDER_NAME}"
-
-  copy_license \
-    "${SOURCES_FOLDER_PATH}/${LIBPNG_SRC_FOLDER_NAME}" \
-    "${LIBPNG_FOLDER_NAME}"
-
-  copy_license \
-    "${SOURCES_FOLDER_PATH}/${JPEG_SRC_FOLDER_NAME}" \
-    "${JPEG_FOLDER_NAME}"
-    
-  copy_license \
-    "${SOURCES_FOLDER_PATH}/${SDL2_SRC_FOLDER_NAME}" \
-    "${SDL2_FOLDER_NAME}"
-
-  copy_license \
-    "${SOURCES_FOLDER_PATH}/${SDL2_IMAGE_SRC_FOLDER_NAME}" \
-    "${SDL2_IMAGE_FOLDER_NAME}"
-
-  copy_license \
-    "${SOURCES_FOLDER_PATH}/${LIBFFI_SRC_FOLDER_NAME}" \
-    "${LIBFFI_FOLDER_NAME}"
-
-  copy_license \
-    "${SOURCES_FOLDER_PATH}/${LIBICONV_SRC_FOLDER_NAME}" \
-    "${LIBICONV_FOLDER_NAME}"
-
-  copy_license \
-    "${SOURCES_FOLDER_PATH}/${GETTEXT_SRC_FOLDER_NAME}" \
-    "${GETTEXT_FOLDER_NAME}"
-
-  copy_license \
-    "${SOURCES_FOLDER_PATH}/${GLIB_SRC_FOLDER_NAME}" \
-    "${GLIB_FOLDER_NAME}"
-
-  copy_license \
-    "${SOURCES_FOLDER_PATH}/${PIXMAN_SRC_FOLDER_NAME}" \
-    "${PIXMAN_FOLDER_NAME}"
-
-  copy_license \
-    "${WORK_FOLDER_PATH}/${QEMU_SRC_FOLDER_NAME}" \
-    "${QEMU_FOLDER_NAME}"
 
   copy_build_files
 

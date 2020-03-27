@@ -101,6 +101,11 @@ function do_zlib()
           install -m755 -t "${LIBS_INSTALL_FOLDER_PATH}/bin" zlib1.dll
         fi
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-zlib-output.txt"
+
+      copy_license \
+        "${SOURCES_FOLDER_PATH}/${ZLIB_SRC_FOLDER_NAME}" \
+        "${ZLIB_FOLDER_NAME}"
+
     )
 
     touch "${zlib_stamp_file_path}"
@@ -193,6 +198,11 @@ function do_libpng()
           make install
         fi
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-libpng-output.txt"
+
+      copy_license \
+        "${SOURCES_FOLDER_PATH}/${LIBPNG_SRC_FOLDER_NAME}" \
+        "${LIBPNG_FOLDER_NAME}"
+
     )
 
     touch "${libpng_stamp_file_path}"
@@ -275,6 +285,11 @@ function do_jpeg()
           make install
         fi
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-jpeg-output.txt"
+
+      copy_license \
+        "${SOURCES_FOLDER_PATH}/${JPEG_SRC_FOLDER_NAME}" \
+        "${JPEG_FOLDER_NAME}"
+    
     )
 
     touch "${jpeg_stamp_file_path}"
@@ -384,6 +399,11 @@ function do_sdl2()
 
         make install
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-sdl2-output.txt"
+
+      copy_license \
+        "${SOURCES_FOLDER_PATH}/${SDL2_SRC_FOLDER_NAME}" \
+        "${SDL2_FOLDER_NAME}"
+
     )
 
     touch "${sdl2_stamp_file_path}"
@@ -505,6 +525,11 @@ function do_sdl2_image()
           make install
         fi
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-sdl2-image-output.txt"
+
+      copy_license \
+        "${SOURCES_FOLDER_PATH}/${SDL2_IMAGE_SRC_FOLDER_NAME}" \
+        "${SDL2_IMAGE_FOLDER_NAME}"
+
     )
 
     touch "${sdl2_image_stamp_file_path}"
@@ -588,6 +613,11 @@ function do_libffi()
           make install
         fi
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-libffi-output.txt"
+
+      copy_license \
+        "${SOURCES_FOLDER_PATH}/${LIBFFI_SRC_FOLDER_NAME}" \
+        "${LIBFFI_FOLDER_NAME}"
+
     )
 
     touch "${libffi_stamp_file_path}"
@@ -675,6 +705,11 @@ function do_libiconv()
           make install
         fi
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-libiconv-output.txt"
+
+      copy_license \
+        "${SOURCES_FOLDER_PATH}/${LIBICONV_SRC_FOLDER_NAME}" \
+        "${LIBICONV_FOLDER_NAME}"
+
     )
 
     touch "${libiconv_stamp_file_path}"
@@ -784,6 +819,11 @@ function do_gettext()
           make install
         fi
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-gettext-output.txt"
+
+      copy_license \
+        "${SOURCES_FOLDER_PATH}/${GETTEXT_SRC_FOLDER_NAME}" \
+        "${GETTEXT_FOLDER_NAME}"
+
     )
 
     touch "${gettext_stamp_file_path}"
@@ -911,6 +951,11 @@ function do_glib()
           make install
         fi
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-glib-output.txt"
+
+      copy_license \
+        "${SOURCES_FOLDER_PATH}/${GLIB_SRC_FOLDER_NAME}" \
+        "${GLIB_FOLDER_NAME}"
+
     )
 
     touch "${glib_stamp_file_path}"
@@ -1001,6 +1046,11 @@ function do_pixman()
           make install
         fi
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-pixman-output.txt"
+
+      copy_license \
+        "${SOURCES_FOLDER_PATH}/${PIXMAN_SRC_FOLDER_NAME}" \
+        "${PIXMAN_FOLDER_NAME}"
+
     )
 
     touch "${pixman_stamp_file_path}"
@@ -1101,6 +1151,11 @@ function do_libxml2()
           make install
         fi
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-libxml2-output.txt"
+
+      copy_license \
+        "${SOURCES_FOLDER_PATH}/${LIBXML2_SRC_FOLDER_NAME}" \
+        "${LIBXML2_FOLDER_NAME}"
+
     )
 
     touch "${libxml2_stamp_file_path}"
