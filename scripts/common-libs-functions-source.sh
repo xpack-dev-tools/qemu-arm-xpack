@@ -177,7 +177,8 @@ function do_libpng()
             --target=${TARGET} \
             \
             --enable-shared \
-            --disable-static
+            --disable-static \
+            --enable-arm-neon=no \
 
           cp "config.log" "${LOGS_FOLDER_PATH}/config-libpng-log.txt"
         ) 2>&1 | tee "${LOGS_FOLDER_PATH}/configure-libpng-output.txt"
