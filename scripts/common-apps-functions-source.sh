@@ -221,7 +221,7 @@ function do_qemu()
 
     copy_license \
       "${WORK_FOLDER_PATH}/${QEMU_SRC_FOLDER_NAME}" \
-      "${QEMU_FOLDER_NAME}"
+      "qemu-${QEMU_VERSION}"
 
   )
 }
