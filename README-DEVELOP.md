@@ -27,7 +27,7 @@ it on a more recent macOS, please contribute back the changes to the script.
 ### Ubuntu
 
 The Ubuntu XBB is currently a dedicated Ubuntu Desktop 18 LTS 64-bit virtual
-machine running on VirtualBox. It obviously can run on any virtualisation
+machine running on Parallels Desktop. It obviously can run on any virtualisation
 platform, or even be a physical machine. However, for consistent and
 reproducible results, it is recommended to do not install other packages.
 
@@ -177,13 +177,13 @@ To build a binary which is suitable for debug sessions, run the
 `build-native.sh` script with the shown options:
 
 ```console
-$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --debug --develop --jobs 8
+$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --debug --develop
 ```
 
 To build the Windows binaries, use:
 
 ```console
-$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --debug --develop --win --jobs 8
+$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --debug --develop --win
 ```
 
 The result is the `${HOME}/Work/qemu-arm-dev/${platform}-${arch}` folder. The build
