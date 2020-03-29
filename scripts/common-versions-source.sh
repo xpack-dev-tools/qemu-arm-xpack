@@ -35,8 +35,8 @@ function prepare_versions()
 
     if [[ "${RELEASE_VERSION}" =~ 2\.8\.0-9 ]]
     then
-      QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack"}
-      QEMU_GIT_COMMIT=${QEMU_GIT_COMMIT:-"e221f2b601feba532a67d7fd6b5debdec06b2d33"}
+      QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack-develop"}
+      QEMU_GIT_COMMIT=${QEMU_GIT_COMMIT:-"fd116bd1e91eef7af73d61a388e2f8c2152cbdac"}
 
       QEMU_GIT_PATCH="qemu-2.8.0.git-patch"
 
