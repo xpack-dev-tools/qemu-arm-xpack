@@ -1015,6 +1015,8 @@ function do_pixman()
           bash "${SOURCES_FOLDER_PATH}/${PIXMAN_SRC_FOLDER_NAME}/configure" --help
 
           # --disable-shared fails on macOS
+          # The numerous disables were inspired from Arch, after the initial 
+          # failed on armhf.
           bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${PIXMAN_SRC_FOLDER_NAME}/configure" \
             --prefix="${LIBS_INSTALL_FOLDER_PATH}" \
             \
@@ -1026,7 +1028,17 @@ function do_pixman()
             --disable-static \
             \
             --with-gnu-ld \
-            --disable-static-testprogs
+            --disable-static-testprogs \
+            --disable-loongson-mmi \
+            --disable-vmx \
+            --disable-arm-simd \
+            --disable-arm-neon \
+            --disable-arm-iwmmxt \
+            --disable-mmx \
+            --disable-sse2 \
+            --disable-ssse3 \
+            --disable-mips-dspr2 \
+            --disable-gtk \
 
           cp "config.log" "${LOGS_FOLDER_PATH}/config-pixman-log.txt"
         ) 2>&1 | tee "${LOGS_FOLDER_PATH}/configure-pixman-output.txt"
