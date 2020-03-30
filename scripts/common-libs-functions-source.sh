@@ -18,6 +18,8 @@ function do_zlib()
 {
   # http://zlib.net
   # http://zlib.net/fossils/
+
+  # https://archlinuxarm.org/packages/aarch64/zlib/files/PKGBUILD
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=zlib-static
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=zlib-git
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=mingw-w64-zlib
@@ -121,6 +123,7 @@ function do_libpng()
   # https://sourceforge.net/projects/libpng/files/libpng16/
   # https://sourceforge.net/projects/libpng/files/libpng16/older-releases/
 
+  # https://archlinuxarm.org/packages/aarch64/libpng/files/PKGBUILD
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=libpng-git
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=mingw-w64-libpng
 
@@ -213,10 +216,14 @@ function do_libpng()
   fi
 }
 
+# See also
+# https://archlinuxarm.org/packages/aarch64/libjpeg-turbo/files/PKGBUILD
+
 function do_jpeg() 
 {
   # http://www.ijg.org
   # http://www.ijg.org/files/
+
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=libjpeg9
 
   # JPEG_VERSION="9a"
@@ -304,6 +311,8 @@ function do_sdl2()
 {
   # https://www.libsdl.org/
   # https://www.libsdl.org/release
+
+  # https://archlinuxarm.org/packages/aarch64/sdl2/files/PKGBUILD
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=sdl2-hg
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=mingw-w64-sdl2
 
@@ -418,6 +427,8 @@ function do_sdl2_image()
 {
   # https://www.libsdl.org/projects/SDL_image/
   # https://www.libsdl.org/projects/SDL_image/release
+
+  # https://archlinuxarm.org/packages/aarch64/sdl2_image/files
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=mingw-w64-sdl2_image
 
   # SDL2_IMAGE_VERSION="1.1"
@@ -544,6 +555,8 @@ function do_libffi()
 {
   # http://www.sourceware.org/libffi/
   # ftp://sourceware.org/pub/libffi/
+
+  # https://archlinuxarm.org/packages/aarch64/libffi/files/PKGBUILD
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=libffi-git
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=mingw-w64-libffi
 
@@ -632,6 +645,7 @@ function do_libiconv()
 {
   # https://www.gnu.org/software/libiconv/
   # https://ftp.gnu.org/pub/gnu/libiconv/
+
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=libiconv
 
   # 2011-08-07
@@ -724,6 +738,8 @@ function do_gettext()
 {
   # https://www.gnu.org/software/gettext/
   # http://ftp.gnu.org/pub/gnu/gettext/
+
+  # https://archlinuxarm.org/packages/aarch64/gettext/files/PKGBUILD
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=gettext-git
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=mingw-w64-gettext
 
@@ -970,6 +986,8 @@ function do_pixman()
 {
   # http://www.pixman.org
   # http://cairographics.org/releases/
+
+  # https://archlinuxarm.org/packages/aarch64/pixman/files/PKGBUILD
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=pixman-git
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=mingw-w64-pixman
 
@@ -1078,6 +1096,8 @@ function do_libxml2()
 {
   # http://www.xmlsoft.org
   # ftp://xmlsoft.org/libxml2/
+
+  # https://archlinuxarm.org/packages/aarch64/libxml2/files/PKGBUILD
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=libxml2-git
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=mingw-w64-libxml2
 
