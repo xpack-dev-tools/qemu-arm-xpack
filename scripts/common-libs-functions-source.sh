@@ -1001,7 +1001,7 @@ function do_pixman()
       xbb_activate
       xbb_activate_installed_dev
 
-      export CFLAGS="${XBB_CFLAGS} -Wno-unused-const-variable -Wno-unused-but-set-variable -Wno-maybe-uninitialized"
+      export CFLAGS="${XBB_CFLAGS} -Wno-unused-const-variable -Wno-unused-but-set-variable -Wno-maybe-uninitialized -Wno-attributes"
       export CPPFLAGS="${XBB_CPPFLAGS}"
       export LDFLAGS="${XBB_LDFLAGS_LIB}"
       
