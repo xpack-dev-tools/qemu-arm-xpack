@@ -78,6 +78,8 @@ echo "Definitions source script: \"${defines_script_path}\"."
 host_common
 
 prepare_xbb_env
+export TARGET_BITS="${HOST_BITS}"
+
 prepare_xbb_extras
 
 # -----------------------------------------------------------------------------
