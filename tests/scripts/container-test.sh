@@ -73,7 +73,7 @@ then
   zypper -q in -y git-core curl tar gzip lsb-release binutils libX11-6
 elif [[ ${image_name} == *manjaro* ]]
 then
-  # pacman-mirrors -g
+  pacman-mirrors -g
   pacman -S -y -q --noconfirm 
 
   # Update even if up to date (-yy) & upgrade (-u).
