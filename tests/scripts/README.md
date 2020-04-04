@@ -8,6 +8,11 @@ https://github.com/xpack-dev-tools/pre-releases/releases
 
 The test script is part of the QEMU Arm xPack:
 
+```console
+$ curl -L https://github.com/xpack-dev-tools/qemu-arm-xpack/raw/xpack/scripts/git-clone.sh | bash
+
+To use the development branch, issue the following:
+
 ```bash
 rm -rf ~/Downloads/qemu-arm-xpack.git
 git clone --recurse-submodules -b xpack-develop \
