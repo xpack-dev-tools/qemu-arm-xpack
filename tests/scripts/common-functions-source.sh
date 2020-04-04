@@ -222,6 +222,8 @@ function good_bye()
 
 function run_tests()
 {
+  show_libs "${app_absolute_folder_path}/bin/qemu-system-gnuarmeclipse"
+
   run_app "${app_absolute_folder_path}/bin/qemu-system-gnuarmeclipse" --version
 
   # TODO: add more, if possible.
