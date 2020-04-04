@@ -67,15 +67,18 @@ then
   apt-get -qq install -y git-core curl tar gzip lsb-release binutils
 elif [[ ${image_name} == *centos* ]]
 then
-  yum install -y -q git curl tar gzip redhat-lsb-core binutils
+  yum install -y -q git curl tar gzip redhat-lsb-core binutils libX11
 elif [[ ${image_name} == *opensuse* ]]
 then
-  zypper -q in -y git-core curl tar gzip lsb-release binutils
+  zypper -q in -y git-core curl tar gzip lsb-release binutils libX11-6
 elif [[ ${image_name} == *manjaro* ]]
 then
-  pacman-mirrors -g
-  pacman --noconfirm -Syyuq
-  pacman --noconfirm -Sq git curl tar gzip lsb-release binutils
+  # pacman-mirrors -g
+  pacman -S -y -q --noconfirm 
+
+  # Update even if up to date (-yy) & upgrade (-u).
+  # pacman -S -yy -u -q --noconfirm 
+  pacman -S -q --noconfirm --noprogressbar  git curl tar gzip lsb-release binutils libx11
 fi
 
 # -----------------------------------------------------------------------------
