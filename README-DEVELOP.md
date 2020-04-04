@@ -1,4 +1,4 @@
-# Development info
+# Native builds - development info
 
 ## Prerequisites
 
@@ -10,7 +10,7 @@ provided in the separate
 [xpack/xpack-build-box](https://github.com/xpack/xpack-build-box) project.
 
 XBB, or _The xPack Build Box_ is a project intended to provide
-build environments for the [xPack](https://github.com/xpack) tools.
+build environments for the [xPack](https://xpack.github.io) tools.
 
 ### macOS
 
@@ -21,18 +21,21 @@ To compile and install these tools, please read the separate
 [The macOS XBB](https://github.com/xpack/xpack-build-box/tree/master/macos)
 page.
 
-The current macOS XBB is based on macOS 10.13. If you manage to build
-it on a more recent macOS, please contribute back the changes to the script.
+The current macOS XBB is based on macOS 10.10 but also runs on macOS 10.14.
+If you manage to build
+it on a different macOS, please contribute back the changes to the script.
 
 ### Ubuntu
 
-The Ubuntu XBB is currently a dedicated Ubuntu Desktop 18 LTS 64-bit virtual
-machine running on Parallels Desktop. It obviously can run on any virtualisation
+The Ubuntu XBB is currently a dedicated Ubuntu Desktop 18 LTS 64-bit.
+It can run on any virtualisation
 platform, or even be a physical machine. However, for consistent and
-reproducible results, it is recommended to do not install other packages.
+reproducible results, it is recommended to avoid installiing many
+other packages and use it as a general purpose machine, thus a virtual
+machine is prefered.
 
 To install it, please read the separate
-[The Ubuntu XBB](https://github.com/xpack/xpack-build-box/tree/master/ubuntu)
+[The Ubuntu Native XBB](https://github.com/xpack/xpack-build-box/tree/master/ubuntu/README-NATIVE.md)
 page.
 
 ### Windows
@@ -44,7 +47,11 @@ Windows.
 
 #### Install WSL
 
-To install WSL, open a PowerShell console (mandatory, old CMD consoles do not work)
+Note: These instructions refer to WSL1.
+Starting with Windows version 2004, Microsoft added WSL2, which has
+new features. The instructions to install WSL2 are probably different. 
+
+To install WSL1, open a PowerShell console (mandatory, old CMD consoles do not work)
 and issue:
 
 ```console
@@ -76,7 +83,7 @@ $ sudo apt --yes update && sudo apt --yes upgrade
 #### Install the Ubuntu XBB
 
 The next step is to install
-[The Ubuntu XBB](https://github.com/xpack/xpack-build-box/tree/master/ubuntu).
+[The Ubuntu Native XBB](https://github.com/xpack/xpack-build-box/tree/master/ubuntu/README-NATIVE.md).
 
 #### Create links
 
@@ -135,7 +142,7 @@ it to your favourite tools.
 For macOS and Windows, the recommended Git client is
 [Sourcetree](https://www.sourcetreeapp.com/).
 
-Since Sourcetree is not available for GNU/Linux, the second choice is
+Since Sourcetree is not available for GNU/Linux, another choice is
 Git Kraken, which can be downloaded for freely from
 [gitkraken.com](https://www.gitkraken.com/download).
 
