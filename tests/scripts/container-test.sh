@@ -65,7 +65,7 @@ if [[ ${image_name} == *ubuntu* ]] || [[ ${image_name} == *debian* ]] || [[ ${im
 then
   apt-get -qq update 
   apt-get -qq install -y git-core curl tar gzip lsb-release binutils
-elif [[ ${image_name} == *centos* ]] [[ ${image_name} == *fedora* ]]
+elif [[ ${image_name} == *centos* ]] || [[ ${image_name} == *fedora* ]]
 then
   yum install -y -q git curl tar gzip redhat-lsb-core binutils libX11
 elif [[ ${image_name} == *opensuse* ]]
