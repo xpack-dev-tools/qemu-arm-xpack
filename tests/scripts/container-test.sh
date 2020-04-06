@@ -71,7 +71,7 @@ then
 elif [[ ${image_name} == *opensuse* ]]
 then
   zypper -q in -y git-core curl tar gzip lsb-release binutils libX11-6
-elif [[ ${image_name} == *manjaro* ]]
+elif [[ ${image_name} == *manjaro* ]] || [[ ${image_name} == *archlinux* ]]
 then
   pacman-mirrors -g
   pacman -S -y -q --noconfirm 
