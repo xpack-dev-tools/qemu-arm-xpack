@@ -71,9 +71,16 @@ then
 elif [[ ${image_name} == *opensuse* ]]
 then
   zypper -q in -y git-core curl tar gzip lsb-release binutils libX11-6
-elif [[ ${image_name} == *manjaro* ]] || [[ ${image_name} == *archlinux* ]]
+elif [[ ${image_name} == *manjaro* ]]
 then
   pacman-mirrors -g
+  pacman -S -y -q --noconfirm 
+
+  # Update even if up to date (-yy) & upgrade (-u).
+  # pacman -S -yy -u -q --noconfirm 
+  pacman -S -q --noconfirm --noprogressbar  git curl tar gzip lsb-release binutils libx11
+elif [[ ${image_name} == *archlinux* ]]
+then
   pacman -S -y -q --noconfirm 
 
   # Update even if up to date (-yy) & upgrade (-u).
