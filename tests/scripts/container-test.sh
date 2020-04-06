@@ -42,6 +42,13 @@ script_folder_name="$(basename "${script_folder_path}")"
 
 # =============================================================================
 
+helper_folder_path="$(dirname $(dirname "${script_folder_path}"))/scripts/helper"
+
+source "${helper_folder_path}/test-functions-source.sh"
+source "${script_folder_path}/common-functions-source.sh"
+
+# -----------------------------------------------------------------------------
+
 # This runs inside a Docker container.
 
 # -----------------------------------------------------------------------------
@@ -95,10 +102,6 @@ then
   # pacman -S -yy -u -q --noconfirm 
   pacman -S -q --noconfirm --noprogressbar  git curl tar gzip lsb-release binutils libx11
 fi
-
-# -----------------------------------------------------------------------------
-
-source "${script_folder_path}/common-functions-source.sh"
 
 # -----------------------------------------------------------------------------
 
