@@ -14,110 +14,7 @@
 
 # -----------------------------------------------------------------------------
 
-function do_zlib() 
-{
-  # http://zlib.net
-  # http://zlib.net/fossils/
-
-  # https://archlinuxarm.org/packages/aarch64/zlib/files/PKGBUILD
-  # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=zlib-static
-  # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=zlib-git
-  # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=mingw-w64-zlib
-
-  # 2013-04-28
-  # ZLIB_VERSION="1.2.8"
-  # 2017-01-15
-  # ZLIB_VERSION="1.2.11"
-
-  ZLIB_SRC_FOLDER_NAME="zlib-${ZLIB_VERSION}"
-  ZLIB_FOLDER_NAME="${ZLIB_SRC_FOLDER_NAME}"
-  local zlib_archive="${ZLIB_FOLDER_NAME}.tar.gz"
-  local zlib_url="http://zlib.net/fossils/${zlib_archive}"
-
-  local zlib_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-zlib-${ZLIB_VERSION}-installed"
-  if [ ! -f "${zlib_stamp_file_path}" ]
-  then
-
-    cd "${SOURCES_FOLDER_PATH}"
-
-    download_and_extract "${zlib_url}" "${zlib_archive}" \
-      "${ZLIB_SRC_FOLDER_NAME}"
-
-    (
-      if [ ! -d "${LIBS_BUILD_FOLDER_PATH}/${ZLIB_FOLDER_NAME}" ]
-      then
-        mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${ZLIB_FOLDER_NAME}"
-        # Copy the sources in the build folder.
-        cp -r "${SOURCES_FOLDER_PATH}/${ZLIB_SRC_FOLDER_NAME}"/* "${LIBS_BUILD_FOLDER_PATH}/${ZLIB_FOLDER_NAME}"
-      fi
-      cd "${LIBS_BUILD_FOLDER_PATH}/${ZLIB_FOLDER_NAME}"
-
-      xbb_activate
-      xbb_activate_installed_dev
-
-      if [ "${TARGET_PLATFORM}" != "win32" ]
-      then
-
-        export CFLAGS="${XBB_CFLAGS} -Wno-shift-negative-value"
-        # export LDFLAGS="${XBB_LDFLAGS_LIB}"
-
-        (
-          echo
-          echo "Running zlib configure..."
-
-          bash "./configure" --help
-
-          # It seems -shared cannot be disabled.
-          bash ${DEBUG} "./configure" \
-            --prefix="${LIBS_INSTALL_FOLDER_PATH}" \
-            -static
-
-          cp "configure.log" "${LOGS_FOLDER_PATH}/configure-zlib-log.txt"
-        ) 2>&1 | tee "${LOGS_FOLDER_PATH}/configure-zlib-output.txt"
-
-      fi
-
-      (
-        echo
-        echo "Running zlib make..."
-
-        # Build.
-        if [ "${TARGET_PLATFORM}" != "win32" ]
-        then
-          make -j ${JOBS}
-          make install
-        else
-          make -f win32/Makefile.gcc \
-            PREFIX=${CROSS_COMPILE_PREFIX}- \
-            prefix="${LIBS_INSTALL_FOLDER_PATH}" \
-            CFLAGS="${XBB_CFLAGS} -Wp,-D_FORTIFY_SOURCE=2 -fexceptions --param=ssp-buffer-size=4"
-          make -f win32/Makefile.gcc install \
-            DESTDIR="${LIBS_INSTALL_FOLDER_PATH}/" \
-            INCLUDE_PATH="include" \
-            LIBRARY_PATH="lib" \
-            BINARY_PATH="bin"
-
-          install -d -m 0755 "${LIBS_INSTALL_FOLDER_PATH}/lib"
-          install -m644 -t "${LIBS_INSTALL_FOLDER_PATH}/lib" libz.dll.a
-          install -d -m 0755 "${LIBS_INSTALL_FOLDER_PATH}/bin"
-          install -m755 -t "${LIBS_INSTALL_FOLDER_PATH}/bin" zlib1.dll
-        fi
-      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-zlib-output.txt"
-
-      copy_license \
-        "${SOURCES_FOLDER_PATH}/${ZLIB_SRC_FOLDER_NAME}" \
-        "${ZLIB_FOLDER_NAME}"
-
-    )
-
-    touch "${zlib_stamp_file_path}"
-
-  else
-    echo "Library zlib already installed."
-  fi
-}
-
-function do_libpng() 
+function build_libpng() 
 {
   # To ensure builds stability, use slightly older releases.
   # https://sourceforge.net/projects/libpng/files/libpng16/
@@ -127,31 +24,35 @@ function do_libpng()
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=libpng-git
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=mingw-w64-libpng
 
-  # LIBPNG_VERSION="1.2.53"
-  # LIBPNG_VERSION="1.6.17"
-  # LIBPNG_VERSION="1.6.23" # 2016-06-09
-  # LIBPNG_VERSION="1.6.36" # 2018-12-01
-  # LIBPNG_SFOLDER="libpng12"
-  # LIBPNG_SFOLDER="libpng16"
+  # libpng_version="1.2.53"
+  # libpng_version="1.6.17"
+  # libpng_version="1.6.23" # 2016-06-09
+  # libpng_version="1.6.36" # 2018-12-01
+  # libpng_SFOLDER="libpng12"
+  # libpng_SFOLDER="libpng16"
 
-  LIBPNG_SRC_FOLDER_NAME="libpng-${LIBPNG_VERSION}"
-  LIBPNG_FOLDER_NAME="${LIBPNG_SRC_FOLDER_NAME}"
-  local libpng_archive="${LIBPNG_SRC_FOLDER_NAME}.tar.xz"
-  # local libpng_url="https://sourceforge.net/projects/libpng/files/${LIBPNG_SFOLDER}/older-releases/${LIBPNG_VERSION}/${libpng_archive}"
-  local libpng_url="https://sourceforge.net/projects/libpng/files/${LIBPNG_SFOLDER}/${LIBPNG_VERSION}/${libpng_archive}"
+  local libpng_version="$1"
+  local libpng_major_minor_version="$(echo ${libpng_version} | sed -e 's|\([0-9][0-9]*\)\.\([0-9][0-9]*\)\.[0-9].*|\1\2|')"
 
-  local libpng_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-libpng-${LIBPNG_VERSION}-installed"
+  local libpng_src_folder_name="libpng-${libpng_version}"
+  local libpng_folder_name="${libpng_src_folder_name}"
+
+  local libpng_archive="${libpng_src_folder_name}.tar.xz"
+  # local libpng_url="https://sourceforge.net/projects/libpng/files/${libpng_SFOLDER}/older-releases/${libpng_version}/${libpng_archive}"
+  local libpng_url="https://sourceforge.net/projects/libpng/files/libpng${libpng_major_minor_version}/${libpng_version}/${libpng_archive}"
+
+  local libpng_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-libpng-${libpng_version}-installed"
   if [ ! -f "${libpng_stamp_file_path}" ]
   then
 
     cd "${SOURCES_FOLDER_PATH}"
 
     download_and_extract "${libpng_url}" "${libpng_archive}" \
-      "${LIBPNG_SRC_FOLDER_NAME}"
+      "${libpng_src_folder_name}"
 
     (
-      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${LIBPNG_FOLDER_NAME}"
-      cd "${LIBS_BUILD_FOLDER_PATH}/${LIBPNG_FOLDER_NAME}"
+      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${libpng_folder_name}"
+      cd "${LIBS_BUILD_FOLDER_PATH}/${libpng_folder_name}"
 
       xbb_activate
       xbb_activate_installed_dev
@@ -167,12 +68,12 @@ function do_libpng()
           echo
           echo "Running libpng configure..."
 
-          bash "${SOURCES_FOLDER_PATH}/${LIBPNG_SRC_FOLDER_NAME}/configure" --help
+          bash "${SOURCES_FOLDER_PATH}/${libpng_src_folder_name}/configure" --help
 
-          # --enable-shared needed by SDL2_image on CentOS 64-bit and Ubuntu.
+          # --enable-shared needed by sdl2_image on CentOS 64-bit and Ubuntu.
           # If really needed.
           # --with-zlib-prefix="${LIBS_INSTALL_FOLDER_PATH}" 
-          bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${LIBPNG_SRC_FOLDER_NAME}/configure" \
+          bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${libpng_src_folder_name}/configure" \
             --prefix="${LIBS_INSTALL_FOLDER_PATH}" \
             \
             --build=${BUILD} \
@@ -204,8 +105,8 @@ function do_libpng()
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-libpng-output.txt"
 
       copy_license \
-        "${SOURCES_FOLDER_PATH}/${LIBPNG_SRC_FOLDER_NAME}" \
-        "${LIBPNG_FOLDER_NAME}"
+        "${SOURCES_FOLDER_PATH}/${libpng_src_folder_name}" \
+        "${libpng_folder_name}"
 
     )
 
@@ -219,33 +120,36 @@ function do_libpng()
 # See also
 # https://archlinuxarm.org/packages/aarch64/libjpeg-turbo/files/PKGBUILD
 
-function do_jpeg() 
+function build_jpeg() 
 {
   # http://www.ijg.org
   # http://www.ijg.org/files/
 
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=libjpeg9
 
-  # JPEG_VERSION="9a"
-  # JPEG_VERSION="9b" # 2016-01-17
+  # jpeg_version="9a"
+  # jpeg_version="9b" # 2016-01-17
 
-  JPEG_SRC_FOLDER_NAME="jpeg-${JPEG_VERSION}"
-  JPEG_FOLDER_NAME="${JPEG_SRC_FOLDER_NAME}"
-  local jpeg_archive="jpegsrc.v${JPEG_VERSION}.tar.gz"
+  local jpeg_version="$1"
+
+  local jpeg_src_folder_name="jpeg-${jpeg_version}"
+  local jpeg_folder_name="${jpeg_src_folder_name}"
+
+  local jpeg_archive="jpegsrc.v${jpeg_version}.tar.gz"
   local jpeg_url="http://www.ijg.org/files/${jpeg_archive}"
 
-  local jpeg_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-jpeg-${JPEG_VERSION}-installed"
+  local jpeg_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-jpeg-${jpeg_version}-installed"
   if [ ! -f "${jpeg_stamp_file_path}" ]
   then
 
     cd "${SOURCES_FOLDER_PATH}"
 
     download_and_extract "${jpeg_url}" "${jpeg_archive}" \
-        "${JPEG_SRC_FOLDER_NAME}"
+        "${jpeg_src_folder_name}"
 
     (
-      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${JPEG_FOLDER_NAME}"
-      cd "${LIBS_BUILD_FOLDER_PATH}/${JPEG_FOLDER_NAME}"
+      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${jpeg_folder_name}"
+      cd "${LIBS_BUILD_FOLDER_PATH}/${jpeg_folder_name}"
 
       xbb_activate
       xbb_activate_installed_dev
@@ -261,10 +165,10 @@ function do_jpeg()
           echo
           echo "Running jpeg configure..."
 
-          bash "${SOURCES_FOLDER_PATH}/${JPEG_SRC_FOLDER_NAME}/configure" --help
+          bash "${SOURCES_FOLDER_PATH}/${jpeg_src_folder_name}/configure" --help
 
-          # --enable-shared needed by SDL2_image on CentOS 64-bit and Ubuntu.
-          bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${JPEG_SRC_FOLDER_NAME}/configure" \
+          # --enable-shared needed by sdl2_image on CentOS 64-bit and Ubuntu.
+          bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${jpeg_src_folder_name}/configure" \
             --prefix="${LIBS_INSTALL_FOLDER_PATH}" \
             \
             --build=${BUILD} \
@@ -295,8 +199,8 @@ function do_jpeg()
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-jpeg-output.txt"
 
       copy_license \
-        "${SOURCES_FOLDER_PATH}/${JPEG_SRC_FOLDER_NAME}" \
-        "${JPEG_FOLDER_NAME}"
+        "${SOURCES_FOLDER_PATH}/${jpeg_src_folder_name}" \
+        "${jpeg_folder_name}"
     
     )
 
@@ -307,7 +211,7 @@ function do_jpeg()
   fi
 }
 
-function do_sdl2() 
+function build_sdl2() 
 {
   # https://www.libsdl.org/
   # https://www.libsdl.org/release
@@ -316,27 +220,30 @@ function do_sdl2()
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=sdl2-hg
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=mingw-w64-sdl2
 
-  # SDL2_VERSION="2.0.3" # 2014-03-16
-  # SDL2_VERSION="2.0.5" # 2016-10-20
-  # SDL2_VERSION="2.0.9" # 2018-10-31
+  # sdl2_version="2.0.3" # 2014-03-16
+  # sdl2_version="2.0.5" # 2016-10-20
+  # sdl2_version="2.0.9" # 2018-10-31
 
-  SDL2_SRC_FOLDER_NAME="SDL2-${SDL2_VERSION}"
-  SDL2_FOLDER_NAME="${SDL2_SRC_FOLDER_NAME}"
-  local sdl2_archive="${SDL2_SRC_FOLDER_NAME}.tar.gz"
+  local sdl2_version="$1"
+
+  local sdl2_src_folder_name="SDL2-${sdl2_version}"
+  local sdl2_folder_name="${sdl2_src_folder_name}"
+
+  local sdl2_archive="${sdl2_src_folder_name}.tar.gz"
   local sdl2_url="https://www.libsdl.org/release/${sdl2_archive}"
 
-  local sdl2_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-sdl2-${SDL2_VERSION}-installed"
+  local sdl2_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-sdl2-${sdl2_version}-installed"
   if [ ! -f "${sdl2_stamp_file_path}" ]
   then
 
     cd "${SOURCES_FOLDER_PATH}"
 
     download_and_extract "${sdl2_url}" "${sdl2_archive}" \
-      "${SDL2_SRC_FOLDER_NAME}"
+      "${sdl2_src_folder_name}"
 
     (
-      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${SDL2_FOLDER_NAME}"
-      cd "${LIBS_BUILD_FOLDER_PATH}/${SDL2_FOLDER_NAME}"
+      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${sdl2_folder_name}"
+      cd "${LIBS_BUILD_FOLDER_PATH}/${sdl2_folder_name}"
 
       xbb_activate
       xbb_activate_installed_dev
@@ -374,11 +281,11 @@ function do_sdl2()
             X11="--without-x"
           fi
 
-          bash "${SOURCES_FOLDER_PATH}/${SDL2_SRC_FOLDER_NAME}/configure" --help
+          bash "${SOURCES_FOLDER_PATH}/${sdl2_src_folder_name}/configure" --help
 
           # --enable-shared required for building sdl2_image showimage
           # --dsable-shared fails on macOS
-          bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${SDL2_SRC_FOLDER_NAME}/configure" \
+          bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${sdl2_src_folder_name}/configure" \
             --prefix="${LIBS_INSTALL_FOLDER_PATH}" \
             \
             --build=${BUILD} \
@@ -411,8 +318,8 @@ function do_sdl2()
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-sdl2-output.txt"
 
       copy_license \
-        "${SOURCES_FOLDER_PATH}/${SDL2_SRC_FOLDER_NAME}" \
-        "${SDL2_FOLDER_NAME}"
+        "${SOURCES_FOLDER_PATH}/${sdl2_src_folder_name}" \
+        "${sdl2_folder_name}"
 
     )
 
@@ -423,7 +330,7 @@ function do_sdl2()
   fi
 }
 
-function do_sdl2_image() 
+function build_sdl2_image() 
 {
   # https://www.libsdl.org/projects/SDL_image/
   # https://www.libsdl.org/projects/SDL_image/release
@@ -431,28 +338,31 @@ function do_sdl2_image()
   # https://archlinuxarm.org/packages/aarch64/sdl2_image/files
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=mingw-w64-sdl2_image
 
-  # SDL2_IMAGE_VERSION="1.1"
-  # SDL2_IMAGE_VERSION="2.0.1" # 2016-01-03
-  # SDL2_IMAGE_VERSION="2.0.3" # 2018-03-01
-  # SDL2_IMAGE_VERSION="2.0.4" # 2018-10-31
+  # sdl2_image_version="1.1"
+  # sdl2_image_version="2.0.1" # 2016-01-03
+  # sdl2_image_version="2.0.3" # 2018-03-01
+  # sdl2_image_version="2.0.4" # 2018-10-31
 
-  SDL2_IMAGE_SRC_FOLDER_NAME="SDL2_image-${SDL2_IMAGE_VERSION}"
-  SDL2_IMAGE_FOLDER_NAME="${SDL2_IMAGE_SRC_FOLDER_NAME}"
-  local sdl2_image_archive="${SDL2_IMAGE_SRC_FOLDER_NAME}.tar.gz"
+  local sdl2_image_version="$1"
+
+  local sdl2_image_src_folder_name="SDL2_image-${sdl2_image_version}"
+  local sdl2_image_folder_name="${sdl2_image_src_folder_name}"
+
+  local sdl2_image_archive="${sdl2_image_src_folder_name}.tar.gz"
   local sdl2_image_url="https://www.libsdl.org/projects/SDL_image/release/${sdl2_image_archive}"
 
-  local sdl2_image_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-sdl2-image-${SDL2_IMAGE_VERSION}-installed"
+  local sdl2_image_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-sdl2-image-${sdl2_image_version}-installed"
   if [ ! -f "${sdl2_image_stamp_file_path}" ]
   then
 
     cd "${SOURCES_FOLDER_PATH}"
 
     download_and_extract "${sdl2_image_url}" "${sdl2_image_archive}" \
-      "${SDL2_IMAGE_SRC_FOLDER_NAME}"
+      "${sdl2_image_src_folder_name}"
 
     (
-      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${SDL2_IMAGE_FOLDER_NAME}"
-      cd "${LIBS_BUILD_FOLDER_PATH}/${SDL2_IMAGE_FOLDER_NAME}"
+      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${sdl2_image_folder_name}"
+      cd "${LIBS_BUILD_FOLDER_PATH}/${sdl2_image_folder_name}"
 
       # The windows build checks this.
       mkdir -p lib
@@ -483,11 +393,11 @@ function do_sdl2_image()
             IMAGEIO="--enable-imageio"
           fi
 
-          bash "${SOURCES_FOLDER_PATH}/${SDL2_IMAGE_SRC_FOLDER_NAME}/configure" --help
+          bash "${SOURCES_FOLDER_PATH}/${sdl2_image_src_folder_name}/configure" --help
 
           # --enable-shared required for building showimage
           # --disable-shared failes on macOS
-          bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${SDL2_IMAGE_SRC_FOLDER_NAME}/configure" \
+          bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${sdl2_image_src_folder_name}/configure" \
             --prefix="${LIBS_INSTALL_FOLDER_PATH}" \
             \
             --build=${BUILD} \
@@ -539,8 +449,8 @@ function do_sdl2_image()
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-sdl2-image-output.txt"
 
       copy_license \
-        "${SOURCES_FOLDER_PATH}/${SDL2_IMAGE_SRC_FOLDER_NAME}" \
-        "${SDL2_IMAGE_FOLDER_NAME}"
+        "${SOURCES_FOLDER_PATH}/${sdl2_image_src_folder_name}" \
+        "${sdl2_image_folder_name}"
 
     )
 
@@ -551,7 +461,7 @@ function do_sdl2_image()
   fi
 }
 
-function do_libffi() 
+function build_libffi() 
 {
   # http://www.sourceware.org/libffi/
   # ftp://sourceware.org/pub/libffi/
@@ -560,25 +470,28 @@ function do_libffi()
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=libffi-git
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=mingw-w64-libffi
 
-  # LIBFFI_VERSION="3.2.1" # 2014-11-12
+  # LIBFFI_version="3.2.1" # 2014-11-12
 
-  LIBFFI_SRC_FOLDER_NAME="libffi-${LIBFFI_VERSION}"
-  LIBFFI_FOLDER_NAME="${LIBFFI_SRC_FOLDER_NAME}"
-  local libffi_archive="${LIBFFI_SRC_FOLDER_NAME}.tar.gz"
+  local LIBFFI_version="$1"
+
+  local LIBFFI_src_folder_name="libffi-${LIBFFI_version}"
+  local LIBFFI_folder_name="${LIBFFI_src_folder_name}"
+
+  local libffi_archive="${LIBFFI_src_folder_name}.tar.gz"
   local libffi_url="ftp://sourceware.org/pub/libffi/${libffi_archive}"
 
-  local libffi_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-libffi-${LIBFFI_VERSION}-installed"
+  local libffi_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-libffi-${LIBFFI_version}-installed"
   if [ ! -f "${libffi_stamp_file_path}" ]
   then
 
     cd "${SOURCES_FOLDER_PATH}"
 
     download_and_extract "${libffi_url}" "${libffi_archive}" \
-      "${LIBFFI_SRC_FOLDER_NAME}"
+      "${LIBFFI_src_folder_name}"
 
     (
-      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${LIBFFI_FOLDER_NAME}"
-      cd "${LIBS_BUILD_FOLDER_PATH}/${LIBFFI_FOLDER_NAME}"
+      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${LIBFFI_folder_name}"
+      cd "${LIBS_BUILD_FOLDER_PATH}/${LIBFFI_folder_name}"
 
       xbb_activate
       xbb_activate_installed_dev
@@ -594,10 +507,10 @@ function do_libffi()
           echo
           echo "Running libffi configure..."
 
-          bash "${SOURCES_FOLDER_PATH}/${LIBFFI_SRC_FOLDER_NAME}/configure" --help
+          bash "${SOURCES_FOLDER_PATH}/${LIBFFI_src_folder_name}/configure" --help
 
           # --enable-pax_emutramp is inspired by AUR
-          bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${LIBFFI_SRC_FOLDER_NAME}/configure" \
+          bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${LIBFFI_src_folder_name}/configure" \
             --prefix="${LIBS_INSTALL_FOLDER_PATH}" \
             \
             --build=${BUILD} \
@@ -629,8 +542,8 @@ function do_libffi()
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-libffi-output.txt"
 
       copy_license \
-        "${SOURCES_FOLDER_PATH}/${LIBFFI_SRC_FOLDER_NAME}" \
-        "${LIBFFI_FOLDER_NAME}"
+        "${SOURCES_FOLDER_PATH}/${LIBFFI_src_folder_name}" \
+        "${LIBFFI_folder_name}"
 
     )
 
@@ -649,27 +562,28 @@ function do_libiconv()
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=libiconv
 
   # 2011-08-07
-  # LIBICONV_VERSION="1.14"
+  # libiconv_version="1.14"
   # 2017-02-02
-  # LIBICONV_VERSION="1.15"
+  # libiconv_version="1.15"
 
-  LIBICONV_SRC_FOLDER_NAME="libiconv-${LIBICONV_VERSION}"
-  LIBICONV_FOLDER_NAME="${LIBICONV_SRC_FOLDER_NAME}"
-  local libiconv_archive="${LIBICONV_SRC_FOLDER_NAME}.tar.gz"
+  libiconv_src_folder_name="libiconv-${libiconv_version}"
+  libiconv_folder_name="${libiconv_src_folder_name}"
+
+  local libiconv_archive="${libiconv_src_folder_name}.tar.gz"
   local libiconv_url="https://ftp.gnu.org/pub/gnu/libiconv/${libiconv_archive}"
 
-  local libiconv_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-libiconv-${LIBICONV_VERSION}-installed"
+  local libiconv_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-libiconv-${libiconv_version}-installed"
   if [ ! -f "${libiconv_stamp_file_path}" ]
   then
 
     cd "${SOURCES_FOLDER_PATH}"
 
     download_and_extract "${libiconv_url}" "${libiconv_archive}" \
-      "${LIBICONV_SRC_FOLDER_NAME}"
+      "${libiconv_src_folder_name}"
 
     (
-      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${LIBICONV_FOLDER_NAME}"
-      cd "${LIBS_BUILD_FOLDER_PATH}/${LIBICONV_FOLDER_NAME}"
+      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${libiconv_folder_name}"
+      cd "${LIBS_BUILD_FOLDER_PATH}/${libiconv_folder_name}"
 
       xbb_activate
       xbb_activate_installed_dev
@@ -688,9 +602,9 @@ function do_libiconv()
           echo
           echo "Running libiconv configure..."
 
-          bash "${SOURCES_FOLDER_PATH}/${LIBICONV_SRC_FOLDER_NAME}/configure" --help
+          bash "${SOURCES_FOLDER_PATH}/${libiconv_src_folder_name}/configure" --help
 
-          bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${LIBICONV_SRC_FOLDER_NAME}/configure" \
+          bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${libiconv_src_folder_name}/configure" \
             --prefix="${LIBS_INSTALL_FOLDER_PATH}" \
             \
             --build=${BUILD} \
@@ -722,8 +636,8 @@ function do_libiconv()
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-libiconv-output.txt"
 
       copy_license \
-        "${SOURCES_FOLDER_PATH}/${LIBICONV_SRC_FOLDER_NAME}" \
-        "${LIBICONV_FOLDER_NAME}"
+        "${SOURCES_FOLDER_PATH}/${libiconv_src_folder_name}" \
+        "${libiconv_folder_name}"
 
     )
 
@@ -734,7 +648,7 @@ function do_libiconv()
   fi
 }
 
-function do_gettext() 
+function build_gettext() 
 {
   # https://www.gnu.org/software/gettext/
   # http://ftp.gnu.org/pub/gnu/gettext/
@@ -743,26 +657,29 @@ function do_gettext()
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=gettext-git
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=mingw-w64-gettext
 
-  # GETTEXT_VERSION="0.19.5.1"
-  # GETTEXT_VERSION="0.19.8.1" # 2016-06-11
+  # gettext_version="0.19.5.1"
+  # gettext_version="0.19.8.1" # 2016-06-11
 
-  GETTEXT_SRC_FOLDER_NAME="gettext-${GETTEXT_VERSION}"
-  GETTEXT_FOLDER_NAME="${GETTEXT_SRC_FOLDER_NAME}"
-  local gettext_archive="${GETTEXT_SRC_FOLDER_NAME}.tar.gz"
+  local gettext_version="$1"
+
+  local gettext_src_folder_name="gettext-${gettext_version}"
+  local gettext_folder_name="${gettext_src_folder_name}"
+
+  local gettext_archive="${gettext_src_folder_name}.tar.gz"
   local gettext_url="http://ftp.gnu.org/pub/gnu/gettext/${gettext_archive}"
 
-  local gettext_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-gettext-${GETTEXT_VERSION}-installed"
+  local gettext_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-gettext-${gettext_version}-installed"
   if [ ! -f "${gettext_stamp_file_path}" ]
   then
 
     cd "${SOURCES_FOLDER_PATH}"
 
     download_and_extract "${gettext_url}" "${gettext_archive}" \
-      "${GETTEXT_SRC_FOLDER_NAME}"
+      "${gettext_src_folder_name}"
 
     (
-      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${GETTEXT_FOLDER_NAME}"
-      cd "${LIBS_BUILD_FOLDER_PATH}/${GETTEXT_FOLDER_NAME}"
+      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${gettext_folder_name}"
+      cd "${LIBS_BUILD_FOLDER_PATH}/${gettext_folder_name}"
 
       xbb_activate
       xbb_activate_installed_dev
@@ -796,10 +713,10 @@ function do_gettext()
 
           # Build only the /gettext-runtime folder, attempts to build
           # the full package fail with a CXX='no' problem.
-          bash "${SOURCES_FOLDER_PATH}/${GETTEXT_SRC_FOLDER_NAME}/gettext-runtime/configure" --help
+          bash "${SOURCES_FOLDER_PATH}/${gettext_src_folder_name}/gettext-runtime/configure" --help
 
           #  --enable-nls needed to include libintl
-          bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${GETTEXT_SRC_FOLDER_NAME}/gettext-runtime/configure" \
+          bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${gettext_src_folder_name}/gettext-runtime/configure" \
             --prefix="${LIBS_INSTALL_FOLDER_PATH}" \
             \
             --build=${BUILD} \
@@ -838,8 +755,8 @@ function do_gettext()
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-gettext-output.txt"
 
       copy_license \
-        "${SOURCES_FOLDER_PATH}/${GETTEXT_SRC_FOLDER_NAME}" \
-        "${GETTEXT_FOLDER_NAME}"
+        "${SOURCES_FOLDER_PATH}/${gettext_src_folder_name}" \
+        "${gettext_folder_name}"
 
     )
 
@@ -850,38 +767,42 @@ function do_gettext()
   fi
 }
 
-function do_glib() 
+function build_glib() 
 {
   # http://ftp.gnome.org/pub/GNOME/sources/glib
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=glib2-git
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=mingw-w64-glib2
 
-  # GLIB_MVERSION="2.44"
-  # GLIB_MVERSION="2.51" # 2016-10-24
-  # GLIB_VERSION="${GLIB_MVERSION}.0"
+  # glib_MVERSION="2.44"
+  # glib_MVERSION="2.51" # 2016-10-24
+  # glib_version="${glib_MVERSION}.0"
   # The last one without meson.
-  # GLIB_MVERSION="2.56" 
-  # GLIB_VERSION="${GLIB_MVERSION}.3" # 2018-12-18
+  # glib_MVERSION="2.56" 
+  # glib_version="${glib_MVERSION}.3" # 2018-12-18
   # 2.60
 
-  GLIB_SRC_FOLDER_NAME="glib-${GLIB_VERSION}"
-  GLIB_FOLDER_NAME="${GLIB_SRC_FOLDER_NAME}"
-  local glib_archive="${GLIB_SRC_FOLDER_NAME}.tar.xz"
-  local glib_url="http://ftp.gnome.org/pub/GNOME/sources/glib/${GLIB_MVERSION}/${glib_archive}"
+  local glib_version="$1"
 
-  local glib_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-glib-${GLIB_VERSION}-installed"
+  local glib_src_folder_name="glib-${glib_version}"
+  local glib_folder_name="${glib_src_folder_name}"
+
+  local glib_archive="${glib_src_folder_name}.tar.xz"
+  local glib_MAJOR_MINOR_version="$(echo ${glib_version} | sed -e 's|\([0-9][0-9]*\)\.\([0-9][0-9]*\)\.[0-9].*|\1.\2|')"
+  local glib_url="http://ftp.gnome.org/pub/GNOME/sources/glib/${glib_MAJOR_MINOR_version}/${glib_archive}"
+
+  local glib_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-glib-${glib_version}-installed"
   if [ ! -f "${glib_stamp_file_path}" ]
   then
 
     cd "${SOURCES_FOLDER_PATH}"
 
     download_and_extract "${glib_url}" "${glib_archive}" \
-      "${GLIB_SRC_FOLDER_NAME}"
+      "${glib_src_folder_name}"
 
     (
       # Hack, /gio/lib added because libtool needs it on Win32.
-      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${GLIB_FOLDER_NAME}"/gio/lib
-      cd "${LIBS_BUILD_FOLDER_PATH}/${GLIB_FOLDER_NAME}"
+      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${glib_folder_name}"/gio/lib
+      cd "${LIBS_BUILD_FOLDER_PATH}/${glib_folder_name}"
 
       xbb_activate
       xbb_activate_installed_dev
@@ -905,14 +826,14 @@ function do_glib()
           echo
           echo "Running glib configure..."
 
-          bash "${SOURCES_FOLDER_PATH}/${GLIB_SRC_FOLDER_NAME}/configure" --help
+          bash "${SOURCES_FOLDER_PATH}/${glib_src_folder_name}/configure" --help
 
           # --disable-shared fails on macOS
           # --with-libiconv=gnu required on Linux
           # --disable-static required for Windows
           # --enable-shared required for Linux (can not be used when making a PIE object; recompile with -fPIC) 
           # configure: error: Can not build both shared and static at the same time on Windows.
-          bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${GLIB_SRC_FOLDER_NAME}/configure" \
+          bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${glib_src_folder_name}/configure" \
             --prefix="${LIBS_INSTALL_FOLDER_PATH}" \
             \
             --build=${BUILD} \
@@ -970,8 +891,8 @@ function do_glib()
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-glib-output.txt"
 
       copy_license \
-        "${SOURCES_FOLDER_PATH}/${GLIB_SRC_FOLDER_NAME}" \
-        "${GLIB_FOLDER_NAME}"
+        "${SOURCES_FOLDER_PATH}/${glib_src_folder_name}" \
+        "${glib_folder_name}"
 
     )
 
@@ -982,7 +903,7 @@ function do_glib()
   fi
 }
 
-function do_pixman() 
+function build_pixman() 
 {
   # http://www.pixman.org
   # http://cairographics.org/releases/
@@ -991,27 +912,30 @@ function do_pixman()
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=pixman-git
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=mingw-w64-pixman
 
-  # PIXMAN_VERSION="0.32.6"
-  # PIXMAN_VERSION="0.34.0" # 2016-01-31
-  # PIXMAN_VERSION="0.38.0" # 2019-02-11
+  # pixman_version="0.32.6"
+  # pixman_version="0.34.0" # 2016-01-31
+  # pixman_version="0.38.0" # 2019-02-11
 
-  PIXMAN_SRC_FOLDER_NAME="pixman-${PIXMAN_VERSION}"
-  PIXMAN_FOLDER_NAME="${PIXMAN_SRC_FOLDER_NAME}"
-  local pixman_archive="${PIXMAN_SRC_FOLDER_NAME}.tar.gz"
+  local pixman_version="$1"
+
+  local pixman_src_folder_name="pixman-${pixman_version}"
+  local pixman_folder_name="${pixman_src_folder_name}"
+
+  local pixman_archive="${pixman_src_folder_name}.tar.gz"
   local pixman_url="http://cairographics.org/releases/${pixman_archive}"
 
-  local pixman_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-pixman-${PIXMAN_VERSION}-installed"
+  local pixman_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-pixman-${pixman_version}-installed"
   if [ ! -f "${pixman_stamp_file_path}" ]
   then
 
     cd "${SOURCES_FOLDER_PATH}"
 
     download_and_extract "${pixman_url}" "${pixman_archive}" \
-      "${PIXMAN_SRC_FOLDER_NAME}"
+      "${pixman_src_folder_name}"
 
     (
-      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${PIXMAN_FOLDER_NAME}"
-      cd "${LIBS_BUILD_FOLDER_PATH}/${PIXMAN_FOLDER_NAME}"
+      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${pixman_folder_name}"
+      cd "${LIBS_BUILD_FOLDER_PATH}/${pixman_folder_name}"
 
       # Windows libtool chaks for it.
       mkdir -p test/lib
@@ -1030,12 +954,12 @@ function do_pixman()
           echo
           echo "Running pixman configure..."
 
-          bash "${SOURCES_FOLDER_PATH}/${PIXMAN_SRC_FOLDER_NAME}/configure" --help
+          bash "${SOURCES_FOLDER_PATH}/${pixman_src_folder_name}/configure" --help
 
           # --disable-shared fails on macOS
           # The numerous disables were inspired from Arch, after the initial 
           # failed on armhf.
-          bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${PIXMAN_SRC_FOLDER_NAME}/configure" \
+          bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${pixman_src_folder_name}/configure" \
             --prefix="${LIBS_INSTALL_FOLDER_PATH}" \
             \
             --build=${BUILD} \
@@ -1079,8 +1003,8 @@ function do_pixman()
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-pixman-output.txt"
 
       copy_license \
-        "${SOURCES_FOLDER_PATH}/${PIXMAN_SRC_FOLDER_NAME}" \
-        "${PIXMAN_FOLDER_NAME}"
+        "${SOURCES_FOLDER_PATH}/${pixman_src_folder_name}" \
+        "${pixman_folder_name}"
 
     )
 
@@ -1092,7 +1016,7 @@ function do_pixman()
 }
 
 # Currently not used.
-function do_libxml2() 
+function build_libxml2() 
 {
   # http://www.xmlsoft.org
   # ftp://xmlsoft.org/libxml2/
@@ -1102,30 +1026,33 @@ function do_libxml2()
   # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=mingw-w64-libxml2
 
   # 2018-03-05
-  # LIBXML2_VERSION="2.9.8"
+  # libxml2_version="2.9.8"
 
-  LIBXML2_SRC_FOLDER_NAME="libxml2-${LIBXML2_VERSION}"
-  LIBXML2_FOLDER_NAME="${LIBXML2_SRC_FOLDER_NAME}"
-  local libxml2_archive="${LIBXML2_SRC_FOLDER_NAME}.tar.gz"
+  libxml2_version="$1"
+
+  libxml2_src_folder_name="libxml2-${libxml2_version}"
+  libxml2_folder_name="${libxml2_src_folder_name}"
+
+  local libxml2_archive="${libxml2_src_folder_name}.tar.gz"
   local libxml2_url="ftp://xmlsoft.org/libxml2/${libxml2_archive}"
 
-  local libxml2_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-libxml2-${LIBXML2_VERSION}-installed"
+  local libxml2_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-libxml2-${libxml2_version}-installed"
   if [ ! -f "${libxml2_stamp_file_path}" ]
   then
 
     cd "${SOURCES_FOLDER_PATH}"
 
     download_and_extract "${libxml2_url}" "${libxml2_archive}" \
-      "${LIBXML2_SRC_FOLDER_NAME}"
+      "${libxml2_src_folder_name}"
 
     # Fails if not built in place.
-    if [ ! -d "${LIBS_BUILD_FOLDER_PATH}/${LIBXML2_FOLDER_NAME}" ]
+    if [ ! -d "${LIBS_BUILD_FOLDER_PATH}/${libxml2_folder_name}" ]
     then
       (
-        cp -r "${LIBXML2_SRC_FOLDER_NAME}" \
-          "${LIBS_BUILD_FOLDER_PATH}/${LIBXML2_FOLDER_NAME}"
+        cp -r "${libxml2_src_folder_name}" \
+          "${LIBS_BUILD_FOLDER_PATH}/${libxml2_folder_name}"
 
-        cd "${LIBS_BUILD_FOLDER_PATH}/${LIBXML2_FOLDER_NAME}"
+        cd "${LIBS_BUILD_FOLDER_PATH}/${libxml2_folder_name}"
         xbb_activate
         xbb_activate_installed_dev
 
@@ -1135,8 +1062,8 @@ function do_libxml2()
 
     (
       # /lib added due to wrong -Llib used during make.
-      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${LIBXML2_FOLDER_NAME}/lib"
-      cd "${LIBS_BUILD_FOLDER_PATH}/${LIBXML2_FOLDER_NAME}"
+      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${libxml2_folder_name}/lib"
+      cd "${LIBS_BUILD_FOLDER_PATH}/${libxml2_folder_name}"
 
       xbb_activate
       xbb_activate_installed_dev
@@ -1186,8 +1113,8 @@ function do_libxml2()
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-libxml2-output.txt"
 
       copy_license \
-        "${SOURCES_FOLDER_PATH}/${LIBXML2_SRC_FOLDER_NAME}" \
-        "${LIBXML2_FOLDER_NAME}"
+        "${SOURCES_FOLDER_PATH}/${libxml2_src_folder_name}" \
+        "${libxml2_folder_name}"
 
     )
 

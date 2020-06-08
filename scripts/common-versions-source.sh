@@ -25,6 +25,9 @@ function prepare_versions()
   USE_SINGLE_FOLDER_PATH="y"
   USE_TAR_GZ="y"
 
+  QEMU_SRC_FOLDER_NAME=${QEMU_SRC_FOLDER_NAME:-"${QEMU_PROJECT_NAME}.git"}
+  QEMU_GIT_URL=${QEMU_GIT_URL:-"https://github.com/xpack-dev-tools/qemu.git"}
+
   # Keep them in sync with combo archive content.
   if [[ "${RELEASE_VERSION}" =~ 2\.8\.0-* ]]
   then
@@ -40,119 +43,26 @@ function prepare_versions()
 
       QEMU_GIT_PATCH="qemu-2.8.0.git-patch"
 
-      ZLIB_VERSION="1.2.11"
+      build_zlib "1.2.11"
 
-      # LIBPNG_VERSION="1.6.34"
-      LIBPNG_VERSION="1.6.36"
-      LIBPNG_SFOLDER="libpng16"
+      # HAS_WINPTHREAD="y"
 
-      JPEG_VERSION="9b"
+      build_libpng "1.6.36"
+      build_jpeg "9b"
+      build_libiconv "1.15"
 
-      # SDL2_VERSION="2.0.8"
-      SDL2_VERSION="2.0.9"
+      build_sdl2 "2.0.9"
+      build_sdl2_image "2.0.4"
 
-      # SDL2_IMAGE_VERSION="2.0.3"
-      SDL2_IMAGE_VERSION="2.0.4"
+      build_libffi "3.2.1"
 
-      LIBFFI_VERSION="3.2.1"
+      # in certain configurations it requires libxml2 on windows
+      build_gettext "0.19.8.1"
+      build_glib "2.56.4"
+      build_pixman "0.38.0"
 
-      LIBICONV_VERSION="1.15"
-
-      GETTEXT_VERSION="0.19.8.1"
-
-      # The last one without meson & ninja.
-      # 2.56.0 fails on mingw.
-      GLIB_MVERSION="2.56"
-      GLIB_VERSION="${GLIB_MVERSION}.4"
-
-      # PIXMAN_VERSION="0.34.0"
-      PIXMAN_VERSION="0.38.0"
-
-      # LIBXML2_VERSION="2.9.8"
-
-      HAS_WINPTHREAD="y"
-    elif [[ "${RELEASE_VERSION}" =~ 2\.8\.0-8 ]]
-    then
-      QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack"}
-      QEMU_GIT_COMMIT=${QEMU_GIT_COMMIT:-"e221f2b601feba532a67d7fd6b5debdec06b2d33"}
-
-      QEMU_GIT_PATCH="qemu-2.8.0.git-patch"
-
-      ZLIB_VERSION="1.2.11"
-
-      # LIBPNG_VERSION="1.6.34"
-      LIBPNG_VERSION="1.6.36"
-      LIBPNG_SFOLDER="libpng16"
-
-      JPEG_VERSION="9b"
-
-      # SDL2_VERSION="2.0.8"
-      SDL2_VERSION="2.0.9"
-
-      # SDL2_IMAGE_VERSION="2.0.3"
-      SDL2_IMAGE_VERSION="2.0.4"
-
-      LIBFFI_VERSION="3.2.1"
-
-      LIBICONV_VERSION="1.15"
-
-      GETTEXT_VERSION="0.19.8.1"
-
-      # The last one without meson & ninja.
-      # 2.56.0 fails on mingw.
-      GLIB_MVERSION="2.56"
-      GLIB_VERSION="${GLIB_MVERSION}.4"
-
-      # PIXMAN_VERSION="0.34.0"
-      PIXMAN_VERSION="0.38.0"
-
-      # LIBXML2_VERSION="2.9.8"
-
-      HAS_WINPTHREAD="y"
-
-      USE_SINGLE_FOLDER_PATH=""
-      USE_TAR_GZ=""
-    elif [[ "${RELEASE_VERSION}" =~ 2\.8\.0-7 ]]
-    then
-      QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack"}
-      QEMU_GIT_COMMIT=${QEMU_GIT_COMMIT:-"109b69f49a743c4956b5ddf115301f5095693df4"}
-
-      QEMU_GIT_PATCH="qemu-2.8.0.git-patch"
-
-      ZLIB_VERSION="1.2.11"
-
-      # LIBPNG_VERSION="1.6.34"
-      LIBPNG_VERSION="1.6.36"
-      LIBPNG_SFOLDER="libpng16"
-
-      JPEG_VERSION="9b"
-
-      # SDL2_VERSION="2.0.8"
-      SDL2_VERSION="2.0.9"
-
-      # SDL2_IMAGE_VERSION="2.0.3"
-      SDL2_IMAGE_VERSION="2.0.4"
-
-      LIBFFI_VERSION="3.2.1"
-
-      LIBICONV_VERSION="1.15"
-
-      GETTEXT_VERSION="0.19.8.1"
-
-      # The last one without meson & ninja.
-      # 2.56.0 fails on mingw.
-      GLIB_MVERSION="2.56"
-      GLIB_VERSION="${GLIB_MVERSION}.4"
-
-      # PIXMAN_VERSION="0.34.0"
-      PIXMAN_VERSION="0.38.0"
-
-      # LIBXML2_VERSION="2.9.8"
-
-      HAS_WINPTHREAD="y"
-
-      USE_SINGLE_FOLDER_PATH=""
-      USE_TAR_GZ=""
+      build_qemu
+      test_qemu
     else
       echo "Unsupported version ${RELEASE_VERSION}."
       exit 1

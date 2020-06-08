@@ -179,46 +179,11 @@ prepare_xbb_extras
 
 # -----------------------------------------------------------------------------
 
-prepare_versions
-
-# -----------------------------------------------------------------------------
-
-QEMU_SRC_FOLDER_NAME=${QEMU_SRC_FOLDER_NAME:-"${QEMU_PROJECT_NAME}.git"}
-QEMU_GIT_URL=${QEMU_GIT_URL:-"https://github.com/xpack-dev-tools/qemu.git"}
-
-# -----------------------------------------------------------------------------
-
 echo
 echo "Here we go..."
 echo
 
-# -----------------------------------------------------------------------------
-# Build dependent libraries.
-
-# Warning: on Darwin, some libraries do not build with GNU GCC-7.4, and
-# must revert to Apple clang. (glib & sdl2)
-
-do_zlib
-
-do_libpng
-do_jpeg
-do_libiconv
-
-do_sdl2
-do_sdl2_image
-
-do_libffi
-
-# in certain configurations it requires libxml2 on windows
-do_gettext 
-do_glib
-do_pixman
-
-# -----------------------------------------------------------------------------
-
-do_qemu
-
-test_qemu
+prepare_versions
 
 # -----------------------------------------------------------------------------
 
