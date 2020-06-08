@@ -234,10 +234,11 @@ function test_qemu()
   then
     # env
     # LD_DEBUG=libs ldd "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse"
-    ldd "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse"
+    show_libs "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse"
     "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse" --version
   elif [ "${TARGET_PLATFORM}" == "darwin" ]
   then
+    show_libs "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse"
     "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse" --version
   elif [ "${TARGET_PLATFORM}" == "win32" ]
   then
