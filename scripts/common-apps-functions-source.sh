@@ -226,7 +226,7 @@ function do_qemu()
   )
 }
 
-function run_qemu()
+function test_qemu()
 {
   echo
 
