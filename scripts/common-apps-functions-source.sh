@@ -44,7 +44,7 @@ function download_qemu()
 
 # -----------------------------------------------------------------------------
 
-function do_qemu() 
+function build_qemu() 
 {
   download_qemu
 
