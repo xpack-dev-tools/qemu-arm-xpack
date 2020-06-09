@@ -35,12 +35,12 @@ function build_libpng()
   local libpng_major_minor_version="$(echo ${libpng_version} | sed -e 's|\([0-9][0-9]*\)\.\([0-9][0-9]*\)\.[0-9].*|\1\2|')"
 
   local libpng_src_folder_name="libpng-${libpng_version}"
-  local libpng_folder_name="${libpng_src_folder_name}"
 
   local libpng_archive="${libpng_src_folder_name}.tar.xz"
   # local libpng_url="https://sourceforge.net/projects/libpng/files/${libpng_SFOLDER}/older-releases/${libpng_version}/${libpng_archive}"
   local libpng_url="https://sourceforge.net/projects/libpng/files/libpng${libpng_major_minor_version}/${libpng_version}/${libpng_archive}"
 
+  local libpng_folder_name="${libpng_src_folder_name}"
   local libpng_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-libpng-${libpng_version}-installed"
   if [ ! -f "${libpng_stamp_file_path}" ]
   then
@@ -133,11 +133,11 @@ function build_jpeg()
   local jpeg_version="$1"
 
   local jpeg_src_folder_name="jpeg-${jpeg_version}"
-  local jpeg_folder_name="${jpeg_src_folder_name}"
 
   local jpeg_archive="jpegsrc.v${jpeg_version}.tar.gz"
   local jpeg_url="http://www.ijg.org/files/${jpeg_archive}"
 
+  local jpeg_folder_name="${jpeg_src_folder_name}"
   local jpeg_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-jpeg-${jpeg_version}-installed"
   if [ ! -f "${jpeg_stamp_file_path}" ]
   then
@@ -227,11 +227,11 @@ function build_sdl2()
   local sdl2_version="$1"
 
   local sdl2_src_folder_name="SDL2-${sdl2_version}"
-  local sdl2_folder_name="${sdl2_src_folder_name}"
 
   local sdl2_archive="${sdl2_src_folder_name}.tar.gz"
   local sdl2_url="https://www.libsdl.org/release/${sdl2_archive}"
 
+  local sdl2_folder_name="${sdl2_src_folder_name}"
   local sdl2_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-sdl2-${sdl2_version}-installed"
   if [ ! -f "${sdl2_stamp_file_path}" ]
   then
@@ -347,11 +347,11 @@ function build_sdl2_image()
   local sdl2_image_version="$1"
 
   local sdl2_image_src_folder_name="SDL2_image-${sdl2_image_version}"
-  local sdl2_image_folder_name="${sdl2_image_src_folder_name}"
 
   local sdl2_image_archive="${sdl2_image_src_folder_name}.tar.gz"
   local sdl2_image_url="https://www.libsdl.org/projects/SDL_image/release/${sdl2_image_archive}"
 
+  local sdl2_image_folder_name="${sdl2_image_src_folder_name}"
   local sdl2_image_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-sdl2-image-${sdl2_image_version}-installed"
   if [ ! -f "${sdl2_image_stamp_file_path}" ]
   then
@@ -785,12 +785,12 @@ function build_glib()
   local glib_version="$1"
 
   local glib_src_folder_name="glib-${glib_version}"
-  local glib_folder_name="${glib_src_folder_name}"
 
   local glib_archive="${glib_src_folder_name}.tar.xz"
   local glib_MAJOR_MINOR_version="$(echo ${glib_version} | sed -e 's|\([0-9][0-9]*\)\.\([0-9][0-9]*\)\.[0-9].*|\1.\2|')"
   local glib_url="http://ftp.gnome.org/pub/GNOME/sources/glib/${glib_MAJOR_MINOR_version}/${glib_archive}"
 
+  local glib_folder_name="${glib_src_folder_name}"
   local glib_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-glib-${glib_version}-installed"
   if [ ! -f "${glib_stamp_file_path}" ]
   then
@@ -920,11 +920,11 @@ function build_pixman()
   local pixman_version="$1"
 
   local pixman_src_folder_name="pixman-${pixman_version}"
-  local pixman_folder_name="${pixman_src_folder_name}"
 
   local pixman_archive="${pixman_src_folder_name}.tar.gz"
   local pixman_url="http://cairographics.org/releases/${pixman_archive}"
 
+  local pixman_folder_name="${pixman_src_folder_name}"
   local pixman_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-pixman-${pixman_version}-installed"
   if [ ! -f "${pixman_stamp_file_path}" ]
   then
@@ -1029,14 +1029,14 @@ function build_libxml2()
   # 2018-03-05
   # libxml2_version="2.9.8"
 
-  libxml2_version="$1"
+  local libxml2_version="$1"
 
-  libxml2_src_folder_name="libxml2-${libxml2_version}"
-  libxml2_folder_name="${libxml2_src_folder_name}"
+  local libxml2_src_folder_name="libxml2-${libxml2_version}"
 
   local libxml2_archive="${libxml2_src_folder_name}.tar.gz"
   local libxml2_url="ftp://xmlsoft.org/libxml2/${libxml2_archive}"
 
+  local libxml2_folder_name="${libxml2_src_folder_name}"
   local libxml2_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-libxml2-${libxml2_version}-installed"
   if [ ! -f "${libxml2_stamp_file_path}" ]
   then
