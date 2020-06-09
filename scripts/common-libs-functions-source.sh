@@ -50,6 +50,8 @@ function build_libpng()
     download_and_extract "${libpng_url}" "${libpng_archive}" \
       "${libpng_src_folder_name}"
 
+    mkdir -pv "${LOGS_FOLDER_PATH}/${libpng_folder_name}"
+
     (
       mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${libpng_folder_name}"
       cd "${LIBS_BUILD_FOLDER_PATH}/${libpng_folder_name}"
@@ -84,8 +86,8 @@ function build_libpng()
             --disable-static \
             --enable-arm-neon=no \
 
-          cp "config.log" "${LOGS_FOLDER_PATH}/config-libpng-log.txt"
-        ) 2>&1 | tee "${LOGS_FOLDER_PATH}/configure-libpng-output.txt"
+          cp "config.log" "${LOGS_FOLDER_PATH}/${libpng_folder_name}/config-log.txt"
+        ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${libpng_folder_name}/configure-output.txt"
 
       fi
 
@@ -102,7 +104,7 @@ function build_libpng()
         else
           run_verbose make install
         fi
-      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-libpng-output.txt"
+      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${libpng_folder_name}/make-output.txt"
 
       copy_license \
         "${SOURCES_FOLDER_PATH}/${libpng_src_folder_name}" \
@@ -147,6 +149,8 @@ function build_jpeg()
     download_and_extract "${jpeg_url}" "${jpeg_archive}" \
         "${jpeg_src_folder_name}"
 
+    mkdir -pv "${LOGS_FOLDER_PATH}/${jpeg_folder_name}"
+
     (
       mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${jpeg_folder_name}"
       cd "${LIBS_BUILD_FOLDER_PATH}/${jpeg_folder_name}"
@@ -178,8 +182,8 @@ function build_jpeg()
             --enable-shared \
             --disable-static
 
-          cp "config.log" "${LOGS_FOLDER_PATH}/config-jpeg-log.txt"
-        ) 2>&1 | tee "${LOGS_FOLDER_PATH}/configure-jpeg-output.txt"
+          cp "config.log" "${LOGS_FOLDER_PATH}/${jpeg_folder_name}/config-log.txt"
+        ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${jpeg_folder_name}/configure-output.txt"
 
       fi
 
@@ -196,7 +200,8 @@ function build_jpeg()
         else
           run_verbose make install
         fi
-      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-jpeg-output.txt"
+
+      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${jpeg_folder_name}/make-output.txt"
 
       copy_license \
         "${SOURCES_FOLDER_PATH}/${jpeg_src_folder_name}" \
@@ -240,6 +245,8 @@ function build_sdl2()
 
     download_and_extract "${sdl2_url}" "${sdl2_archive}" \
       "${sdl2_src_folder_name}"
+
+    mkdir -pv "${LOGS_FOLDER_PATH}/${sdl2_folder_name}"
 
     (
       mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${sdl2_folder_name}"
@@ -302,8 +309,8 @@ function build_sdl2()
             ${OPENGL} \
             ${X11} \
 
-          cp "config.log" "${LOGS_FOLDER_PATH}/config-sdl2-log.txt"
-        ) 2>&1 | tee "${LOGS_FOLDER_PATH}/configure-sdl2-output.txt"
+          cp "config.log" "${LOGS_FOLDER_PATH}/${sdl2_folder_name}/config-log.txt"
+        ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${sdl2_folder_name}/configure-output.txt"
 
       fi
 
@@ -316,7 +323,7 @@ function build_sdl2()
 
         run_verbose make install
 
-      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-sdl2-output.txt"
+      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${sdl2_folder_name}/make-output.txt"
 
       copy_license \
         "${SOURCES_FOLDER_PATH}/${sdl2_src_folder_name}" \
@@ -360,6 +367,8 @@ function build_sdl2_image()
 
     download_and_extract "${sdl2_image_url}" "${sdl2_image_archive}" \
       "${sdl2_image_src_folder_name}"
+
+    mkdir -pv "${LOGS_FOLDER_PATH}/${sdl2_image_folder_name}"
 
     (
       mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${sdl2_image_folder_name}"
@@ -429,8 +438,8 @@ function build_sdl2_image()
             --disable-webp \
             --disable-webp-shared
 
-          cp "config.log" "${LOGS_FOLDER_PATH}/config-sdl2-image-log.txt"
-        ) 2>&1 | tee "${LOGS_FOLDER_PATH}/configure-sdl2-image-output.txt"
+          cp "config.log" "${LOGS_FOLDER_PATH}/${sdl2_image_folder_name}/config-log.txt"
+        ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${sdl2_image_folder_name}/configure-output.txt"
 
       fi
 
@@ -447,7 +456,8 @@ function build_sdl2_image()
         else
           run_verbose make install
         fi
-      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-sdl2-image-output.txt"
+
+      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${sdl2_image_folder_name}/make-output.txt"
 
       copy_license \
         "${SOURCES_FOLDER_PATH}/${sdl2_image_src_folder_name}" \
@@ -800,6 +810,8 @@ function build_glib()
     download_and_extract "${glib_url}" "${glib_archive}" \
       "${glib_src_folder_name}"
 
+    mkdir -pv "${LOGS_FOLDER_PATH}/${glib_folder_name}"
+
     (
       # Hack, /gio/lib added because libtool needs it on Win32.
       mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${glib_folder_name}"/gio/lib
@@ -869,8 +881,8 @@ function build_glib()
             run_verbose sed -i -e '/#define HAVE_SPLICE 1/d' config.h
           fi
 
-          cp "config.log" "${LOGS_FOLDER_PATH}/config-glib-log.txt"
-        ) 2>&1 | tee "${LOGS_FOLDER_PATH}/configure-glib-output.txt"
+          cp "config.log" "${LOGS_FOLDER_PATH}/${glib_folder_name}/config-log.txt"
+        ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${glib_folder_name}/configure-output.txt"
 
       fi
 
@@ -889,7 +901,8 @@ function build_glib()
         else
           run_verbose make install
         fi
-      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-glib-output.txt"
+
+      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${glib_folder_name}/make-output.txt"
 
       copy_license \
         "${SOURCES_FOLDER_PATH}/${glib_src_folder_name}" \
@@ -933,6 +946,8 @@ function build_pixman()
 
     download_and_extract "${pixman_url}" "${pixman_archive}" \
       "${pixman_src_folder_name}"
+
+    mkdir -pv "${LOGS_FOLDER_PATH}/${pixman_folder_name}"
 
     (
       mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${pixman_folder_name}"
@@ -983,8 +998,8 @@ function build_pixman()
             --disable-mips-dspr2 \
             --disable-gtk \
 
-          cp "config.log" "${LOGS_FOLDER_PATH}/config-pixman-log.txt"
-        ) 2>&1 | tee "${LOGS_FOLDER_PATH}/configure-pixman-output.txt"
+          cp "config.log" "${LOGS_FOLDER_PATH}/${pixman_folder_name}/config-log.txt"
+        ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${pixman_folder_name}/configure-output.txt"
 
       fi
 
@@ -1001,7 +1016,8 @@ function build_pixman()
         else
           run_verbose make install
         fi
-      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-pixman-output.txt"
+
+      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${pixman_folder_name}/make-output.txt"
 
       copy_license \
         "${SOURCES_FOLDER_PATH}/${pixman_src_folder_name}" \
@@ -1045,6 +1061,8 @@ function build_libxml2()
 
     download_and_extract "${libxml2_url}" "${libxml2_archive}" \
       "${libxml2_src_folder_name}"
+
+    mkdir -pv "${LOGS_FOLDER_PATH}/${libxml2_folder_name}"
 
     # Fails if not built in place.
     if [ ! -d "${LIBS_BUILD_FOLDER_PATH}/${libxml2_folder_name}" ]
@@ -1093,8 +1111,8 @@ function build_libxml2()
             --disable-static \
             --without-python
 
-          cp "config.log" "${LOGS_FOLDER_PATH}/config-libxml2-log.txt"
-        ) 2>&1 | tee "${LOGS_FOLDER_PATH}/configure-libxml2-output.txt"
+          cp "config.log" "${LOGS_FOLDER_PATH}/${libxml2_folder_name}/config-log.txt"
+        ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${libxml2_folder_name}/configure-output.txt"
 
       fi
 
@@ -1111,7 +1129,8 @@ function build_libxml2()
         else
           run_verbose make install
         fi
-      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-libxml2-output.txt"
+
+      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${libxml2_folder_name}/make-output.txt"
 
       copy_license \
         "${SOURCES_FOLDER_PATH}/${libxml2_src_folder_name}" \
