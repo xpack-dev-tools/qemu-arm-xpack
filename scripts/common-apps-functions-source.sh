@@ -101,7 +101,7 @@ function build_qemu()
 
         # --static fails
         # ERROR: "gcc-7" cannot build an executable (is your linker broken?)
-        bash ${DEBUG} "${WORK_FOLDER_PATH}/${QEMU_SRC_FOLDER_NAME}/configure" \
+        run_verbose bash ${DEBUG} "${WORK_FOLDER_PATH}/${QEMU_SRC_FOLDER_NAME}/configure" \
           --prefix="${APP_PREFIX}" \
           ${CROSS} \
           --extra-cflags="${CFLAGS} ${CPPFLAGS}" \
@@ -137,11 +137,11 @@ function build_qemu()
       echo "Running qemu make..."
 
       # Parallel builds may fail.
-      make -j ${JOBS}
+      run_verbose make -j ${JOBS}
       # make
 
-      make install
-      make install-gme
+      run_verbose make install
+      run_verbose make install-gme
 
       if [ "${TARGET_PLATFORM}" == "linux" ]
       then
@@ -235,17 +235,17 @@ function test_qemu()
     # env
     # LD_DEBUG=libs ldd "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse"
     show_libs "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse"
-    "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse" --version
+    run_verbose "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse" --version
   elif [ "${TARGET_PLATFORM}" == "darwin" ]
   then
     show_libs "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse"
-    "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse" --version
+    run_verbose "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse" --version
   elif [ "${TARGET_PLATFORM}" == "win32" ]
   then
     local wsl_path=$(which wsl.exe)
     if [ ! -z "${wsl_path}" ]
     then
-      "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse.exe" --version
+      run_verbose "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse.exe" --version
     else 
       (
         xbb_activate
@@ -253,7 +253,7 @@ function test_qemu()
         local wine_path=$(which wine)
         if [ ! -z "${wine_path}" ]
         then
-          wine "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse.exe" --version
+          run_verbose wine "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse.exe" --version
         else
           echo "Install wine if you want to run the .exe binaries on Linux."
         fi

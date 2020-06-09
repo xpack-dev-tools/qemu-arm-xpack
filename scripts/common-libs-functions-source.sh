@@ -73,7 +73,7 @@ function build_libpng()
           # --enable-shared needed by sdl2_image on CentOS 64-bit and Ubuntu.
           # If really needed.
           # --with-zlib-prefix="${LIBS_INSTALL_FOLDER_PATH}" 
-          bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${libpng_src_folder_name}/configure" \
+          run_verbose bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${libpng_src_folder_name}/configure" \
             --prefix="${LIBS_INSTALL_FOLDER_PATH}" \
             \
             --build=${BUILD} \
@@ -94,13 +94,13 @@ function build_libpng()
         echo "Running libpng make..."
 
         # Build.
-        make -j ${JOBS}
+        run_verbose make -j ${JOBS}
 
         if [ "${WITH_STRIP}" == "y" ]
         then
-          make install-strip
+          run_verbose make install-strip
         else
-          make install
+          run_verbose make install
         fi
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-libpng-output.txt"
 
@@ -168,7 +168,7 @@ function build_jpeg()
           bash "${SOURCES_FOLDER_PATH}/${jpeg_src_folder_name}/configure" --help
 
           # --enable-shared needed by sdl2_image on CentOS 64-bit and Ubuntu.
-          bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${jpeg_src_folder_name}/configure" \
+          run_verbose bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${jpeg_src_folder_name}/configure" \
             --prefix="${LIBS_INSTALL_FOLDER_PATH}" \
             \
             --build=${BUILD} \
@@ -188,13 +188,13 @@ function build_jpeg()
         echo "Running jpeg make..."
 
         # Build.
-        make -j ${JOBS}
+        run_verbose make -j ${JOBS}
 
         if [ "${WITH_STRIP}" == "y" ]
         then
-          make install-strip
+          run_verbose make install-strip
         else
-          make install
+          run_verbose make install
         fi
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-jpeg-output.txt"
 
@@ -285,7 +285,7 @@ function build_sdl2()
 
           # --enable-shared required for building sdl2_image showimage
           # --dsable-shared fails on macOS
-          bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${sdl2_src_folder_name}/configure" \
+          run_verbose bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${sdl2_src_folder_name}/configure" \
             --prefix="${LIBS_INSTALL_FOLDER_PATH}" \
             \
             --build=${BUILD} \
@@ -312,9 +312,10 @@ function build_sdl2()
         echo "Running sdl2 make..."
 
         # Build.
-        make -j ${JOBS}
+        run_verbose make -j ${JOBS}
 
-        make install
+        run_verbose make install
+
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-sdl2-output.txt"
 
       copy_license \
@@ -397,7 +398,7 @@ function build_sdl2_image()
 
           # --enable-shared required for building showimage
           # --disable-shared failes on macOS
-          bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${sdl2_image_src_folder_name}/configure" \
+          run_verbose bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${sdl2_image_src_folder_name}/configure" \
             --prefix="${LIBS_INSTALL_FOLDER_PATH}" \
             \
             --build=${BUILD} \
@@ -438,13 +439,13 @@ function build_sdl2_image()
         echo "Running sdl2-image make..."
 
         # Build.
-        make -j ${JOBS}
+        run_verbose make -j ${JOBS}
 
         if [ "${WITH_STRIP}" == "y" ]
         then
-          make install-strip
+          run_verbose make install-strip
         else
-          make install
+          run_verbose make install
         fi
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-sdl2-image-output.txt"
 
@@ -833,7 +834,7 @@ function build_glib()
           # --disable-static required for Windows
           # --enable-shared required for Linux (can not be used when making a PIE object; recompile with -fPIC) 
           # configure: error: Can not build both shared and static at the same time on Windows.
-          bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${glib_src_folder_name}/configure" \
+          run_verbose bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${glib_src_folder_name}/configure" \
             --prefix="${LIBS_INSTALL_FOLDER_PATH}" \
             \
             --build=${BUILD} \
@@ -863,9 +864,9 @@ function build_glib()
           local gsed_path=$(which gsed)
           if [ ! -z "${gsed_path}" ]
           then
-            gsed -i -e '/#define HAVE_SPLICE 1/d' config.h
+            run_verbose gsed -i -e '/#define HAVE_SPLICE 1/d' config.h
           else
-            sed -i -e '/#define HAVE_SPLICE 1/d' config.h
+            run_verbose sed -i -e '/#define HAVE_SPLICE 1/d' config.h
           fi
 
           cp "config.log" "${LOGS_FOLDER_PATH}/config-glib-log.txt"
@@ -879,14 +880,14 @@ function build_glib()
 
         # Build.
         # Parallel builds may fail.
-        make -j ${JOBS}
+        run_verbose make -j ${JOBS}
         # make
 
         if [ "${WITH_STRIP}" == "y" ]
         then
-          make install-strip
+          run_verbose make install-strip
         else
-          make install
+          run_verbose make install
         fi
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-glib-output.txt"
 
@@ -959,7 +960,7 @@ function build_pixman()
           # --disable-shared fails on macOS
           # The numerous disables were inspired from Arch, after the initial 
           # failed on armhf.
-          bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${pixman_src_folder_name}/configure" \
+          run_verbose bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${pixman_src_folder_name}/configure" \
             --prefix="${LIBS_INSTALL_FOLDER_PATH}" \
             \
             --build=${BUILD} \
@@ -992,13 +993,13 @@ function build_pixman()
         echo "Running pixman make..."
 
         # Build.
-        make -j ${JOBS}
+        run_verbose make -j ${JOBS}
 
         if [ "${WITH_STRIP}" == "y" ]
         then
-          make install-strip
+          run_verbose make install-strip
         else
-          make install
+          run_verbose make install
         fi
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-pixman-output.txt"
 
@@ -1081,7 +1082,7 @@ function build_libxml2()
 
           bash "./configure" --help
 
-          bash ${DEBUG} "./configure" \
+          run_verbose bash ${DEBUG} "./configure" \
             --prefix="${LIBS_INSTALL_FOLDER_PATH}" \
             \
             --build=${BUILD} \
@@ -1102,13 +1103,13 @@ function build_libxml2()
         echo "Running libxml2 make..."
 
         # Build.
-        make -j ${JOBS}
+        run_verbose make -j ${JOBS}
 
         if [ "${WITH_STRIP}" == "y" ]
         then
-          make install-strip
+          run_verbose make install-strip
         else
-          make install
+          run_verbose make install
         fi
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-libxml2-output.txt"
 
