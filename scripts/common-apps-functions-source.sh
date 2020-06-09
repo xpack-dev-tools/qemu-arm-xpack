@@ -55,7 +55,6 @@ function build_qemu()
     xbb_activate
     xbb_activate_installed_dev
 
-    CFLAGS="${XBB_CFLAGS} -Wno-format-truncation -Wno-incompatible-pointer-types -Wno-unused-function -Wno-unused-but-set-variable -Wno-unused-result -Wno-stringop-truncation -Wno-address-of-packed-member -Wno-address-of-packed-member"
 
     CPPFLAGS="${XBB_CPPFLAGS}"
     if [ "${IS_DEBUG}" == "y" ]
@@ -63,10 +62,18 @@ function build_qemu()
       CPPFLAGS+=" -DDEBUG"
     fi
 
-    LDFLAGS="${XBB_LDFLAGS_APP_STATIC_GCC} -v"
+    CFLAGS="${XBB_CFLAGS_NO_W}"      
+    CXXFLAGS="${XBB_CXXFLAGS_NO_W}"
 
-    export CFLAGS
+    LDFLAGS="${XBB_LDFLAGS_APP_STATIC_GCC}"
+    if true # [ "${IS_DEVELOP}" == "y" ]
+    then
+      LDFLAGS+=" -v"
+    fi
+
     export CPPFLAGS
+    export CFLAGS
+    export CXXFLAGS
     export LDFLAGS
 
     if [ "${TARGET_PLATFORM}" == "win32" ]

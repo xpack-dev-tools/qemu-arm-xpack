@@ -59,9 +59,19 @@ function build_libpng()
       xbb_activate
       xbb_activate_installed_dev
 
-      export CFLAGS="${XBB_CFLAGS} -Wno-expansion-to-defined"
-      export CPPFLAGS="${XBB_CPPFLAGS}"
-      export LDFLAGS="${XBB_LDFLAGS_LIB}"
+      CPPFLAGS="${XBB_CPPFLAGS}"
+      CFLAGS="${XBB_CFLAGS_NO_W}"      
+      CXXFLAGS="${XBB_CXXFLAGS_NO_W}"
+      LDFLAGS="${XBB_LDFLAGS_LIB}"
+      if [ "${IS_DEVELOP}" == "y" ]
+      then
+        LDFLAGS+=" -v"
+      fi
+
+      export CPPFLAGS
+      export CFLAGS
+      export CXXFLAGS
+      export LDFLAGS
       
       if [ ! -f "config.status" ]
       then 
@@ -158,9 +168,19 @@ function build_jpeg()
       xbb_activate
       xbb_activate_installed_dev
 
-      export CFLAGS="${XBB_CFLAGS}"
-      export CPPFLAGS="${XBB_CPPFLAGS}"
-      export LDFLAGS="${XBB_LDFLAGS_LIB}"
+      CPPFLAGS="${XBB_CPPFLAGS}"
+      CFLAGS="${XBB_CFLAGS_NO_W}"      
+      CXXFLAGS="${XBB_CXXFLAGS_NO_W}"
+      LDFLAGS="${XBB_LDFLAGS_LIB}"
+      if [ "${IS_DEVELOP}" == "y" ]
+      then
+        LDFLAGS+=" -v"
+      fi
+
+      export CPPFLAGS
+      export CFLAGS
+      export CXXFLAGS
+      export LDFLAGS
       
       if [ ! -f "config.status" ]
       then 
@@ -255,9 +275,19 @@ function build_sdl2()
       xbb_activate
       xbb_activate_installed_dev
 
-      export CFLAGS="${XBB_CFLAGS} -Wno-deprecated-declarations -Wno-unused-variable -Wno-format"
-      export CPPFLAGS="${XBB_CPPFLAGS}"
-      export LDFLAGS="${XBB_LDFLAGS_LIB}"
+      CPPFLAGS="${XBB_CPPFLAGS}"
+      CFLAGS="${XBB_CFLAGS_NO_W}"      
+      CXXFLAGS="${XBB_CXXFLAGS_NO_W}"
+      LDFLAGS="${XBB_LDFLAGS_LIB}"
+      if [ "${IS_DEVELOP}" == "y" ]
+      then
+        LDFLAGS+=" -v"
+      fi
+
+      export CPPFLAGS
+      export CFLAGS
+      export CXXFLAGS
+      export LDFLAGS
     
       if [ "${TARGET_PLATFORM}" == "darwin" ]
       then
@@ -380,9 +410,20 @@ function build_sdl2_image()
       xbb_activate
       xbb_activate_installed_dev
 
-      export CFLAGS="${XBB_CFLAGS} -Wno-macro-redefined"
-      export CPPFLAGS="${XBB_CPPFLAGS}"
-      export LDFLAGS="${XBB_LDFLAGS_LIB}"
+      CPPFLAGS="${XBB_CPPFLAGS}"
+      CFLAGS="${XBB_CFLAGS_NO_W}"      
+      CXXFLAGS="${XBB_CXXFLAGS_NO_W}"
+      LDFLAGS="${XBB_LDFLAGS_LIB}"
+      if [ "${IS_DEVELOP}" == "y" ]
+      then
+        LDFLAGS+=" -v"
+      fi
+
+      export CPPFLAGS
+      export CFLAGS
+      export CXXFLAGS
+      export LDFLAGS
+
       # export LIBS="-lpng16 -ljpeg"
 
       if [ ! -f "config.status" ]
@@ -820,9 +861,19 @@ function build_glib()
       xbb_activate
       xbb_activate_installed_dev
 
-      export CFLAGS="${XBB_CFLAGS} -Wno-implicit-function-declaration -Wno-deprecated-declarations -Wno-incompatible-pointer-types -Wno-int-conversion -Wno-pointer-to-int-cast"
-      export CPPFLAGS="${XBB_CPPFLAGS}"
-      export LDFLAGS="${XBB_LDFLAGS_LIB}"
+      CPPFLAGS="${XBB_CPPFLAGS}"
+      CFLAGS="${XBB_CFLAGS_NO_W}"      
+      CXXFLAGS="${XBB_CXXFLAGS_NO_W}"
+      LDFLAGS="${XBB_LDFLAGS_LIB}"
+      if [ "${IS_DEVELOP}" == "y" ]
+      then
+        LDFLAGS+=" -v"
+      fi
+
+      export CPPFLAGS
+      export CFLAGS
+      export CXXFLAGS
+      export LDFLAGS
 
       if [ "${TARGET_PLATFORM}" == "darwin" ]
       then
@@ -959,9 +1010,19 @@ function build_pixman()
       xbb_activate
       xbb_activate_installed_dev
 
-      export CFLAGS="${XBB_CFLAGS} -Wno-unused-const-variable -Wno-unused-but-set-variable -Wno-maybe-uninitialized -Wno-attributes"
-      export CPPFLAGS="${XBB_CPPFLAGS}"
-      export LDFLAGS="${XBB_LDFLAGS_LIB}"
+      CPPFLAGS="${XBB_CPPFLAGS}"
+      CFLAGS="${XBB_CFLAGS_NO_W}"      
+      CXXFLAGS="${XBB_CXXFLAGS_NO_W}"
+      LDFLAGS="${XBB_LDFLAGS_LIB}"
+      if [ "${IS_DEVELOP}" == "y" ]
+      then
+        LDFLAGS+=" -v"
+      fi
+
+      export CPPFLAGS
+      export CFLAGS
+      export CXXFLAGS
+      export LDFLAGS
       
       if [ ! -f "config.status" ]
       then 
@@ -1087,9 +1148,19 @@ function build_libxml2()
       xbb_activate
       xbb_activate_installed_dev
 
-      export CFLAGS="${XBB_CFLAGS}"
-      export CPPFLAGS="${XBB_CPPFLAGS}"
-      export LDFLAGS="${XBB_LDFLAGS_LIB}"
+      CPPFLAGS="${XBB_CPPFLAGS}"
+      CFLAGS="${XBB_CFLAGS_NO_W}"      
+      CXXFLAGS="${XBB_CXXFLAGS_NO_W}"
+      LDFLAGS="${XBB_LDFLAGS_LIB}"
+      if [ "${IS_DEVELOP}" == "y" ]
+      then
+        LDFLAGS+=" -v"
+      fi
+
+      export CPPFLAGS
+      export CFLAGS
+      export CXXFLAGS
+      export LDFLAGS
       
       if [ ! -f "config.status" ]
       then 
