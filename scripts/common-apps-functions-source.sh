@@ -49,7 +49,7 @@ function build_qemu()
   download_qemu
 
   (
-    mkdir -p "${APP_BUILD_FOLDER_PATH}"
+    mkdir -pv "${APP_BUILD_FOLDER_PATH}"
     cd "${APP_BUILD_FOLDER_PATH}"
 
     xbb_activate
@@ -295,7 +295,7 @@ function strip_binaries()
 function copy_distro_files()
 {
   rm -rf "${APP_PREFIX}/${DISTRO_INFO_NAME}"
-  mkdir -p "${APP_PREFIX}/${DISTRO_INFO_NAME}"
+  mkdir -pv "${APP_PREFIX}/${DISTRO_INFO_NAME}"
 
   copy_build_files
 

@@ -53,7 +53,7 @@ function build_libpng()
     mkdir -pv "${LOGS_FOLDER_PATH}/${libpng_folder_name}"
 
     (
-      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${libpng_folder_name}"
+      mkdir -pv "${LIBS_BUILD_FOLDER_PATH}/${libpng_folder_name}"
       cd "${LIBS_BUILD_FOLDER_PATH}/${libpng_folder_name}"
 
       xbb_activate
@@ -162,7 +162,7 @@ function build_jpeg()
     mkdir -pv "${LOGS_FOLDER_PATH}/${jpeg_folder_name}"
 
     (
-      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${jpeg_folder_name}"
+      mkdir -pv "${LIBS_BUILD_FOLDER_PATH}/${jpeg_folder_name}"
       cd "${LIBS_BUILD_FOLDER_PATH}/${jpeg_folder_name}"
 
       xbb_activate
@@ -269,7 +269,7 @@ function build_sdl2()
     mkdir -pv "${LOGS_FOLDER_PATH}/${sdl2_folder_name}"
 
     (
-      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${sdl2_folder_name}"
+      mkdir -pv "${LIBS_BUILD_FOLDER_PATH}/${sdl2_folder_name}"
       cd "${LIBS_BUILD_FOLDER_PATH}/${sdl2_folder_name}"
 
       xbb_activate
@@ -401,11 +401,11 @@ function build_sdl2_image()
     mkdir -pv "${LOGS_FOLDER_PATH}/${sdl2_image_folder_name}"
 
     (
-      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${sdl2_image_folder_name}"
+      mkdir -pv "${LIBS_BUILD_FOLDER_PATH}/${sdl2_image_folder_name}"
       cd "${LIBS_BUILD_FOLDER_PATH}/${sdl2_image_folder_name}"
 
       # The windows build checks this.
-      mkdir -p lib
+      mkdir -pv lib
 
       xbb_activate
       xbb_activate_installed_dev
@@ -855,7 +855,7 @@ function build_glib()
 
     (
       # Hack, /gio/lib added because libtool needs it on Win32.
-      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${glib_folder_name}"/gio/lib
+      mkdir -pv "${LIBS_BUILD_FOLDER_PATH}/${glib_folder_name}"/gio/lib
       cd "${LIBS_BUILD_FOLDER_PATH}/${glib_folder_name}"
 
       xbb_activate
@@ -1001,11 +1001,11 @@ function build_pixman()
     mkdir -pv "${LOGS_FOLDER_PATH}/${pixman_folder_name}"
 
     (
-      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${pixman_folder_name}"
+      mkdir -pv "${LIBS_BUILD_FOLDER_PATH}/${pixman_folder_name}"
       cd "${LIBS_BUILD_FOLDER_PATH}/${pixman_folder_name}"
 
       # Windows libtool chaks for it.
-      mkdir -p test/lib
+      mkdir -pv test/lib
 
       xbb_activate
       xbb_activate_installed_dev
@@ -1142,7 +1142,7 @@ function build_libxml2()
 
     (
       # /lib added due to wrong -Llib used during make.
-      mkdir -p "${LIBS_BUILD_FOLDER_PATH}/${libxml2_folder_name}/lib"
+      mkdir -pv "${LIBS_BUILD_FOLDER_PATH}/${libxml2_folder_name}/lib"
       cd "${LIBS_BUILD_FOLDER_PATH}/${libxml2_folder_name}"
 
       xbb_activate
