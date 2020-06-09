@@ -1,4 +1,4 @@
-# How to build the xPack QEMU Arm?
+# How to build the xPack QEMU Arm
 
 ## Introduction
 
@@ -162,10 +162,10 @@ on a macOS system, due to Docker specifics, it is faster to build the
 GNU/Linux and Windows binaries on a GNU/Linux system and the macOS binary
 separately.
 
-#### Build the GNU/Linux and Windows binaries
+#### Build the Intel GNU/Linux and Windows binaries
 
-The current platform for GNU/Linux and Windows production builds is an
-Ubuntu Server 18 LTS, running on an Intel NUC8i7BEH mini PC with 32 GB of RAM
+The current platform for Intel GNU/Linux and Windows production builds is a
+Debian 10, running on an Intel NUC8i7BEH mini PC with 32 GB of RAM
 and 512 GB of fast M.2 SSD.
 
 ```console
@@ -189,11 +189,10 @@ The result should look similar to:
 
 ```console
 $ docker images
-REPOSITORY TAG IMAGE ID CREATED SIZE
-REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
-ilegeul/centos32    6-xbb-v2.2          956eb2963946        5 weeks ago         3.03GB
-ilegeul/centos      6-xbb-v2.2          6b1234f2ac44        5 weeks ago         3.12GB
-hello-world         latest              fce289e99eb9        5 months ago        1.84kB
+REPOSITORY          TAG                                IMAGE ID            CREATED             SIZE
+ilegeul/ubuntu      arm32v7-16.04-xbb-v3.2             b501ae18580a        27 hours ago        3.23GB
+ilegeul/ubuntu      arm64v8-16.04-xbb-v3.2             db95609ffb69        38 hours ago        3.45GB
+hello-world         latest                             a29f45ccde2a        5 months ago        9.14kB
 ```
 
 To download the build scripts:
@@ -216,22 +215,98 @@ $ bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --all
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
 `screen -r qemu`; to kill the session use `Ctrl-a` `Ctrl-k` and confirm.
 
-About 30 minutes minutes later, the output of the build script
+About 15 minutes minutes later, the output of the build script
 is a set of 4
 archives and their SHA signatures, created in the `deploy` folder:
 
 ```console
 $ cd ~/Work/qemu-arm-*
 $ ls -l deploy
-total 27052
--rw-rw-rw- 1 ilg  staff  7089023 Jul  6 21:57 xpack-qemu-arm-2.8.0-7-linux-x32.tgz
--rw-rw-rw- 1 ilg  staff      103 Jul  6 21:57 xpack-qemu-arm-2.8.0-7-linux-x32.tgz.sha
--rw-rw-rw- 1 ilg  staff  6876990 Jul  6 21:43 xpack-qemu-arm-2.8.0-7-linux-x64.tgz
--rw-rw-rw- 1 ilg  staff      103 Jul  6 21:43 xpack-qemu-arm-2.8.0-7-linux-x64.tgz.sha
--rw-rw-rw- 1 ilg  staff  6734763 Jul  6 22:03 xpack-qemu-arm-2.8.0-7-win32-x32.zip
--rw-rw-rw- 1 ilg  staff      103 Jul  6 22:03 xpack-qemu-arm-2.8.0-7-win32-x32.zip.sha
--rw-rw-rw- 1 ilg  staff  6975708 Jul  6 21:51 xpack-qemu-arm-2.8.0-7-win32-x64.zip
--rw-rw-rw- 1 ilg  staff      103 Jul  6 21:51 xpack-qemu-arm-2.8.0-7-win32-x64.zip.sha
+total 27004
+-rw-rw-r-- 1 ilg ilg 7068360 Jun  9 19:44 xpack-qemu-arm-2.8.0-9-linux-x32.tar.gz
+-rw-rw-r-- 1 ilg ilg     106 Jun  9 19:44 xpack-qemu-arm-2.8.0-9-linux-x32.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 6863654 Jun  9 19:35 xpack-qemu-arm-2.8.0-9-linux-x64.tar.gz
+-rw-rw-r-- 1 ilg ilg     106 Jun  9 19:35 xpack-qemu-arm-2.8.0-9-linux-x64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 6751209 Jun  9 19:48 xpack-qemu-arm-2.8.0-9-win32-x32.zip
+-rw-rw-r-- 1 ilg ilg     103 Jun  9 19:48 xpack-qemu-arm-2.8.0-9-win32-x32.zip.sha
+-rw-rw-r-- 1 ilg ilg 6946026 Jun  9 19:40 xpack-qemu-arm-2.8.0-9-win32-x64.zip
+-rw-rw-r-- 1 ilg ilg     103 Jun  9 19:40 xpack-qemu-arm-2.8.0-9-win32-x64.zip.sha
+```
+
+To copy the files from the build machine to the current development
+machine, either use NFS to mount the entire folder, or open the `deploy`
+folder in a terminal and use `scp`:
+
+```console
+$ cd ~/Work/qemu-arm-*/deploy
+$ scp * ilg@wks:Downloads/xpack-binaries/qemu
+```
+
+#### Build the Arm GNU/Linux binaries
+
+The current platform for Arm GNU/Linux production builds is a
+Debian 9, running on an ROCK Pi 4 SBC with 4 GB of RAM
+and 256 GB of fast M.2 SSD.
+
+```console
+$ ssh xbba
+```
+
+Before starting a multi-platform build, check if Docker is started:
+
+```console
+$ docker info
+```
+
+Before running a build for the first time, it is recommended to preload the
+docker images.
+
+```console
+$ bash ~/Downloads/openocd-xpack.git/scripts/build.sh preload-images
+```
+
+The result should look similar to:
+
+```console
+$ docker images
+REPOSITORY          TAG                                IMAGE ID            CREATED             SIZE
+ilegeul/ubuntu      arm32v7-16.04-xbb-v3.2             b501ae18580a        27 hours ago        3.23GB
+ilegeul/ubuntu      arm64v8-16.04-xbb-v3.2             db95609ffb69        37 hours ago        3.45GB
+hello-world         latest                             a29f45ccde2a        5 months ago        9.14kB
+```
+
+To download the build scripts:
+
+```console
+$ curl -L https://github.com/xpack-dev-tools/qemu-arm-xpack/raw/xpack/scripts/git-clone.sh | bash
+```
+
+Since the build takes a while, use `screen` to isolate the build session
+from unexpected events, like a broken
+network connection or a computer entering sleep.
+
+```console
+$ screen -S qemu
+
+$ sudo rm -rf ~/Work/qemu-arm-*
+$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --all
+```
+
+To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
+`screen -r qemu`; to kill the session use `Ctrl-a` `Ctrl-k` and confirm.
+
+About 35 minutes minutes later, the output of the build script
+is a set of 2
+archives and their SHA signatures, created in the `deploy` folder:
+
+```console
+$ cd ~/Work/qemu-arm-*
+$ ls -l deploy
+total 13076
+-rw-rw-r-- 1 ilg ilg 6811198 Jun  9 16:17 xpack-qemu-arm-2.8.0-9-linux-arm64.tar.gz
+-rw-rw-r-- 1 ilg ilg     108 Jun  9 16:17 xpack-qemu-arm-2.8.0-9-linux-arm64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 6569377 Jun  9 16:33 xpack-qemu-arm-2.8.0-9-linux-arm.tar.gz
+-rw-rw-r-- 1 ilg ilg     106 Jun  9 16:33 xpack-qemu-arm-2.8.0-9-linux-arm.tar.gz.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -301,6 +376,12 @@ Instead of `--all`, you can use any combination of:
 
 ```
 --win32 --win64 --linux32 --linux64
+```
+
+On Arm, instead of `--all`, you can use:
+
+```
+--arm32 --arm64
 ```
 
 #### clean
@@ -536,7 +617,6 @@ The workaround is to manually download the files from an alternate
 location (like
 https://github.com/xpack-dev-tools/files-cache/tree/master/libs),
 place them in the XBB cache (`Work/cache`) and restart the build.
-
 
 ## More build details
 
