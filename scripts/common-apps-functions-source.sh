@@ -287,7 +287,7 @@ function strip_binaries()
       then
         strip "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse" || true
       fi
-      # Do not strip on Linux
+      # Do not strip on Linux, since this interferes with patchelf.
     )
   fi
 }

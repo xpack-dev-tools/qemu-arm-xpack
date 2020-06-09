@@ -909,3 +909,5 @@ function build_libxml2()
     echo "Library libxml2 already installed."
   fi
 }
+
+# -----------------------------------------------------------------------------
