@@ -72,7 +72,9 @@ function build_libpng()
       export CFLAGS
       export CXXFLAGS
       export LDFLAGS
-      
+
+      env | sort
+
       if [ ! -f "config.status" ]
       then 
 
@@ -181,7 +183,9 @@ function build_jpeg()
       export CFLAGS
       export CXXFLAGS
       export LDFLAGS
-      
+
+      env | sort
+
       if [ ! -f "config.status" ]
       then 
 
@@ -288,6 +292,8 @@ function build_sdl2()
       export CFLAGS
       export CXXFLAGS
       export LDFLAGS
+
+      env | sort
 
       if [ "${TARGET_PLATFORM}" == "darwin" ]
       then
@@ -591,7 +597,9 @@ function build_glib()
         export CC=clang
         export CXX=clang++
       fi
-      
+
+      env | sort
+
       if [ ! -f "config.status" ]
       then 
 
@@ -732,7 +740,9 @@ function build_pixman()
       export CFLAGS
       export CXXFLAGS
       export LDFLAGS
-      
+
+      env | sort
+
       if [ ! -f "config.status" ]
       then 
 
@@ -870,7 +880,9 @@ function build_libxml2()
       export CFLAGS
       export CXXFLAGS
       export LDFLAGS
-      
+
+      env | sort
+
       if [ ! -f "config.status" ]
       then 
 
