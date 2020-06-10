@@ -49,5 +49,8 @@ bash ~/Downloads/qemu-arm-xpack.git/tests/scripts/travis-trigger-latest.sh
 ```
 
 For convenience, on macOS this can be invoked from Finder, using
-the `travis-trigger-stable.mac.command` and 
+the `travis-trigger-stable.mac.command` and
 `travis-trigger-latest.mac.command` shortcuts.
+
+The test results are available at
+[Travis](https://travis-ci.org/github/xpack-dev-tools/qemu-arm-xpack/builds/).
