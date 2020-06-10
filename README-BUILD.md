@@ -354,9 +354,9 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ cd ~/Work/qemu-arm-*
 $ ls -l deploy
-total 13760
--rw-r--r--  1 ilg  staff  7037439 Jul  6 20:36 xpack-qemu-arm-2.8.0-7-darwin-x64.tgz
--rw-r--r--  1 ilg  staff      104 Jul  6 20:36 xpack-qemu-arm-2.8.0-7-darwin-x64.tgz.sha
+total 13928
+-rw-r--r--  1 ilg  staff  7126924 Jun 10 11:39 xpack-qemu-arm-2.8.0-9-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff      107 Jun 10 11:39 xpack-qemu-arm-2.8.0-9-darwin-x64.tar.gz.sha
 ```
 
 To copy the files from the build machine to the current development
