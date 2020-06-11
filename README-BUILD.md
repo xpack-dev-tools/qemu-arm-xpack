@@ -321,7 +321,7 @@ $ scp * ilg@wks:Downloads/xpack-binaries/qemu
 #### Build the macOS binary
 
 The current platform for macOS production builds is a macOS 10.10.5
-VirtualBox image running on the same macMini with 16 GB of RAM and a
+running on a MacBookPro with 16 GB of RAM and a
 fast SSD.
 
 ```console
