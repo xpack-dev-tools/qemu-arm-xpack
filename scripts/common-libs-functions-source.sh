@@ -84,17 +84,19 @@ function build_libpng()
 
           bash "${SOURCES_FOLDER_PATH}/${libpng_src_folder_name}/configure" --help
 
-          # --enable-shared needed by sdl2_image on CentOS 64-bit and Ubuntu.
-          # If really needed.
-          # --with-zlib-prefix="${LIBS_INSTALL_FOLDER_PATH}" 
+          config_options=()
+
+          config_options+=("--prefix=${LIBS_INSTALL_FOLDER_PATH}")
+            
+          config_options+=("--build=${BUILD}")
+          config_options+=("--host=${HOST}")
+          config_options+=("--target=${TARGET}")
+
+          # From Arch.
+          config_options+=("--enable-arm-neon=no")
+
           run_verbose bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${libpng_src_folder_name}/configure" \
-            --prefix="${LIBS_INSTALL_FOLDER_PATH}" \
-            \
-            --build=${BUILD} \
-            --host=${HOST} \
-            --target=${TARGET} \
-            \
-            --enable-arm-neon=no \
+            ${config_options[@]}
 
           cp "config.log" "${LOGS_FOLDER_PATH}/${libpng_folder_name}/config-log.txt"
         ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${libpng_folder_name}/configure-output.txt"
@@ -114,6 +116,7 @@ function build_libpng()
         else
           run_verbose make install
         fi
+
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${libpng_folder_name}/make-output.txt"
 
       copy_license \
@@ -193,13 +196,17 @@ function build_jpeg()
 
           bash "${SOURCES_FOLDER_PATH}/${jpeg_src_folder_name}/configure" --help
 
+          config_options=()
+
+          config_options+=("--prefix=${LIBS_INSTALL_FOLDER_PATH}")
+            
+          config_options+=("--build=${BUILD}")
+          config_options+=("--host=${HOST}")
+          config_options+=("--target=${TARGET}")
+
           # --enable-shared needed by sdl2_image on CentOS 64-bit and Ubuntu.
           run_verbose bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${jpeg_src_folder_name}/configure" \
-            --prefix="${LIBS_INSTALL_FOLDER_PATH}" \
-            \
-            --build=${BUILD} \
-            --host=${HOST} \
-            --target=${TARGET} \
+            ${config_options[@]}
 
           cp "config.log" "${LOGS_FOLDER_PATH}/${jpeg_folder_name}/config-log.txt"
         ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${jpeg_folder_name}/configure-output.txt"
@@ -311,37 +318,35 @@ function build_sdl2()
           echo
           echo "Running sdl2 configure..."
 
-          if [ "${TARGET_PLATFORM}" == "win32" ]
-          then
-            OPENGL=""
-            X11=""
-          elif [ "${TARGET_PLATFORM}" == "linux" ]
-          then
-            OPENGL="--enable-video-opengl"
-            X11="--enable-video-x11"
-          elif [ "${TARGET_PLATFORM}" == "darwin" ]
-          then
-            OPENGL=""
-            X11="--without-x"
-          fi
-
           bash "${SOURCES_FOLDER_PATH}/${sdl2_src_folder_name}/configure" --help
 
-          # --enable-shared required for building sdl2_image showimage
-          # --dsable-shared fails on macOS
+          config_options=()
+
+          config_options+=("--prefix=${LIBS_INSTALL_FOLDER_PATH}")
+            
+          config_options+=("--build=${BUILD}")
+          config_options+=("--host=${HOST}")
+          config_options+=("--target=${TARGET}")
+
+          config_options+=("--enable-video")
+          config_options+=("--disable-audio")
+          config_options+=("--disable-joystick")
+          config_options+=("--disable-haptic")
+
+          if [ "${TARGET_PLATFORM}" == "win32" ]
+          then
+            :
+          elif [ "${TARGET_PLATFORM}" == "linux" ]
+          then
+            config_options+=("--enable-video-opengl")
+            config_options+=("--enable-video-x11")
+          elif [ "${TARGET_PLATFORM}" == "darwin" ]
+          then
+            config_options+=("--without-x")
+          fi
+
           run_verbose bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${sdl2_src_folder_name}/configure" \
-            --prefix="${LIBS_INSTALL_FOLDER_PATH}" \
-            \
-            --build=${BUILD} \
-            --host=${HOST} \
-            --target=${TARGET} \
-            \
-            --enable-video \
-            --disable-audio \
-            --disable-joystick \
-            --disable-haptic \
-            ${OPENGL} \
-            ${X11} \
+            ${config_options[@]}
 
           cp "config.log" "${LOGS_FOLDER_PATH}/${sdl2_folder_name}/config-log.txt"
         ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${sdl2_folder_name}/configure-output.txt"
@@ -446,48 +451,43 @@ function build_sdl2_image()
           echo
           echo "Running sdl2-image configure..."
 
-          if [ "${TARGET_PLATFORM}" == "win32" ]
-          then
-            IMAGEIO=""
-          elif [ "${TARGET_PLATFORM}" == "linux" ]
-          then
-            IMAGEIO=""
-          elif [ "${TARGET_PLATFORM}" == "darwin" ]
-          then
-            IMAGEIO="--enable-imageio"
-          fi
-
           bash "${SOURCES_FOLDER_PATH}/${sdl2_image_src_folder_name}/configure" --help
 
-          # --enable-shared required for building showimage
-          # --disable-shared failes on macOS
+          config_options=()
+
+          config_options+=("--prefix=${LIBS_INSTALL_FOLDER_PATH}")
+            
+          config_options+=("--build=${BUILD}")
+          config_options+=("--host=${HOST}")
+          config_options+=("--target=${TARGET}")
+
+          config_options+=("--enable-jpg")
+          config_options+=("--enable-png")
+
+          config_options+=("--disable-sdltest")
+          config_options+=("--disable-jpg-shared")
+          config_options+=("--disable-png-shared")
+          config_options+=("--disable-bmp")
+          config_options+=("--disable-gif")
+          config_options+=("--disable-lbm")
+          config_options+=("--disable-pcx")
+          config_options+=("--disable-pnm")
+          config_options+=("--disable-tga")
+          config_options+=("--disable-tif")
+          config_options+=("--disable-tif-shared")
+          config_options+=("--disable-xcf")
+          config_options+=("--disable-xpm")
+          config_options+=("--disable-xv")
+          config_options+=("--disable-webp")
+          config_options+=("--disable-webp-shared")
+
+          if [ "${TARGET_PLATFORM}" == "darwin" ]
+          then
+            config_options+=("--enable-imageio")
+          fi
+
           run_verbose bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${sdl2_image_src_folder_name}/configure" \
-            --prefix="${LIBS_INSTALL_FOLDER_PATH}" \
-            \
-            --build=${BUILD} \
-            --host=${HOST} \
-            --target=${TARGET} \
-            \
-            --disable-sdltest \
-            ${IMAGEIO} \
-            \
-            --enable-jpg \
-            --disable-jpg-shared \
-            --enable-png \
-            --disable-png-shared \
-            --disable-bmp \
-            --disable-gif \
-            --disable-lbm \
-            --disable-pcx \
-            --disable-pnm \
-            --disable-tga \
-            --disable-tif \
-            --disable-tif-shared \
-            --disable-xcf \
-            --disable-xpm \
-            --disable-xv \
-            --disable-webp \
-            --disable-webp-shared
+            ${config_options[@]}
 
           cp "config.log" "${LOGS_FOLDER_PATH}/${sdl2_image_folder_name}/config-log.txt"
         ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${sdl2_image_folder_name}/configure-output.txt"
@@ -598,33 +598,34 @@ function build_glib()
 
           bash "${SOURCES_FOLDER_PATH}/${glib_src_folder_name}/configure" --help
 
-          # --disable-shared fails on macOS
+          config_options=()
+
+          config_options+=("--prefix=${LIBS_INSTALL_FOLDER_PATH}")
+            
+          config_options+=("--build=${BUILD}")
+          config_options+=("--host=${HOST}")
+          config_options+=("--target=${TARGET}")
+
           # --with-libiconv=gnu required on Linux
-          # --disable-static required for Windows
-          # --enable-shared required for Linux (can not be used when making a PIE object; recompile with -fPIC) 
-          # configure: error: Can not build both shared and static at the same time on Windows.
+          config_options+=("--with-libiconv=gnu")
+          config_options+=("--without-pcre")
+
+          config_options+=("--disable-selinux")
+          config_options+=("--disable-fam")
+          config_options+=("--disable-xattr")
+          config_options+=("--disable-libelf")
+          config_options+=("--disable-libmount")
+          config_options+=("--disable-dtrace")
+          config_options+=("--disable-systemtap")
+          config_options+=("--disable-coverage")
+          config_options+=("--disable-Bsymbolic")
+          config_options+=("--disable-znodelete")
+          config_options+=("--disable-compile-warnings")
+          config_options+=("--disable-installed-tests")
+          config_options+=("--disable-always-build-tests")
+
           run_verbose bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${glib_src_folder_name}/configure" \
-            --prefix="${LIBS_INSTALL_FOLDER_PATH}" \
-            \
-            --build=${BUILD} \
-            --host=${HOST} \
-            --target=${TARGET} \
-            \
-            --with-libiconv=gnu \
-            --without-pcre \
-            --disable-selinux \
-            --disable-fam \
-            --disable-xattr \
-            --disable-libelf \
-            --disable-libmount \
-            --disable-dtrace \
-            --disable-systemtap \
-            --disable-coverage \
-            --disable-Bsymbolic \
-            --disable-znodelete \
-            --disable-compile-warnings \
-            --disable-installed-tests \
-            --disable-always-build-tests
+            ${config_options[@]}
 
           # Disable SPLICE, it fails on CentOS.
           local gsed_path=$(which gsed)
@@ -645,9 +646,7 @@ function build_glib()
         echo "Running glib make..."
 
         # Build.
-        # Parallel builds may fail.
         run_verbose make -j ${JOBS}
-        # make
 
         if [ "${WITH_STRIP}" == "y" ]
         then
@@ -738,28 +737,32 @@ function build_pixman()
 
           bash "${SOURCES_FOLDER_PATH}/${pixman_src_folder_name}/configure" --help
 
-          # --disable-shared fails on macOS
+          config_options=()
+
+          config_options+=("--prefix=${LIBS_INSTALL_FOLDER_PATH}")
+            
+          config_options+=("--build=${BUILD}")
+          config_options+=("--host=${HOST}")
+          config_options+=("--target=${TARGET}")
+
+          config_options+=("--with-gnu-ld")
+
           # The numerous disables were inspired from Arch, after the initial 
           # failed on armhf.
+          config_options+=("--disable-static-testprogs")
+          config_options+=("--disable-loongson-mmi")
+          config_options+=("--disable-vmx")
+          config_options+=("--disable-arm-simd")
+          config_options+=("--disable-arm-neon")
+          config_options+=("--disable-arm-iwmmxt")
+          config_options+=("--disable-mmx")
+          config_options+=("--disable-sse2")
+          config_options+=("--disable-ssse3")
+          config_options+=("--disable-mips-dspr2")
+          config_options+=("--disable-gtk")
+
           run_verbose bash ${DEBUG} "${SOURCES_FOLDER_PATH}/${pixman_src_folder_name}/configure" \
-            --prefix="${LIBS_INSTALL_FOLDER_PATH}" \
-            \
-            --build=${BUILD} \
-            --host=${HOST} \
-            --target=${TARGET} \
-            \
-            --with-gnu-ld \
-            --disable-static-testprogs \
-            --disable-loongson-mmi \
-            --disable-vmx \
-            --disable-arm-simd \
-            --disable-arm-neon \
-            --disable-arm-iwmmxt \
-            --disable-mmx \
-            --disable-sse2 \
-            --disable-ssse3 \
-            --disable-mips-dspr2 \
-            --disable-gtk \
+            ${config_options[@]}
 
           cp "config.log" "${LOGS_FOLDER_PATH}/${pixman_folder_name}/config-log.txt"
         ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${pixman_folder_name}/configure-output.txt"
@@ -873,16 +876,20 @@ function build_libxml2()
           echo
           echo "Running libxml2 configure..."
 
-          bash "./configure" --help
+          bash "configure" --help
 
-          run_verbose bash ${DEBUG} "./configure" \
-            --prefix="${LIBS_INSTALL_FOLDER_PATH}" \
-            \
-            --build=${BUILD} \
-            --host=${HOST} \
-            --target=${TARGET} \
-            \
-            --without-python
+          config_options=()
+
+          config_options+=("--prefix=${LIBS_INSTALL_FOLDER_PATH}")
+            
+          config_options+=("--build=${BUILD}")
+          config_options+=("--host=${HOST}")
+          config_options+=("--target=${TARGET}")
+
+          config_options+=("--without-python")
+
+          run_verbose bash ${DEBUG} "configure" \
+            ${config_options[@]}
 
           cp "config.log" "${LOGS_FOLDER_PATH}/${libxml2_folder_name}/config-log.txt"
         ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${libxml2_folder_name}/configure-output.txt"
