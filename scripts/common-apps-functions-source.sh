@@ -55,7 +55,6 @@ function build_qemu()
     xbb_activate
     xbb_activate_installed_dev
 
-
     CPPFLAGS="${XBB_CPPFLAGS}"
     if [ "${IS_DEBUG}" == "y" ]
     then 
@@ -76,13 +75,6 @@ function build_qemu()
     export CXXFLAGS
     export LDFLAGS
 
-    if [ "${TARGET_PLATFORM}" == "win32" ]
-    then
-      CROSS="--cross-prefix=${CROSS_COMPILE_PREFIX}-"
-    else
-      CROSS=""
-    fi
-
     (
       if [ ! -f "config.status" ]
       then
@@ -99,41 +91,50 @@ function build_qemu()
           --python=python2 \
           --help
 
-        if [ "${IS_DEBUG}" == "y" ]
-        then 
-          ENABLE_DEBUG="--enable-debug"
-        else
-          ENABLE_DEBUG=""
+        config_options=()
+
+        config_options+=("--prefix=${APP_PREFIX}")
+          
+        if [ "${TARGET_PLATFORM}" == "win32" ]
+        then
+          config_options+=("--cross-prefix=${CROSS_COMPILE_PREFIX}-")
         fi
 
-        # --static fails
-        # ERROR: "gcc-7" cannot build an executable (is your linker broken?)
+        config_options+=("--bindir=${APP_PREFIX}/bin")
+        config_options+=("--docdir=${APP_PREFIX_DOC}")
+        config_options+=("--mandir=${APP_PREFIX_DOC}/man")
+          
+        config_options+=("--cc=${CC}")
+        config_options+=("--cxx=${CXX}")
+
+        config_options+=("--extra-cflags=${CFLAGS} ${CPPFLAGS}")
+        config_options+=("--extra-ldflags=${LDFLAGS}")
+
+        config_options+=("--target-list=gnuarmeclipse-softmmu")
+      
+        config_options+=("--with-sdlabi=2.0")
+        config_options+=("--python=python2")
+
+        if [ "${IS_DEBUG}" == "y" ]
+        then 
+          config_options+=("--enable-debug")
+        fi
+
+        config_options+=("--disable-werror")
+
+        config_options+=("--disable-linux-aio")
+        config_options+=("--disable-libnfs")
+        config_options+=("--disable-snappy")
+        config_options+=("--disable-libssh2")
+        config_options+=("--disable-gnutls")
+        config_options+=("--disable-nettle")
+        config_options+=("--disable-lzo")
+        config_options+=("--disable-seccomp")
+        config_options+=("--disable-bluez")
+        config_options+=("--disable-gcrypt")
+
         run_verbose bash ${DEBUG} "${WORK_FOLDER_PATH}/${QEMU_SRC_FOLDER_NAME}/configure" \
-          --prefix="${APP_PREFIX}" \
-          ${CROSS} \
-          --extra-cflags="${CFLAGS} ${CPPFLAGS}" \
-          --extra-ldflags="${LDFLAGS}" \
-          --disable-werror \
-          --target-list="gnuarmeclipse-softmmu" \
-          \
-          ${ENABLE_DEBUG} \
-          --disable-linux-aio \
-          --disable-libnfs \
-          --disable-snappy \
-          --disable-libssh2 \
-          --disable-gnutls \
-          --disable-nettle \
-          --disable-lzo \
-          --disable-seccomp \
-          --disable-bluez \
-          --disable-gcrypt \
-          \
-          --bindir="${APP_PREFIX}/bin" \
-          --docdir="${APP_PREFIX_DOC}" \
-          --mandir="${APP_PREFIX_DOC}/man" \
-          \
-          --with-sdlabi="2.0" \
-          --python=python2 \
+          ${config_options[@]}
 
       fi
       cp "config.log" "${LOGS_FOLDER_PATH}/configure-qemu-log.txt"
@@ -143,9 +144,8 @@ function build_qemu()
       echo
       echo "Running qemu make..."
 
-      # Parallel builds may fail.
+      # Build.
       run_verbose make -j ${JOBS}
-      # make
 
       run_verbose make install
       run_verbose make install-gme
