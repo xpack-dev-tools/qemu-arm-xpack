@@ -189,10 +189,10 @@ The result should look similar to:
 
 ```console
 $ docker images
-REPOSITORY          TAG                                IMAGE ID            CREATED             SIZE
-ilegeul/ubuntu      arm32v7-16.04-xbb-v3.2             b501ae18580a        27 hours ago        3.23GB
-ilegeul/ubuntu      arm64v8-16.04-xbb-v3.2             db95609ffb69        38 hours ago        3.45GB
-hello-world         latest                             a29f45ccde2a        5 months ago        9.14kB
+REPOSITORY          TAG                              IMAGE ID            CREATED             SIZE
+ilegeul/ubuntu      i386-12.04-xbb-v3.2              fadc6405b606        2 days ago          4.55GB
+ilegeul/ubuntu      amd64-12.04-xbb-v3.2             3aba264620ea        2 days ago          4.98GB
+hello-world         latest                           bf756fb1ae65        5 months ago        13.3kB
 ```
 
 To download the build scripts:
@@ -354,9 +354,9 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ cd ~/Work/qemu-arm-*
 $ ls -l deploy
-total 13760
--rw-r--r--  1 ilg  staff  7037439 Jul  6 20:36 xpack-qemu-arm-2.8.0-7-darwin-x64.tgz
--rw-r--r--  1 ilg  staff      104 Jul  6 20:36 xpack-qemu-arm-2.8.0-7-darwin-x64.tgz.sha
+total 13928
+-rw-r--r--  1 ilg  staff  7126924 Jun 10 11:39 xpack-qemu-arm-2.8.0-9-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff      107 Jun 10 11:39 xpack-qemu-arm-2.8.0-9-darwin-x64.tar.gz.sha
 ```
 
 To copy the files from the build machine to the current development

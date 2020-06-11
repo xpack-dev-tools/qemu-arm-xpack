@@ -72,7 +72,9 @@ function build_libpng()
       export CFLAGS
       export CXXFLAGS
       export LDFLAGS
-      
+
+      env | sort
+
       if [ ! -f "config.status" ]
       then 
 
@@ -179,7 +181,9 @@ function build_jpeg()
       export CFLAGS
       export CXXFLAGS
       export LDFLAGS
-      
+
+      env | sort
+
       if [ ! -f "config.status" ]
       then 
 
@@ -283,14 +287,22 @@ function build_sdl2()
       export CFLAGS
       export CXXFLAGS
       export LDFLAGS
-    
+
+      env | sort
+
       if [ "${TARGET_PLATFORM}" == "darwin" ]
       then
-        # GNU GCC-7.4 fails with 
-        # gcc-7: error: /Users/ilg/Work/qemu-2.8.0-5/sources/SDL2-2.0.9/src/filesystem/cocoa/SDL_sysfilesystem.m: Objective-C compiler not installed on this system
+        # GNU GCC fails with 
+        #  CC     build/SDL_syspower.lo
+        # In file included from //System/Library/Frameworks/CoreFoundation.framework/Headers/CFPropertyList.h:13,
+        #                 from //System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h:55,
+        #                 from /Users/ilg/Work/qemu-arm-2.8.0-9/sources/SDL2-2.0.9/src/power/macosx/SDL_syspower.c:26:
+        # //System/Library/Frameworks/CoreFoundation.framework/Headers/CFStream.h:249:59: error: unknown type name ‘dispatch_queue_t’
         export CC=clang
         export CXX=clang++
       fi
+
+      env | sort
 
       if [ ! -f "config.status" ]
       then 
@@ -405,6 +417,7 @@ function build_sdl2_image()
       CPPFLAGS="${XBB_CPPFLAGS}"
       CFLAGS="${XBB_CFLAGS_NO_W}"      
       CXXFLAGS="${XBB_CXXFLAGS_NO_W}"
+      OBJCFLAGS="${XBB_CFLAGS_NO_W}"
       LDFLAGS="${XBB_LDFLAGS_LIB}"
       if [ "${IS_DEVELOP}" == "y" ]
       then
@@ -414,9 +427,17 @@ function build_sdl2_image()
       export CPPFLAGS
       export CFLAGS
       export CXXFLAGS
+      export OBJCFLAGS
       export LDFLAGS
 
+      if [ "${TARGET_PLATFORM}" == "darwin" ]
+      then
+        export OBJC=clang
+      fi
+
       # export LIBS="-lpng16 -ljpeg"
+
+      env | sort
 
       if [ ! -f "config.status" ]
       then 
@@ -565,7 +586,9 @@ function build_glib()
         export CC=clang
         export CXX=clang++
       fi
-      
+
+      env | sort
+
       if [ ! -f "config.status" ]
       then 
 
@@ -703,7 +726,9 @@ function build_pixman()
       export CFLAGS
       export CXXFLAGS
       export LDFLAGS
-      
+
+      env | sort
+
       if [ ! -f "config.status" ]
       then 
 
@@ -838,7 +863,9 @@ function build_libxml2()
       export CFLAGS
       export CXXFLAGS
       export LDFLAGS
-      
+
+      env | sort
+
       if [ ! -f "config.status" ]
       then 
 

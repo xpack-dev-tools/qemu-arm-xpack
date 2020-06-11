@@ -40,12 +40,17 @@ rm ~/Work/cache/xpack-qemu-arm-*
 
 ## Start the Travis test
 
-The multi-platform test runs on Travis CI; it is configured to not fire on
+The multi-platform tests runs on Travis CI; it is configured to not fire on
 git actions, but only via a manual POST to the Travis API.
 
 ```bash
-bash ~/Downloads/qemu-arm-xpack.git/tests/scripts/travis-trigger.sh
+bash ~/Downloads/qemu-arm-xpack.git/tests/scripts/travis-trigger-stable.sh
+bash ~/Downloads/qemu-arm-xpack.git/tests/scripts/travis-trigger-latest.sh
 ```
 
-For convenience, on macOS this can be invoked from Finder, using
-the `travis-trigger.mac.command` shortcut.
+For convenience, on macOS these can be invoked from Finder, using
+the `travis-trigger-stable.mac.command` and
+`travis-trigger-latest.mac.command` shortcuts.
+
+The tests results are available at
+[Travis](https://travis-ci.org/github/xpack-dev-tools/qemu-arm-xpack/builds/).

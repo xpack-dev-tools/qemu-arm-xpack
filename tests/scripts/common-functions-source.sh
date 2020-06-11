@@ -11,17 +11,17 @@
 # Common functions used in various tests.
 #
 # Requires 
-# - app_absolute_folder_path
-# - test_absolute_folder_path
+# - app_folder_path
+# - test_folder_path
 # - archive_platform (win32|linux|darwin)
 
 # -----------------------------------------------------------------------------
 
 function run_tests()
 {
-  show_libs "${app_absolute_folder_path}/bin/qemu-system-gnuarmeclipse"
+  show_libs "${app_folder_path}/bin/qemu-system-gnuarmeclipse"
 
-  run_app "${app_absolute_folder_path}/bin/qemu-system-gnuarmeclipse" --version
+  run_app "${app_folder_path}/bin/qemu-system-gnuarmeclipse" --version
 
   # TODO: add more, if possible.
 }
