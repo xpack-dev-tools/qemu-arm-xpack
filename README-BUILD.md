@@ -348,7 +348,7 @@ $ caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --osx
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
 `screen -r qemu`; to kill the session use `Ctrl-a` `Ctrl-k` and confirm.
 
-About 30 minutes later, the output of the build script is a compressed
+About 9 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
