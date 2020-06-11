@@ -215,7 +215,7 @@ $ bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --all
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
 `screen -r qemu`; to kill the session use `Ctrl-a` `Ctrl-k` and confirm.
 
-About 15 minutes minutes later, the output of the build script
+About 17 minutes minutes later, the output of the build script
 is a set of 4
 archives and their SHA signatures, created in the `deploy` folder:
 
