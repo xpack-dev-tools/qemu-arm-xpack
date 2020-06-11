@@ -92,8 +92,6 @@ function build_libpng()
             --host=${HOST} \
             --target=${TARGET} \
             \
-            --enable-shared \
-            --disable-static \
             --enable-arm-neon=no \
 
           cp "config.log" "${LOGS_FOLDER_PATH}/${libpng_folder_name}/config-log.txt"
@@ -198,9 +196,6 @@ function build_jpeg()
             --build=${BUILD} \
             --host=${HOST} \
             --target=${TARGET} \
-            \
-            --enable-shared \
-            --disable-static
 
           cp "config.log" "${LOGS_FOLDER_PATH}/${jpeg_folder_name}/config-log.txt"
         ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${jpeg_folder_name}/configure-output.txt"
@@ -329,9 +324,6 @@ function build_sdl2()
             --host=${HOST} \
             --target=${TARGET} \
             \
-            --enable-shared \
-            --disable-static \
-            \
             --enable-video \
             --disable-audio \
             --disable-joystick \
@@ -454,9 +446,6 @@ function build_sdl2_image()
             --build=${BUILD} \
             --host=${HOST} \
             --target=${TARGET} \
-            \
-            --enable-shared \
-            --disable-static \
             \
             --disable-sdltest \
             ${IMAGEIO} \
@@ -598,9 +587,6 @@ function build_glib()
             --host=${HOST} \
             --target=${TARGET} \
             \
-            --enable-shared \
-            --disable-static \
-            \
             --with-libiconv=gnu \
             --without-pcre \
             --disable-selinux \
@@ -737,9 +723,6 @@ function build_pixman()
             --host=${HOST} \
             --target=${TARGET} \
             \
-            --enable-shared \
-            --disable-static \
-            \
             --with-gnu-ld \
             --disable-static-testprogs \
             --disable-loongson-mmi \
@@ -872,8 +855,6 @@ function build_libxml2()
             --host=${HOST} \
             --target=${TARGET} \
             \
-            --enable-shared \
-            --disable-static \
             --without-python
 
           cp "config.log" "${LOGS_FOLDER_PATH}/${libxml2_folder_name}/config-log.txt"
