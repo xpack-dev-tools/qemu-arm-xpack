@@ -8,7 +8,7 @@ build and publish the
 
 The build scripts use the
 [xPack Build Box (XBB)](https://github.com/xpack/xpack-build-box),
-a set of elaborate build environments based on GCC 7.4 (Docker containers
+a set of elaborate build environments based on recent GCC (Docker containers
 for GNU/Linux and Windows or a custom folder for MacOS).
 
 There are two types of builds:
@@ -60,7 +60,14 @@ $ git clone --recurse-submodules \
 > Note: the repository uses submodules; for a successful build it is
 > mandatory to recurse the submodules.
 
-To use the `xpack-develop` branch of the build scripts, use:
+For development purposes, there is a shortcut to clone the `xpack-develop`
+branch:
+
+```console
+$ curl -L https://github.com/xpack-dev-tools/qemu-arm-xpack/raw/xpack/scripts/git-clone-develop.sh | bash
+```
+
+which is a shortcut for:
 
 ```console
 $ rm -rf ~/Downloads/qemu-arm-xpack.git
@@ -182,7 +189,7 @@ Before running a build for the first time, it is recommended to preload the
 docker images.
 
 ```console
-$ bash ~/Downloads/openocd-xpack.git/scripts/build.sh preload-images
+$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh preload-images
 ```
 
 The result should look similar to:
@@ -215,7 +222,7 @@ $ bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --all
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
 `screen -r qemu`; to kill the session use `Ctrl-a` `Ctrl-k` and confirm.
 
-About 17 minutes minutes later, the output of the build script
+About 17 minutes later, the output of the build script
 is a set of 4
 archives and their SHA signatures, created in the `deploy` folder:
 
@@ -262,7 +269,7 @@ Before running a build for the first time, it is recommended to preload the
 docker images.
 
 ```console
-$ bash ~/Downloads/openocd-xpack.git/scripts/build.sh preload-images
+$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh preload-images
 ```
 
 The result should look similar to:
@@ -295,7 +302,7 @@ $ bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --all
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
 `screen -r qemu`; to kill the session use `Ctrl-a` `Ctrl-k` and confirm.
 
-About 35 minutes minutes later, the output of the build script
+About 35 minutes later, the output of the build script
 is a set of 2
 archives and their SHA signatures, created in the `deploy` folder:
 
