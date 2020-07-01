@@ -123,8 +123,6 @@ else
 
   # ----- Build the GNU/Linux 64-bit distribution. ----------------------------
 
-  linux_distribution="centos"
-  
   if [ "${DO_BUILD_LINUX64}" == "y" ]
   then
     host_build_target "Creating the GNU/Linux 64-bit distribution..." \
