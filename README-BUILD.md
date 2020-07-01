@@ -309,11 +309,11 @@ archives and their SHA signatures, created in the `deploy` folder:
 ```console
 $ cd ~/Work/qemu-arm-*
 $ ls -l deploy
-total 13076
--rw-rw-r-- 1 ilg ilg 6811198 Jun  9 16:17 xpack-qemu-arm-2.8.0-9-linux-arm64.tar.gz
--rw-rw-r-- 1 ilg ilg     108 Jun  9 16:17 xpack-qemu-arm-2.8.0-9-linux-arm64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 6569377 Jun  9 16:33 xpack-qemu-arm-2.8.0-9-linux-arm.tar.gz
--rw-rw-r-- 1 ilg ilg     106 Jun  9 16:33 xpack-qemu-arm-2.8.0-9-linux-arm.tar.gz.sha
+total 13084
+-rw-rw-r-- 1 ilg ilg 6814501 Jul  1 10:28 xpack-qemu-arm-2.8.0-9-linux-arm64.tar.gz
+-rw-rw-r-- 1 ilg ilg     108 Jul  1 10:28 xpack-qemu-arm-2.8.0-9-linux-arm64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 6572398 Jul  1 10:46 xpack-qemu-arm-2.8.0-9-linux-arm.tar.gz
+-rw-rw-r-- 1 ilg ilg     106 Jul  1 10:46 xpack-qemu-arm-2.8.0-9-linux-arm.tar.gz.sha
 ```
 
 To copy the files from the build machine to the current development
