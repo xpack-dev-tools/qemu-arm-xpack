@@ -121,8 +121,10 @@ else
     fi
   fi
 
-  # ----- Build the GNU/Linux 64-bit distribution. ---------------------------
+  # ----- Build the GNU/Linux 64-bit distribution. ----------------------------
 
+  linux_distribution="centos"
+  
   if [ "${DO_BUILD_LINUX64}" == "y" ]
   then
     host_build_target "Creating the GNU/Linux 64-bit distribution..." \
@@ -130,13 +132,14 @@ else
       --env-file "${ENV_FILE}" \
       --target-platform "linux" \
       --target-arch "x64" \
+      --target-machine "x86_64" \
       --target-bits 64 \
       --docker-image "${docker_linux64_image}" \
       -- \
       ${rest[@]-}
   fi
 
-  # ----- Build the Windows 64-bit distribution. -----------------------------
+  # ----- Build the Windows 64-bit distribution. ------------------------------
 
   if [ "${DO_BUILD_WIN64}" == "y" ]
   then
@@ -145,13 +148,14 @@ else
       --env-file "${ENV_FILE}" \
       --target-platform "win32" \
       --target-arch "x64" \
+      --target-machine "x86_64" \
       --target-bits 64 \
       --docker-image "${docker_linux64_image}" \
       -- \
       ${rest[@]-}
   fi
 
-  # ----- Build the GNU/Linux 32-bit distribution. ---------------------------
+  # ----- Build the GNU/Linux 32-bit distribution. ----------------------------
 
   if [ "${DO_BUILD_LINUX32}" == "y" ]
   then
@@ -160,13 +164,14 @@ else
       --env-file "${ENV_FILE}" \
       --target-platform "linux" \
       --target-arch "x32" \
+      --target-machine "i386" \
       --target-bits 32 \
       --docker-image "${docker_linux32_image}" \
       -- \
       ${rest[@]-}
   fi
 
-  # ----- Build the Windows 32-bit distribution. -----------------------------
+  # ----- Build the Windows 32-bit distribution. ------------------------------
 
   # Since the actual container is a 32-bit, use the debian32 binaries.
   if [ "${DO_BUILD_WIN32}" == "y" ]
@@ -176,13 +181,14 @@ else
       --env-file "${ENV_FILE}" \
       --target-platform "win32" \
       --target-arch "x32" \
+      --target-machine "i386" \
       --target-bits 32 \
       --docker-image "${docker_linux32_image}" \
       -- \
       ${rest[@]-}
   fi
 
-  # ----- Build the GNU/Linux Arm 64-bit distribution. ---------------------------
+  # ----- Build the GNU/Linux Arm 64-bit distribution. ------------------------
 
   if [ "${DO_BUILD_LINUX_ARM64}" == "y" ]
   then
@@ -191,13 +197,14 @@ else
       --env-file "${ENV_FILE}" \
       --target-platform "linux" \
       --target-arch "arm64" \
+      --target-machine "aarch64" \
       --target-bits 64 \
       --docker-image "${docker_linux_arm64_image}" \
       -- \
       ${rest[@]-}
   fi
 
-  # ----- Build the GNU/Linux Arm 32-bit distribution. ---------------------------
+  # ----- Build the GNU/Linux Arm 32-bit distribution. ------------------------
 
   if [ "${DO_BUILD_LINUX_ARM32}" == "y" ]
   then
@@ -206,6 +213,7 @@ else
       --env-file "${ENV_FILE}" \
       --target-platform "linux" \
       --target-arch "arm" \
+      --target-machine "armhf" \
       --target-bits 32 \
       --docker-image "${docker_linux_arm32_image}" \
       -- \
