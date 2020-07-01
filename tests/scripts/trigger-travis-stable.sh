@@ -52,7 +52,8 @@ message="Test xPack QEMU Arm on stable platforms"
 branch="xpack-develop"
 
 # base_url="https://github.com/xpack-dev-tools/pre-releases/releases/download/experimental/"
-base_url="https://github.com/xpack-dev-tools/pre-releases/releases/download/test/"
+# base_url="https://github.com/xpack-dev-tools/pre-releases/releases/download/test/"
+base_url="https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/download/v2.8.0-9/"
 
 data_file_path="$(mktemp)"
 
