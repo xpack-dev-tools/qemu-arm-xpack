@@ -229,15 +229,15 @@ archives and their SHA signatures, created in the `deploy` folder:
 ```console
 $ cd ~/Work/qemu-arm-*
 $ ls -l deploy
-total 27004
--rw-rw-r-- 1 ilg ilg 7068360 Jun  9 19:44 xpack-qemu-arm-2.8.0-9-linux-x32.tar.gz
--rw-rw-r-- 1 ilg ilg     106 Jun  9 19:44 xpack-qemu-arm-2.8.0-9-linux-x32.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 6863654 Jun  9 19:35 xpack-qemu-arm-2.8.0-9-linux-x64.tar.gz
--rw-rw-r-- 1 ilg ilg     106 Jun  9 19:35 xpack-qemu-arm-2.8.0-9-linux-x64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 6751209 Jun  9 19:48 xpack-qemu-arm-2.8.0-9-win32-x32.zip
--rw-rw-r-- 1 ilg ilg     103 Jun  9 19:48 xpack-qemu-arm-2.8.0-9-win32-x32.zip.sha
--rw-rw-r-- 1 ilg ilg 6946026 Jun  9 19:40 xpack-qemu-arm-2.8.0-9-win32-x64.zip
--rw-rw-r-- 1 ilg ilg     103 Jun  9 19:40 xpack-qemu-arm-2.8.0-9-win32-x64.zip.sha
+total 27012
+-rw-rw-r-- 1 ilg ilg 7071677 Jul  1 12:45 xpack-qemu-arm-2.8.0-9-linux-x32.tar.gz
+-rw-rw-r-- 1 ilg ilg     106 Jul  1 12:45 xpack-qemu-arm-2.8.0-9-linux-x32.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 6865769 Jul  1 12:36 xpack-qemu-arm-2.8.0-9-linux-x64.tar.gz
+-rw-rw-r-- 1 ilg ilg     106 Jul  1 12:36 xpack-qemu-arm-2.8.0-9-linux-x64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 6751744 Jul  1 12:50 xpack-qemu-arm-2.8.0-9-win32-x32.zip
+-rw-rw-r-- 1 ilg ilg     103 Jul  1 12:50 xpack-qemu-arm-2.8.0-9-win32-x32.zip.sha
+-rw-rw-r-- 1 ilg ilg 6946611 Jul  1 12:41 xpack-qemu-arm-2.8.0-9-win32-x64.zip
+-rw-rw-r-- 1 ilg ilg     103 Jul  1 12:41 xpack-qemu-arm-2.8.0-9-win32-x64.zip.sha
 ```
 
 To copy the files from the build machine to the current development
