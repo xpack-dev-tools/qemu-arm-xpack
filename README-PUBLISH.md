@@ -150,7 +150,8 @@ $ cat *.sha
   and select the latest release
 - update the `baseUrl:` with the file URLs (including the tag/version)
 - from the release, copy the SHA & file names
-- commit all changes, use a message like `package.json: update urls for 2.8.0-9 release` (without `v`)
+- commit all changes, use a message like
+`package.json: update urls for 2.8.0-9 release` (without `v`)
 - check the latest commits `npm run git-log`
 - update `CHANGELOG.md`; commit with a message like
   _CHANGELOG: prepare npm v2.8.0-9.1_
@@ -158,7 +159,8 @@ $ cat *.sha
   GitHub release; the fifth number is the npm specific version
 - `npm pack` and check the content of the archive
 - push all changes to GitHub
-- `npm publish --tag next` (use `--access public` when publishing for the first time)
+- `npm publish --tag next` (use `--access public` when publishing
+for the first time)
 
 When the release is considered stable, promote it as `latest`:
 
@@ -172,6 +174,39 @@ Install the binaries on all platforms.
 
 ```console
 $ xpm install --global @xpack-dev-tools/qemu-arm@next
+```
+
+On platforms where Eclipse is available, use the
+`arm-f4b-fs-debug-qemu` debug luncher available in the `arm-f4b-fs` Eclipse
+project available in the `xpack-dev-tools/arm-none-eabi-gcc-xpack` GitHub
+project.
+
+On Arm platforms, where Eclipse is not yet available, run the
+tests by manually starting the
+blinky test on the emulated STM32F4DISCOVERY board.
+
+```
+~/opt/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-9.1/.content/bin/qemu-system-gnuarmeclipse --version
+
+mkdir -p ~/Downloads
+(cd ~/Downloads; curl -L --fail -o f407-disc-blink-tutorial.elf \
+https://github.com/xpack-dev-tools/qemu-eclipse-test-projects/raw/master/f407-disc-blink-tutorial/Debug/f407-disc-blink-tutorial.elf)
+
+~/opt/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-9.1/.content/bin/qemu-system-gnuarmeclipse \
+--board STM32F4-Discovery \
+-d unimp,guest_errors \
+--nographic \
+--image ~/Downloads/f407-disc-blink-tutorial.elf \
+--semihosting-config enable=on,target=native \
+--semihosting-cmdline test 6
+
+DISPLAY=:1.0 ~/opt/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-9.1/.content/bin/qemu-system-gnuarmeclipse \
+--board STM32F4-Discovery \
+-d unimp,guest_errors \
+--image ~/Downloads/f407-disc-blink-tutorial.elf \
+--semihosting-config enable=on,target=native \
+--semihosting-cmdline test 6
+
 ```
 
 ## Create the final GitHub release
