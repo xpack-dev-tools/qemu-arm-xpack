@@ -4,6 +4,7 @@ Releases in reverse chronological order.
 
 ### 2020-07-01
 
+- v2.8.0-9.1 published on npmjs.com
 - v2.8.0-9 released
 - add binaries for Arm 32/64-bit
 - update for XBB v3.2
