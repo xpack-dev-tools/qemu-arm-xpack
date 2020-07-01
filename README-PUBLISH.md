@@ -71,7 +71,12 @@ Note: at this moment the system should send a notification to all clients watchi
 
 As URL, use something like
 
-- https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/download/v2.8.0-9/
+```
+base_url="https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/download/v2.8.0-9/"
+```
+
+The tests results are available at
+[Travis](https://travis-ci.org/github/xpack-dev-tools/qemu-arm-xpack/builds/).
 
 For more details, see `tests/scripts/README.md`.
 
@@ -80,7 +85,7 @@ For more details, see `tests/scripts/README.md`.
 In the `xpack.github.io` web Git:
 
 - add a new file to `_posts/qemu-arm/releases`
-- name the file like `2018-07-22-qemu-arm-v2-8-0-9-released.md`
+- name the file like `020-07-01-qemu-arm-v2-8-0-9-released.md`
 - name the post like: **xPack QEMU Arm v2.8.0-9 released**.
 - as `download_url` use the tagged URL like `https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/tag/v2.8.0-9/`
 - update the `date:` field with the current date
@@ -102,19 +107,25 @@ Copy/paste the build report at the end of the post as:
 ## Checksums
 The SHA-256 hashes for the files are:
 
-956da5f621df33b3c881b50316f197afb0df1edf59a87e295b8632085ccdd6a2
-xpack-qemu-arm-2.8.0-9-darwin-x64.tgz
+856f8970b0a159d9a1bbf56709f3a5f32a26c2448948d51f82b4b3f7d949f7bd  
+xpack-qemu-arm-2.8.0-9-darwin-x64.tar.gz
 
-c116a9dcd220e66258d2e9842d672fbe065dedad7ae3e09b1afe4f254bd5ac6e
-xpack-qemu-arm-2.8.0-9-linux-x32.tgz
+c8c8b3e22f2d508f60440018c48171f11d7cf0b384b5b2131017f1c1f7742a44  
+xpack-qemu-arm-2.8.0-9-linux-arm64.tar.gz
 
-cb1c2b9e9b4256e0d3ae29582e684364ec100bfb5a5bb814842f774855f8f9ac
-xpack-qemu-arm-2.8.0-9-linux-x64.tgz
+8503d11a833e1d13c43d8d444a69984b9416d6cf05663f68ec0e2f01ceab448a  
+xpack-qemu-arm-2.8.0-9-linux-arm.tar.gz
 
-8ae176c652bf281a8868b8fcc69bdd27ea995736b62aa4ffb8762a95e40fd742
+ad073b730a2d4366f562fa15b91ad6e02c212fa693d7677921fc343c23cba111  
+xpack-qemu-arm-2.8.0-9-linux-x32.tar.gz
+
+ce5979e96c84255a818eac360f83e7739673f3d842c700cad29b70eac8c67ee6  
+xpack-qemu-arm-2.8.0-9-linux-x64.tar.gz
+
+5c811889b6b182b1767a89c21793a7cccfa4fdf8914efb616155df2b0e505f4a  
 xpack-qemu-arm-2.8.0-9-win32-x32.zip
 
-24a68b94b347169428041ec1b09f40774ca9afa7d52caa979efeabece33596b1
+3bc5ec953227112b45c36713083e1dbba4d3a6d3d917eb617694217e8cfc8b00  
 xpack-qemu-arm-2.8.0-9-win32-x64.zip
 ```
 
