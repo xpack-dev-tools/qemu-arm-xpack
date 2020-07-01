@@ -33,20 +33,28 @@
   "xpack": {
     "binaries": {
       "destination": "./.content",
-      "baseUrl": "https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/download/v2.8.0-8/",
-      "skip": 3,
+      "baseUrl": "https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/download/v2.8.0-9/",
+      "skip": 1,
       "platforms": {
         "darwin-x64": {
           "sha256": "6b8439660287505725967d6d90e4379bc065e97fb38e2440941e5d328dabc5fa",
-          "fileName": "xpack-qemu-arm-2.8.0-8-darwin-x64.tgz"
+          "fileName": "xpack-qemu-arm-2.8.0-8-darwin-x64.tar.gz"
+        },
+        "linux-arm64": {
+          "sha256": "c1e665a94998ab719af3973075a9d9e870a3da5fc11c2541904b122476beb179",
+          "fileName": "xpack-qemu-arm-2.8.0-8-linux-arm64.tar.gz"
+        },
+        "linux-arm": {
+          "sha256": "c1e665a94998ab719af3973075a9d9e870a3da5fc11c2541904b122476beb179",
+          "fileName": "xpack-qemu-arm-2.8.0-8-linux-arm.tar.gz"
         },
         "linux-x86": {
           "sha256": "c1e665a94998ab719af3973075a9d9e870a3da5fc11c2541904b122476beb179",
-          "fileName": "xpack-qemu-arm-2.8.0-8-linux-x32.tgz"
+          "fileName": "xpack-qemu-arm-2.8.0-8-linux-x32.tar.gz"
         },
         "linux-x64": {
           "sha256": "1bbf79a6ff549621916f19929c5cab78441737e126d29c540e23b28600041b2c",
-          "fileName": "xpack-qemu-arm-2.8.0-8-linux-x64.tgz"
+          "fileName": "xpack-qemu-arm-2.8.0-8-linux-x64.tar.gz"
         },
         "win32-x86": {
           "sha256": "a880c30e99f0c6542701a9fab0ba6c62af6c80e349998dd20aebe7ee634a5fae",
