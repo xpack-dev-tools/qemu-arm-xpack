@@ -4,6 +4,11 @@
 
 Before starting the build, perform some checks.
 
+### Check possible open issues
+
+Check GitHub [issues](https://github.com/xpack-dev-tools/qemu-arm-xpack/issues)
+and fix them; do not close them yet.
+
 ### Check the `CHANGELOG.md` file
 
 Open the `CHANGELOG.md` file and and check if all
@@ -49,12 +54,12 @@ $ git clone https://github.com/xpack-dev-tools/qemu-eclipse-test-projects.git qe
 - commit and push the repo
 - go to the [GitHub Releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases) page
 - click **Draft a new release**
-- name the tag like **v2.8.0-7** (mind the dashes in the middle!)
+- name the tag like **v2.8.0-9** (mind the dashes in the middle!)
 - select the `xpack` branch
-- name the release like **xPack QEMU Arm v2.8.0-7**
+- name the release like **xPack QEMU Arm v2.8.0-9**
 (mind the dashes)
 - as description
-  - add a downloads badge like `![Github Releases (by Release)](https://img.shields.io/github/downloads/xpack-dev-tools/qemu-arm-xpack/v2.8.0-7/total.svg)`
+  - add a downloads badge like `![Github Releases (by Release)](https://img.shields.io/github/downloads/xpack-dev-tools/qemu-arm-xpack/v2.8.0-9/total.svg)`
   - draft a short paragraph explaining what are the main changes
 - **attach binaries** and SHA (drag and drop from the archives folder will do it)
 - **enable** the **pre-release** button
@@ -62,14 +67,22 @@ $ git clone https://github.com/xpack-dev-tools/qemu-eclipse-test-projects.git qe
 
 Note: at this moment the system should send a notification to all clients watching this project.
 
+## Run the Travis tests
+
+As URL, use something like
+
+- https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/download/v2.8.0-9/
+
+For more details, see `tests/scripts/README.md`.
+
 ## Prepare a new blog post
 
 In the `xpack.github.io` web Git:
 
 - add a new file to `_posts/qemu-arm/releases`
-- name the file like `2018-07-22-qemu-arm-v2-8-0-7-released.md`
-- name the post like: **xPack QEMU Arm v2.8.0-7 released**.
-- as `download_url` use the tagged URL like `https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/tag/v2.8.0-7/`
+- name the file like `2018-07-22-qemu-arm-v2-8-0-9-released.md`
+- name the post like: **xPack QEMU Arm v2.8.0-9 released**.
+- as `download_url` use the tagged URL like `https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/tag/v2.8.0-9/`
 - update the `date:` field with the current date
 
 If any, close
@@ -90,19 +103,19 @@ Copy/paste the build report at the end of the post as:
 The SHA-256 hashes for the files are:
 
 956da5f621df33b3c881b50316f197afb0df1edf59a87e295b8632085ccdd6a2
-xpack-qemu-arm-2.8.0-7-darwin-x64.tgz
+xpack-qemu-arm-2.8.0-9-darwin-x64.tgz
 
 c116a9dcd220e66258d2e9842d672fbe065dedad7ae3e09b1afe4f254bd5ac6e
-xpack-qemu-arm-2.8.0-7-linux-x32.tgz
+xpack-qemu-arm-2.8.0-9-linux-x32.tgz
 
 cb1c2b9e9b4256e0d3ae29582e684364ec100bfb5a5bb814842f774855f8f9ac
-xpack-qemu-arm-2.8.0-7-linux-x64.tgz
+xpack-qemu-arm-2.8.0-9-linux-x64.tgz
 
 8ae176c652bf281a8868b8fcc69bdd27ea995736b62aa4ffb8762a95e40fd742
-xpack-qemu-arm-2.8.0-7-win32-x32.zip
+xpack-qemu-arm-2.8.0-9-win32-x32.zip
 
 24a68b94b347169428041ec1b09f40774ca9afa7d52caa979efeabece33596b1
-xpack-qemu-arm-2.8.0-7-win32-x64.zip
+xpack-qemu-arm-2.8.0-9-win32-x64.zip
 ```
 
 If you missed this, `cat` the content of the `.sha` files:
@@ -115,7 +128,7 @@ $ cat *.sha
 ## Update the Web
 
 - commit the `xpack.github.io` web Git; use a message
-  like **xPack QEMU Arm v2.8.0-7 released**
+  like **xPack QEMU Arm v2.8.0-9 released**
 - adjust timestamps
 - wait for the GitHub Pages build to complete
 - remember the post URL, since it must be updated in the release page
@@ -126,21 +139,28 @@ $ cat *.sha
   and select the latest release
 - update the `baseUrl:` with the file URLs (including the tag/version)
 - from the release, copy the SHA & file names
-- commit all changes, use a message like `package.json: update urls for 2.8.0-7 release` (without `v`)
+- commit all changes, use a message like `package.json: update urls for 2.8.0-9 release` (without `v`)
+- check the latest commits `npm run git-log`
 - update `CHANGELOG.md`; commit with a message like
-  _CHANGELOG: prepare npm v2.8.0-7.1_
-- `npm version 2.8.0-7.1`; the first 4 numbers are the same as the
+  _CHANGELOG: prepare npm v2.8.0-9.1_
+- `npm version 2.8.0-9.1`; the first 4 numbers are the same as the
   GitHub release; the fifth number is the npm specific version
 - `npm pack` and check the content of the archive
 - push all changes to GitHub
-- `npm publish` (use `--access public` when publishing for the first time)
+- `npm publish --tag next` (use `--access public` when publishing for the first time)
+
+When the release is considered stable, promote it as `latest`:
+
+- `npm dist-tag ls @xpack-dev-tools/qemu-arm`
+- `npm dist-tag add @xpack-dev-tools/qemu-arm@2.8.0-9.1 latest`
+- `npm dist-tag ls @xpack-dev-tools/qemu-arm`
 
 ## Test npm binaries
 
 Install the binaries on all platforms.
 
 ```console
-$ xpm install --global @xpack-dev-tools/qemu-arm@latest
+$ xpm install --global @xpack-dev-tools/qemu-arm@next
 ```
 
 ## Create the final GitHub release
@@ -155,6 +175,6 @@ $ xpm install --global @xpack-dev-tools/qemu-arm@latest
 
 - in a separate browser windows, open [TweetDeck](https://tweetdeck.twitter.com/)
 - using the `@xpack_project` account
-- paste the release name like **xPack QEMU Arm v2.8.0-7.1 released**
+- paste the release name like **xPack QEMU Arm v2.8.0-9 released**
 - paste the link to the blog release URL
 - click the **Tweet** button

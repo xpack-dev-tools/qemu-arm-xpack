@@ -36,6 +36,13 @@ changes from upstream it is necessary to add a remote (like
 - `master` - the original content; it follows the upstream master (but
   currently merges from it are several versions behind)
 
+## Prerequisites
+
+The prerequisites are common to all binary builds. Please follow the
+instructions in the separate
+[Prerequisites for building binaries](https://xpack.github.io/xbb/prerequisites/)
+page and return when ready.
+
 ## Download the build scripts
 
 The build scripts are available in the `scripts` folder of the
@@ -117,13 +124,6 @@ The details on how to prepare the development environment for QEMU are in the
 [`README-DEVELOP.md`](https://github.com/xpack-dev-tools/qemu-arm-xpack/blob/xpack/README-DEVELOP.md) file.
 
 ## How to build distributions
-
-### Prerequisites
-
-The prerequisites are common to all binary builds. Please follow the
-instructions from the separate
-[Prerequisites for building xPack binaries](https://xpack.github.io/xbb/prerequisites/)
-page and return when ready.
 
 ### Update Git repos
 
