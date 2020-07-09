@@ -184,7 +184,7 @@ To build a binary which is suitable for debug sessions, run the
 `build-native.sh` script with the shown options:
 
 ```console
-$ rm -rf ~/Work/qemu-arm-*
+$ rm -rf ~/Work/qemu-arm-dev
 $ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --debug --develop
 ```
 
