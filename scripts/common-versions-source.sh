@@ -13,7 +13,7 @@
 
 # -----------------------------------------------------------------------------
 
-function prepare_versions()
+function build_versions()
 {
   QEMU_PROJECT_NAME="qemu"
 
