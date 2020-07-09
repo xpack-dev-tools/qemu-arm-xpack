@@ -66,7 +66,7 @@ host_detect
 # -----------------------------------------------------------------------------
 
 help_message="    bash $0 [--win] [--debug] [--develop] [--jobs N] [--help] [clean|cleanlibs|cleanall]"
-host_native_options "${help_message}" $@
+host_native_options "${help_message}" "$@"
 
 echo
 echo "Host helper functions source script: \"${host_functions_script_path}\"."
