@@ -84,6 +84,18 @@ prepare_xbb_extras
 
 # -----------------------------------------------------------------------------
 
+common_helper_libs_functions_script_path="${script_folder_path}/helper/common-libs-functions-source.sh"
+echo "Common helper libs functions source script: \"${common_helper_libs_functions_script_path}\"."
+source "${common_helper_libs_functions_script_path}"
+
+common_functions_script_path="${script_folder_path}/common-functions-source.sh"
+echo "Common functions source script: \"${common_functions_script_path}\"."
+source "${common_functions_script_path}"
+
+common_versions_script_path="${script_folder_path}/common-versions-source.sh"
+echo "Common versions source script: \"${common_versions_script_path}\"."
+source "${common_versions_script_path}"
+
 common_libs_functions_script_path="${script_folder_path}/${COMMON_LIBS_FUNCTIONS_SCRIPT_NAME}"
 echo "Common libs functions source script: \"${common_libs_functions_script_path}\"."
 source "${common_libs_functions_script_path}"
@@ -94,98 +106,13 @@ source "${common_apps_functions_script_path}"
 
 # -----------------------------------------------------------------------------
 
-QEMU_PROJECT_NAME="qemu"
-QEMU_VERSION="2.8"
-
-QEMU_SRC_FOLDER_NAME=${QEMU_SRC_FOLDER_NAME:-"${QEMU_PROJECT_NAME}.git"}
-QEMU_GIT_URL="https://github.com/xpack-dev-tools/qemu.git"
-
-if [ "${IS_DEVELOP}" == "y" ]
-then
-  QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack-develop"}
-else
-  QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack"}
-fi
-
-QEMU_GIT_COMMIT=${QEMU_GIT_COMMIT:-""}
-
-QEMU_GIT_PATCH=${QEMU_GIT_PATCH:-"qemu-2.8.0.git-patch"}
-
-# -----------------------------------------------------------------------------
-
-# ZLIB_VERSION="1.2.8"
-ZLIB_VERSION="1.2.11"
-
-# LIBPNG_VERSION="1.6.23"
-# LIBPNG_VERSION="1.6.34"
-LIBPNG_VERSION="1.6.36"
-LIBPNG_SFOLDER="libpng16"
-
-JPEG_VERSION="9b"
-
-# SDL2_VERSION="2.0.5"
-# SDL2_VERSION="2.0.8"
-SDL2_VERSION="2.0.9"
-
-# SDL2_IMAGE_VERSION="2.0.1"
-# SDL2_IMAGE_VERSION="2.0.3"
-SDL2_IMAGE_VERSION="2.0.4"
-
-LIBFFI_VERSION="3.2.1"
-
-# Fails with libtool problems.
-# LIBICONV_VERSION="1.14"
-LIBICONV_VERSION="1.15"
-
-GETTEXT_VERSION="0.19.8.1"
-
-# GLIB_MVERSION="2.51"
-# GLIB_VERSION="${GLIB_MVERSION}.0"
-GLIB_MVERSION="2.56"
-GLIB_VERSION="${GLIB_MVERSION}.4"
-
-# PIXMAN_VERSION="0.34.0"
-PIXMAN_VERSION="0.38.0"
-
-# LIBXML2_VERSION="2.9.8"
-
-# -----------------------------------------------------------------------------
-# Build dependent libraries.
-
-if true
-then
-
-  do_zlib
-
-  do_libpng
-  do_jpeg
-  do_libiconv
-
-  do_sdl2
-  do_sdl2_image
-
-  do_libffi
-
-  # if [ "${TARGET_PLATFORM}" == "win32" ]
-  # then
-  #   do_libxml2
-  # fi
-
-  do_gettext # requires libxml2 on windows
-  do_glib
-  do_pixman
-
-fi
-
-# -----------------------------------------------------------------------------
-
-build_qemu
-
-test_qemu
+prepare_versions
 
 # -----------------------------------------------------------------------------
 
 host_stop_timer
+
+host_notify_completed
 
 # Completed successfully.
 exit 0
