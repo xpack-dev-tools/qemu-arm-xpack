@@ -64,10 +64,10 @@
           "sha256": "3bc5ec953227112b45c36713083e1dbba4d3a6d3d917eb617694217e8cfc8b00",
           "fileName": "xpack-qemu-arm-2.8.0-9-win32-x64.zip"
         }
-      },
-      "bin": {
-        "qemu-system-gnuarmeclipse": "./.content/bin/qemu-system-gnuarmeclipse"
       }
+    },
+    "bin": {
+      "qemu-system-gnuarmeclipse": "./.content/bin/qemu-system-gnuarmeclipse"
     }
   }
 }
