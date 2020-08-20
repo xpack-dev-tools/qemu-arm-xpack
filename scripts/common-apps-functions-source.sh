@@ -157,8 +157,11 @@ function build_qemu()
         echo "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse"
         readelf -d "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse" | grep 'Shared library:'
 
-        # For just in case, normally must be done by the make file.
-        strip "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse"  || true
+        if [ "${WITH_STRIP}" == "y" ]
+        then
+          # For just in case, normally must be done by the make file.
+          strip "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse"  || true
+        fi
 
         echo
         echo "Preparing libraries..."
@@ -175,8 +178,11 @@ function build_qemu()
         echo "Initial dynamic libraries:"
         otool -L "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse"
 
-        # For just in case, normally must be done by the make file.
-        strip "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse" || true
+        if [ "${WITH_STRIP}" == "y" ]
+        then
+          # For just in case, normally must be done by the make file.
+          strip "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse" || true
+        fi
 
         echo
         echo "Preparing libraries..."
@@ -192,8 +198,11 @@ function build_qemu()
         echo "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse.exe"
         ${CROSS_COMPILE_PREFIX}-objdump -x "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse.exe" | grep -i 'DLL Name'
 
-        # For just in case, normally must be done by the make file.
-        ${CROSS_COMPILE_PREFIX}-strip "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse.exe" || true
+        if [ "${WITH_STRIP}" == "y" ]
+        then
+          # For just in case, normally must be done by the make file.
+          ${CROSS_COMPILE_PREFIX}-strip "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse.exe" || true
+        fi
 
         rm -f "${APP_PREFIX}/bin/qemu-system-gnuarmeclipsew.exe"
 
@@ -202,9 +211,13 @@ function build_qemu()
         copy_dependencies_recursive "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse.exe" "${APP_PREFIX}/bin"
       fi
 
-      if [ "${IS_DEVELOP}" != "y" ]
+      if [ "${WITH_STRIP}" == "y" ]
       then
         strip_binaries
+      fi
+
+      if [ "${IS_DEVELOP}" != "y" ]
+      then
         check_application "qemu-system-gnuarmeclipse"
       fi
 
