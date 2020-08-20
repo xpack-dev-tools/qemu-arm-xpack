@@ -133,6 +133,11 @@ function build_qemu()
         config_options+=("--disable-bluez")
         config_options+=("--disable-gcrypt")
 
+        if [ "${WITH_STRIP}" != "y" ]
+        then
+          config_options+=("--disable-strip")
+        fi
+
         run_verbose bash ${DEBUG} "${WORK_FOLDER_PATH}/${QEMU_SRC_FOLDER_NAME}/configure" \
           ${config_options[@]}
 
