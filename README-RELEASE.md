@@ -136,7 +136,7 @@ $ git clone https://github.com/xpack-dev-tools/qemu-eclipse-test-projects.git qe
 - go to the [GitHub Releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases) page
 - click **Draft a new release**
 - name the tag like **v2.8.0-10** (mind the dashes in the middle!)
-- select the `xpack` branch
+- select the `xpack-develop` branch
 - name the release like **xPack QEMU Arm v2.8.0-10**
 (mind the dashes)
 - as description
@@ -168,10 +168,11 @@ In the `xpack.github.io` web Git:
 
 - select the `xpack-develop` branch
 - add a new file to `_posts/qemu-arm/releases`
-- name the file like `020-07-01-qemu-arm-v2-8-0-9-released.md`
+- name the file like `2020-10-14-qemu-arm-v2-8-0-10-released.md`
 - name the post like: **xPack QEMU Arm v2.8.0-10 released**.
 - as `download_url` use the tagged URL like `https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/tag/v2.8.0-10/`
 - update the `date:` field with the current date
+- update the Travis URLs using the actual test pages
 
 If any, close
 [build issues](https://github.com/xpack-dev-tools/qemu-arm-xpack/issues)
@@ -221,15 +222,15 @@ $ cat *.sha
 
 ## Update the Web
 
-- commit the `xpack.github.io` web Git; use a message
+- commit the `develop` branch of `xpack.github.io` web Git; use a message
   like **xPack QEMU Arm v2.8.0-10 released**
-- adjust timestamps
 - wait for the GitHub Pages build to complete
-- remember the post URL, since it must be updated in the release page
+- the preview web is https://xpack.github.io/web-preview/
 
 ## Publish on the npmjs server
 
 - select the `xpack-develop` branch
+- open the `package.json` file
 - open [GitHub Releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases)
   and select the latest release
 - update the `baseUrl:` with the file URLs (including the tag/version)
