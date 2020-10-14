@@ -1,36 +1,59 @@
-# How to publish the xPack QEMU Arm?
+# How to make a new release
 
-## Build
+## Prepare the build
 
-Before starting the build, perform some checks.
+Before starting the build, perform some checks and tweaks.
 
-### Check possible open issues
+### Check Git
 
-Check GitHub [issues](https://github.com/xpack-dev-tools/qemu-arm-xpack/issues)
+- switch to the `xpack-develop` branch
+- if needed, merge the `xpack` branch
+
+### Increase the version
+
+- open the `VERSION` file
+- increase the numbers
+
+### Fix possible open issues
+
+Check GitHub issues and pull requests:
+
+- https://github.com/xpack-dev-tools/qemu-arm-xpack/issues
+- https://github.com/xpack-dev-tools/qemu/issues
+
 and fix them; do not close them yet.
 
-### Check the `CHANGELOG.md` file
+### Update the `CHANGELOG.md` file
 
-Open the `CHANGELOG.md` file and and check if all
-new entries are in.
+- open the `CHANGELOG.md` file
+- check if all previous fixed issues are in
+- add a new entry like _v2.8.0-10 prepared_
 
 Note: if you missed to update the `CHANGELOG.md` before starting the build,
 edit the file and rerun the build, it should take only a few minutes to
 recreate the archives with the correct file.
 
-### Check the version
+### Update the version specific code
 
-The `VERSION` file should refer to the actual release.
+- open the `common-versions-source.sh` file
+- add a new `if` with the new version before the existing code
+- update the QEMU_GIT_COMMIT
 
 ## Push the build script
 
 In this Git repo:
 
-- if necessary, merge the `xpack-develop` branch into `xpack`.
-- push it to GitHub.
-- possibly push the helper project too.
+- push the `xpack-develop` branch to GitHub
+- possibly push the helper project too
 
 ### Run the build scripts
+
+Before the real build, run a test build on the development machine:
+
+```console
+$ sudo rm -rf ~/Work/qemu-arm-*
+$ caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --develop --without-pdf --linux64 --win64 --linux32 --win32
+```
 
 When everything is ready, follow the instructions from the
 [build](https://github.com/xpack-dev-tools/qemu-arm-xpack/blob/xpack/README-BUILD.md)
