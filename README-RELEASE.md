@@ -142,6 +142,7 @@ $ git clone https://github.com/xpack-dev-tools/qemu-eclipse-test-projects.git qe
 - as description
   - add a downloads badge like `![Github Releases (by Release)](https://img.shields.io/github/downloads/xpack-dev-tools/qemu-arm-xpack/v2.8.0-10/total.svg)`
   - draft a short paragraph explaining what are the main changes
+  - add _At this moment these binaries are for tests only!_
 - **attach binaries** and SHA (drag and drop from the archives folder will do it)
 - **enable** the **pre-release** button
 - click the **Publish Release** button
