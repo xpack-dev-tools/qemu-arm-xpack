@@ -244,7 +244,6 @@ $ cat *.sha
   GitHub release; the fifth number is the npm specific version
 - `npm pack` and check the content of the archive, which should list
 only the `package.json`, the `README.md`, `LICENSE` and `CHANGELOG.md`
-- merge `xpack-develop` into `xpack`
 - push all changes to GitHub
 - `npm publish --tag next` (use `--access public` when publishing
 for the first time)
@@ -300,6 +299,11 @@ DISPLAY=:1.0 ~/opt/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-10.1/.content/bin/qemu
 --semihosting-cmdline test 6
 
 ```
+
+## Update the repo
+
+- merge `xpack-develop` into `xpack`
+- push
 
 ## Promote next to latest
 
