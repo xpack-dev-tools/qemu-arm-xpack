@@ -2,6 +2,10 @@
 
 Releases in reverse chronological order.
 
+### 2020-10-14
+
+- v2.8.0-10 prepared
+
 ### 2020-08-13
 
 - v2.8.0-9.2 published on npmjs.com
@@ -13,6 +17,10 @@ Releases in reverse chronological order.
 - v2.8.0-9 released
 - add binaries for Arm 32/64-bit
 - update for XBB v3.2
+
+### 2020-03-29
+
+- [#4] Fix the macOS relative path issue
 
 ### 2019-12-27
 

@@ -65,6 +65,10 @@ common_helper_libs_functions_script_path="${script_folder_path}/helper/common-li
 echo "Common helper libs functions source script: \"${common_helper_libs_functions_script_path}\"."
 source "${common_helper_libs_functions_script_path}"
 
+common_helper_apps_functions_script_path="${script_folder_path}/helper/common-apps-functions-source.sh"
+echo "Common helper apps functions source script: \"${common_helper_apps_functions_script_path}\"."
+source "${common_helper_apps_functions_script_path}"
+
 common_functions_script_path="${script_folder_path}/common-functions-source.sh"
 echo "Common functions source script: \"${common_functions_script_path}\"."
 source "${common_functions_script_path}"
@@ -174,8 +178,9 @@ start_timer
 detect_container
 
 prepare_xbb_env
-
 prepare_xbb_extras
+
+tests_initialize
 
 # -----------------------------------------------------------------------------
 
@@ -185,6 +190,8 @@ echo
 
 build_versions
 
+check_binaries
+
 # -----------------------------------------------------------------------------
 
 copy_distro_files
@@ -193,6 +200,16 @@ create_archive
 
 # Change ownership to non-root GNU/Linux user.
 fix_ownership
+
+# -----------------------------------------------------------------------------
+
+# Final checks.
+# To keep everything as pristine as possible, run tests
+# only after the archive is packed.
+
+prime_wine
+
+tests_run
 
 # -----------------------------------------------------------------------------
 
