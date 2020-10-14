@@ -14,7 +14,7 @@
 
 # -----------------------------------------------------------------------------
 
-function download_qemu() 
+function build_qemu() 
 {
   if [ ! -d "${WORK_FOLDER_PATH}/${QEMU_SRC_FOLDER_NAME}" ]
   then
@@ -40,13 +40,6 @@ function download_qemu()
       fi
     )
   fi
-}
-
-# -----------------------------------------------------------------------------
-
-function build_qemu() 
-{
-  download_qemu
 
   (
     mkdir -pv "${APP_BUILD_FOLDER_PATH}"
@@ -65,7 +58,11 @@ function build_qemu()
     CXXFLAGS="${XBB_CXXFLAGS_NO_W}"
 
     LDFLAGS="${XBB_LDFLAGS_APP_STATIC_GCC}"
-    if true # [ "${IS_DEVELOP}" == "y" ]
+    if [ "${TARGET_PLATFORM}" == "linux" ]
+    then
+      LDFLAGS+=" -Wl,-rpath,${LD_LIBRARY_PATH}"
+    fi      
+    if [ "${IS_DEVELOP}" == "y" ]
     then
       LDFLAGS+=" -v"
     fi
@@ -74,6 +71,8 @@ function build_qemu()
     export CFLAGS
     export CXXFLAGS
     export LDFLAGS
+
+    env | sort
 
     (
       if [ ! -f "config.status" ]
@@ -155,77 +154,6 @@ function build_qemu()
       run_verbose make install
       run_verbose make install-gme
 
-      if [ "${TARGET_PLATFORM}" == "linux" ]
-      then
-        echo
-        echo "Shared libraries:"
-        echo "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse"
-        readelf -d "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse" | grep 'Shared library:'
-
-        if [ "${WITH_STRIP}" == "y" ]
-        then
-          # For just in case, normally must be done by the make file.
-          strip "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse"  || true
-        fi
-
-        echo
-        echo "Preparing libraries..."
-        patch_linux_elf_origin "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse"
-
-        echo
-        copy_dependencies_recursive "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse" "${APP_PREFIX}/bin"
-
-        # If needed, it must get its libraries.
-        rm -rf "${APP_PREFIX}/libexec/qemu-bridge-helper"
-      elif [ "${TARGET_PLATFORM}" == "darwin" ]
-      then
-        echo
-        echo "Initial dynamic libraries:"
-        otool -L "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse"
-
-        if [ "${WITH_STRIP}" == "y" ]
-        then
-          # For just in case, normally must be done by the make file.
-          strip "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse" || true
-        fi
-
-        echo
-        echo "Preparing libraries..."
-        copy_dependencies_recursive "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse" "${APP_PREFIX}/bin"
-
-        echo
-        echo "Updated dynamic libraries:"
-        otool -L "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse"
-      elif [ "${TARGET_PLATFORM}" == "win32" ]
-      then
-        echo
-        echo "Dynamic libraries:"
-        echo "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse.exe"
-        ${CROSS_COMPILE_PREFIX}-objdump -x "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse.exe" | grep -i 'DLL Name'
-
-        if [ "${WITH_STRIP}" == "y" ]
-        then
-          # For just in case, normally must be done by the make file.
-          ${CROSS_COMPILE_PREFIX}-strip "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse.exe" || true
-        fi
-
-        rm -f "${APP_PREFIX}/bin/qemu-system-gnuarmeclipsew.exe"
-
-        echo
-        echo "Preparing libraries..."
-        copy_dependencies_recursive "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse.exe" "${APP_PREFIX}/bin"
-      fi
-
-      if [ "${WITH_STRIP}" == "y" ]
-      then
-        strip_binaries
-      fi
-
-      if [ "${IS_DEVELOP}" != "y" ]
-      then
-        check_application "qemu-system-gnuarmeclipse"
-      fi
-
       (
         xbb_activate_tex
 
@@ -249,80 +177,20 @@ function build_qemu()
       "qemu-${QEMU_VERSION}"
 
   )
+
+  tests_add "test_qemu"
 }
 
 function test_qemu()
 {
   echo
-
-  if [ "${TARGET_PLATFORM}" == "linux" ]
-  then
-    # env
-    # LD_DEBUG=libs ldd "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse"
-    show_libs "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse"
-    run_verbose "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse" --version
-  elif [ "${TARGET_PLATFORM}" == "darwin" ]
-  then
-    show_libs "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse"
-    run_verbose "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse" --version
-  elif [ "${TARGET_PLATFORM}" == "win32" ]
-  then
-    local wsl_path=$(which wsl.exe)
-    if [ ! -z "${wsl_path}" ]
-    then
-      run_verbose "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse.exe" --version
-    else 
-      (
-        xbb_activate
-        
-        local wine_path=$(which wine)
-        if [ ! -z "${wine_path}" ]
-        then
-          run_verbose wine "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse.exe" --version
-        else
-          echo "Install wine if you want to run the .exe binaries on Linux."
-        fi
-      )
-    fi
-  fi
-}
-
-function strip_binaries()
-{
-  if [ "${WITH_STRIP}" == "y" ]
-  then
-    (
-      xbb_activate
-
-      echo
-      echo "Stripping binaries..."
-
-      if [ "${TARGET_PLATFORM}" == "win32" ]
-      then
-        ${CROSS_COMPILE_PREFIX}-strip "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse.exe" || true
-        ${CROSS_COMPILE_PREFIX}-strip "${APP_PREFIX}/bin/"*.dll || true
-      elif [ "${TARGET_PLATFORM}" == "darwin" ]
-      then
-        strip "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse" || true
-      fi
-      # Do not strip on Linux, since this interferes with patchelf.
-    )
-  fi
-}
-
-function copy_distro_files()
-{
-  rm -rf "${APP_PREFIX}/${DISTRO_INFO_NAME}"
-  mkdir -pv "${APP_PREFIX}/${DISTRO_INFO_NAME}"
-
-  copy_build_files
+  echo "Checking the qemu shared libraries..."
+  show_libs "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse"
 
   echo
-  echo "Copying xPack files..."
-
-  cd "${BUILD_GIT_PATH}"
-  install -v -c -m 644 "scripts/${README_OUT_FILE_NAME}" \
-    "${APP_PREFIX}/README.md"
+  echo "Checking if qemu starts..."
+  run_app "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse" --version
+  run_app "${APP_PREFIX}/bin/qemu-system-gnuarmeclipse" --help
 }
 
-
+# -----------------------------------------------------------------------------
