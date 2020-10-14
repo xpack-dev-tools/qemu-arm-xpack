@@ -219,25 +219,30 @@ $ sudo rm -rf ~/Work/qemu-arm-*
 $ bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --all
 ```
 
+or, for development builds:
+
+```console
+$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --develop --without-pdf --linux64 --linux32 --win64 --win32
+```
+
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
 `screen -r qemu`; to kill the session use `Ctrl-a` `Ctrl-k` and confirm.
 
-About 17 minutes later, the output of the build script
+About 25 minutes later, the output of the build script
 is a set of 4
 archives and their SHA signatures, created in the `deploy` folder:
 
 ```console
-$ cd ~/Work/qemu-arm-*
-$ ls -l deploy
-total 27012
--rw-rw-r-- 1 ilg ilg 7071677 Jul  1 12:45 xpack-qemu-arm-2.8.0-9-linux-x32.tar.gz
--rw-rw-r-- 1 ilg ilg     106 Jul  1 12:45 xpack-qemu-arm-2.8.0-9-linux-x32.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 6865769 Jul  1 12:36 xpack-qemu-arm-2.8.0-9-linux-x64.tar.gz
--rw-rw-r-- 1 ilg ilg     106 Jul  1 12:36 xpack-qemu-arm-2.8.0-9-linux-x64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 6751744 Jul  1 12:50 xpack-qemu-arm-2.8.0-9-win32-x32.zip
--rw-rw-r-- 1 ilg ilg     103 Jul  1 12:50 xpack-qemu-arm-2.8.0-9-win32-x32.zip.sha
--rw-rw-r-- 1 ilg ilg 6946611 Jul  1 12:41 xpack-qemu-arm-2.8.0-9-win32-x64.zip
--rw-rw-r-- 1 ilg ilg     103 Jul  1 12:41 xpack-qemu-arm-2.8.0-9-win32-x64.zip.sha
+$ ls -l ~/Work/qemu-arm-*/deploy
+total 37100
+-rw-rw-r-- 1 ilg ilg  9034583 Oct 14 21:50 xpack-qemu-arm-2.8.0-10-linux-x32.tar.gz
+-rw-rw-r-- 1 ilg ilg      107 Oct 14 21:50 xpack-qemu-arm-2.8.0-10-linux-x32.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg  8796275 Oct 14 21:38 xpack-qemu-arm-2.8.0-10-linux-x64.tar.gz
+-rw-rw-r-- 1 ilg ilg      107 Oct 14 21:38 xpack-qemu-arm-2.8.0-10-linux-x64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg  9743272 Oct 14 21:56 xpack-qemu-arm-2.8.0-10-win32-x32.zip
+-rw-rw-r-- 1 ilg ilg      104 Oct 14 21:56 xpack-qemu-arm-2.8.0-10-win32-x32.zip.sha
+-rw-rw-r-- 1 ilg ilg 10393964 Oct 14 21:44 xpack-qemu-arm-2.8.0-10-win32-x64.zip
+-rw-rw-r-- 1 ilg ilg      104 Oct 14 21:44 xpack-qemu-arm-2.8.0-10-win32-x64.zip.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -245,8 +250,7 @@ machine, either use NFS to mount the entire folder, or open the `deploy`
 folder in a terminal and use `scp`:
 
 ```console
-$ cd ~/Work/qemu-arm-*/deploy
-$ scp * ilg@wks:Downloads/xpack-binaries/qemu
+$ (cd ~/Work/qemu-arm-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/qemu)
 ```
 
 #### Build the Arm GNU/Linux binaries
@@ -302,18 +306,16 @@ $ bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --all
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
 `screen -r qemu`; to kill the session use `Ctrl-a` `Ctrl-k` and confirm.
 
-About 35 minutes later, the output of the build script
-is a set of 2
+About 50 minutes later, the output of the build script is a set of 2
 archives and their SHA signatures, created in the `deploy` folder:
 
 ```console
-$ cd ~/Work/qemu-arm-*
-$ ls -l deploy
-total 13084
--rw-rw-r-- 1 ilg ilg 6814501 Jul  1 10:28 xpack-qemu-arm-2.8.0-9-linux-arm64.tar.gz
--rw-rw-r-- 1 ilg ilg     108 Jul  1 10:28 xpack-qemu-arm-2.8.0-9-linux-arm64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 6572398 Jul  1 10:46 xpack-qemu-arm-2.8.0-9-linux-arm.tar.gz
--rw-rw-r-- 1 ilg ilg     106 Jul  1 10:46 xpack-qemu-arm-2.8.0-9-linux-arm.tar.gz.sha
+$ ls -l ~/Work/qemu-arm-*/deploy
+total 16856
+-rw-rw-r-- 1 ilg ilg 8777442 Oct 14 18:58 xpack-qemu-arm-2.8.0-10-linux-arm64.tar.gz
+-rw-rw-r-- 1 ilg ilg     109 Oct 14 18:58 xpack-qemu-arm-2.8.0-10-linux-arm64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 8472838 Oct 14 19:22 xpack-qemu-arm-2.8.0-10-linux-arm.tar.gz
+-rw-rw-r-- 1 ilg ilg     107 Oct 14 19:22 xpack-qemu-arm-2.8.0-10-linux-arm.tar.gz.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -321,8 +323,7 @@ machine, either use NFS to mount the entire folder, or open the `deploy`
 folder in a terminal and use `scp`:
 
 ```console
-$ cd ~/Work/qemu-arm-*/deploy
-$ scp * ilg@wks:Downloads/xpack-binaries/qemu
+$ (cd ~/Work/qemu-arm-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/qemu)
 ```
 
 #### Build the macOS binary
@@ -355,15 +356,14 @@ $ caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --osx
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
 `screen -r qemu`; to kill the session use `Ctrl-a` `Ctrl-k` and confirm.
 
-About 9 minutes later, the output of the build script is a compressed
+About 15 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
-$ cd ~/Work/qemu-arm-*
-$ ls -l deploy
-total 13936
--rw-r--r--  1 ilg  staff  7130223 Jul  1 14:02 xpack-qemu-arm-2.8.0-9-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff      107 Jul  1 14:02 xpack-qemu-arm-2.8.0-9-darwin-x64.tar.gz.sha
+$ ls -l ~/Work/qemu-arm-*/deploy
+total 15120
+-rw-r--r--  1 ilg  staff  7735782 Oct 14 20:24 xpack-qemu-arm-2.8.0-10-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff      108 Oct 14 20:24 xpack-qemu-arm-2.8.0-10-darwin-x64.tar.gz.sha
 ```
 
 To copy the files from the build machine to the current development
@@ -371,8 +371,7 @@ machine, either use NFS to mount the entire folder, or open the `deploy`
 folder in a terminal and use `scp`:
 
 ```console
-$ cd ~/Work/qemu-arm-*/deploy
-$ scp * ilg@ilg-wks.local:Downloads/xpack-binaries/qemu
+$ (cd ~/Work/qemu-arm-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/qemu)
 ```
 
 ### Subsequent runs
