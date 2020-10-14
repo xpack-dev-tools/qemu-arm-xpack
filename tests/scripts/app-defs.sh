@@ -1,3 +1,4 @@
+
 # -----------------------------------------------------------------------------
 # This file is part of the xPack distribution.
 #   (https://xpack.github.io)
@@ -7,24 +8,17 @@
 # for any purpose is hereby granted, under the terms of the MIT license.
 # -----------------------------------------------------------------------------
 
-# -----------------------------------------------------------------------------
-# Common functions used in various tests.
-#
-# Requires 
-# - app_folder_path
-# - test_folder_path
-# - archive_platform (win32|linux|darwin)
+# Appliction specific definitions, common to multiple scripts.
 
 # -----------------------------------------------------------------------------
 
-function run_tests()
-{
-  show_libs "${app_folder_path}/bin/qemu-system-gnuarmeclipse"
+app_lc_name="qemu-arm"
+app_description="xPack QEMU Arm"
 
-  run_app "${app_folder_path}/bin/qemu-system-gnuarmeclipse" --version
-  run_app "${app_folder_path}/bin/qemu-system-gnuarmeclipse" --help
+github_org="xpack-dev-tools"
+github_repo="qemu-arm-xpack"
+github_pre_releases="pre-releases"
 
-  # TODO: add more, if possible.
-}
+npm_package="@xpack-dev-tools/qemu-arm@next"
 
 # -----------------------------------------------------------------------------

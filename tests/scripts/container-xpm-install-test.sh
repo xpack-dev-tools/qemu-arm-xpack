@@ -53,14 +53,8 @@ source "${script_folder_path}/common-functions-source.sh"
 
 # This runs inside a Docker container.
 
-# -----------------------------------------------------------------------------
-
 image_name="$1"
 echo "${image_name}"
-shift
-
-base_url="$1"
-echo "${base_url}"
 shift
 
 while [ $# -gt 0 ]
@@ -80,29 +74,31 @@ done
 # Make sure that the minimum prerequisites are met.
 if [[ ${image_name} == *ubuntu* ]] || [[ ${image_name} == *debian* ]] || [[ ${image_name} == *raspbian* ]]
 then
-  apt-get -qq update 
-  apt-get -qq install -y git-core curl tar gzip lsb-release binutils
+  run_verbose apt-get -qq update 
+  run_verbose apt-get -qq install -y git-core curl tar gzip lsb-release binutils
 elif [[ ${image_name} == *centos* ]] || [[ ${image_name} == *fedora* ]]
 then
-  yum install -y -q git curl tar gzip redhat-lsb-core binutils libX11
+  run_verbose yum install -y -q git curl tar gzip redhat-lsb-core binutils
+  run_verbose yum install -y -q python || true
 elif [[ ${image_name} == *opensuse* ]]
 then
-  zypper -q in -y git-core curl tar gzip lsb-release binutils libX11-6
+  run_verbose zypper -q in -y git-core curl tar gzip lsb-release binutils
+  run_verbose zypper -q in -y python || true
 elif [[ ${image_name} == *manjaro* ]]
 then
-  pacman-mirrors -g
-  pacman -S -y -q --noconfirm 
+  run_verbose pacman-mirrors -g
+  run_verbose pacman -S -y -q --noconfirm 
 
   # Update even if up to date (-yy) & upgrade (-u).
   # pacman -S -yy -u -q --noconfirm 
-  pacman -S -q --noconfirm --noprogressbar  git curl tar gzip lsb-release binutils libx11
+  run_verbose pacman -S -q --noconfirm --noprogressbar git curl tar gzip lsb-release binutils file
 elif [[ ${image_name} == *archlinux* ]]
 then
   pacman -S -y -q --noconfirm 
 
   # Update even if up to date (-yy) & upgrade (-u).
   # pacman -S -yy -u -q --noconfirm 
-  pacman -S -q --noconfirm --noprogressbar  git curl tar gzip lsb-release binutils libx11
+  run_verbose pacman -S -q --noconfirm --noprogressbar git curl tar gzip lsb-release binutils file
 fi
 
 # -----------------------------------------------------------------------------
@@ -111,9 +107,12 @@ detect_architecture
 
 prepare_env
 
-install_archive
+install_xpm
 
-run_tests
+env | sort
+pwd
+
+xpm install --global ${npm_package}
 
 good_bye
 
