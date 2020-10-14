@@ -253,10 +253,14 @@ for the first time)
 Run the `tests/scripts/trigger-travis-xpm-install.sh` file, this
 will install the package on Intel Linux 64-bit, macOS and Windows 64-bit.
 
+The test results are available from:
+
+- https://travis-ci.org/github/xpack-dev-tools/qemu-arm-xpack
+
 For 32-bit Windows, 32-bit Intel GNU/Linux and 32-bit Arm, install manually.
 
 ```console
-$ xpm install --global @xpack-dev-tools/openocd@next
+$ xpm install --global @xpack-dev-tools/qemu-arm@next
 ```
 
 ## Test the npm binaries
@@ -267,14 +271,7 @@ Install the binaries on all platforms:
 $ xpm install --global @xpack-dev-tools/qemu-arm@next
 ```
 
-On platforms where Eclipse is available, use the
-`arm-f4b-fs-debug-qemu` debug luncher available in the `arm-f4b-fs` Eclipse
-project available in the `xpack-dev-tools/arm-none-eabi-gcc-xpack` GitHub
-project.
-
-On Arm 32-bit, where Eclipse is not available, run the
-tests by manually starting the
-blinky test on the emulated STM32F4DISCOVERY board.
+On GNU/Linux systems, including Raspberry Pi, use the following commands:
 
 ```
 ~/opt/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-10.1/.content/bin/qemu-system-gnuarmeclipse --version
@@ -291,7 +288,7 @@ https://github.com/xpack-dev-tools/qemu-eclipse-test-projects/raw/master/f407-di
 --semihosting-config enable=on,target=native \
 --semihosting-cmdline test 6
 
-DISPLAY=:1.0 ~/opt/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-10.1/.content/bin/qemu-system-gnuarmeclipse \
+~/opt/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-10.1/.content/bin/qemu-system-gnuarmeclipse \
 --board STM32F4-Discovery \
 -d unimp,guest_errors \
 --image ~/Downloads/f407-disc-blink-tutorial.elf \
@@ -299,6 +296,47 @@ DISPLAY=:1.0 ~/opt/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-10.1/.content/bin/qemu
 --semihosting-cmdline test 6
 
 ```
+
+On macOS, use:
+
+```
+~/Library/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-10.1/.content/bin/qemu-system-gnuarmeclipse --version
+
+~/Library/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-10.1/.content/bin/qemu-system-gnuarmeclipse \
+--board STM32F4-Discovery \
+-d unimp,guest_errors \
+--nographic \
+--image ~/Downloads/f407-disc-blink-tutorial.elf \
+--semihosting-config enable=on,target=native \
+--semihosting-cmdline test 6
+
+~/Library/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-10.1/.content/bin/qemu-system-gnuarmeclipse \
+--board STM32F4-Discovery \
+-d unimp,guest_errors \
+--image ~/Downloads/f407-disc-blink-tutorial.elf \
+--semihosting-config enable=on,target=native \
+--semihosting-cmdline test 6
+
+```
+
+On Windows, download the following file into Downloads:
+
+- https://github.com/xpack-dev-tools/qemu-eclipse-test-projects/raw/master/f407-disc-blink-tutorial/Debug/f407-disc-blink-tutorial.elf
+
+and issue the following commands:
+
+```
+C:\Users\ilg\AppData\Roaming\xPacks\@xpack-dev-tools\qemu-arm\2.8.0-10.1\.content\bin\qemu-system-gnuarmeclipse --version
+
+%HOMEPATH%\AppData\Roaming\xPacks\@xpack-dev-tools\qemu-arm\2.8.0-10.1\.content\bin\qemu-system-gnuarmeclipse --board STM32F4-Discovery -d unimp,guest_errors --nographic --image %HOMEPATH%\Downloads\f407-disc-blink-tutorial.elf --semihosting-config enable=on,target=native --semihosting-cmdline test 6
+
+%HOMEPATH%\AppData\Roaming\xPacks\@xpack-dev-tools\qemu-arm\2.8.0-10.1\.content\bin\qemu-system-gnuarmeclipse --board STM32F4-Discovery -d unimp,guest_errors --image %HOMEPATH%\Downloads\f407-disc-blink-tutorial.elf --semihosting-config enable=on,target=native --semihosting-cmdline test 6
+```
+
+On platforms where Eclipse is available, it is also possible to use the
+`arm-f4b-fs-debug-qemu` debug luncher available in the `arm-f4b-fs` Eclipse
+project available in the `xpack-dev-tools/arm-none-eabi-gcc-xpack` GitHub
+project.
 
 ## Update the repo
 
