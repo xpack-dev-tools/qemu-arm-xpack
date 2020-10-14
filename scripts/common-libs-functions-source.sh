@@ -73,7 +73,7 @@ function build_sdl2()
 
       env | sort
 
-      if false # [ "${TARGET_PLATFORM}" == "darwin" ]
+      if [ "${TARGET_PLATFORM}" == "darwin" ]
       then
         # GNU GCC fails with 
         #  CC     build/SDL_syspower.lo
