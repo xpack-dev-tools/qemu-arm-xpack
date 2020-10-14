@@ -326,11 +326,12 @@ On Windows, download the following file into Downloads:
 and issue the following commands:
 
 ```
-C:\Users\ilg\AppData\Roaming\xPacks\@xpack-dev-tools\qemu-arm\2.8.0-10.1\.content\bin\qemu-system-gnuarmeclipse --version
+%HOMEPATH%\AppData\Roaming\xPacks\@xpack-dev-tools\qemu-arm\2.8.0-10.1\.content\bin\qemu-system-gnuarmeclipse --version
 
 %HOMEPATH%\AppData\Roaming\xPacks\@xpack-dev-tools\qemu-arm\2.8.0-10.1\.content\bin\qemu-system-gnuarmeclipse --board STM32F4-Discovery -d unimp,guest_errors --nographic --image %HOMEPATH%\Downloads\f407-disc-blink-tutorial.elf --semihosting-config enable=on,target=native --semihosting-cmdline test 6
 
 %HOMEPATH%\AppData\Roaming\xPacks\@xpack-dev-tools\qemu-arm\2.8.0-10.1\.content\bin\qemu-system-gnuarmeclipse --board STM32F4-Discovery -d unimp,guest_errors --image %HOMEPATH%\Downloads\f407-disc-blink-tutorial.elf --semihosting-config enable=on,target=native --semihosting-cmdline test 6
+
 ```
 
 On platforms where Eclipse is available, it is also possible to use the
