@@ -1,4 +1,4 @@
-# How to make a new release
+# How to make a new release (maintainer info)
 
 ## Prepare the build
 
@@ -21,7 +21,7 @@ Check GitHub issues and pull requests:
 - https://github.com/xpack-dev-tools/qemu-arm-xpack/issues
 - https://github.com/xpack-dev-tools/qemu/issues
 
-and fix them; do not close them yet.
+and fix them; assign them to a milestone (like `v2.8.0-10-1`).
 
 ### Update the `CHANGELOG.md` file
 
@@ -62,7 +62,7 @@ Before the real build, run a test build on the development machine:
 
 ```console
 $ sudo rm -rf ~/Work/qemu-arm-*
-$ caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --develop --without-pdf --linux64 --win64 --linux32 --win32
+$ caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --develop --without-pdf --disable-tests --linux64 --win64 --linux32 --win32
 ```
 
 ### Run the build scripts
@@ -118,7 +118,7 @@ On all three machines:
 $ (cd ~/Work/qemu-arm-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/qemu)
 ```
 
-## Test
+## Testing
 
 Install the binaries on all supported platforms and check if they are
 functional, using the Eclipse STM32F4DISCOVERY blinky test.
@@ -133,7 +133,7 @@ $ git clone https://github.com/xpack-dev-tools/qemu-eclipse-test-projects.git qe
 ## Create a new GitHub pre-release
 
 - commit and push the `xpack-develop` branch
-- go to the [GitHub Releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases) page
+- go to the GitHub [releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases) page
 - click **Draft a new release**
 - name the tag like **v2.8.0-10** (mind the dashes in the middle!)
 - select the `xpack-develop` branch
@@ -167,7 +167,7 @@ For more details, see `tests/scripts/README.md`.
 
 In the `xpack.github.io` web Git:
 
-- select the `xpack-develop` branch
+- select the `develop` branch
 - add a new file to `_posts/qemu-arm/releases`
 - name the file like `2020-10-14-qemu-arm-v2-8-0-10-released.md`
 - name the post like: **xPack QEMU Arm v2.8.0-10 released**.
@@ -175,13 +175,13 @@ In the `xpack.github.io` web Git:
 - update the `date:` field with the current date
 - update the Travis URLs using the actual test pages
 
-If any, close
-[build issues](https://github.com/xpack-dev-tools/qemu-arm-xpack/issues)
-on the way. Refer to them as:
+If any, refer to closed
+[issues](https://github.com/xpack-dev-tools/qemu-arm-xpack/issues)
+as:
 
 - **[Issue:\[#1\]\(...\)]**.
 
-Also close
+Also clrefer toose
 [functional issues](https://github.com/xpack-dev-tools/qemu/issues).
 
 ## Update the SHA sums
@@ -221,7 +221,7 @@ $ ~Downloads/xpack-binaries/qemu
 $ cat *.sha
 ```
 
-## Update the Web
+## Update the preview Web
 
 - commit the `develop` branch of `xpack.github.io` web Git; use a message
   like **xPack QEMU Arm v2.8.0-10 released**
@@ -232,26 +232,30 @@ $ cat *.sha
 
 - select the `xpack-develop` branch
 - open the `package.json` file
-- open [GitHub Releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases)
-  and select the latest release
-- update the `baseUrl:` with the file URLs (including the tag/version)
+- open the GitHub [releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases)
+  page and select the latest release
+- check the download counter, it should match the number of tests
+- update the `baseUrl:` with the file URLs (including the tag/version);
+  no terminating `/` is required
 - from the release, copy the SHA & file names
+- compare the SHA sums with those shown by `cat *.sha`
+- check the executable names
 - commit all changes, use a message like
-`package.json: update urls for 2.8.0-10 release` (without `v`)
+  `package.json: update urls for 2.8.0-10 release` (without `v`)
 - check the latest commits `npm run git-log`
 - update `CHANGELOG.md`; commit with a message like
   _CHANGELOG: prepare npm v2.8.0-10.1_
 - `npm version 2.8.0-10.1`; the first 4 numbers are the same as the
   GitHub release; the fifth number is the npm specific version
 - `npm pack` and check the content of the archive, which should list
-only the `package.json`, the `README.md`, `LICENSE` and `CHANGELOG.md`
+  only the `package.json`, the `README.md`, `LICENSE` and `CHANGELOG.md`
 - push all changes to GitHub
 - `npm publish --tag next` (use `--access public` when publishing
-for the first time)
+  for the first time)
 
 ## Test if the npm binaries can be installed with xpm
 
-Run the `tests/scripts/trigger-travis-xpm-install.sh` file, this
+Run the `tests/scripts/trigger-travis-xpm-install.sh` script, this
 will install the package on Intel Linux 64-bit, macOS and Windows 64-bit.
 
 The test results are available from:
@@ -347,7 +351,7 @@ project.
 
 ## Promote next to latest
 
-Promote the release as `latest`:
+When the release is considered stable, promote it as `latest`:
 
 - `npm dist-tag ls @xpack-dev-tools/qemu-arm`
 - `npm dist-tag add @xpack-dev-tools/qemu-arm@2.8.0-10.1 latest`
@@ -362,7 +366,7 @@ Promote the release as `latest`:
 
 ## Create the final GitHub release
 
-- go to the [GitHub Releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases) page
+- go to the GitHub [releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases) page
 - check the download counter, it should match the number of tests
 - add a link to the Web page `[Continue reading »]()`; use an same blog URL
 - **disable** the **pre-release** button

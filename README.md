@@ -78,14 +78,14 @@ For all platforms, the **xPack QEMU Arm** binaries are released as portable
 archives that can be installed in any location.
 
 The archives can be downloaded from the
-[GitHub Releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/) page.
+GitHub [releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/) page.
 
 For more details please read the [Install](https://xpack.github.io/qemu-arm/install/) page.
 
 ## Maintainer info
 
 - [How to build](https://github.com/xpack-dev-tools/qemu-arm-xpack/blob/xpack/README-BUILD.md)
-- [How to publish](https://github.com/xpack-dev-tools/qemu-arm-xpack/blob/xpack/README-PUBLISH.md)
+- [How to make new releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/blob/xpack/README-RELEASE.md)
 - [Developer info](https://github.com/xpack-dev-tools/qemu-arm-xpack/blob/xpack/README-DEVELOP.md)
 
 ## Support

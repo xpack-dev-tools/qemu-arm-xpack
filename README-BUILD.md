@@ -19,8 +19,12 @@ There are two types of builds:
 - distribution builds, which create the archives distributed as
   binaries; expected to run on most modern systems.
 
-## Repository URLs
+## Repositories
 
+- `https://github.com/xpack-dev-tools/qemu-arm-xpack.git` - the URL of the
+  [xPack QEMU Arm](https://github.com/xpack-dev-tools/qemu-arm-xpack) project
+- `https://github.com/xpack-dev-tools/build-helper` - the URL of the
+  xPack build helper, used as the `scripts/helper` submodule
 - `https://github.com/xpack-dev-tools/qemu.git` - the URL of the QEMU Git fork
   used by the xPack QEMU Arm
 - `git://git.qemu.org/qemu.git` - the URL of the upstream QEMU Git
@@ -33,6 +37,12 @@ changes from upstream it is necessary to add a remote (like
 
 - `xpack` - the updated content, used during builds
 - `xpack-develop` - the updated content, used during development
+- `master` - empty, not used.
+
+In the `qemu.git` repo:
+
+- `xpack` - the updated content, used during builds
+- `xpack-develop` - the updated content, used during development
 - `master` - the original content; it follows the upstream master (but
   currently merges from it are several versions behind)
 
@@ -42,6 +52,8 @@ The prerequisites are common to all binary builds. Please follow the
 instructions in the separate
 [Prerequisites for building binaries](https://xpack.github.io/xbb/prerequisites/)
 page and return when ready.
+
+Note: Building the Arm binaries requires an Arm machine.
 
 ## Download the build scripts
 
@@ -222,7 +234,7 @@ $ bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --all
 or, for development builds:
 
 ```console
-$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --develop --without-pdf --linux64 --linux32 --win64 --win32
+$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --develop --without-pdf --disable-tests --linux64 --linux32 --win64 --win32
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -303,6 +315,13 @@ $ sudo rm -rf ~/Work/qemu-arm-*
 $ bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --all
 ```
 
+or, for development builds:
+
+```console
+$ sudo rm -rf ~/Work/qemu-arm-*
+$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --develop --without-pdf --disable-tests --arm32 --arm64
+```
+
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
 `screen -r qemu`; to kill the session use `Ctrl-a` `Ctrl-k` and confirm.
 
@@ -326,7 +345,7 @@ folder in a terminal and use `scp`:
 $ (cd ~/Work/qemu-arm-*/deploy; scp * ilg@wks:Downloads/xpack-binaries/qemu)
 ```
 
-#### Build the macOS binary
+#### Build the macOS binaries
 
 The current platform for macOS production builds is a macOS 10.10.5
 running on a MacBookPro with 16 GB of RAM and a
@@ -351,6 +370,13 @@ $ screen -S qemu
 
 $ sudo rm -rf ~/Work/qemu-arm-*
 $ caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --osx
+```
+
+or, for development builds:
+
+```console
+$ sudo rm -rf ~/Work/qemu-arm-*
+$ caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --osx --develop --without-pdf --disable-tests
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -555,7 +581,7 @@ avx2 optimization yes
 replication support yes
 ```
 
-## Test
+## Testing
 
 A simple test is performed by the script at the end, by launching the
 executable to check if all shared/dynamic libraries are correctly used.
