@@ -118,7 +118,7 @@ On the macOS machine (`xbbm`):
 caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --osx
 ```
 
-A typical run takes about 10 minutes.
+A typical run takes about 15 minutes.
 
 On `xbbi`:
 
@@ -127,7 +127,7 @@ bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --linux64 --win64
 bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --linux32 --win32
 ```
 
-A typical run on the Intel machine takes about 25 minutes.;
+A typical run on the Intel machine takes about 35 minutes.;
 
 On `xbba`:
 
@@ -136,7 +136,7 @@ bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --arm64
 bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --arm32
 ```
 
-A typical run on the Arm machine takes about 60 minutes.
+A typical run on the Arm machine takes about 65 minutes.
 
 ### Clean the destination folder
 
