@@ -24,6 +24,7 @@ function build_versions()
   USE_TAR_GZ="y"
 
   QEMU_SRC_FOLDER_NAME=${QEMU_SRC_FOLDER_NAME:-"${QEMU_PROJECT_NAME}.git"}
+  QEMU_SRC_FOLDER_PATH=${QEMU_SRC_FOLDER_PATH:-"${WORK_FOLDER_PATH}/${TARGET_FOLDER_NAME}/${QEMU_SRC_FOLDER_NAME}"}
   QEMU_GIT_URL=${QEMU_GIT_URL:-"https://github.com/xpack-dev-tools/qemu.git"}
 
   # Keep them in sync with combo archive content.

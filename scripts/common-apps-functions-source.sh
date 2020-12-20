@@ -16,15 +16,15 @@
 
 function build_qemu() 
 {
-  if [ ! -d "${WORK_FOLDER_PATH}/${QEMU_SRC_FOLDER_NAME}" ]
+  if [ ! -d "${QEMU_SRC_FOLDER_PATH}" ]
   then
     (
       xbb_activate
 
-      cd "${WORK_FOLDER_PATH}"
       git_clone "${QEMU_GIT_URL}" "${QEMU_GIT_BRANCH}" \
-          "${QEMU_GIT_COMMIT}" "${QEMU_SRC_FOLDER_NAME}"
-      cd "${WORK_FOLDER_PATH}/${QEMU_SRC_FOLDER_NAME}"
+          "${QEMU_GIT_COMMIT}" "${QEMU_SRC_FOLDER_PATH}"
+
+      cd "${QEMU_SRC_FOLDER_PATH}"
 
       # git submodule update --init --recursive --remote
       # Do not bring all submodules; for better control,
@@ -80,13 +80,13 @@ function build_qemu()
 
         echo
         echo "Overriding version..."
-        cp -v "${BUILD_GIT_PATH}/scripts/VERSION" "${WORK_FOLDER_PATH}/${QEMU_SRC_FOLDER_NAME}"
+        cp -v "${BUILD_GIT_PATH}/scripts/VERSION" "${QEMU_SRC_FOLDER_PATH}"
 
         echo
         echo "Running qemu configure..."
 
         # Although it shouldn't, the script checks python before --help.
-        bash "${WORK_FOLDER_PATH}/${QEMU_SRC_FOLDER_NAME}/configure" \
+        bash "${QEMU_SRC_FOLDER_PATH}/configure" \
           --python=python2 \
           --help
 
@@ -137,7 +137,7 @@ function build_qemu()
           config_options+=("--disable-strip")
         fi
 
-        run_verbose bash ${DEBUG} "${WORK_FOLDER_PATH}/${QEMU_SRC_FOLDER_NAME}/configure" \
+        run_verbose bash ${DEBUG} "${QEMU_SRC_FOLDER_PATH}/configure" \
           ${config_options[@]}
 
       fi
@@ -173,7 +173,7 @@ function build_qemu()
     ) 2>&1 | tee "${LOGS_FOLDER_PATH}/make-qemu-output.txt"
 
     copy_license \
-      "${WORK_FOLDER_PATH}/${QEMU_SRC_FOLDER_NAME}" \
+      "${QEMU_SRC_FOLDER_PATH}" \
       "qemu-${QEMU_VERSION}"
 
   )
