@@ -102,6 +102,7 @@ WITH_HTML="n"
 IS_DEVELOP=""
 IS_DEBUG=""
 WITH_TESTS="y"
+LINUX_INSTALL_RELATIVE_PATH=""
 
 if [ "$(uname)" == "Linux" ]
 then
@@ -161,6 +162,11 @@ do
     --debug)
       IS_DEBUG="y"
       shift
+      ;;
+
+    --linux-install-relative-path)
+      LINUX_INSTALL_RELATIVE_PATH="$2"
+      shift 2
       ;;
 
     *)
