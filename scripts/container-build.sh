@@ -101,6 +101,7 @@ WITH_PDF="y"
 WITH_HTML="n"
 IS_DEVELOP=""
 IS_DEBUG=""
+WITH_TESTS="y"
 
 if [ "$(uname)" == "Linux" ]
 then
@@ -119,6 +120,11 @@ do
 
     --disable-strip)
       WITH_STRIP="n"
+      shift
+      ;;
+
+    --disable-tests)
+      WITH_TESTS="n"
       shift
       ;;
 
@@ -178,6 +184,7 @@ start_timer
 detect_container
 
 prepare_xbb_env
+
 prepare_xbb_extras
 
 tests_initialize
@@ -190,11 +197,11 @@ echo
 
 build_versions
 
-check_binaries
-
 # -----------------------------------------------------------------------------
 
 copy_distro_files
+
+check_binaries
 
 create_archive
 

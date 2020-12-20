@@ -34,7 +34,43 @@ function build_versions()
 
     QEMU_VERSION="2.8"
 
-    if [[ "${RELEASE_VERSION}" =~ 2\.8\.0-10 ]]
+    if [[ "${RELEASE_VERSION}" =~ 2\.8\.0-11 ]]
+    then
+      QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack"}
+      QEMU_GIT_COMMIT=${QEMU_GIT_COMMIT:-"7798c04541b9a5e7b6363f0cbcba8f1346373bcb"}
+
+      QEMU_GIT_PATCH="qemu-2.8.0.git-patch"
+
+      build_zlib "1.2.11"
+
+      build_libpng "1.6.36"
+      build_jpeg "9b"
+      build_libiconv "1.15"
+
+      build_sdl2 "2.0.9"
+      build_sdl2_image "2.0.4"
+
+      build_libffi "3.2.1"
+
+      # in certain configurations it requires libxml2 on windows
+      build_gettext "0.19.8.1"
+      build_glib "2.56.4"
+      build_pixman "0.38.0"
+
+      build_qemu
+
+      strip_binaries
+
+      if [ "${TARGET_PLATFORM}" == "linux" ]
+      then
+        build_patchelf "0.12"
+
+        # Use the new patchelf, the one in XBB is too old.
+        export PATCHELF="${LIBS_INSTALL_FOLDER_PATH}/bin/patchelf"
+      fi
+      prepare_app_folder_libraries
+
+    elif [[ "${RELEASE_VERSION}" =~ 2\.8\.0-10 ]]
     then
       QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack"}
       QEMU_GIT_COMMIT=${QEMU_GIT_COMMIT:-"68a5fe5d42cdb0949d024b09fbc6688a635d5978"}

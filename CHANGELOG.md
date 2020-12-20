@@ -2,6 +2,10 @@
 
 Releases in reverse chronological order.
 
+### 2020-12-20
+
+- v2.8.0-11 published
+
 ### 2020-10-14
 
 - v2.8.0-10 published
