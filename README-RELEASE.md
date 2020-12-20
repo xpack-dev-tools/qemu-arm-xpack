@@ -323,13 +323,13 @@ xpm install --global @xpack-dev-tools/qemu-arm@next
 On GNU/Linux systems, including Raspberry Pi, use the following commands:
 
 ```sh
-~/opt/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-11.1/.content/bin/qemu-arm --version
+~/opt/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-11.1/.content/bin/qemu-system-gnuarmeclipse --version
 
 mkdir -p ~/Downloads
 (cd ~/Downloads; curl -L --fail -o f407-disc-blink-tutorial.elf \
 https://github.com/xpack-dev-tools/qemu-eclipse-test-projects/raw/master/f407-disc-blink-tutorial/Debug/f407-disc-blink-tutorial.elf)
 
-~/opt/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-10.1/.content/bin/qemu-system-gnuarmeclipse \
+~/opt/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-11.1/.content/bin/qemu-system-gnuarmeclipse \
 --board STM32F4-Discovery \
 -d unimp,guest_errors \
 --nographic \
@@ -337,7 +337,7 @@ https://github.com/xpack-dev-tools/qemu-eclipse-test-projects/raw/master/f407-di
 --semihosting-config enable=on,target=native \
 --semihosting-cmdline test 6
 
-~/opt/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-10.1/.content/bin/qemu-system-gnuarmeclipse \
+~/opt/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-11.1/.content/bin/qemu-system-gnuarmeclipse \
 --board STM32F4-Discovery \
 -d unimp,guest_errors \
 --image ~/Downloads/f407-disc-blink-tutorial.elf \
@@ -348,13 +348,13 @@ https://github.com/xpack-dev-tools/qemu-eclipse-test-projects/raw/master/f407-di
 On macOS, use:
 
 ```sh
-~/Library/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-11.1/.content/bin/qemu-arm --version
+~/Library/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-11.1/.content/bin/qemu-system-gnuarmeclipse --version
 
 mkdir -p ~/Downloads
 (cd ~/Downloads; curl -L --fail -o f407-disc-blink-tutorial.elf \
 https://github.com/xpack-dev-tools/qemu-eclipse-test-projects/raw/master/f407-disc-blink-tutorial/Debug/f407-disc-blink-tutorial.elf)
 
-~/Library/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-10.1/.content/bin/qemu-system-gnuarmeclipse \
+~/Library/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-11.1/.content/bin/qemu-system-gnuarmeclipse \
 --board STM32F4-Discovery \
 -d unimp,guest_errors \
 --nographic \
@@ -362,7 +362,7 @@ https://github.com/xpack-dev-tools/qemu-eclipse-test-projects/raw/master/f407-di
 --semihosting-config enable=on,target=native \
 --semihosting-cmdline test 6
 
-~/Library/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-10.1/.content/bin/qemu-system-gnuarmeclipse \
+~/Library/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-11.1/.content/bin/qemu-system-gnuarmeclipse \
 --board STM32F4-Discovery \
 -d unimp,guest_errors \
 --image ~/Downloads/f407-disc-blink-tutorial.elf \
@@ -377,11 +377,11 @@ On Windows, download the following file into Downloads:
 and issue the following commands:
 
 ```
-%USERPROFILE%\AppData\Roaming\xPacks\@xpack-dev-tools\qemu-arm\2.8.0-11.1\.content\bin\qemu-arm --version
+%USERPROFILE%\AppData\Roaming\xPacks\@xpack-dev-tools\qemu-arm\2.8.0-11.1\.content\bin\qemu-system-gnuarmeclipse --version
 
-%USERPROFILE%\AppData\Roaming\xPacks\@xpack-dev-tools\qemu-arm\2.8.0-10.1\.content\bin\qemu-system-gnuarmeclipse --board STM32F4-Discovery -d unimp,guest_errors --nographic --image %USERPROFILE%\Downloads\f407-disc-blink-tutorial.elf --semihosting-config enable=on,target=native --semihosting-cmdline test 6
+%USERPROFILE%\AppData\Roaming\xPacks\@xpack-dev-tools\qemu-arm\2.8.0-11.1\.content\bin\qemu-system-gnuarmeclipse --board STM32F4-Discovery -d unimp,guest_errors --nographic --image %USERPROFILE%\Downloads\f407-disc-blink-tutorial.elf --semihosting-config enable=on,target=native --semihosting-cmdline test 6
 
-%USERPROFILE%\AppData\Roaming\xPacks\@xpack-dev-tools\qemu-arm\2.8.0-10.1\.content\bin\qemu-system-gnuarmeclipse --board STM32F4-Discovery -d unimp,guest_errors --image %USERPROFILE%\Downloads\f407-disc-blink-tutorial.elf --semihosting-config enable=on,target=native --semihosting-cmdline test 6
+%USERPROFILE%\AppData\Roaming\xPacks\@xpack-dev-tools\qemu-arm\2.8.0-11.1\.content\bin\qemu-system-gnuarmeclipse --board STM32F4-Discovery -d unimp,guest_errors --image %USERPROFILE%\Downloads\f407-disc-blink-tutorial.elf --semihosting-config enable=on,target=native --semihosting-cmdline test 6
 ```
 
 ## Update the repo
