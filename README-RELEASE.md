@@ -16,6 +16,9 @@ file; the format is `2.8.0-12`. The fourth number is the xPack release number
 of this version. A fifth number will be added when publishing
 the package on the `npm` server.
 
+- update version in README-RELEASE.md
+- update version in README-BUILD.md
+
 ### Fix possible open issues
 
 Check GitHub issues and pull requests:
@@ -31,9 +34,6 @@ Normally `README.md` should not need changes, but better check.
 Information related to the new version should not be included here,
 but in the version specific file (below).
 
-- update version in README-RELEASE.md
-- update version in README-BUILD.md
-
 ### Update the `CHANGELOG.md` file
 
 - open the `CHANGELOG.md` file
@@ -47,7 +47,7 @@ recreate the archives with the correct file.
 
 ### Update qemu.git
 
-In qemu.git
+In qemu.git:
 
 - switch to `master`
 - merge `develop` into `master`
@@ -184,11 +184,16 @@ functional.
 - name the tag like **v2.8.0-12** (mind the dash in the middle!)
 - name the release like **xPack QEMU Arm v2.8.0-12**
 (mind the dash)
-- as description
-  - add a downloads badge like `![Github Releases (by Release)](https://img.shields.io/github/downloads/xpack-dev-tools/qemu-arm-xpack/v2.8.0-12/total.svg)`
-  - draft a short paragraph explaining what are the main changes, like
-  _Version v2.8.0-12 is a maintenance release._
-  - add _For the moment these binaries are provided only for testing purposes!_
+- as description, use:
+
+```
+![Github Releases (by Release)](https://img.shields.io/github/downloads/xpack-dev-tools/qemu-arm-xpack/v2.8.0-12/total.svg)
+
+Version v2.8.0-12 is a maintenance release ...
+
+_For the moment these binaries are provided only for testing purposes!_
+```
+
 - **attach binaries** and SHA (drag and drop from the archives folder will do it)
 - **enable** the **pre-release** button
 - click the **Publish Release** button
@@ -279,13 +284,13 @@ xpack-qemu-arm-2.8.0-12-win32-x64.zip
 - run `xpm-dev binaries-update`
 
 ```sh
-cd ~/Downloads/qemu-arm-xpack.git
-xpm-js.git/bin/xpm-dev.js binaries-update '2.8.0-12' "${HOME}/Downloads/xpack-binaries/qemu-arm"
+xpm-dev binaries-update -C ~/Downloads/qemu-arm-xpack.git '2.8.0-12' "${HOME}/Downloads/xpack-binaries/qemu-arm"
 ```
 
 - open the GitHub [releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases)
   page and select the latest release
 - check the download counter, it should match the number of tests
+- open the `package.json` file
 - check the `baseUrl:` it should match the file URLs (including the tag/version);
   no terminating `/` is required
 - from the release, check the SHA & file names
@@ -300,10 +305,10 @@ xpm-js.git/bin/xpm-dev.js binaries-update '2.8.0-12' "${HOME}/Downloads/xpack-bi
 - check the latest commits `npm run git-log`
 - update `CHANGELOG.md`; commit with a message like
   _CHANGELOG: prepare npm v2.8.0-12.1_
-- `npm version 2.8.0-12.1`; the first 5 numbers are the same as the
-  GitHub release; the sixth number is the npm specific version
 - `npm pack` and check the content of the archive, which should list
   only the `package.json`, the `README.md`, `LICENSE` and `CHANGELOG.md`
+- `npm version 2.8.0-12.1`; the first 5 numbers are the same as the
+  GitHub release; the sixth number is the npm specific version
 - push the `xpack-develop` branch to GitHub
 - `npm publish --tag next` (use `--access public` when publishing for
   the first time)
