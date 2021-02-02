@@ -2,9 +2,19 @@
 
 Releases in reverse chronological order.
 
+### 2021-02-02
+
+- v2.8.0-12 published
+- [#13] - enable barrier instructions for ARM v6
+- [#13] - enable THUMB2 instructions for M0/M1
+- [#14] - use proc_pidpath() to get executable path
+- [#12] - add STM32F051-Discovery
+
 ### 2020-12-20
 
 - v2.8.0-11 published
+- [#6] - add TYPE_STM32F429ZITX
+- [#6] - add STM32F407VGTX
 
 ### 2020-10-14
 

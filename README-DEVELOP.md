@@ -201,7 +201,7 @@ in `install`, with the executable in `install/bin`.
 ### Open qemu.git
 
 The `build-native.sh` script clones the QEMU Git repository in a
-folder like `${HOME}/Work/qemu-arm-dev/qemu.git`.
+folder like `${HOME}/Work/qemu-arm-dev/darwin-x64/qemu.git`.
 
 Open this folder in VSC; it contains the project source code.
 
