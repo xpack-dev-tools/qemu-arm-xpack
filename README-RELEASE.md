@@ -307,8 +307,8 @@ xpm-dev binaries-update -C ~/Downloads/qemu-arm-xpack.git '2.8.0-12' "${HOME}/Do
   _CHANGELOG: prepare npm v2.8.0-12.1_
 - `npm pack` and check the content of the archive, which should list
   only the `package.json`, the `README.md`, `LICENSE` and `CHANGELOG.md`
-- `npm version 2.8.0-12.1`; the first 5 numbers are the same as the
-  GitHub release; the sixth number is the npm specific version
+- `npm version 2.8.0-12.1`; the first 4 numbers are the same as the
+  GitHub release; the fifth number is the npm specific version
 - push the `xpack-develop` branch to GitHub
 - `npm publish --tag next` (use `--access public` when publishing for
   the first time)
