@@ -122,4 +122,3 @@ corresponding licenses are available in the installed
 Credit to [Shields IO](https://shields.io) for the badges and to
 [Somsubhra/github-release-stats](https://github.com/Somsubhra/github-release-stats)
 for the individual file counters.
-
