@@ -33,36 +33,36 @@
   "xpack": {
     "binaries": {
       "destination": "./.content",
-      "baseUrl": "https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/download/v2.8.0-11",
+      "baseUrl": "https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/download/v2.8.0-12",
       "skip": 1,
       "platforms": {
         "darwin-x64": {
-          "fileName": "xpack-qemu-arm-2.8.0-11-darwin-x64.tar.gz",
-          "sha256": "2332844b95c51aa08bdae3ef5ce948eff28872afdf1d65c2ac4447906ddac79a"
+          "fileName": "xpack-qemu-arm-2.8.0-12-darwin-x64.tar.gz",
+          "sha256": "1269339202b04fc765a7b1c37e0f46b0ecba5b880f26a43c7aa6a29f905e2edf"
         },
         "linux-arm64": {
-          "fileName": "xpack-qemu-arm-2.8.0-11-linux-arm64.tar.gz",
-          "sha256": "b67e5e34b919a238352d32fd5ade3a9333d797251efa8e45805e9055a10d5bed"
+          "fileName": "xpack-qemu-arm-2.8.0-12-linux-arm64.tar.gz",
+          "sha256": "57c611d2469c227c71870a1ce5e0d35d88c0962795ea1a435a277db5f9fca79e"
         },
         "linux-arm": {
-          "fileName": "xpack-qemu-arm-2.8.0-11-linux-arm.tar.gz",
-          "sha256": "50b62d96da97db01d6d89d6382fbc5b1ef536e6b452d4c813c229e92619474e6"
+          "fileName": "xpack-qemu-arm-2.8.0-12-linux-arm.tar.gz",
+          "sha256": "fa0a05ff7a31da9fb0228db4b7ee530e55d1bfe69bb1131a39f1d9a434bdcc91"
         },
         "linux-ia32": {
-          "fileName": "xpack-qemu-arm-2.8.0-11-linux-ia32.tar.gz",
-          "sha256": "1929dd497281c55158d7db973050bb536e7a781248bb5b841ced282e8caea6eb"
+          "fileName": "xpack-qemu-arm-2.8.0-12-linux-ia32.tar.gz",
+          "sha256": "285553bb38785e8e070b610b4b701886e6456acc38b23d8b3a40563a72ee3513"
         },
         "linux-x64": {
-          "fileName": "xpack-qemu-arm-2.8.0-11-linux-x64.tar.gz",
-          "sha256": "30d761dab5f945ecf15a6c51d12d813c2847e186eec5b6cd4ff81bf17ddae532"
+          "fileName": "xpack-qemu-arm-2.8.0-12-linux-x64.tar.gz",
+          "sha256": "834dd2e9ade20e23f8639cf42e6dc61940f350148e858bb1f22c2a43b398e280"
         },
         "win32-ia32": {
-          "fileName": "xpack-qemu-arm-2.8.0-11-win32-ia32.zip",
-          "sha256": "923d4267d8dc0995d526d4b20a9cfa5953971a5895bed1f29f577ce94afc0e9c"
+          "fileName": "xpack-qemu-arm-2.8.0-12-win32-ia32.zip",
+          "sha256": "b78b3336ee75a561b70d0ba8f5da6fb34088cdc7cffd6a6e51a16c5d2fa1fcca"
         },
         "win32-x64": {
-          "fileName": "xpack-qemu-arm-2.8.0-11-win32-x64.zip",
-          "sha256": "3184bbb2427b0bdd17a53c716812103965abe1e003338d323d4a69ba2670bde9"
+          "fileName": "xpack-qemu-arm-2.8.0-12-win32-x64.zip",
+          "sha256": "9608c3aae54e379d3450955f3e9008f28dbbfe7add2f563c595f443bf270cc4d"
         }
       }
     },
