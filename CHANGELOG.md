@@ -4,6 +4,7 @@ Releases in reverse chronological order.
 
 ### 2021-02-02
 
+- v2.8.0-12.1 published on npmjs.com
 - v2.8.0-12 published
 - [#13] - enable barrier instructions for ARM v6
 - [#13] - enable THUMB2 instructions for M0/M1
