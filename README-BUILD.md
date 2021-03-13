@@ -156,7 +156,7 @@ To prepare a new release, first determine the QEMU version
 `2.8.0-12`. The fourth digit is the xPack QEMU Arm release number
 of this version.
 
-Add a new set of definitions in the `scripts/container-build.sh`, with
+Add a new set of definitions in the `scripts/common-versions-source.sh`, with
 the versions of various components.
 
 ### Update `README.md`
