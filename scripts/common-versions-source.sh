@@ -36,6 +36,11 @@ function build_versions()
     )
   fi
   
+  if [ "${TARGET_PLATFORM}" == "win32" ]
+  then
+    prepare_gcc_env "${CROSS_COMPILE_PREFIX}-"
+  fi
+
   # Keep them in sync with combo archive content.
   if [[ "${RELEASE_VERSION}" =~ 2\.8\.0-* ]]
   then
