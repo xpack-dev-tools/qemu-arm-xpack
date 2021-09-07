@@ -100,6 +100,13 @@ bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --develop --without-pdf --d
 bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --develop --without-pdf --disable-tests --win32
 ```
 
+And on the Arm Linux (`xbba`):
+
+```sh
+bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --develop --without-pdf --without-html --disable-tests --arm64
+bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --develop --without-pdf --without-html --disable-tests --arm32
+```
+
 Work on the scripts until all platforms pass the build.
 
 ## Push the build scripts
