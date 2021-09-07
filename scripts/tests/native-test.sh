@@ -42,45 +42,100 @@ script_folder_name="$(basename "${script_folder_path}")"
 
 # =============================================================================
 
-source "${script_folder_path}/app-defs.sh"
+scripts_folder_path="$(dirname $(dirname "${script_folder_path}"))/scripts"
+helper_folder_path="${scripts_folder_path}/helper"
 
-helper_folder_path="$(dirname $(dirname "${script_folder_path}"))/scripts/helper"
+# -----------------------------------------------------------------------------
 
+source "${scripts_folder_path}/defs-source.sh"
+
+# Helper functions
+source "${helper_folder_path}/common-functions-source.sh"
+source "${helper_folder_path}/common-apps-functions-source.sh"
 source "${helper_folder_path}/test-functions-source.sh"
+
+# Reuse the test functions defined in the build scripts.
+source "${scripts_folder_path}/common-apps-functions-source.sh"
+
+# Common native & docker functions (like run_tests()).
 source "${script_folder_path}/common-functions-source.sh"
 
 # -----------------------------------------------------------------------------
 
-force_32_bit=""
-if [ "$1" == "--32" ]
+if [ $# -lt 1 ]
 then
-  force_32_bit="y"
-  shift
+  echo "usage: $(basename $0) [--32] [--version X.Y.Z] --base-url URL"
+  exit 1
 fi
 
-base_url="$1"
-echo "${base_url}"
-shift
+force_32_bit=""
+image_name=""
+RELEASE_VERSION="${RELEASE_VERSION:-$(get_current_version)}"
+BASE_URL="${BASE_URL:-release}"
 
 while [ $# -gt 0 ]
 do
   case "$1" in
 
-    -*)
+    --32)
+      force_32_bit="y"
+      shift
+      ;;
+
+    --image)
+      image_name="$2"
+      shift 2
+      ;;
+
+    --version)
+      RELEASE_VERSION="$2"
+      shift 2
+      ;;
+
+    --base-url)
+      BASE_URL="$2"
+      shift 2
+      ;;
+
+    --*)
       echo "Unsupported option $1."
+      exit 1
+      ;;
+
+    *)
+      echo "Unsupported arg $1."
       exit 1
       ;;
 
   esac
 done
 
-echo "${base_url}"
+echo "BASE_URL=${BASE_URL}"
+
+# -----------------------------------------------------------------------------
+
+if [ -f "/.dockerenv" ]
+then
+  if [ -n "${image_name}" ]
+  then
+    # When running in a Docker container, update it.
+    update_image "${image_name}"
+  else
+    echo "No image defined, quit."
+    exit 1
+  fi
+fi
 
 # -----------------------------------------------------------------------------
 
 detect_architecture
 
 prepare_env "$(dirname $(dirname "${script_folder_path}"))"
+
+if [ "${BASE_URL}" == "release" ]
+then
+  BASE_URL=https://github.com/xpack-dev-tools/${APP_LC_NAME}-xpack/releases/download/${RELEASE_VERSION}/
+fi
 
 install_archive
 
