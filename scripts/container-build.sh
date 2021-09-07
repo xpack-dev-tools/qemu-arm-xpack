@@ -205,14 +205,9 @@ then
       export PATCHELF="$(which patchelf)"
     fi
 
-    if [ "${TARGET_PLATFORM}" == "linux" ]
+    if [ "${TARGET_PLATFORM}" == "win32" ]
     then
-      # Hack to get libudev.so in line with the 'all rpath' policy.
-      # Manually add $ORIGIN to libudev.so (fingers crossed!).
-      run_verbose ${PATCHELF} --force-rpath --set-rpath "\$ORIGIN" "${LIBS_INSTALL_FOLDER_PATH}/lib/libudev.so"
-    elif [ "${TARGET_PLATFORM}" == "win32" ]
-    then
-      # The 32-bit Windows still has a reference to libgcc_s and libwinpthread
+      # The Windows still has a reference to libgcc_s and libwinpthread
       DO_COPY_GCC_LIBS="y"
     fi
 
