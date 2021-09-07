@@ -80,7 +80,7 @@ This location is configurable via the environment variable
 [xpm folders](https://xpack.github.io/xpm/folders/) page.
 
 For xPacks aware tools, like the **Eclipse Embedded C/C++ plug-ins**,
-it is also possible to install OpenOCD globally, in the user home folder:
+it is also possible to install QEMU globally, in the user home folder:
 
 ```sh
 xpm install --global @xpack-dev-tools/qemu-arm@latest
