@@ -27,6 +27,15 @@ function build_versions()
   QEMU_SRC_FOLDER_PATH=${QEMU_SRC_FOLDER_PATH:-"${WORK_FOLDER_PATH}/${TARGET_FOLDER_NAME}/${QEMU_SRC_FOLDER_NAME}"}
   QEMU_GIT_URL=${QEMU_GIT_URL:-"https://github.com/xpack-dev-tools/qemu.git"}
 
+  if [ "${TARGET_PLATFORM}" == "linux" ]
+  then
+    (
+      xbb_activate
+
+      build_patchelf "0.12"
+    )
+  fi
+  
   # Keep them in sync with combo archive content.
   if [[ "${RELEASE_VERSION}" =~ 2\.8\.0-* ]]
   then
@@ -62,12 +71,6 @@ function build_versions()
         build_pixman "0.38.0"
 
         build_qemu
-
-        if [ "${TARGET_PLATFORM}" == "linux" ]
-        then
-          # Use the new patchelf, the one in XBB is too old.
-          build_patchelf "0.12"
-        fi
       )
 
     # -------------------------------------------------------------------------
