@@ -49,7 +49,7 @@ Windows.
 
 Note: These instructions refer to WSL1.
 Starting with Windows version 2004, Microsoft added WSL2, which has
-new features. The instructions to install WSL2 are probably different. 
+new features. The instructions to install WSL2 are probably different.
 
 To install WSL1, open a PowerShell console (mandatory, old CMD consoles do not work)
 and issue:
@@ -76,8 +76,8 @@ enter a space.
 
 After installation is completed, it is recommended to update Ubuntu:
 
-```console
-$ sudo apt --yes update && sudo apt --yes upgrade
+```sh
+sudo apt --yes update && sudo apt --yes upgrade
 ```
 
 #### Install the Ubuntu XBB
@@ -96,10 +96,10 @@ file system, mounted as `/mnt/c`.
 For a convenient access, make soft links from the Ubuntu account back to the
 Windows account
 
-```console
-$ mkdir -p /mnt/c/Users/ilg/Work
-$ ln -s /mnt/c/Users/ilg/Work Work
-$ ln -s /mnt/c/Users/ilg/Downloads Downloads
+```sh
+mkdir -p /mnt/c/Users/ilg/Work
+ln -s /mnt/c/Users/ilg/Work Work
+ln -s /mnt/c/Users/ilg/Downloads Downloads
 ```
 
 #### Install Git
@@ -167,8 +167,8 @@ Git repo.
 
 To download them, the following shortcut is available:
 
-```console
-$ curl -L https://github.com/xpack-dev-tools/qemu-arm-xpack/raw/xpack/scripts/git-clone.sh | bash
+```sh
+curl -L https://github.com/xpack-dev-tools/qemu-arm-xpack/raw/xpack/scripts/git-clone.sh | bash
 ```
 
 For more details please read the `README-BUILD.md` file.
@@ -183,15 +183,16 @@ pushed to the remote, since the script will use it when `--develop` is passed.
 To build a binary which is suitable for debug sessions, run the
 `build-native.sh` script with the shown options:
 
-```console
-$ rm -rf ~/Work/qemu-arm-dev
-$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --debug --develop
+```sh
+rm -rf ~/Work/qemu-arm-dev
+
+bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --debug --develop
 ```
 
 To build the Windows binaries, use:
 
-```console
-$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --debug --develop --win
+```sh
+bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --debug --develop --win
 ```
 
 The result is the `${HOME}/Work/qemu-arm-dev/${platform}-${arch}` folder. The build
@@ -228,28 +229,28 @@ in preparation for a new build.
 
 The operation can also be performed manually:
 
-```console
-$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh clean
+```sh
+bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh clean
 ```
 
 To remove the library folders, use:
 
-```console
-$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh cleanlibs
+```sh
+bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh cleanlibs
 ```
 
 To remove all:
 
-```console
-$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh cleanall
+```sh
+bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh cleanall
 ```
 
 To clean the Windows build, the commands are similar:
 
-```console
-$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --win clean
-$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --win cleanlibs
-$ bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --win cleanall
+```sh
+bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --win clean
+bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --win cleanlibs
+bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --win cleanall
 ```
 
 ### Edit & IntelliSense
@@ -277,9 +278,9 @@ as described in the
 
 Clone the repository in the same `Work` folder:
 
-```console
-$ cd ~/Work
-$ git clone https://github.com/xpack-dev-tools/qemu-eclipse-test-projects.git qemu-eclipse-test-projects.git
+```sh
+cd ~/Work
+git clone https://github.com/xpack-dev-tools/qemu-eclipse-test-projects.git qemu-eclipse-test-projects.git
 ```
 
 ### Debug

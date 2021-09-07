@@ -26,16 +26,16 @@ DISTRO_UC_NAME=${DISTRO_UC_NAME:-"xPack"}
 DISTRO_LC_NAME=${DISTRO_LC_NAME:-"xpack"}
 DISTRO_TOP_FOLDER=${DISTRO_TOP_FOLDER:-"xPacks"}
 
-# Use the new xPack naming convention.
-HAS_NAME_ARCH="y"
+APP_DESCRIPTION="${DISTRO_UC_NAME} ${APP_UC_NAME}"
 
 BRANDING=${BRANDING:-"${DISTRO_UC_NAME} ${APP_NAME}"}
 
-CONTAINER_SCRIPT_NAME=${CONTAINER_SCRIPT_NAME:-"container-build.sh"}
-CONTAINER_LIB_FUNCTIONS_SCRIPT_NAME=${CONTAINER_LIB_FUNCTIONS_SCRIPT_NAME:-"container-lib-functions-source.sh"}
-CONTAINER_APP_FUNCTIONS_SCRIPT_NAME=${CONTAINER_APP_FUNCTIONS_SCRIPT_NAME:-"container-qemu-arm-functions-source.sh"}
+# -----------------------------------------------------------------------------
 
-COMMON_LIBS_FUNCTIONS_SCRIPT_NAME=${COMMON_LIBS_FUNCTIONS_SCRIPT_NAME:-"common-libs-functions-source.sh"}
-COMMON_APPS_FUNCTIONS_SCRIPT_NAME=${COMMON_APPS_FUNCTIONS_SCRIPT_NAME:-"common-apps-functions-source.sh"}
+GITHUB_ORG="xpack-dev-tools"
+GITHUB_REPO="qemu-arm-xpack"
+GITHUB_PRE_RELEASES="pre-releases"
+
+NPM_PACKAGE="@xpack-dev-tools/qemu-arm@next"
 
 # -----------------------------------------------------------------------------

@@ -50,28 +50,22 @@ function build_sdl2()
       mkdir -pv "${LIBS_BUILD_FOLDER_PATH}/${sdl2_folder_name}"
       cd "${LIBS_BUILD_FOLDER_PATH}/${sdl2_folder_name}"
 
-      xbb_activate
       xbb_activate_installed_dev
 
       CPPFLAGS="${XBB_CPPFLAGS}"
       CFLAGS="${XBB_CFLAGS_NO_W}"      
       CXXFLAGS="${XBB_CXXFLAGS_NO_W}"
+
       LDFLAGS="${XBB_LDFLAGS_LIB}"
       if [ "${TARGET_PLATFORM}" == "linux" ]
       then
         LDFLAGS+=" -Wl,-rpath,${LD_LIBRARY_PATH}"
       fi      
-      if [ "${IS_DEVELOP}" == "y" ]
-      then
-        LDFLAGS+=" -v"
-      fi
 
       export CPPFLAGS
       export CFLAGS
       export CXXFLAGS
       export LDFLAGS
-
-      env | sort
 
       if [ "${TARGET_PLATFORM}" == "darwin" ]
       then
@@ -85,16 +79,22 @@ function build_sdl2()
         export CXX=clang++
       fi
 
-      env | sort
-
       if [ ! -f "config.status" ]
       then 
 
         (
+          if [ "${IS_DEVELOP}" == "y" ]
+          then
+            env | sort
+          fi
+
           echo
           echo "Running sdl2 configure..."
 
-          bash "${SOURCES_FOLDER_PATH}/${sdl2_src_folder_name}/configure" --help
+          if [ "${IS_DEVELOP}" == "y" ]
+          then
+            run_verbose bash "${SOURCES_FOLDER_PATH}/${sdl2_src_folder_name}/configure" --help
+          fi
 
           config_options=()
 
@@ -192,13 +192,13 @@ function build_sdl2_image()
       # The windows build checks this.
       mkdir -pv lib
 
-      xbb_activate
       xbb_activate_installed_dev
 
       CPPFLAGS="${XBB_CPPFLAGS}"
       CFLAGS="${XBB_CFLAGS_NO_W}"      
       CXXFLAGS="${XBB_CXXFLAGS_NO_W}"
       OBJCFLAGS="${XBB_CFLAGS_NO_W}"
+
       LDFLAGS="${XBB_LDFLAGS_LIB}"
       if [ "${TARGET_PLATFORM}" == "linux" ]
       then
@@ -228,10 +228,18 @@ function build_sdl2_image()
       then 
 
         (
+          if [ "${IS_DEVELOP}" == "y" ]
+          then
+            env | sort
+          fi
+
           echo
           echo "Running sdl2-image configure..."
 
-          bash "${SOURCES_FOLDER_PATH}/${sdl2_image_src_folder_name}/configure" --help
+          if [ "${IS_DEVELOP}" == "y" ]
+          then
+            run_verbose bash "${SOURCES_FOLDER_PATH}/${sdl2_image_src_folder_name}/configure" --help
+          fi
 
           config_options=()
 

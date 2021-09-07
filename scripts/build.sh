@@ -40,7 +40,8 @@ script_folder_name="$(basename "${script_folder_path}")"
 
 # =============================================================================
 
-helper_folder_path="${script_folder_path}/helper"
+scripts_folder_path="$(dirname "${script_folder_path}")/scripts"
+helper_folder_path="${scripts_folder_path}/helper"
 
 # -----------------------------------------------------------------------------
 
@@ -51,17 +52,17 @@ helper_folder_path="${script_folder_path}/helper"
 
 # -----------------------------------------------------------------------------
 
+source "${script_folder_path}/defs-source.sh"
+
 echo
-echo "xPack QEMU Arm distribution build script."
+echo "${APP_DESCRIPTION} distribution build script."
 
-host_functions_script_path="${script_folder_path}/helper/host-functions-source.sh"
-source "${host_functions_script_path}"
+# Helper functions.
+source "${helper_folder_path}/common-functions-source.sh"
+source "${helper_folder_path}/host-functions-source.sh"
 
-# common_functions_script_path="${script_folder_path}/common-functions-source.sh"
-# source "${common_functions_script_path}"
-
-defines_script_path="${script_folder_path}/defs-source.sh"
-source "${defines_script_path}"
+# The order is important, it may override helper defs.
+# source "${script_folder_path}/common-functions-source.sh"
 
 host_detect
 
@@ -78,12 +79,6 @@ declare -a rest
 
 help_message="    bash $0 [--win32] [--win64] [--linux32] [--linux64] [--arm32] [--arm64] [--osx] [--all] [clean|cleanlibs|cleanall|preload-images] [--env-file file] [--disable-strip] [--without-pdf] [--with-html] [--develop] [--debug] [--jobs N] [--help]"
 host_options "${help_message}" "$@"
-
-# Intentionally moved after option parsing.
-echo
-echo "Host helper functions source script: \"${host_functions_script_path}\"."
-# echo "Common functions source script: \"${common_functions_script_path}\"."
-echo "Definitions source script: \"${defines_script_path}\"."
 
 host_common
 
