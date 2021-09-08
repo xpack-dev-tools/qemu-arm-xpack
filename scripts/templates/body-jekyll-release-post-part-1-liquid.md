@@ -43,6 +43,12 @@ The full details of installing the **xPack QEMU Arm** on various platforms
 are presented in the separate
 [Install]({% raw %}{{ site.baseurl }}{% endraw %}/qemu-arm/install/) page.
 
+### Prerequisites
+
+On GNU/Linux, QEMU requires the X11 libraries to be present. On Debian derived
+distribution they are already in the system; on RedHat & Arch derived
+distributions they must be installed explicitly.
+
 ### Easy install
 
 The easiest way to install QEMU Arm is with
