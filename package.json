@@ -14,6 +14,10 @@
     "type": "git",
     "url": "https://github.com/xpack-dev-tool/qemu-arm-xpack.git"
   },
+  "bugs": {
+    "url": "https://github.com/xpack-dev-tool/qemu-arm-xpack/issues/"
+  },
+  "homepage": "https://github.com/xpack-dev-tool/qemu-arm-xpack#readme",
   "keywords": [
     "xpack",
     "qemu",
@@ -25,10 +29,6 @@
     "url": "https://github.com/ilg-ul/"
   },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/xpack-dev-tool/qemu-arm-xpack/issues/"
-  },
-  "homepage": "https://github.com/xpack-dev-tool/qemu-arm-xpack#readme",
   "xpack": {
     "minimumXpmRequired": "0.10.2",
     "binaries": {
