@@ -186,13 +186,13 @@ To build a binary which is suitable for debug sessions, run the
 ```sh
 rm -rf ~/Work/qemu-arm-dev
 
-bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --debug --develop
+bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build-native.sh --debug --develop
 ```
 
 To build the Windows binaries, use:
 
 ```sh
-bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --debug --develop --win
+bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build-native.sh --debug --develop --win
 ```
 
 The result is the `${HOME}/Work/qemu-arm-dev/${platform}-${arch}` folder. The build
@@ -230,27 +230,27 @@ in preparation for a new build.
 The operation can also be performed manually:
 
 ```sh
-bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh clean
+bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build-native.sh clean
 ```
 
 To remove the library folders, use:
 
 ```sh
-bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh cleanlibs
+bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build-native.sh cleanlibs
 ```
 
 To remove all:
 
 ```sh
-bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh cleanall
+bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build-native.sh cleanall
 ```
 
 To clean the Windows build, the commands are similar:
 
 ```sh
-bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --win clean
-bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --win cleanlibs
-bash ~/Downloads/qemu-arm-xpack.git/scripts/build-native.sh --win cleanall
+bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build-native.sh --win clean
+bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build-native.sh --win cleanlibs
+bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build-native.sh --win cleanall
 ```
 
 ### Edit & IntelliSense

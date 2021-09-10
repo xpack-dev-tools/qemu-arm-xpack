@@ -166,7 +166,7 @@ Before running a build for the first time, it is recommended to preload the
 docker images.
 
 ```sh
-bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh preload-images
+bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh preload-images
 ```
 
 The result should look similar to:
@@ -203,13 +203,13 @@ network connection or a computer entering sleep.
 screen -S qemu
 
 sudo rm -rf ~/Work/qemu-arm-*
-bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --develop --all
+bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --all
 ```
 
 or, for development builds:
 
 ```sh
-bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --develop --without-pdf --disable-tests --linux64 --linux32 --win64 --win32
+bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --without-pdf --disable-tests --linux64 --linux32 --win64 --win32
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -256,7 +256,7 @@ Before running a build for the first time, it is recommended to preload the
 docker images.
 
 ```sh
-bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh preload-images
+bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh preload-images
 ```
 
 The result should look similar to:
@@ -277,14 +277,14 @@ network connection or a computer entering sleep.
 screen -S qemu
 
 sudo rm -rf ~/Work/qemu-arm-*
-bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --develop --all
+bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --all
 ```
 
 or, for development builds:
 
 ```sh
 sudo rm -rf ~/Work/qemu-arm-*
-bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --develop --without-pdf --disable-tests --arm32 --arm64  
+bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --without-pdf --disable-tests --arm32 --arm64  
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -320,14 +320,14 @@ network connection or a computer entering sleep.
 screen -S qemu
 
 sudo rm -rf ~/Work/qemu-arm-*
-caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --develop --osx
+caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --osx
 ```
 
 or, for development builds:
 
 ```sh
 sudo rm -rf ~/Work/qemu-arm-*
-caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --develop --without-pdf --disable-tests --osx 
+caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --without-pdf --disable-tests --osx 
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -365,19 +365,19 @@ On Arm, instead of `--all`, you can use:
 To remove most build temporary files, use:
 
 ```sh
-bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --all clean
+bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --all clean
 ```
 
 To also remove the library build temporary files, use:
 
 ```sh
-bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --all cleanlibs
+bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --all cleanlibs
 ```
 
 To remove all temporary files, use:
 
 ```sh
-bash ~/Downloads/qemu-arm-xpack.git/scripts/build.sh --all cleanall
+bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --all cleanall
 ```
 
 Instead of `--all`, any combination of `--win32 --win64 --linux32 --linux64`
