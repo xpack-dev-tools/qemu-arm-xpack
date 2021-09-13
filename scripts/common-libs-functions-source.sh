@@ -35,6 +35,9 @@ function build_sdl2()
   local sdl2_url="https://www.libsdl.org/release/${sdl2_archive}"
 
   local sdl2_folder_name="${sdl2_src_folder_name}"
+
+  mkdir -pv "${LOGS_FOLDER_PATH}/${sdl2_folder_name}"
+
   local sdl2_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-sdl2-${sdl2_version}-installed"
   if [ ! -f "${sdl2_stamp_file_path}" ]
   then
@@ -43,8 +46,6 @@ function build_sdl2()
 
     download_and_extract "${sdl2_url}" "${sdl2_archive}" \
       "${sdl2_src_folder_name}"
-
-    mkdir -pv "${LOGS_FOLDER_PATH}/${sdl2_folder_name}"
 
     (
       mkdir -pv "${LIBS_BUILD_FOLDER_PATH}/${sdl2_folder_name}"
@@ -174,6 +175,9 @@ function build_sdl2_image()
   local sdl2_image_url="https://www.libsdl.org/projects/SDL_image/release/${sdl2_image_archive}"
 
   local sdl2_image_folder_name="${sdl2_image_src_folder_name}"
+
+  mkdir -pv "${LOGS_FOLDER_PATH}/${sdl2_image_folder_name}"
+
   local sdl2_image_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-sdl2-image-${sdl2_image_version}-installed"
   if [ ! -f "${sdl2_image_stamp_file_path}" ]
   then
@@ -182,8 +186,6 @@ function build_sdl2_image()
 
     download_and_extract "${sdl2_image_url}" "${sdl2_image_archive}" \
       "${sdl2_image_src_folder_name}"
-
-    mkdir -pv "${LOGS_FOLDER_PATH}/${sdl2_image_folder_name}"
 
     (
       mkdir -pv "${LIBS_BUILD_FOLDER_PATH}/${sdl2_image_folder_name}"

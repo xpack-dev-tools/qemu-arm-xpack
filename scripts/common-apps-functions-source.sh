@@ -39,10 +39,11 @@ function build_qemu()
     )
   fi
 
+  local qemu_folder_name="qemu"
+
+  mkdir -pv "${LOGS_FOLDER_PATH}/${qemu_folder_name}/"
+
   local qemu_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-qemu-installed"
-
-  mkdir -pv "${LOGS_FOLDER_PATH}/qemu/"
-
   if [ ! -f "${qemu_stamp_file_path}" ]
   then
     (
@@ -147,8 +148,8 @@ function build_qemu()
             ${config_options[@]}
 
         fi
-        cp "config.log" "${LOGS_FOLDER_PATH}/qemu/configure-log.txt"
-      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/qemu/configure-output.txt"
+        cp "config.log" "${LOGS_FOLDER_PATH}/${qemu_folder_name}/configure-log.txt"
+      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${qemu_folder_name}/configure-output.txt"
 
       (
         echo
@@ -176,7 +177,7 @@ function build_qemu()
           fi
         )
 
-      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/qemu/make-output.txt"
+      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${qemu_folder_name}/make-output.txt"
 
       copy_license \
         "${QEMU_SRC_FOLDER_PATH}" \
