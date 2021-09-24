@@ -165,10 +165,14 @@ The build scripts are available in the `scripts` folder of the
 [`xpack-dev-tools/qemu-arm-xpack`](https://github.com/xpack-dev-tools/qemu-arm-xpack)
 Git repo.
 
-To download them, the following shortcut is available:
+To download them, use:
 
 ```sh
-curl -L https://github.com/xpack-dev-tools/qemu-arm-xpack/raw/xpack/scripts/git-clone.sh | bash
+rm -rf ~/Downloads/qemu-arm-xpack.git; \
+git clone \
+  https://github.com/xpack-dev-tools/qemu-arm-xpack.git \
+  ~/Downloads/qemu-arm-xpack.git; \
+git -C ~/Downloads/qemu-arm-xpack.git submodule update --init --recursive
 ```
 
 For more details please read the `README-BUILD.md` file.

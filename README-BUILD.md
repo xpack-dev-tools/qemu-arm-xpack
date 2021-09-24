@@ -70,9 +70,9 @@ To download them, issue the following two commands:
 ```sh
 rm -rf ~/Downloads/qemu-arm-xpack.git; \
 git clone \
-  --recurse-submodules \
   https://github.com/xpack-dev-tools/qemu-arm-xpack.git \
-  ~/Downloads/qemu-arm-xpack.git
+  ~/Downloads/qemu-arm-xpack.git; \
+git -C ~/Downloads/qemu-arm-xpack.git submodule update --init --recursive
 ```
 
 > Note: the repository uses submodules; for a successful build it is
@@ -84,10 +84,10 @@ branch:
 ```sh
 rm -rf ~/Downloads/qemu-arm-xpack.git; \
 git clone \
-  --recurse-submodules \
   --branch xpack-develop \
   https://github.com/xpack-dev-tools/qemu-arm-xpack.git \
-  ~/Downloads/qemu-arm-xpack.git
+  ~/Downloads/qemu-arm-xpack.git; \
+git -C ~/Downloads/qemu-arm-xpack.git submodule update --init --recursive
 ```
 
 ## The `Work` folder
