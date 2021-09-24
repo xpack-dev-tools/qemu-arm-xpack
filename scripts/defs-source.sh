@@ -19,16 +19,15 @@
 APP_NAME=${APP_NAME:-"QEMU Arm"}
 
 # Used as part of file/folder paths (keep uppercase).
-APP_UC_NAME=${APP_UC_NAME:-"QEMU ARM"}
 APP_LC_NAME=${APP_LC_NAME:-"qemu-arm"}
 
-DISTRO_UC_NAME=${DISTRO_UC_NAME:-"xPack"}
+DISTRO_NAME=${DISTRO_NAME:-"xPack"}
 DISTRO_LC_NAME=${DISTRO_LC_NAME:-"xpack"}
 DISTRO_TOP_FOLDER=${DISTRO_TOP_FOLDER:-"xPacks"}
 
-APP_DESCRIPTION="${DISTRO_UC_NAME} ${APP_UC_NAME}"
+APP_DESCRIPTION="${DISTRO_NAME} ${APP_NAME}"
 
-BRANDING="${BRANDING:-"${DISTRO_UC_NAME} ${APP_NAME}"}"
+BRANDING="${BRANDING:-"${DISTRO_NAME} ${APP_NAME}"}"
 
 # -----------------------------------------------------------------------------
 
