@@ -175,8 +175,8 @@ available yet.
 On all platforms the packages are standalone, and expect only the standard
 runtime to be present on the host.
 
-All dependencies that are build as shared libraries are copied locally in the
-same folder as the executable.
+All dependencies that are build as shared libraries are copied locally
+in the `libexec` folder (or in the same folder as the executable for Windows).
 
 ### `DT_RPATH` and `LD_LIBRARY_PATH`
 
@@ -213,13 +213,13 @@ The binaries were built using the
 of build environments based on slightly older distributions, that should be
 compatible with most recent systems.
 
-- Intel GNU/Linux: all binaries were built with GCC 9.3, running in an
+- Intel GNU/Linux: all binaries were built with GCC 11.1, running in an
   Ubuntu 12 Docker container
-- Arm GNU/Linux: all binaries were built with GCC 9.3, running in an
+- Arm GNU/Linux: all binaries were built with GCC 11.1, running in an
   Ubuntu 16 Docker container (added in mid-2020)
-- Windows: all binaries were built with mingw-w64 GCC 9.3, running in an
+- Windows: all binaries were built with mingw-w64 GCC 11.1, running in an
   Ubuntu 12 Docker container
-- macOS: all binaries were built with GCC 9.3, running in a separate
+- macOS: all binaries were built with GCC 11.1, running in a separate
   folder on macOS 10.13.6, but were tested and also run on 10.10.
 
 ## Build
