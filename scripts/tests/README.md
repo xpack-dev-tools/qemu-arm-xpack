@@ -11,10 +11,10 @@ The test script is part of the QEMU Arm xPack:
 ```sh
 rm -rf ~/Downloads/openocd-xpack.git; \
 git clone \
-  --recurse-submodules \
   --branch xpack-develop \
   https://github.com/xpack-dev-tools/qemu-arm-xpack.git  \
-  ~/Downloads/qemu-arm-xpack.git
+  ~/Downloads/qemu-arm-xpack.git; \
+git -C ~/Downloads/qemu-arm-xpack.git submodule update --init --recursive
 ```
 
 ## Start a local test
