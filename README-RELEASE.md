@@ -297,7 +297,7 @@ will install the package via `xpm install` on all supported platforms.
 
 The test results are available from:
 
-- <https://travis-ci.org/github/xpack-dev-tools/qemu-arm-xpack>
+- <https://travis-ci.com/github/xpack-dev-tools/qemu-arm-xpack>
 
 ## Update the repo
 
