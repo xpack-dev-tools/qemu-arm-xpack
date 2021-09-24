@@ -25,8 +25,8 @@ For native builds, see the `build-native.sh` script.
 
 ## Repositories
 
-- <https://github.com/xpack-dev-tools/qemu-arm-xpack.git> - the URL of the
-  [xPack QEMU Arm](https://github.com/xpack-dev-tools/qemu-arm-xpack) project
+- <https://github.com/xpack-dev-tools/qemu-arm-xpack.git> -
+  the URL of the xPack build scripts repository
 - <https://github.com/xpack-dev-tools/build-helper> - the URL of the
   xPack build helper, used as the `scripts/helper` submodule
 - <https://github.com/xpack-dev-tools/qemu.git> - the URL of the QEMU Git fork
