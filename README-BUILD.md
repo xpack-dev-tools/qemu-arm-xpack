@@ -209,6 +209,7 @@ bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --all
 or, for development builds:
 
 ```sh
+sudo rm -rf ~/Work/qemu-arm-*
 bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --without-pdf --disable-tests --linux64 --linux32 --win64 --win32
 ```
 
@@ -304,9 +305,9 @@ total 16856
 
 ### Build the macOS binaries
 
-The current platform for macOS production builds is a macOS 10.10.5
-running on a MacBookPro with 16 GB of RAM and a
-fast SSD.
+The current platform for macOS production builds is a macOS 10.13.6
+running on a MacBook Pro 2011 with 32 GB of RAM and a fast SSD.
+The machine name is `xbbm`.
 
 ```sh
 caffeinate ssh xbbm
@@ -319,14 +320,14 @@ network connection or a computer entering sleep.
 ```sh
 screen -S qemu
 
-sudo rm -rf ~/Work/qemu-arm-*
+rm -rf ~/Work/qemu-arm-*
 caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --osx
 ```
 
 or, for development builds:
 
 ```sh
-sudo rm -rf ~/Work/qemu-arm-*
+rm -rf ~/Work/qemu-arm-*
 caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --without-pdf --disable-tests --osx 
 ```
 
