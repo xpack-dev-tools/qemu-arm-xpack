@@ -26,7 +26,7 @@ function build_versions()
   QEMU_SRC_FOLDER_PATH=${QEMU_SRC_FOLDER_PATH:-"${WORK_FOLDER_PATH}/${TARGET_FOLDER_NAME}/${QEMU_SRC_FOLDER_NAME}"}
   QEMU_GIT_URL=${QEMU_GIT_URL:-"https://github.com/xpack-dev-tools/qemu.git"}
 
-  if [ "${TARGET_PLATFORM}" == "linux" ]
+  if false # [ "${TARGET_PLATFORM}" == "linux" ]
   then
     (
       xbb_activate
