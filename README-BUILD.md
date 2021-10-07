@@ -65,7 +65,7 @@ The build scripts are available in the `scripts` folder of the
 [`xpack-dev-tools/qemu-arm-xpack`](https://github.com/xpack-dev-tools/qemu-arm-xpack)
 Git repo.
 
-To download them, issue the following two commands:
+To download them, issue the following commands:
 
 ```sh
 rm -rf ~/Downloads/qemu-arm-xpack.git; \
@@ -538,8 +538,8 @@ program from there. For example on macOS the output should
 look like:
 
 ```console
-$ /Users/ilg/Downloads/xPacks/qemu-arm/2.8.0-13/bin/qemu-system-gnuarmeclipse --version
-xPack 64-bit QEMU emulator version 2.8.0-13 (v2.8.0-13-20190211-44-g743693888b-dirty)
+$ .../xpack-qemu-arm-2.8.0-13/bin/qemu-system-gnuarmeclipse --version
+xPack 64-bit QEMU emulator version 2.8.0-13 (v2.8.0-12-dirty)
 Copyright (c) 2003-2016 Fabrice Bellard and the QEMU Project developers
 ```
 
