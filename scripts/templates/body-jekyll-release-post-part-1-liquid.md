@@ -50,17 +50,15 @@ The binary files are available from GitHub [releases]({% raw %}{{ page.download_
   Windows 8, Windows 10
 - Intel macOS 64-bit: 10.13 or later
 
+On GNU/Linux, QEMU requires the X11 libraries to be present. On Debian derived
+distribution they are already in the system; on RedHat & Arch derived
+distributions they must be installed explicitly.
+
 ## Install
 
 The full details of installing the **xPack QEMU Arm** on various platforms
 are presented in the separate
 [Install]({% raw %}{{ site.baseurl }}{% endraw %}/qemu-arm/install/) page.
-
-### Prerequisites
-
-On GNU/Linux, QEMU requires the X11 libraries to be present. On Debian derived
-distribution they are already in the system; on RedHat & Arch derived
-distributions they must be installed explicitly.
 
 ### Easy install
 
@@ -256,14 +254,16 @@ On platforms where Eclipse is not available, the binaries were
 tested by manually starting the
 blinky test on the emulated STM32F4DISCOVERY board.
 
-```
-~/.local/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-12.1/.content/bin/qemu-system-gnuarmeclipse --version
+```console
+.../xpack-qemu-arm-2.8.0-13/bin/qemu-system-gnuarmeclipse --version
+xPack 64-bit QEMU emulator version 2.8.0-11 (v2.8.0-12-4-gb1ab9f0b32-dirty)
+Copyright (c) 2003-2016 Fabrice Bellard and the QEMU Project developers
 
 mkdir -p ~/Downloads
 (cd ~/Downloads; curl -L --fail -o f407-disc-blink-tutorial.elf \
 https://github.com/xpack-dev-tools/qemu-eclipse-test-projects/raw/master/f407-disc-blink-tutorial/Debug/f407-disc-blink-tutorial.elf)
 
-~/.local/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-12.1/.content/bin/qemu-system-gnuarmeclipse \
+.../xpack-qemu-arm-2.8.0-13/bin/qemu-system-gnuarmeclipse \
 --board STM32F4-Discovery \
 -d unimp,guest_errors \
 --nographic \
@@ -271,7 +271,7 @@ https://github.com/xpack-dev-tools/qemu-eclipse-test-projects/raw/master/f407-di
 --semihosting-config enable=on,target=native \
 --semihosting-cmdline test 6
 
-DISPLAY=:1.0 ~/opt/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-12.1/.content/bin/qemu-system-gnuarmeclipse \
+DISPLAY=:1.0 .../xpack-qemu-arm-2.8.0-13/bin/qemu-system-gnuarmeclipse \
 --board STM32F4-Discovery \
 -d unimp,guest_errors \
 --image ~/Downloads/f407-disc-blink-tutorial.elf \
