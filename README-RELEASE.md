@@ -154,7 +154,7 @@ in the environment.
 
 This command uses the `xpack-develop` branch of this repo.
 
-The builds take about 65 minutes to complete.
+The builds take about 45 minutes to complete.
 
 The workflow result and logs are available from the
 [Actions](https://github.com/xpack-dev-tools/qemu-arm-xpack/actions/) page.
