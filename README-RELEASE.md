@@ -103,8 +103,8 @@ bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --without-
 And on the Arm Linux (`xbba`):
 
 ```sh
-bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --arm64
-bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --arm32
+bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --arm64
+bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --arm32
 ```
 
 Work on the scripts until all platforms pass the build.
@@ -217,7 +217,7 @@ functional.
 
 ## Create a new GitHub pre-release draft
 
-- in `CHANGELOG.md`, add release date
+- in `CHANGELOG.md`, add the release date and a message like _v2.8.0-13 released_
 - commit and push the `xpack-develop` branch
 - run the xPack action `trigger-workflow-publish-release`
 
@@ -252,7 +252,8 @@ If any, refer to closed
 
 - go to the GitHub [releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/) page
 - perform the final edits and check if everything is fine
-- save the release
+- keep the pre-release button enabled
+- publish the release
 
 Note: at this moment the system should send a notification to all clients
 watching this project.
@@ -274,8 +275,8 @@ watching this project.
 
 - select the `xpack-develop` branch
 - check the latest commits `npm run git-log`
-- update `CHANGELOG.md`; commit with a message like
-  _CHANGELOG: publish npm v2.8.0-13.1_
+- update `CHANGELOG.md`, add a line like _v2.8.0-13.1 published on npmjs.com_
+- commit with a message like _CHANGELOG: publish npm v2.8.0-13.1_
 - `npm pack` and check the content of the archive, which should list
   only the `package.json`, the `README.md`, `LICENSE` and `CHANGELOG.md`;
   possibly adjust `.npmignore`
@@ -292,7 +293,7 @@ After a few moments the version will be visible at:
 
 ## Test if the npm binaries can be installed with xpm
 
-Run the `scripts/tests/trigger-travis-xpm-install.sh` script, this
+Run the xPack action `trigger-workflow-test-xpm`, this
 will install the package via `xpm install` on all supported platforms.
 
 The test results are available from:
@@ -325,6 +326,7 @@ When the release is considered stable, promote it as `latest`:
 - check the download counter, it should match the number of tests
 - add a link to the Web page `[Continue reading »]()`; use an same blog URL
 - **disable** the **pre-release** button
+- remove the _tests only_ notice
 - click the **Update Release** button
 
 ## Share on Twitter
