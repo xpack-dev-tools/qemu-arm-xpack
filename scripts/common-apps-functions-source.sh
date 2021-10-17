@@ -27,14 +27,14 @@ function build_qemu()
       # git submodule update --init --recursive --remote
       # Do not bring all submodules; for better control,
       # prefer to build separate pixman. 
-      git submodule update --init dtc
+      run_verbose git submodule update --init dtc
 
       rm -rf pixman roms
 
       local patch_file="${BUILD_GIT_PATH}/patches/${QEMU_GIT_PATCH}"
       if [ -f "${patch_file}" ]
       then
-        git apply "${patch_file}"
+        run_verbose git apply "${patch_file}"
       fi
     )
   fi
@@ -92,7 +92,7 @@ function build_qemu()
           if [ "${IS_DEVELOP}" == "y" ]
           then
             # Although it shouldn't, the script checks python before --help.
-            bash "${QEMU_SRC_FOLDER_PATH}/configure" \
+            run_verbose bash "${QEMU_SRC_FOLDER_PATH}/configure" \
               --python=python2 \
               --help
           fi
