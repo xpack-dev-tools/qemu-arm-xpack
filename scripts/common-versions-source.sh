@@ -45,7 +45,8 @@ function build_versions()
         xbb_activate
 
         QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack"}
-        QEMU_GIT_COMMIT=${QEMU_GIT_COMMIT:-"0e90a28787e50bd2057f00497e6f577c452856ad"}
+        # QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack-develop"}
+        QEMU_GIT_COMMIT=${QEMU_GIT_COMMIT:-"b1ab9f0b322a905f8c5983692e800472a6556323"}
 
         QEMU_GIT_PATCH="qemu-2.8.0.git-patch"
 
