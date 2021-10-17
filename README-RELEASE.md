@@ -63,14 +63,14 @@ In qemu.git:
 
 - switch to `master`
 - merge `develop` into `master`
-- add tag `v2.8.0-13`
+- add a `v2.8.0-13-xpack` tag
 
 ### Update the version specific code
 
 - open the `common-versions-source.sh` file
 - add a new `if` with the new version before the existing code
 - check if `QEMU_GIT_BRANCH=xpack`
-- update the `QEMU_GIT_COMMIT` to latest Git ID
+- update the `QEMU_GIT_COMMIT` to latest Git commit ID
 
 ### Update helper
 
@@ -86,18 +86,18 @@ or the production machine (`xbbm`):
 ```sh
 sudo rm -rf ~/Work/qemu-arm-*
 
-caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --without-pdf --disable-tests --osx
+caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --osx
 ```
 
 Similarly on the Intel Linux (`xbbi`):
 
 ```sh
 
-bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --without-pdf --disable-tests --linux64
-bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --without-pdf --disable-tests --linux32
+bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --linux64
+bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --linux32
 
-bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --without-pdf --disable-tests --win64
-bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --without-pdf --disable-tests --win32
+bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --win64
+bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --win32
 ```
 
 And on the Arm Linux (`xbba`):
