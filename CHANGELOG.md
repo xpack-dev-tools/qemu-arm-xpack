@@ -2,9 +2,15 @@
 
 Releases in reverse chronological order.
 
+## 2021-10-17
+
+- [#15] - applied the two patches mentioned in
+ <https://bugs.launchpad.net/qemu/+bug/1429841/comments/6>
+- update for new helper & XBB v3.3
+
 ## 2021-09-07
 
-- prepare v2.8.0-13
+- v2.8.0-13 prepared
 
 ## 2021-02-02
 
