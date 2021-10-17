@@ -296,9 +296,8 @@ After a few moments the version will be visible at:
 Run the xPack action `trigger-workflow-test-xpm`, this
 will install the package via `xpm install` on all supported platforms.
 
-The test results are available from:
-
-- <https://travis-ci.com/github/xpack-dev-tools/qemu-arm-xpack/>
+The resulting binaries are available for testing from
+[pre-releases/test](https://github.com/xpack-dev-tools/pre-releases/releases/tag/test/).
 
 ## Update the repo
 
