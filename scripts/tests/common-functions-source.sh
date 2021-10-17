@@ -19,10 +19,7 @@
 
 function run_tests()
 {
-  show_libs "${app_folder_path}/bin/qemu-system-gnuarmeclipse"
-
-  run_app "${app_folder_path}/bin/qemu-system-gnuarmeclipse" --version
-  run_app "${app_folder_path}/bin/qemu-system-gnuarmeclipse" --help
+  test_qemu
 
   # TODO: add more, if possible.
 }
