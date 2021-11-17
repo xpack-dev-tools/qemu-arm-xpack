@@ -1,7 +1,7 @@
 ---
 title:  xPack QEMU Arm {{ RELEASE_VERSION }} released
 
-summary: "Version {{ RELEASE_VERSION }} is a maintenance release; it fixes several bugs."
+summary: "Version **{{ RELEASE_VERSION }}** is a maintenance release; it fixes several bugs."
 
 version: {{ RELEASE_VERSION }}
 npm_subversion: 1
@@ -35,7 +35,7 @@ are the **Raspberry Pi** class devices." %}{% endraw %}
 
 ## Download
 
-The binary files are available from GitHub [releases]({% raw %}{{ page.download_url }}{% endraw %}).
+The binary files are available from GitHub [Releases]({% raw %}{{ page.download_url }}{% endraw %}).
 
 ## Prerequisites
 
