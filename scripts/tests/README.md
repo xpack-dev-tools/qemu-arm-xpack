@@ -9,7 +9,7 @@ The binaries can be available from one of the pre-releases:
 The test script is part of the QEMU Arm xPack:
 
 ```sh
-rm -rf ~/Downloads/openocd-xpack.git; \
+rm -rf ~/Downloads/qemu-arm-xpack.git; \
 git clone \
   --branch xpack-develop \
   https://github.com/xpack-dev-tools/qemu-arm-xpack.git  \
