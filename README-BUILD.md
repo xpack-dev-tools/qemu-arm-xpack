@@ -551,6 +551,13 @@ $ tree -L 2 /Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-13.1/.cont
 /Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-13.1/.content
 ├── README.md
 ├── bin
+│   └── qemu-system-gnuarmeclipse
+├── distro-info
+│   ├── CHANGELOG.md
+│   ├── licenses
+│   ├── patches
+│   └── scripts
+├── libexec
 │   ├── libSDL2-2.0.0.dylib
 │   ├── libSDL2_image-2.0.0.dylib
 │   ├── libgcc_s.1.dylib
@@ -559,20 +566,15 @@ $ tree -L 2 /Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/2.8.0-13.1/.cont
 │   ├── libiconv.2.dylib
 │   ├── libintl.8.dylib
 │   ├── libpixman-1.0.dylib
+│   ├── libssp.0.dylib
 │   ├── libstdc++.6.dylib
 │   ├── libz.1.2.11.dylib
-│   ├── libz.1.dylib -> libz.1.2.11.dylib
-│   └── qemu-system-gnuarmeclipse
-├── distro-info
-│   ├── CHANGELOG.txt
-│   ├── licenses
-│   ├── patches
-│   └── scripts
+│   └── libz.1.dylib -> libz.1.2.11.dylib
 └── share
     ├── doc
     └── qemu
 
-8 directories, 14 files
+9 directories, 15 files
 ```
 
 ## Uninstall
