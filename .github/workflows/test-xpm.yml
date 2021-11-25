@@ -6,7 +6,7 @@
 #   (https://xpack.github.io)
 # Copyright (c) 2021 Liviu Ionescu.
 #
-# Permission to use, copy, modify, and/or distribute this software 
+# Permission to use, copy, modify, and/or distribute this software
 # for any purpose is hereby granted, under the terms of the MIT license.
 # -----------------------------------------------------------------------------
 
@@ -33,22 +33,29 @@ on:
 jobs:
 
   linux-x64:
-    name: 'Intel Linux 64-bit QEMU@${{ github.event.inputs.version }} test'
+    name: 'Linux Intel 64-bit QEMU@${{ github.event.inputs.version }} test'
     runs-on: ubuntu-latest
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
           fetch-depth: 3
           submodules: true
       - name: 'Run ${{ github.event.inputs.version }} xpm test'
-        run: bash scripts/helper/tests/xpm-test.sh --version ${{ github.event.inputs.version }}
+        uses: docker://ilegeul/debian:amd64-10-npm-v1
+        with:
+          entrypoint: /bin/bash
+          args: /github/workspace/scripts/helper/tests/xpm-test.sh --image debian:buster --version ${{ github.event.inputs.version }}
 
   
   linux-ia32:
-    name: 'Intel Linux 32-bit QEMU@${{ github.event.inputs.version }} test'
+    name: 'Linux Intel 32-bit QEMU@${{ github.event.inputs.version }} test'
     runs-on: ubuntu-latest
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -62,9 +69,11 @@ jobs:
 
   
   linux-arm64:
-    name: 'Arm Linux 64-bit QEMU@${{ github.event.inputs.version }} test'
-    runs-on: [self-hosted, Linux, ARM64]
+    name: 'Linux Arm 64-bit QEMU@${{ github.event.inputs.version }} test'
+    runs-on: [self-hosted, linux, arm64]
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -78,9 +87,11 @@ jobs:
 
   
   linux-arm32:
-    name: 'Arm Linux 32-bit QEMU@${{ github.event.inputs.version }} test'
-    runs-on: [self-hosted, Linux, ARM64]
+    name: 'Linux Arm 32-bit QEMU@${{ github.event.inputs.version }} test'
+    runs-on: [self-hosted, linux, arm64]
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -94,9 +105,31 @@ jobs:
 
   
   macos-x64:
-    name: 'Intel macOS 64-bit QEMU@${{ github.event.inputs.version }} test'
+    name: 'macOS Intel 64-bit QEMU@${{ github.event.inputs.version }} test'
     runs-on: macos-latest
     steps:
+      - name: 'Machine'
+        run: uname -a
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 3
+          submodules: true
+      - name: 'Run ${{ github.event.inputs.version }} xpm test'
+        run: bash scripts/helper/tests/xpm-test.sh --version ${{ github.event.inputs.version }}
+
+  
+  macos-arm64:
+    name: 'macOS Arm 64-bit QEMU@${{ github.event.inputs.version }} test'
+    runs-on: [self-hosted, macos, apple]
+    defaults:
+      run:
+        shell: "/usr/bin/arch -arch arm64e /bin/bash -l {0}"
+
+    steps:
+      - name: 'Machine'
+        run: uname -a
+
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:
@@ -110,6 +143,8 @@ jobs:
     name: 'Windows 64-bit QEMU@${{ github.event.inputs.version }} test'
     runs-on: windows-latest
     steps:
+      - name: 'Machine'
+        run: uname -a
       - name: 'Checkout'
         uses: actions/checkout@v2
         with:

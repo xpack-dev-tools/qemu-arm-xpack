@@ -283,7 +283,7 @@ or, for development builds:
 
 ```sh
 sudo rm -rf ~/Work/qemu-arm-*
-bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --arm32 --arm64  
+bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --arm32 --arm64
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -326,7 +326,7 @@ or, for development builds:
 
 ```sh
 rm -rf ~/Work/qemu-arm-*
-caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --osx 
+caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --osx
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -460,7 +460,7 @@ curses support    no
 virgl support     no
 curl support      no
 mingw32 support   no
-Audio drivers 
+Audio drivers
 Block whitelist (rw)
 Block whitelist (ro)
 VirtFS support    no
