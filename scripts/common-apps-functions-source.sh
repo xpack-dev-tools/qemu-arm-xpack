@@ -3,18 +3,18 @@
 #   (https://xpack.github.io)
 # Copyright (c) 2019 Liviu Ionescu.
 #
-# Permission to use, copy, modify, and/or distribute this software 
+# Permission to use, copy, modify, and/or distribute this software
 # for any purpose is hereby granted, under the terms of the MIT license.
 # -----------------------------------------------------------------------------
 
-# Helper script used in the second edition of the GNU MCU Eclipse build 
-# scripts. As the name implies, it should contain only functions and 
+# Helper script used in the second edition of the GNU MCU Eclipse build
+# scripts. As the name implies, it should contain only functions and
 # should be included with 'source' by the build scripts (both native
 # and container).
 
 # -----------------------------------------------------------------------------
 
-function build_qemu() 
+function build_qemu()
 {
   if [ ! -d "${QEMU_SRC_FOLDER_PATH}" ]
   then
@@ -26,7 +26,7 @@ function build_qemu()
 
       # git submodule update --init --recursive --remote
       # Do not bring all submodules; for better control,
-      # prefer to build separate pixman. 
+      # prefer to build separate pixman.
       run_verbose git submodule update --init dtc
 
       rm -rf pixman roms
@@ -54,18 +54,18 @@ function build_qemu()
 
       CPPFLAGS="${XBB_CPPFLAGS}"
       if [ "${IS_DEBUG}" == "y" ]
-      then 
+      then
         CPPFLAGS+=" -DDEBUG"
       fi
 
-      CFLAGS="${XBB_CFLAGS_NO_W}"      
+      CFLAGS="${XBB_CFLAGS_NO_W}"
       CXXFLAGS="${XBB_CXXFLAGS_NO_W}"
 
       LDFLAGS="${XBB_LDFLAGS_APP_STATIC_GCC}"
       if [ "${TARGET_PLATFORM}" == "linux" ]
       then
         LDFLAGS+=" -Wl,-rpath,${LD_LIBRARY_PATH}"
-      fi      
+      fi
 
       export CPPFLAGS
       export CFLAGS
@@ -100,7 +100,7 @@ function build_qemu()
           config_options=()
 
           config_options+=("--prefix=${APP_PREFIX}")
-            
+
           if [ "${TARGET_PLATFORM}" == "win32" ]
           then
             config_options+=("--cross-prefix=${CROSS_COMPILE_PREFIX}-")
@@ -109,7 +109,7 @@ function build_qemu()
           config_options+=("--bindir=${APP_PREFIX}/bin")
           config_options+=("--docdir=${APP_PREFIX_DOC}")
           config_options+=("--mandir=${APP_PREFIX_DOC}/man")
-            
+
           config_options+=("--cc=${CC}")
           config_options+=("--cxx=${CXX}")
 
@@ -117,12 +117,12 @@ function build_qemu()
           config_options+=("--extra-ldflags=${LDFLAGS}")
 
           config_options+=("--target-list=gnuarmeclipse-softmmu")
-        
+
           config_options+=("--with-sdlabi=2.0")
           config_options+=("--python=python2")
 
           if [ "${IS_DEBUG}" == "y" ]
-          then 
+          then
             config_options+=("--enable-debug")
           fi
 

@@ -3,18 +3,18 @@
 #   (https://xpack.github.io)
 # Copyright (c) 2019 Liviu Ionescu.
 #
-# Permission to use, copy, modify, and/or distribute this software 
+# Permission to use, copy, modify, and/or distribute this software
 # for any purpose is hereby granted, under the terms of the MIT license.
 # -----------------------------------------------------------------------------
 
-# Helper script used in the second edition of the GNU MCU Eclipse build 
-# scripts. As the name implies, it should contain only functions and 
+# Helper script used in the second edition of the GNU MCU Eclipse build
+# scripts. As the name implies, it should contain only functions and
 # should be included with 'source' by the build scripts (both native
 # and container).
 
 # -----------------------------------------------------------------------------
 
-function build_sdl2() 
+function build_sdl2()
 {
   # https://www.libsdl.org/
   # https://www.libsdl.org/release
@@ -54,14 +54,14 @@ function build_sdl2()
       xbb_activate_installed_dev
 
       CPPFLAGS="${XBB_CPPFLAGS}"
-      CFLAGS="${XBB_CFLAGS_NO_W}"      
+      CFLAGS="${XBB_CFLAGS_NO_W}"
       CXXFLAGS="${XBB_CXXFLAGS_NO_W}"
 
       LDFLAGS="${XBB_LDFLAGS_LIB}"
       if [ "${TARGET_PLATFORM}" == "linux" ]
       then
         LDFLAGS+=" -Wl,-rpath,${LD_LIBRARY_PATH}"
-      fi      
+      fi
 
       export CPPFLAGS
       export CFLAGS
@@ -70,7 +70,7 @@ function build_sdl2()
 
       if [ "${TARGET_PLATFORM}" == "darwin" ]
       then
-        # GNU GCC fails with 
+        # GNU GCC fails with
         #  CC     build/SDL_syspower.lo
         # In file included from //System/Library/Frameworks/CoreFoundation.framework/Headers/CFPropertyList.h:13,
         #                 from //System/Library/Frameworks/CoreFoundation.framework/Headers/CoreFoundation.h:55,
@@ -81,7 +81,7 @@ function build_sdl2()
       fi
 
       if [ ! -f "config.status" ]
-      then 
+      then
 
         (
           if [ "${IS_DEVELOP}" == "y" ]
@@ -100,7 +100,7 @@ function build_sdl2()
           config_options=()
 
           config_options+=("--prefix=${LIBS_INSTALL_FOLDER_PATH}")
-            
+
           config_options+=("--build=${BUILD}")
           config_options+=("--host=${HOST}")
           config_options+=("--target=${TARGET}")
@@ -154,7 +154,7 @@ function build_sdl2()
   fi
 }
 
-function build_sdl2_image() 
+function build_sdl2_image()
 {
   # https://www.libsdl.org/projects/SDL_image/
   # https://www.libsdl.org/projects/SDL_image/release
@@ -197,7 +197,7 @@ function build_sdl2_image()
       xbb_activate_installed_dev
 
       CPPFLAGS="${XBB_CPPFLAGS}"
-      CFLAGS="${XBB_CFLAGS_NO_W}"      
+      CFLAGS="${XBB_CFLAGS_NO_W}"
       CXXFLAGS="${XBB_CXXFLAGS_NO_W}"
       OBJCFLAGS="${XBB_CFLAGS_NO_W}"
 
@@ -205,7 +205,7 @@ function build_sdl2_image()
       if [ "${TARGET_PLATFORM}" == "linux" ]
       then
         LDFLAGS+=" -Wl,-rpath,${LD_LIBRARY_PATH}"
-      fi      
+      fi
       if [ "${IS_DEVELOP}" == "y" ]
       then
         LDFLAGS+=" -v"
@@ -227,7 +227,7 @@ function build_sdl2_image()
       env | sort
 
       if [ ! -f "config.status" ]
-      then 
+      then
 
         (
           if [ "${IS_DEVELOP}" == "y" ]
@@ -246,7 +246,7 @@ function build_sdl2_image()
           config_options=()
 
           config_options+=("--prefix=${LIBS_INSTALL_FOLDER_PATH}")
-            
+
           config_options+=("--build=${BUILD}")
           config_options+=("--host=${HOST}")
           config_options+=("--target=${TARGET}")
