@@ -62,7 +62,7 @@ function build_versions()
         build_libffi "3.2.1"
 
         # in certain configurations it requires libxml2 on windows
-        build_gettext "0.19.8.1"
+        build_gettext "0.21" # "0.19.8.1"
         build_glib "2.56.4"
         build_pixman "0.38.0"
 
