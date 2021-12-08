@@ -206,9 +206,9 @@ Please note that previous versions, up to mid-2020, used `DT_RUNPATH`, which
 has a priority lower than `LD_LIBRARY_PATH`, and does not tolerate setting
 it in the environment.
 
-### `@executable_path`
+### `@rpath` and `@loader_path`
 
-Similarly, on macOS, the dynamic libraries are adjusted with `otool` to use a
+Similarly, on macOS, the binaries are adjusted with `install_name_tool` to use a
 relative path.
 
 ## Documentation
@@ -218,7 +218,7 @@ The original documentation is available in the `share/doc` folder.
 ## Build
 
 The binaries for all supported platforms
-(Windows, macOS and Intel & Arm GNU/Linux) were built using the
+(Windows, macOS and GNU/Linux) were built using the
 [xPack Build Box (XBB)](https://xpack.github.io/xbb/), a set
 of build environments based on slightly older distributions, that should be
 compatible with most recent systems.
