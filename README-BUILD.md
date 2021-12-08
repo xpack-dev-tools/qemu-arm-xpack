@@ -319,14 +319,14 @@ network connection or a computer entering sleep.
 screen -S qemu
 
 rm -rf ~/Work/qemu-arm-*
-caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --osx
+caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --macos
 ```
 
 or, for development builds:
 
 ```sh
 rm -rf ~/Work/qemu-arm-*
-caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --osx
+caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --without-pdf --without-html --disable-tests --macos
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
