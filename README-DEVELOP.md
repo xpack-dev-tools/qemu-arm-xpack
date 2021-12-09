@@ -21,7 +21,7 @@ To compile and install these tools, please read the separate
 [The macOS XBB](https://github.com/xpack/xpack-build-box/tree/master/macos)
 page.
 
-The current macOS XBB is based on macOS 10.10 but also runs on macOS 10.14.
+The current macOS XBB is based on macOS 10.13 but also runs on macOS 11.6.
 If you manage to build
 it on a different macOS, please contribute back the changes to the script.
 
@@ -65,7 +65,9 @@ page and install Ubuntu.
 
 Start the new `ubuntu.exe` (there is also a graphical shortcut).
 
-This step should [initialise the new distro](https://docs.microsoft.com/en-us/windows/wsl/initialize-distro), and when completed, ask for the separate UNIX name.
+This step should
+[initialise the new distro](https://docs.microsoft.com/en-us/windows/wsl/initialize-distro),
+and when completed, ask for the separate UNIX name.
 Any name is accepted, but to keep things consistent, preferably use the same
 name as for Windows.
 
@@ -124,7 +126,8 @@ launchers is `${env:USERPROFILE}/Downloads/MinGW/bin/gdb.exe`.
 
 ### Visual Studio Code
 
-The recommended development tool is [Visual Studio Code](https://code.visualstudio.com),
+The recommended development tool is
+[Visual Studio Code](https://code.visualstudio.com),
 and for it there are already build tasks and debug launchers available
 in the `.vscode` folder of the `xpack-dev-tools/qemu` Git project.
 
@@ -143,7 +146,7 @@ For macOS and Windows, the recommended Git client is
 [Sourcetree](https://www.sourcetreeapp.com/).
 
 Since Sourcetree is not available for GNU/Linux, another choice is
-Git Kraken, which can be downloaded for freely from
+Git Kraken, which can be downloaded for free from
 [gitkraken.com](https://www.gitkraken.com/download).
 
 This is an optional step and your selection is not relevant for this
@@ -179,7 +182,7 @@ For more details please read the `README-BUILD.md` file.
 
 ### Check if the remote development branch is up-to-date
 
-Open the local copy of `qemu.git` and check if the development branch is
+Open the local fork of the `qemu.git` and check if the development branch is
 pushed to the remote, since the script will use it when `--develop` is passed.
 
 ### Initial build
@@ -265,7 +268,7 @@ For advanced browsing, the `#include` folders are already configured
 in `c_cpp_properties.json`, so most definitions should be already
 available via IntelliSense.
 
-There are 3 configurations available, for each platform.
+There are several configurations available, for each platform.
 
 To select the one appropriate for your environment, open a C/C++ file and
 click the bottom right **C/C++ Configuration** selector; in the
@@ -298,7 +301,7 @@ The executable is started from
 
 In addition to a test showing the help message, two more launchers
 are defined for each platform, to start the classical STM32F4DISCOVERY
-blinky project created with the GNU MCU Eclipse plug-ins.
+blinky project created with the Eclipse Embedded CDT plug-ins.
 
 To start the debug sessions, switch to the debug view (using the debug
 icon in the left bar), and select the launcher in the top combo.
@@ -306,6 +309,12 @@ icon in the left bar), and select the launcher in the top combo.
 There are separate launchers using LLDB (for macOS) and GDB (for Ubuntu and
 Windows); both start the Debug elf from the `f407-disc-blink-tutorial` project,
 described above.
+
+Note: on macOS the user must be part of the Developer Tools group:
+
+```sh
+sudo dscl . append /Groups/_developer GroupMembership $USER
+```
 
 #### `HOME` vs `USERPROFILE`
 
