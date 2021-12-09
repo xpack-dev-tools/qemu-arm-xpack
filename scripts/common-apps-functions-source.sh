@@ -44,7 +44,7 @@ function build_qemu()
   mkdir -pv "${LOGS_FOLDER_PATH}/${qemu_folder_name}/"
 
   local qemu_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-qemu-installed"
-  if [ ! -f "${qemu_stamp_file_path}" ]
+  if [ ! -f "${qemu_stamp_file_path}" ] || [ "${IS_DEBUG}" == "y" ]
   then
     (
       mkdir -pv "${APP_BUILD_FOLDER_PATH}"
