@@ -310,9 +310,11 @@ There are separate launchers using LLDB (for macOS) and GDB (for Ubuntu and
 Windows); both start the Debug elf from the `f407-disc-blink-tutorial` project,
 described above.
 
-Note: on macOS the user must be part of the Developer Tools group:
+Note: on macOS the developer security must be enabled and the
+user must be part of the Developer Tools group:
 
 ```sh
+sudo /usr/sbin/DevToolsSecurity --enable
 sudo dscl . append /Groups/_developer GroupMembership $USER
 ```
 
