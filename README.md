@@ -138,6 +138,13 @@ with caution, and prefer exact matches, like `2.8.0-13.1`.
 - [How to make new releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/blob/xpack/README-RELEASE.md)
 - [Developer info](https://github.com/xpack-dev-tools/qemu-arm-xpack/blob/xpack/README-DEVELOP.md)
 
+## Apple Silicon notice
+
+Due to the major changes in macOS for Apple Silicon,
+the current xPack QEMU sources cannot be used and an Apple Silicon
+binary will not be initially available. A major update for xPack QEMU is
+planned for 2022, which will also address this issue.
+
 ## Support
 
 The quick answer is to use the
