@@ -15,7 +15,7 @@ build environments for the [xPack](https://xpack.github.io) tools.
 ### macOS
 
 The macOS XBB is a custom set of tools installed in the
-`${HOME}/opt/xbb` folder.
+`${HOME}/.local/xbb` folder.
 
 To compile and install these tools, please read the separate
 [The macOS XBB](https://github.com/xpack/xpack-build-box/tree/master/macos)
@@ -286,8 +286,7 @@ as described in the
 Clone the repository in the same `Work` folder:
 
 ```sh
-cd ~/Work
-git clone https://github.com/xpack-dev-tools/qemu-eclipse-test-projects.git qemu-eclipse-test-projects.git
+git clone https://github.com/xpack-dev-tools/qemu-eclipse-test-projects.git ~/Work/qemu-eclipse-test-projects.git
 ```
 
 ### Debug
