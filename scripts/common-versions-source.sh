@@ -31,6 +31,13 @@ function build_versions()
     prepare_gcc_env "${CROSS_COMPILE_PREFIX}-"
   fi
 
+  if [ "${IS_DEVELOP}" == "y" -a "${IS_DEBUG}" == "y" ]
+  then
+    QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack-develop"}
+  else
+    QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack"}
+  fi
+
   # Keep them in sync with combo archive content.
   if [[ "${RELEASE_VERSION}" =~ 2\.8\.0-* ]]
   then
@@ -44,8 +51,6 @@ function build_versions()
       (
         xbb_activate
 
-        QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack"}
-        # QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack-develop"}
         QEMU_GIT_COMMIT=${QEMU_GIT_COMMIT:-"b1ab9f0b322a905f8c5983692e800472a6556323"}
 
         QEMU_GIT_PATCH="qemu-2.8.0.git-patch"
