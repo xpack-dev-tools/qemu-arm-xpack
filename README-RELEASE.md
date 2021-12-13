@@ -85,7 +85,7 @@ With Sourcetree, go to the helper repo and update to the latest master commit.
 ### Development run the build scripts
 
 Before the real build, run a test build on the development machine (`wks`)
-or the production machine (`xbbm`):
+or the production machines (`xbbma`, `xbbmi`):
 
 ```sh
 sudo rm -rf ~/Work/qemu-arm-*
@@ -93,7 +93,7 @@ sudo rm -rf ~/Work/qemu-arm-*
 caffeinate bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --macos
 ```
 
-Similarly on the Intel Linux (`xbbi`):
+Similarly on the Intel Linux (`xbbli`):
 
 ```sh
 
@@ -104,7 +104,7 @@ bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --win64
 bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --win32
 ```
 
-And on the Arm Linux (`xbba`):
+And on the Arm Linux (`xbbla`):
 
 ```sh
 bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop --arm64
@@ -129,13 +129,13 @@ The automation is provided by GitHub Actions and three self-hosted runners.
 Run the `generate-workflows` to re-generate the
 GitHub workflow files; commit and push if necessary.
 
-- on the macOS machine (`xbbm`) open ssh sessions to both Linux
-machines (`xbbi` and `xbba`):
+- on the macOS machine (`xbbmi`) open ssh sessions to both Linux
+machines (`xbbli` and `xbbla`):
 
 ```sh
-caffeinate ssh xbbi
+caffeinate ssh xbbli
 
-caffeinate ssh xbba
+caffeinate ssh xbbla
 ```
 
 Start the runner on all three machines:
