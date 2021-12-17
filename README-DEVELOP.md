@@ -178,6 +178,18 @@ git clone \
 git -C ~/Downloads/qemu-arm-xpack.git submodule update --init --recursive
 ```
 
+For development purposes, clone the `xpack-develop`
+branch:
+
+```sh
+rm -rf ~/Downloads/qemu-arm-xpack.git; \
+git clone \
+  --branch xpack-develop \
+  https://github.com/xpack-dev-tools/qemu-arm-xpack.git \
+  ~/Downloads/qemu-arm-xpack.git; \
+git -C ~/Downloads/qemu-arm-xpack.git submodule update --init --recursive
+```
+
 For more details please read the `README-BUILD.md` file.
 
 ### Check if the remote development branch is up-to-date
