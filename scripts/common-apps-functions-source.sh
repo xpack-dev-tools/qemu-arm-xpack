@@ -290,7 +290,9 @@ function build_qemu_legacy()
         CPPFLAGS+=" -DDEBUG"
       fi
 
-      CFLAGS="${XBB_CFLAGS_NO_W}"
+      # On Windows the MinGW macro fails:
+      # memory.c:592:73: error: macro "access" passed 7 arguments, but takes just 2
+      CFLAGS="$(echo ${XBB_CFLAGS_NO_W} | sed -e 's|-D__USE_MINGW_ACCESS||')"
       CXXFLAGS="${XBB_CXXFLAGS_NO_W}"
 
       LDFLAGS="${XBB_LDFLAGS_APP_STATIC_GCC}"
