@@ -68,7 +68,7 @@ function build_versions()
         # required by glib
         build_libiconv "1.16"
 
-        if [ "${TARGET_PLATFORM}" == "darwin" ]
+        if false # [ "${TARGET_PLATFORM}" == "darwin" ]
         then
           : # On macOS use Cocoa.
         else

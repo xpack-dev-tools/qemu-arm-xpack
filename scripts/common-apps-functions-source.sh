@@ -140,7 +140,8 @@ function build_qemu()
 
           if [ "${TARGET_PLATFORM}" == "darwin" ]
           then
-            if false
+            # For now, Cocoa builds fail on macOS 10.13.
+            if true
             then
               config_options+=("--disable-cocoa")
               config_options+=("--enable-sdl")
