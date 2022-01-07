@@ -2,6 +2,10 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2022-01-07
+
+- v6.2.0-1 prepared
+
 ## 2021-10-17
 
 - [#15] - applied the two patches mentioned in
@@ -309,7 +313,6 @@ using Docker, was added to the main gnuarmeclipse-se.git/scripts.
 
 - the greeting shows 32-bits or 64-bits (plural for bits).
 
-
 ## 2015-01-20
 
 - build script for OS X added.
@@ -338,6 +341,5 @@ using Docker, was added to the main gnuarmeclipse-se.git/scripts.
 - semihosting fixed
 - verbosity added, including the connection message, required by plug-in
 - branding added
-
 
 Liviu Ionescu

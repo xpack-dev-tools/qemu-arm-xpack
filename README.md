@@ -122,15 +122,15 @@ For more details please read the
 ### Versioning
 
 The version strings used by the GCC project are three number string
-like `2.8.0`; to this string the xPack distribution adds a four number,
+like `6.2.0`; to this string the xPack distribution adds a four number,
 but since semver allows only three numbers, all additional ones can
 be added only as pre-release strings, separated by a dash,
-like `2.8.0-13`. When published as a npm package, the version gets
-a fifth number, like `2.8.0-13.1`.
+like `6.2.0-1`. When published as a npm package, the version gets
+a fifth number, like `6.2.0-1.1`.
 
 Since adherance of third party packages to semver is not guaranteed,
-it is recommended to use semver expressions like `^2.8.0` and `~2.8.0`
-with caution, and prefer exact matches, like `2.8.0-13.1`.
+it is recommended to use semver expressions like `^6.2.0` and `~6.2.0`
+with caution, and prefer exact matches, like `6.2.0-1.1`.
 
 ## Maintainer info
 
