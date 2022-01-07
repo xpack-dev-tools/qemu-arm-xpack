@@ -175,7 +175,7 @@ function build_qemu()
         echo "Running qemu make..."
 
         # Build.
-        run_verbose make V=1 -j ${JOBS}
+        run_verbose make -j ${JOBS} # V=1
 
         run_verbose make install
 
