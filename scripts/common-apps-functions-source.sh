@@ -322,7 +322,7 @@ function build_qemu_legacy()
           echo "${qemu_legacy_version}" > "${QEMU_LEGACY_SRC_FOLDER_PATH}/VERSION"
 
           echo
-          echo "Running qemu configure..."
+          echo "Running qemu legacy configure..."
 
           if [ "${IS_DEVELOP}" == "y" ]
           then
@@ -389,7 +389,7 @@ function build_qemu_legacy()
 
       (
         echo
-        echo "Running qemu make..."
+        echo "Running qemu legacy make..."
 
         # Build.
         run_verbose make -j ${JOBS}
@@ -422,7 +422,7 @@ function build_qemu_legacy()
 
     touch "${qemu_legacy_stamp_file_path}"
   else
-    echo "Component qemu already installed."
+    echo "Component qemu legacy already installed."
   fi
 
   tests_add "test_qemu_legacy"
@@ -442,11 +442,11 @@ function test_qemu_legacy()
   fi
 
   echo
-  echo "Checking the qemu shared libraries..."
+  echo "Checking the qemu legacy shared libraries..."
   show_libs "${QEMU}"
 
   echo
-  echo "Checking if qemu starts..."
+  echo "Checking if qemu legacy starts..."
   run_app "${QEMU}" --version
   run_app "${QEMU}" --help
 
