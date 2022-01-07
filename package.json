@@ -48,17 +48,9 @@
           "fileName": "xpack-qemu-arm-2.8.0-13-linux-arm.tar.gz",
           "sha256": "b1b1046365ecd0d72cbb1c7d18df1451595347f454bfc6ed9fc99d3ced133ac3"
         },
-        "linux-ia32": {
-          "fileName": "xpack-qemu-arm-2.8.0-13-linux-ia32.tar.gz",
-          "sha256": "a83921f994e6062abdfef49c1fd13f3aa898e85bbaeabc18b443f1176656c285"
-        },
         "linux-x64": {
           "fileName": "xpack-qemu-arm-2.8.0-13-linux-x64.tar.gz",
           "sha256": "b99b87541f13e594f09f6a8ce656d84e0c0ac9623227ee6f2ba2a46c7e67a350"
-        },
-        "win32-ia32": {
-          "fileName": "xpack-qemu-arm-2.8.0-13-win32-ia32.zip",
-          "sha256": "710f0ba1a90eb8fa60d88e1a3160b8e57bf8ccb8f8232d0a036090ea0dcea9c0"
         },
         "win32-x64": {
           "fileName": "xpack-qemu-arm-2.8.0-13-win32-x64.zip",
@@ -67,6 +59,13 @@
       }
     },
     "bin": {
+      "qemu-edid": "./.content/bin/qemu-edid",
+      "qemu-img": "./.content/bin/qemu-img",
+      "qemu-io": "./.content/bin/qemu-io",
+      "qemu-nbd": "./.content/bin/qemu-nbd",
+      "qemu-storage-daemon": "./.content/bin/qemu-storage-daemon",
+      "qemu-system-arm": "./.content/bin/qemu-system-arm",
+      "qemu-system-aarch64": "./.content/bin/qemu-system-aarch64",
       "qemu-system-gnuarmeclipse": "./.content/bin/qemu-system-gnuarmeclipse"
     },
     "properties": {
