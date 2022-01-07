@@ -140,7 +140,7 @@ function build_qemu()
 
           if [ "${TARGET_PLATFORM}" == "darwin" ]
           then
-            if true
+            if false
             then
               config_options+=("--disable-cocoa")
               config_options+=("--enable-sdl")

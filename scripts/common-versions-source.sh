@@ -68,8 +68,13 @@ function build_versions()
         # required by glib
         build_libiconv "1.16"
 
-        build_sdl2 "2.0.18"
-        build_sdl2_image "2.0.5"
+        if [ "${TARGET_PLATFORM}" == "darwin" ]
+        then
+          : # On macOS use Cocoa.
+        else
+          build_sdl2 "2.0.18"
+          build_sdl2_image "2.0.5"
+        fi
 
         # required by glib
         build_libffi "3.4.2"
