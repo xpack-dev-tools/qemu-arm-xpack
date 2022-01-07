@@ -73,8 +73,8 @@ In qemu.git:
 
 - open the `common-versions-source.sh` file
 - add a new `if` with the new version before the existing code
-- check if `QEMU_GIT_BRANCH=xpack`
-- update the `QEMU_GIT_COMMIT` to latest Git commit ID
+- check if `QEMU_LEGACY_GIT_BRANCH=xpack`
+- update the `QEMU_LEGACY_GIT_COMMIT` to latest Git commit ID
 
 ### Update helper
 

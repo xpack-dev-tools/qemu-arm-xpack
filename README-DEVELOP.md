@@ -293,12 +293,22 @@ There are multiple Cortex-M test projects in the separate GitHub project
 
 The default one is `f407-disc-blink-tutorial`, the STM32F4-DISCOVERY Blinky,
 as described in the
-[blinky tutorial](https://xpack-dev-tools.github.io/tutorials/blinky-arm/).
+[blinky tutorial](https://eclipse-embed-cdt.github.io/tutorials/blinky-arm/).
 
 Clone the repository in the same `Work` folder:
 
 ```sh
 git clone https://github.com/xpack-dev-tools/qemu-eclipse-test-projects.git ~/Work/qemu-eclipse-test-projects.git
+```
+
+Start a blinky test with:
+
+```console
+.../qemu-system-gnuarmeclipse --verbose --verbose --board STM32F4-Discovery \
+--mcu STM32F407VG -d unimp,guest_errors \
+--image ~/Work/qemu-eclipse-test-projects.git/f407-disc-blink-tutorial/Debug/f407-disc-blink-tutorial.elf \
+--semihosting-config enable=on,target=native \
+--semihosting-cmdline blinky 5
 ```
 
 ### Debug

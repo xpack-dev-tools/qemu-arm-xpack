@@ -14,15 +14,17 @@
 
 # -----------------------------------------------------------------------------
 
-function build_qemu()
+function build_qemu_legacy()
 {
-  if [ ! -d "${QEMU_SRC_FOLDER_PATH}" ]
+  local qemu_legacy_version="$1"
+
+  if [ ! -d "${QEMU_LEGACY_SRC_FOLDER_PATH}" ]
   then
     (
-      git_clone "${QEMU_GIT_URL}" "${QEMU_GIT_BRANCH}" \
-          "${QEMU_GIT_COMMIT}" "${QEMU_SRC_FOLDER_PATH}"
+      git_clone "${QEMU_LEGACY_GIT_URL}" "${QEMU_LEGACY_GIT_BRANCH}" \
+          "${QEMU_LEGACY_GIT_COMMIT}" "${QEMU_LEGACY_SRC_FOLDER_PATH}"
 
-      cd "${QEMU_SRC_FOLDER_PATH}"
+      cd "${QEMU_LEGACY_SRC_FOLDER_PATH}"
 
       # git submodule update --init --recursive --remote
       # Do not bring all submodules; for better control,
@@ -31,7 +33,7 @@ function build_qemu()
 
       rm -rf pixman roms
 
-      local patch_file="${BUILD_GIT_PATH}/patches/${QEMU_GIT_PATCH}"
+      local patch_file="${BUILD_GIT_PATH}/patches/${QEMU_LEGACY_GIT_PATCH}"
       if [ -f "${patch_file}" ]
       then
         run_verbose git apply "${patch_file}"
@@ -39,16 +41,16 @@ function build_qemu()
     )
   fi
 
-  local qemu_folder_name="qemu"
+  local qemu_legacy_folder_name="qemu-legacy-${qemu_legacy_version}"
 
-  mkdir -pv "${LOGS_FOLDER_PATH}/${qemu_folder_name}/"
+  mkdir -pv "${LOGS_FOLDER_PATH}/${qemu_legacy_folder_name}/"
 
-  local qemu_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-qemu-installed"
-  if [ ! -f "${qemu_stamp_file_path}" ] || [ "${IS_DEBUG}" == "y" ]
+  local qemu_legacy_stamp_file_path="${INSTALL_FOLDER_PATH}/stamp-${qemu_legacy_folder_name}-installed"
+  if [ ! -f "${qemu_legacy_stamp_file_path}" ] || [ "${IS_DEBUG}" == "y" ]
   then
     (
-      mkdir -pv "${APP_BUILD_FOLDER_PATH}"
-      cd "${APP_BUILD_FOLDER_PATH}"
+      mkdir -p "${BUILD_FOLDER_PATH}/${qemu_legacy_folder_name}"
+      cd "${BUILD_FOLDER_PATH}/${qemu_legacy_folder_name}"
 
       xbb_activate_installed_dev
 
@@ -84,7 +86,7 @@ function build_qemu()
 
           echo
           echo "Overriding version..."
-          cp -v "${BUILD_GIT_PATH}/scripts/VERSION" "${QEMU_SRC_FOLDER_PATH}"
+          cp -v "${BUILD_GIT_PATH}/scripts/VERSION" "${QEMU_LEGACY_SRC_FOLDER_PATH}"
 
           echo
           echo "Running qemu configure..."
@@ -92,7 +94,7 @@ function build_qemu()
           if [ "${IS_DEVELOP}" == "y" ]
           then
             # Although it shouldn't, the script checks python before --help.
-            run_verbose bash "${QEMU_SRC_FOLDER_PATH}/configure" \
+            run_verbose bash "${QEMU_LEGACY_SRC_FOLDER_PATH}/configure" \
               --python=python2 \
               --help
           fi
@@ -107,8 +109,9 @@ function build_qemu()
           fi
 
           config_options+=("--bindir=${APP_PREFIX}/bin")
-          config_options+=("--docdir=${APP_PREFIX_DOC}")
-          config_options+=("--mandir=${APP_PREFIX_DOC}/man")
+          config_options+=("--docdir=${APP_PREFIX}/share/qemu-legacy/doc")
+          config_options+=("--mandir=${APP_PREFIX}/share/qemu-legacy/man")
+          config_options+=("--datadir=${APP_PREFIX}/share/qemu-legacy")
 
           config_options+=("--cc=${CC}")
           config_options+=("--cxx=${CXX}")
@@ -144,12 +147,12 @@ function build_qemu()
             config_options+=("--disable-strip")
           fi
 
-          run_verbose bash ${DEBUG} "${QEMU_SRC_FOLDER_PATH}/configure" \
+          run_verbose bash ${DEBUG} "${QEMU_LEGACY_SRC_FOLDER_PATH}/configure" \
             ${config_options[@]}
 
         fi
-        cp "config.log" "${LOGS_FOLDER_PATH}/${qemu_folder_name}/configure-log.txt"
-      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${qemu_folder_name}/configure-output.txt"
+        cp "config.log" "${LOGS_FOLDER_PATH}/${qemu_legacy_folder_name}/configure-log.txt"
+      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${qemu_legacy_folder_name}/configure-output.txt"
 
       (
         echo
@@ -177,22 +180,22 @@ function build_qemu()
           fi
         )
 
-      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${qemu_folder_name}/make-output.txt"
+      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${qemu_legacy_folder_name}/make-output.txt"
 
       copy_license \
-        "${QEMU_SRC_FOLDER_PATH}" \
-        "qemu-${QEMU_VERSION}"
+        "${QEMU_LEGACY_SRC_FOLDER_PATH}" \
+        "qemu-${QEMU_LEGACY_VERSION}"
     )
 
-    touch "${qemu_stamp_file_path}"
+    touch "${qemu_legacy_stamp_file_path}"
   else
     echo "Component qemu already installed."
   fi
 
-  tests_add "test_qemu"
+  tests_add "test_qemu_legacy"
 }
 
-function test_qemu()
+function test_qemu_legacy()
 {
   if [ -d "xpacks/.bin" ]
   then

@@ -22,7 +22,7 @@ function run_tests()
   echo
   env | sort
 
-  test_qemu
+  test_qemu_legacy
 
   # TODO: add more, if possible.
 }

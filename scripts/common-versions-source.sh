@@ -15,16 +15,12 @@
 
 function build_versions()
 {
-  QEMU_PROJECT_NAME="qemu"
+  QEMU_LEGACY_GIT_COMMIT=${QEMU_LEGACY_GIT_COMMIT:-""}
+  QEMU_LEGACY_GIT_PATCH=""
 
-  QEMU_GIT_COMMIT=${QEMU_GIT_COMMIT:-""}
-  QEMU_GIT_PATCH=""
-
-  USE_TAR_GZ="y"
-
-  QEMU_SRC_FOLDER_NAME=${QEMU_SRC_FOLDER_NAME:-"${QEMU_PROJECT_NAME}.git"}
-  QEMU_SRC_FOLDER_PATH=${QEMU_SRC_FOLDER_PATH:-"${WORK_FOLDER_PATH}/${TARGET_FOLDER_NAME}/${QEMU_SRC_FOLDER_NAME}"}
-  QEMU_GIT_URL=${QEMU_GIT_URL:-"https://github.com/xpack-dev-tools/qemu.git"}
+  QEMU_LEGACY_SRC_FOLDER_NAME=${QEMU_LEGACY_SRC_FOLDER_NAME:-"qemu-legacy.git"}
+  QEMU_LEGACY_SRC_FOLDER_PATH=${QEMU_LEGACY_SRC_FOLDER_PATH:-"${WORK_FOLDER_PATH}/${TARGET_FOLDER_NAME}/${QEMU_LEGACY_SRC_FOLDER_NAME}"}
+  QEMU_LEGACY_GIT_URL=${QEMU_LEGACY_GIT_URL:-"https://github.com/xpack-dev-tools/qemu.git"}
 
   if [ "${TARGET_PLATFORM}" == "win32" ]
   then
@@ -33,9 +29,9 @@ function build_versions()
 
   if [ "${IS_DEVELOP}" == "y" -a "${IS_DEBUG}" == "y" ]
   then
-    QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack-develop"}
+    QEMU_LEGACY_GIT_BRANCH=${QEMU_LEGACY_GIT_BRANCH:-"xpack-develop"}
   else
-    QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack"}
+    QEMU_LEGACY_GIT_BRANCH=${QEMU_LEGACY_GIT_BRANCH:-"xpack"}
   fi
 
   # Keep them in sync with combo archive content.
@@ -44,16 +40,16 @@ function build_versions()
 
     # -------------------------------------------------------------------------
 
-    QEMU_VERSION="2.8"
+    QEMU_LEGACY_VERSION="2.8"
 
     if [[ "${RELEASE_VERSION}" =~ 2\.8\.0-13 ]]
     then
       (
         xbb_activate
 
-        QEMU_GIT_COMMIT=${QEMU_GIT_COMMIT:-"b1ab9f0b322a905f8c5983692e800472a6556323"}
+        QEMU_LEGACY_GIT_COMMIT=${QEMU_LEGACY_GIT_COMMIT:-"b1ab9f0b322a905f8c5983692e800472a6556323"}
 
-        QEMU_GIT_PATCH="qemu-2.8.0.git-patch"
+        QEMU_LEGACY_GIT_PATCH="qemu-2.8.0.git-patch"
 
         build_zlib "1.2.11"
 
@@ -71,7 +67,7 @@ function build_versions()
         build_glib "2.56.4"
         build_pixman "0.40.0" # "0.38.0"
 
-        build_qemu
+        build_qemu_legacy "${QEMU_LEGACY_VERSION}"
       )
 
     # -------------------------------------------------------------------------
