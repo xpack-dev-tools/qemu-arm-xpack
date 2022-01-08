@@ -27,7 +27,7 @@ function build_versions()
   fi
 
   export QEMU_VERSION="$(echo "${RELEASE_VERSION}" | sed -e 's|-.*||')"
-  export QEMU_LEGACY_VERSION="2.8"
+  export QEMU_LEGACY_VERSION="2.8.0"
 
   # Keep them in sync with combo archive content.
   if [[ "${RELEASE_VERSION}" =~ 6\.2\.*-* ]]
