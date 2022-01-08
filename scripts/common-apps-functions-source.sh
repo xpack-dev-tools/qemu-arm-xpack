@@ -319,7 +319,7 @@ function build_qemu_legacy()
 
           echo
           echo "Overriding version..."
-          # cp -v "${BUILD_GIT_PATH}/scripts/VERSION" "${QEMU_LEGACY_SRC_FOLDER_PATH}"
+          # Note: it must be a three numbers string.
           echo "${qemu_legacy_version}" > "${QEMU_LEGACY_SRC_FOLDER_PATH}/VERSION"
 
           echo
