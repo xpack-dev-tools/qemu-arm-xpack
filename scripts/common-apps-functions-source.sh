@@ -385,8 +385,8 @@ function build_qemu_legacy()
             ${config_options[@]}
 
         fi
-        cp "config.log" "${LOGS_FOLDER_PATH}/${qemu_legacy_folder_name}/configure-log.txt"
-      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${qemu_legacy_folder_name}/configure-output.txt"
+        cp "config.log" "${LOGS_FOLDER_PATH}/${qemu_legacy_folder_name}/configure-log-$(ndate).txt"
+      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${qemu_legacy_folder_name}/configure-output-$(ndate).txt"
 
       (
         echo
@@ -414,7 +414,7 @@ function build_qemu_legacy()
           fi
         )
 
-      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${qemu_legacy_folder_name}/make-output.txt"
+      ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${qemu_legacy_folder_name}/make-output-$(ndate).txt"
 
       copy_license \
         "${QEMU_LEGACY_SRC_FOLDER_PATH}" \
