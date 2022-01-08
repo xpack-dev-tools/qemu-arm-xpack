@@ -329,7 +329,6 @@ function build_qemu_legacy()
           then
             # Although it shouldn't, the script checks python before --help.
             run_verbose bash "${QEMU_LEGACY_SRC_FOLDER_PATH}/configure" \
-              --python=python2 \
               --help
           fi
 
@@ -356,7 +355,6 @@ function build_qemu_legacy()
           config_options+=("--target-list=gnuarmeclipse-softmmu")
 
           config_options+=("--with-sdlabi=2.0")
-          config_options+=("--python=python2")
 
           if [ "${IS_DEBUG}" == "y" ]
           then
