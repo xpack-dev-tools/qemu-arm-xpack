@@ -402,3 +402,85 @@ project
   existing `qemu.git` folder
 - edit-compile-debug until ready
 - commit & push the changes, and mark them as pull requests
+
+---
+
+TODO: format properly
+
+.vscode/c_cpp_properties.json
+
+```json
+{
+    "configurations": [
+        {
+            "name": "qemu-debug",
+            "compileCommands": "/Users/ilg/Work/qemu-arm-dev/darwin-x64/build/qemu-6.2.0/compile_commands.json"
+        }
+    ],
+    "version": 4
+}
+```
+
+.vscode/tasks.json
+
+```json
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "echo",
+      "type": "shell",
+      "command": "echo Hello"
+    },
+    {
+      "label": "qemu: build",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "${HOME}/Downloads/qemu-arm-xpack.git/scripts/helper/build-native.sh",
+        "--debug",
+        "--develop"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "showReuseMessage": false
+      }
+    }
+  ]
+}
+```
+
+.vscode/launch.json
+
+```json
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "(lldb) Launch qemu-arm-aarch64 --help",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${env:HOME}/Work/qemu-arm-dev/darwin-x64/build/qemu-6.2.0/qemu-system-aarch64",
+      "args": [
+        "--help"
+      ],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "lldb"
+    }
+  ]
+}
+```
+
+breakpoint in `softmmu/main.c`.
