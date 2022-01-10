@@ -22,7 +22,14 @@ function run_tests()
   echo
   env | sort
 
-  test_qemu_legacy
+  test_qemu_arm
+
+  if [ "${TARGET_PLATFORM}" == "darwin" -a "${TARGET_ARCH}" == "arm64" ]
+  then
+    : # Not available on Apple Silicon.
+  else
+    test_qemu_legacy
+  fi
 
   # TODO: add more, if possible.
 }
