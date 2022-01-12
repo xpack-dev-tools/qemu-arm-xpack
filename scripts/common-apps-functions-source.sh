@@ -14,6 +14,25 @@
 
 # -----------------------------------------------------------------------------
 
+function trim_qemu_arm()
+{
+  (
+    cd "${APP_PREFIX}/share/qemu"
+
+    find . -type f -maxdepth 2 \
+      -not \( -path './efi-*.rom' -prune \) \
+      -not \( -path './npcm7xx_bootrom.bin' -prune \) \
+      -not \( -path './edk2-arm*.*' -prune \) \
+      -not \( -path './edk2-aarch64*.*' -prune \) \
+      -not \( -path './edk2-licenses.*' -prune \) \
+      -not \( -path './firmware/*-edk2-arm*.*' -prune \) \
+      -not \( -path './firmware/*-edk2-aarch64*.*' -prune \) \
+      -not \( -path './keymaps/*' -prune \) \
+      -exec rm -rf {} \;
+
+  )
+}
+
 function test_qemu_arm()
 {
   if [ -d "xpacks/.bin" ]

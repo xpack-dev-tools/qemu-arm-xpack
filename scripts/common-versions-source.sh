@@ -131,6 +131,7 @@ function build_versions()
         fi
 
         build_qemu "${QEMU_VERSION}" "arm"
+        trim_qemu_arm
 
         # Build legacy qemu-system-gnuarmeclipse is not available
         # on Apple Silicon.
