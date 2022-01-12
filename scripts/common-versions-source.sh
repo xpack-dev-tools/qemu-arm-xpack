@@ -39,8 +39,8 @@ function build_versions()
         xbb_activate
 
         # For now use the same code as the RISC-V build.
-        QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack-riscv-develop"}
-        QEMU_GIT_COMMIT=${QEMU_GIT_COMMIT:-"v${QEMU_VERSION}-xpack-riscv"}
+        QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack-develop"}
+        QEMU_GIT_COMMIT=${QEMU_GIT_COMMIT:-"v${RELEASE_VERSION}-xpack-arm"}
 
         QEMU_LEGACY_GIT_COMMIT=${QEMU_LEGACY_GIT_COMMIT:-"b1ab9f0b322a905f8c5983692e800472a6556323"}
         QEMU_LEGACY_GIT_PATCH="qemu-2.8.0.git-patch"

@@ -78,11 +78,11 @@ function build_qemu_legacy()
   QEMU_LEGACY_SRC_FOLDER_PATH=${QEMU_LEGACY_SRC_FOLDER_PATH:-"${SOURCES_FOLDER_PATH}/${QEMU_LEGACY_SRC_FOLDER_NAME}"}
   QEMU_LEGACY_GIT_URL=${QEMU_LEGACY_GIT_URL:-"https://github.com/xpack-dev-tools/qemu.git"}
 
-  if [ "${IS_DEVELOP}" == "y" -a "${IS_DEBUG}" == "y" ]
+  if [ "${IS_DEVELOP}" == "y" ] # -a "${IS_DEBUG}" == "y" ]
   then
-    QEMU_LEGACY_GIT_BRANCH=${QEMU_LEGACY_GIT_BRANCH:-"xpack-develop"}
+    QEMU_LEGACY_GIT_BRANCH=${QEMU_LEGACY_GIT_BRANCH:-"xpack-legacy-develop"}
   else
-    QEMU_LEGACY_GIT_BRANCH=${QEMU_LEGACY_GIT_BRANCH:-"xpack"}
+    QEMU_LEGACY_GIT_BRANCH=${QEMU_LEGACY_GIT_BRANCH:-"xpack-legacy"}
   fi
 
   if [ ! -d "${QEMU_LEGACY_SRC_FOLDER_PATH}" ]
