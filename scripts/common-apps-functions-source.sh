@@ -278,10 +278,10 @@ function test_qemu_legacy()
 {
   if [ -d "xpacks/.bin" ]
   then
-    QEMU="xpacks/.bin/qemu-system-gnuarmeclipse"
+    TEST_BIN_PATH="$(pwd)/xpacks/.bin"
   elif [ -d "${APP_PREFIX}/bin" ]
   then
-    QEMU="${APP_PREFIX}/bin/qemu-system-gnuarmeclipse"
+    TEST_BIN_PATH="${APP_PREFIX}/bin"
   else
     echo "Wrong folder."
     exit 1
@@ -289,12 +289,12 @@ function test_qemu_legacy()
 
   echo
   echo "Checking the qemu legacy shared libraries..."
-  show_libs "${QEMU}"
+  show_libs "${TEST_BIN_PATH}/qemu-system-gnuarmeclipse"
 
   echo
   echo "Checking if qemu legacy starts..."
-  run_app "${QEMU}" --version
-  run_app "${QEMU}" --help
+  run_app "${TEST_BIN_PATH}/qemu-system-gnuarmeclipse" --version
+  run_app "${TEST_BIN_PATH}/qemu-system-gnuarmeclipse" --help
 
 }
 
