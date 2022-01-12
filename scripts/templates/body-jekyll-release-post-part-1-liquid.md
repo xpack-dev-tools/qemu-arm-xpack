@@ -1,5 +1,5 @@
 ---
-title:  xPack QEMU Arm {{ RELEASE_VERSION }} released
+title:  xPack QEMU Arm v{{ RELEASE_VERSION }} released
 
 summary: "Version **{{ RELEASE_VERSION }}** is a maintenance release; it fixes several bugs."
 
