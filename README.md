@@ -4,7 +4,7 @@
 
 # The xPack QEMU Arm
 
-A standalone cross-platform (Windows/macOS/Linux) **QEMU Arm Cortex-M**
+A standalone cross-platform (Windows/macOS/Linux) **QEMU Arm**
 binary distribution, intended for reproducible builds.
 
 In addition to the the binary archives and the package meta data,
@@ -17,17 +17,22 @@ This open source project is hosted on GitHub as
 and provides the platform specific binaries for the
 [xPack QEMU Arm](https://xpack.github.io/qemu-arm/).
 
-This distribution is based on an older release of the official
+This distribution is based on an current release of the official
 [QEMU](https://www.qemu.org).
+
+For compatibility reasons, it also provides the `qemu-system-gnuarmeclipse`,
+which reached end-of-life.
 
 The binaries can be installed automatically as **binary xPacks** or manually as
 **portable archives**.
 
 ## Release schedule
 
-This distribution is several versions behind the official QEMU.
+This distribution plans to follow the official QEMU major releases,
+possibly with intermediate releases if necessary.
 
-There are no planned releases, only bug fixes and enhancements.
+For `qemu-system-gnuarmeclipse`,
+which reached end-of-life, there are no planned releases.
 
 ## User info
 
@@ -140,10 +145,10 @@ with caution, and prefer exact matches, like `6.2.0-1.1`.
 
 ## Apple Silicon notice
 
-Due to the major changes in macOS for Apple Silicon,
-the current xPack QEMU sources cannot be used and an Apple Silicon
-binary will not be initially available. A major update for xPack QEMU is
-planned for 2022, which will also address this issue.
+Due to the major changes in macOS for Apple Silicon, the old
+`qemu-system-gnuarmeclipse` sources cannot be used and an Apple Silicon
+binary will not be available. A major update for xPack QEMU is
+planned for 2022, and some boards may be migrated to `qemu-system-arm`.
 
 ## Support
 
