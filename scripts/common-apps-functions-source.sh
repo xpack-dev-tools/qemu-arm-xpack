@@ -50,19 +50,27 @@ function test_qemu_arm()
   echo "Checking the qemu shared libraries..."
   show_libs "${TEST_BIN_PATH}/qemu-system-arm"
   show_libs "${TEST_BIN_PATH}/qemu-system-aarch64"
-  # show_libs "${TEST_BIN_PATH}/qemu-img"
-  # show_libs "${TEST_BIN_PATH}/qemu-nbd"
-  # show_libs "${TEST_BIN_PATH}/qemu-io"
 
   echo
   echo "Checking if qemu starts..."
   run_app "${TEST_BIN_PATH}/qemu-system-arm" --version
   run_app "${TEST_BIN_PATH}/qemu-system-aarch64" --version
-  # run_app "${TEST_BIN_PATH}/qemu-img" --version
-  # run_app "${TEST_BIN_PATH}/qemu-nbd" --version
-  # run_app "${TEST_BIN_PATH}/qemu-io" --version
 
-  run_app "${TEST_BIN_PATH}/qemu-system-aarch64" --help
+  echo "Running semihosting tests..."
+  run_app "${TEST_BIN_PATH}/qemu-system-arm" \
+    --machine mps2-an386 \
+    --kernel "${tests_folder_path}/mps2-an386-sample-test.elf" \
+    --nographic \
+    -d unimp,guest_errors \
+    --semihosting-config enable=on,target=native,arg=sample-test,arg=one,arg=two
+
+  run_app "${TEST_BIN_PATH}/qemu-system-aarch64" \
+    --machine mps2-an386 \
+    --kernel "${tests_folder_path}/mps2-an386-sample-test.elf" \
+    --nographic \
+    -d unimp,guest_errors \
+    --semihosting-config enable=on,target=native,arg=sample-test,arg=one,arg=two
+
 }
 
 # -----------------------------------------------------------------------------
@@ -296,6 +304,17 @@ function test_qemu_legacy()
   run_app "${TEST_BIN_PATH}/qemu-system-gnuarmeclipse" --version
   run_app "${TEST_BIN_PATH}/qemu-system-gnuarmeclipse" --help
 
+  echo
+  echo "Running semihosting test..."
+  run_app "${TEST_BIN_PATH}/qemu-system-gnuarmeclipse" \
+    --board STM32F4-Discovery \
+    --mcu STM32F407VG \
+    --image "${tests_folder_path}/stm32f4discovery-sample-test.elf" \
+    --nographic \
+    --verbose \
+    -d unimp,guest_errors \
+    --semihosting-config enable=on,target=native \
+    --semihosting-cmdline sample-test one two
 }
 
 # -----------------------------------------------------------------------------
