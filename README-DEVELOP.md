@@ -484,3 +484,9 @@ TODO: format properly
 ```
 
 breakpoint in `softmmu/main.c`.
+
+---
+
+For the Linux tests, use:
+
+- <https://github.com/xpack/arm-linux-files#ubuntu-18-arm64-64-bit-cloud-image>
