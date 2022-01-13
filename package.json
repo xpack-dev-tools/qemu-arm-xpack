@@ -36,28 +36,32 @@
     "minimumXpmRequired": "0.10.2",
     "binaries": {
       "destination": "./.content",
-      "baseUrl": "https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/download/v2.8.0-13",
+      "baseUrl": "https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/download/v6.2.0-1",
       "skip": 1,
       "platforms": {
+        "darwin-arm64": {
+          "fileName": "xpack-qemu-arm-6.2.0-1-darwin-arm64.tar.gz",
+          "sha256": "425dbdd0950bad9bf4a603dfbcdd2d64ccacd75cc141b40b9444ce5b549581a8"
+        },
         "darwin-x64": {
-          "fileName": "xpack-qemu-arm-2.8.0-13-darwin-x64.tar.gz",
-          "sha256": "9001c6befdd791f814d9c64b903915ab10983d9c80659a6d4e811290759159b7"
+          "fileName": "xpack-qemu-arm-6.2.0-1-darwin-x64.tar.gz",
+          "sha256": "f605494b796e599ce2bc34afabb8e1c340b8629d3831b49488363fb342d635ae"
         },
         "linux-arm64": {
-          "fileName": "xpack-qemu-arm-2.8.0-13-linux-arm64.tar.gz",
-          "sha256": "386abf59c78b3b840314ddcbdad42086ef88e9d3197c44201460c0e78b094a3e"
+          "fileName": "xpack-qemu-arm-6.2.0-1-linux-arm64.tar.gz",
+          "sha256": "76fba6e71e147c7c482246b90b88849bb9589986a0467b7fa12c8ee0aa2b417b"
         },
         "linux-arm": {
-          "fileName": "xpack-qemu-arm-2.8.0-13-linux-arm.tar.gz",
-          "sha256": "b1b1046365ecd0d72cbb1c7d18df1451595347f454bfc6ed9fc99d3ced133ac3"
+          "fileName": "xpack-qemu-arm-6.2.0-1-linux-arm.tar.gz",
+          "sha256": "7bcc6e876bcf4ff61edb268607bf2121e8500470a9e22286673c992dd45ddfb4"
         },
         "linux-x64": {
-          "fileName": "xpack-qemu-arm-2.8.0-13-linux-x64.tar.gz",
-          "sha256": "b99b87541f13e594f09f6a8ce656d84e0c0ac9623227ee6f2ba2a46c7e67a350"
+          "fileName": "xpack-qemu-arm-6.2.0-1-linux-x64.tar.gz",
+          "sha256": "5fe2919d789a97f0941ad9ba8469ca5020b4121231f44006ead3351e236f5a76"
         },
         "win32-x64": {
-          "fileName": "xpack-qemu-arm-2.8.0-13-win32-x64.zip",
-          "sha256": "c7c35e03a3c861b5f21d8564074cb928f1478eeb2c8a2e8ee53e7513c39e2750"
+          "fileName": "xpack-qemu-arm-6.2.0-1-win32-x64.zip",
+          "sha256": "37eefd1f72ff0f64d87d9a4dd4756db3e6f02bf4977d5b104cf944af5994a1fd"
         }
       }
     },
