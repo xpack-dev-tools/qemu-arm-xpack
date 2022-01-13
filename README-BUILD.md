@@ -173,9 +173,8 @@ The result should look similar to:
 
 ```console
 $ docker images
-REPOSITORY          TAG                    IMAGE ID            CREATED             SIZE
-ilegeul/ubuntu      i386-12.04-xbb-v3.3    35fb0236572c        23 hours ago        5GB
-ilegeul/ubuntu      amd64-12.04-xbb-v3.3   1c4ba2e7e87e        29 hours ago        5.43GB
+REPOSITORY       TAG                    IMAGE ID       CREATED         SIZE
+ilegeul/ubuntu   amd64-18.04-xbb-v3.4   ace5ae2e98e5   4 weeks ago     5.11GB
 ```
 
 It is also recommended to Remove unused Docker space. This is mostly useful
@@ -185,7 +184,7 @@ by Docker.
 To check the content of a Docker image:
 
 ```sh
-docker run --interactive --tty ilegeul/ubuntu:amd64-12.04-xbb-v3.3
+docker run --interactive --tty ilegeul/ubuntu:amd64-18.04-xbb-v3.4
 ```
 
 To remove unused files:
@@ -209,7 +208,7 @@ or, for development builds:
 
 ```sh
 sudo rm -rf ~/Work/qemu-arm-*
-bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop--without-pdf --without-html --disable-tests --linux64 --linux32 --win64 --win32
+bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --develop--without-pdf --without-html --disable-tests --linux64 --win64
 ```
 
 To detach from the session, use `Ctrl-a` `Ctrl-d`; to reattach use
@@ -221,12 +220,8 @@ archives and their SHA signatures, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/qemu-arm-*/deploy
 total 37100
--rw-rw-r-- 1 ilg ilg  9034583 Oct 14 21:50 xpack-qemu-arm-6.2.0-1-linux-x32.tar.gz
--rw-rw-r-- 1 ilg ilg      107 Oct 14 21:50 xpack-qemu-arm-6.2.0-1-linux-x32.tar.gz.sha
 -rw-rw-r-- 1 ilg ilg  8796275 Oct 14 21:38 xpack-qemu-arm-6.2.0-1-linux-x64.tar.gz
 -rw-rw-r-- 1 ilg ilg      107 Oct 14 21:38 xpack-qemu-arm-6.2.0-1-linux-x64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg  9743272 Oct 14 21:56 xpack-qemu-arm-6.2.0-1-win32-x32.zip
--rw-rw-r-- 1 ilg ilg      104 Oct 14 21:56 xpack-qemu-arm-6.2.0-1-win32-x32.zip.sha
 -rw-rw-r-- 1 ilg ilg 10393964 Oct 14 21:44 xpack-qemu-arm-6.2.0-1-win32-x64.zip
 -rw-rw-r-- 1 ilg ilg      104 Oct 14 21:44 xpack-qemu-arm-6.2.0-1-win32-x64.zip.sha
 ```
@@ -354,11 +349,10 @@ total 15120
 Instead of `--all`, you can use any combination of:
 
 ```console
---win32 --win64
---linux32 --linux64
+--linux64 --win64
 ```
 
-On Arm, instead of `--all`, you can use:
+On Arm, instead of `--all`, you can use any combination of:
 
 ```console
 --arm32 --arm64
@@ -384,7 +378,7 @@ To remove all temporary files, use:
 bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/build.sh --all cleanall
 ```
 
-Instead of `--all`, any combination of `--win32 --win64 --linux32 --linux64`
+Instead of `--all`, any combination of `--win64 --linux64`
 will remove the more specific folders.
 
 For production builds it is recommended to completely remove the build folder.
