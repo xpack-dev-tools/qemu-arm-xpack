@@ -312,7 +312,7 @@ function test_qemu_legacy()
   echo
   echo "Checking if qemu legacy starts..."
   run_app "${TEST_BIN_PATH}/qemu-system-gnuarmeclipse" --version
-  run_app "${TEST_BIN_PATH}/qemu-system-gnuarmeclipse" --help
+  # run_app "${TEST_BIN_PATH}/qemu-system-gnuarmeclipse" --help
 
   echo
   echo "Running semihosting test..."
