@@ -17,19 +17,41 @@
 function trim_qemu_arm()
 {
   (
-    cd "${APP_PREFIX}/share/qemu"
+    if [ "${TARGET_PLATFORM}" == "win32" ]
+    then
+      cd "${APP_PREFIX}/share"
+      find . -maxdepth 2 \
+        -not \( -path './applications' -prune \) \
+        -not \( -path './applications/*' -prune \) \
+        -not \( -path './icons' -prune \) \
+        -not \( -path './icons/*' -prune \) \
+        -not \( -path './efi-*.rom' -prune \) \
+        -not \( -path './npcm7xx_bootrom.bin' -prune \) \
+        -not \( -path './edk2-arm*.*' -prune \) \
+        -not \( -path './edk2-aarch64*.*' -prune \) \
+        -not \( -path './edk2-licenses.*' -prune \) \
+        -not \( -path './firmware' -prune \) \
+        -not \( -path './firmware/*-edk2-arm*.*' -prune \) \
+        -not \( -path './firmware/*-edk2-aarch64*.*' -prune \) \
+        -not \( -path './keymaps' -prune \) \
+        -not \( -path './keymaps/*' -prune \) \
+        -not \( -path './legacy' -prune \) \
+        -not \( -path './legacy/*' -prune \) \
+        -exec rm -rf {} \;
 
-    find . -type f -maxdepth 2 \
-      -not \( -path './efi-*.rom' -prune \) \
-      -not \( -path './npcm7xx_bootrom.bin' -prune \) \
-      -not \( -path './edk2-arm*.*' -prune \) \
-      -not \( -path './edk2-aarch64*.*' -prune \) \
-      -not \( -path './edk2-licenses.*' -prune \) \
-      -not \( -path './firmware/*-edk2-arm*.*' -prune \) \
-      -not \( -path './firmware/*-edk2-aarch64*.*' -prune \) \
-      -not \( -path './keymaps/*' -prune \) \
-      -exec rm -rf {} \;
-
+    else
+      cd "${APP_PREFIX}/share/qemu"
+      find . -type f -maxdepth 2 \
+        -not \( -path './efi-*.rom' -prune \) \
+        -not \( -path './npcm7xx_bootrom.bin' -prune \) \
+        -not \( -path './edk2-arm*.*' -prune \) \
+        -not \( -path './edk2-aarch64*.*' -prune \) \
+        -not \( -path './edk2-licenses.*' -prune \) \
+        -not \( -path './firmware/*-edk2-arm*.*' -prune \) \
+        -not \( -path './firmware/*-edk2-aarch64*.*' -prune \) \
+        -not \( -path './keymaps/*' -prune \) \
+        -exec rm -rf {} \;
+    fi
   )
 }
 
