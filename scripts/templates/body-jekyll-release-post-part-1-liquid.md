@@ -53,7 +53,7 @@ The binary files are available from GitHub [Releases]({% raw %}{{ page.download_
   ([UCRT](https://support.microsoft.com/en-us/topic/update-for-universal-c-runtime-in-windows-c0514201-7fe6-95a3-b0a5-287930f3560c)),
   Windows 8, Windows 10
 - macOS Intel 64-bit: 10.13 or later
-- macOS Apple Silicon: 11.6 or later
+- macOS Apple Silicon 64-bit: 11.6 or later
 
 On GNU/Linux, QEMU requires the X11 libraries to be present. On Debian derived
 distribution they are already in the system; on RedHat & Arch derived
@@ -103,6 +103,10 @@ Eclipse will automatically
 identify binaries installed with
 `xpm` and provide a convenient method to manage paths.
 
+{% include note.html content="Eclipse has integrated support only for
+`qemu-system-gnuarmeclipse`. `qemu-system-arm` can be used in debug
+sessions only when started outside Eclipse." %}
+
 ### Uninstall
 
 To remove the links from the current project:
@@ -127,10 +131,13 @@ with some changes.
 There are two sets of binaries:
 
 - `qemu-system-arm` and `qemu-system-aarch64`, based on QEMU version 6.2.0,
-  commit [44f28df2](https://github.com/xpack-dev-tools/qemu/commit/44f28df24767cf9dca1ddc9b23157737c4cbb645) from Dec 14th, 2021;
+  commit [44f28df2](https://github.com/xpack-dev-tools/qemu/commit/44f28df24767cf9dca1ddc9b23157737c4cbb645)
+  from Dec 14th, 2021;
 
 - `qemu-system-gnuarmeclipse`, based on QEMU version 2.8.0,
-  commit [0737f32](https://github.com/xpack-dev-tools/qemu/commit/0737f32daf35f3730ed2461ddfaaf034c2ec7ff0) from Dec 20th, 2016.
+  commit [0737f32](https://github.com/xpack-dev-tools/qemu/commit/0737f32daf35f3730ed2461ddfaaf034c2ec7ff0)
+  from Dec 20th, 2016; this is end-of-life and will be preserved only for
+  compatibility reasons.
 
 ## Changes
 
@@ -279,7 +286,7 @@ Available CPUs:
 
 ### Legacy
 
-The `qemu-system-gnuarmeclipse` is now deprecated, and kept only for
+The `qemu-system-gnuarmeclipse` binary is now deprecated, and is kept only for
 compatibility reasons.
 
 Compared to the master `qemu-system-arm`, the changes are major, all
