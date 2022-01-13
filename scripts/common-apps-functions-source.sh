@@ -272,7 +272,10 @@ function build_qemu_legacy()
           fi
         )
 
-        run_verbose ls -lR "${APP_PREFIX}"
+        if [ "${IS_DEVELOP}" == "y" ]
+        then
+          run_verbose ls -lR "${APP_PREFIX}"
+        fi
 
       ) 2>&1 | tee "${LOGS_FOLDER_PATH}/${qemu_legacy_folder_name}/make-output-$(ndate).txt"
 
