@@ -197,9 +197,9 @@ function build_qemu_legacy()
           fi
 
           config_options+=("--bindir=${APP_PREFIX}/bin")
-          config_options+=("--docdir=${APP_PREFIX}/share/qemu-legacy/doc")
-          config_options+=("--mandir=${APP_PREFIX}/share/qemu-legacy/man")
-          config_options+=("--datadir=${APP_PREFIX}/share/qemu-legacy")
+          config_options+=("--docdir=${APP_PREFIX}/share/legacy/doc")
+          config_options+=("--mandir=${APP_PREFIX}/share/legacy/man")
+          config_options+=("--datadir=${APP_PREFIX}/share/legacy")
 
           config_options+=("--cc=${CC}")
           config_options+=("--cxx=${CXX}")
