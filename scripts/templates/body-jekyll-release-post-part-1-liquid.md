@@ -47,7 +47,7 @@ The binary files are available from GitHub [Releases]({% raw %}{{ page.download_
   (like Ubuntu 18 or later, Debian 10 or later, RedHat 8 later,
   Fedora 29 or later, etc)
 - GNU/Linux Arm 32/64-bit: any system with **GLIBC 2.27** or higher
-  (like Ubuntu 18 or later, Debian 10 or later, RedHat 8 later,
+  (like Raspberry Pi OS, Ubuntu 18 or later, Debian 10 or later, RedHat 8 later,
   Fedora 29 or later, etc)
 - Intel Windows 64-bit: Windows 7 with the Universal C Runtime
   ([UCRT](https://support.microsoft.com/en-us/topic/update-for-universal-c-runtime-in-windows-c0514201-7fe6-95a3-b0a5-287930f3560c)),
@@ -122,17 +122,165 @@ xpm uninstall --global @xpack-dev-tools/qemu-arm
 ## Compliance
 
 The xPack QEMU Arm currently is based on the official [QEMU](http://www.qemu.org),
-with major changes.
+with some changes.
 
-The current binaries are is based on:
+There are two sets of binaries:
 
-- `qemu-system-arm` and `qemu-system-aarch64` on QEMU version 6.2.0,
-  commit [44f28df2](https://github.com/xpack-dev-tools/qemu/commit/44f28df24767cf9dca1ddc9b23157737c4cbb645) from Dec 14th, 2021.
+- `qemu-system-arm` and `qemu-system-aarch64`, based on QEMU version 6.2.0,
+  commit [44f28df2](https://github.com/xpack-dev-tools/qemu/commit/44f28df24767cf9dca1ddc9b23157737c4cbb645) from Dec 14th, 2021;
 
-- `qemu-system-gnuarmeclipse` on QEMU version 2.8.0,
+- `qemu-system-gnuarmeclipse`, based on QEMU version 2.8.0,
   commit [0737f32](https://github.com/xpack-dev-tools/qemu/commit/0737f32daf35f3730ed2461ddfaaf034c2ec7ff0) from Dec 20th, 2016.
 
 ## Changes
+
+Compared to the upstream `qemu-system-arm`, there are no major changes.
+
+The supported boards and CPUs are:
+
+```console
+$ .../qemu-system-arm -machine help
+Supported machines are:
+akita                Sharp SL-C1000 (Akita) PDA (PXA270)
+ast2500-evb          Aspeed AST2500 EVB (ARM1176)
+ast2600-evb          Aspeed AST2600 EVB (Cortex-A7)
+borzoi               Sharp SL-C3100 (Borzoi) PDA (PXA270)
+canon-a1100          Canon PowerShot A1100 IS (ARM946)
+cheetah              Palm Tungsten|E aka. Cheetah PDA (OMAP310)
+collie               Sharp SL-5500 (Collie) PDA (SA-1110)
+connex               Gumstix Connex (PXA255)
+cubieboard           cubietech cubieboard (Cortex-A8)
+emcraft-sf2          SmartFusion2 SOM kit from Emcraft (M2S010)
+fp5280g2-bmc         Inspur FP5280G2 BMC (ARM1176)
+fuji-bmc             Facebook Fuji BMC (Cortex-A7)
+g220a-bmc            Bytedance G220A BMC (ARM1176)
+highbank             Calxeda Highbank (ECX-1000)
+imx25-pdk            ARM i.MX25 PDK board (ARM926)
+integratorcp         ARM Integrator/CP (ARM926EJ-S)
+kudo-bmc             Kudo BMC (Cortex-A9)
+kzm                  ARM KZM Emulation Baseboard (ARM1136)
+lm3s6965evb          Stellaris LM3S6965EVB (Cortex-M3)
+lm3s811evb           Stellaris LM3S811EVB (Cortex-M3)
+mainstone            Mainstone II (PXA27x)
+mcimx6ul-evk         Freescale i.MX6UL Evaluation Kit (Cortex-A7)
+mcimx7d-sabre        Freescale i.MX7 DUAL SABRE (Cortex-A7)
+microbit             BBC micro:bit (Cortex-M0)
+midway               Calxeda Midway (ECX-2000)
+mps2-an385           ARM MPS2 with AN385 FPGA image for Cortex-M3
+mps2-an386           ARM MPS2 with AN386 FPGA image for Cortex-M4
+mps2-an500           ARM MPS2 with AN500 FPGA image for Cortex-M7
+mps2-an505           ARM MPS2 with AN505 FPGA image for Cortex-M33
+mps2-an511           ARM MPS2 with AN511 DesignStart FPGA image for Cortex-M3
+mps2-an521           ARM MPS2 with AN521 FPGA image for dual Cortex-M33
+mps3-an524           ARM MPS3 with AN524 FPGA image for dual Cortex-M33
+mps3-an547           ARM MPS3 with AN547 FPGA image for Cortex-M55
+musca-a              ARM Musca-A board (dual Cortex-M33)
+musca-b1             ARM Musca-B1 board (dual Cortex-M33)
+musicpal             Marvell 88w8618 / MusicPal (ARM926EJ-S)
+n800                 Nokia N800 tablet aka. RX-34 (OMAP2420)
+n810                 Nokia N810 tablet aka. RX-44 (OMAP2420)
+netduino2            Netduino 2 Machine (Cortex-M3)
+netduinoplus2        Netduino Plus 2 Machine (Cortex-M4)
+none                 empty machine
+npcm750-evb          Nuvoton NPCM750 Evaluation Board (Cortex-A9)
+nuri                 Samsung NURI board (Exynos4210)
+orangepi-pc          Orange Pi PC (Cortex-A7)
+palmetto-bmc         OpenPOWER Palmetto BMC (ARM926EJ-S)
+quanta-gbs-bmc       Quanta GBS (Cortex-A9)
+quanta-gsj           Quanta GSJ (Cortex-A9)
+quanta-q71l-bmc      Quanta-Q71l BMC (ARM926EJ-S)
+rainier-bmc          IBM Rainier BMC (Cortex-A7)
+raspi0               Raspberry Pi Zero (revision 1.2)
+raspi1ap             Raspberry Pi A+ (revision 1.1)
+raspi2b              Raspberry Pi 2B (revision 1.1)
+realview-eb          ARM RealView Emulation Baseboard (ARM926EJ-S)
+realview-eb-mpcore   ARM RealView Emulation Baseboard (ARM11MPCore)
+realview-pb-a8       ARM RealView Platform Baseboard for Cortex-A8
+realview-pbx-a9      ARM RealView Platform Baseboard Explore for Cortex-A9
+romulus-bmc          OpenPOWER Romulus BMC (ARM1176)
+sabrelite            Freescale i.MX6 Quad SABRE Lite Board (Cortex-A9)
+smdkc210             Samsung SMDKC210 board (Exynos4210)
+sonorapass-bmc       OCP SonoraPass BMC (ARM1176)
+spitz                Sharp SL-C3000 (Spitz) PDA (PXA270)
+stm32vldiscovery     ST STM32VLDISCOVERY (Cortex-M3)
+supermicrox11-bmc    Supermicro X11 BMC (ARM926EJ-S)
+swift-bmc            OpenPOWER Swift BMC (ARM1176) (deprecated)
+sx1                  Siemens SX1 (OMAP310) V2
+sx1-v1               Siemens SX1 (OMAP310) V1
+tacoma-bmc           OpenPOWER Tacoma BMC (Cortex-A7)
+terrier              Sharp SL-C3200 (Terrier) PDA (PXA270)
+tosa                 Sharp SL-6000 (Tosa) PDA (PXA255)
+verdex               Gumstix Verdex (PXA270)
+versatileab          ARM Versatile/AB (ARM926EJ-S)
+versatilepb          ARM Versatile/PB (ARM926EJ-S)
+vexpress-a15         ARM Versatile Express for Cortex-A15
+vexpress-a9          ARM Versatile Express for Cortex-A9
+virt-2.10            QEMU 2.10 ARM Virtual Machine
+virt-2.11            QEMU 2.11 ARM Virtual Machine
+virt-2.12            QEMU 2.12 ARM Virtual Machine
+virt-2.6             QEMU 2.6 ARM Virtual Machine
+virt-2.7             QEMU 2.7 ARM Virtual Machine
+virt-2.8             QEMU 2.8 ARM Virtual Machine
+virt-2.9             QEMU 2.9 ARM Virtual Machine
+virt-3.0             QEMU 3.0 ARM Virtual Machine
+virt-3.1             QEMU 3.1 ARM Virtual Machine
+virt-4.0             QEMU 4.0 ARM Virtual Machine
+virt-4.1             QEMU 4.1 ARM Virtual Machine
+virt-4.2             QEMU 4.2 ARM Virtual Machine
+virt-5.0             QEMU 5.0 ARM Virtual Machine
+virt-5.1             QEMU 5.1 ARM Virtual Machine
+virt-5.2             QEMU 5.2 ARM Virtual Machine
+virt-6.0             QEMU 6.0 ARM Virtual Machine
+virt-6.1             QEMU 6.1 ARM Virtual Machine
+virt                 QEMU 6.2 ARM Virtual Machine (alias of virt-6.2)
+virt-6.2             QEMU 6.2 ARM Virtual Machine
+witherspoon-bmc      OpenPOWER Witherspoon BMC (ARM1176)
+xilinx-zynq-a9       Xilinx Zynq Platform Baseboard for Cortex-A9
+z2                   Zipit Z2 (PXA27x)
+$ .../qemu-arm/bin/qemu-system-arm -cpu help
+Available CPUs:
+  arm1026
+  arm1136
+  arm1136-r2
+  arm1176
+  arm11mpcore
+  arm926
+  arm946
+  cortex-a15
+  cortex-a7
+  cortex-a8
+  cortex-a9
+  cortex-m0
+  cortex-m3
+  cortex-m33
+  cortex-m4
+  cortex-m55
+  cortex-m7
+  cortex-r5
+  cortex-r5f
+  max
+  pxa250
+  pxa255
+  pxa260
+  pxa261
+  pxa262
+  pxa270-a0
+  pxa270-a1
+  pxa270
+  pxa270-b0
+  pxa270-b1
+  pxa270-c0
+  pxa270-c5
+  sa1100
+  sa1110
+  ti925t
+
+```
+
+### Legacy
+
+The `qemu-system-gnuarmeclipse` is now deprecated, and kept only for
+compatibility reasons.
 
 Compared to the master `qemu-system-arm`, the changes are major, all
 application class Arm
@@ -175,8 +323,9 @@ Supported MCUs:
   STM32F429ZITx <- new>
 ```
 
-Warning: support for hardware floating point on Cortex-M4 devices is not
-available yet.
+{% include warning.html content="In this old release,
+support for hardware floating point on
+Cortex-M4 devices is not available." %}
 
 ## Bug fixes
 
@@ -188,7 +337,8 @@ available yet.
 
 ## Known problems
 
-- Ctrl-C does not interrupt the execution if the `--nographic` option is used.
+- for `qemu-system-gnuarmeclipse`, Ctrl-C does not interrupt
+the execution if the `--nographic` option is used.
 
 ## Shared libraries
 
@@ -289,15 +439,15 @@ tested by manually starting the
 blinky test on the emulated STM32F4DISCOVERY board.
 
 ```console
-.../xpack-qemu-arm-2.8.0-13/bin/qemu-system-gnuarmeclipse --version
-xPack 64-bit QEMU emulator version 2.8.0 (v2.8.0-13-xpack-dirty)
+.../qemu-system-gnuarmeclipse --version
+xPack 64-bit QEMU emulator version 2.8.0 (v2.8.0-14-xpack-legacy-dirty)
 Copyright (c) 2003-2016 Fabrice Bellard and the QEMU Project developers
 
 mkdir -p ~/Downloads
 (cd ~/Downloads; curl -L --fail -o f407-disc-blink-tutorial.elf \
 https://github.com/xpack-dev-tools/qemu-eclipse-test-projects/raw/master/f407-disc-blink-tutorial/Debug/f407-disc-blink-tutorial.elf)
 
-.../xpack-qemu-arm-2.8.0-13/bin/qemu-system-gnuarmeclipse \
+.../qemu-system-gnuarmeclipse \
 --board STM32F4-Discovery \
 -d unimp,guest_errors \
 --nographic \
@@ -306,7 +456,7 @@ https://github.com/xpack-dev-tools/qemu-eclipse-test-projects/raw/master/f407-di
 --semihosting-cmdline test 5
 ...
 
-DISPLAY=:1.0 .../xpack-qemu-arm-2.8.0-13/bin/qemu-system-gnuarmeclipse \
+DISPLAY=:1.0 .../qemu-system-gnuarmeclipse \
 --board STM32F4-Discovery \
 -d unimp,guest_errors \
 --image ~/Downloads/f407-disc-blink-tutorial.elf \

@@ -9,7 +9,7 @@ for a while, due to the large user base of 32-bit Raspberry Pi systems.
 
 ### Linux minimum requirements
 
-Support for RedHat 7 was dropped in 2022, and the
+Support for RedHat 7 was dropped in 2022 and the
 minimum requirement was raised to GLIBC 2.27, available starting
 with Ubuntu 18, Debian 10 and RedHat 8.
 
