@@ -191,15 +191,20 @@ function build_qemu_legacy()
 
           config_options+=("--prefix=${APP_PREFIX}")
 
-          if [ "${TARGET_PLATFORM}" == "win32" ]
-          then
-            config_options+=("--cross-prefix=${CROSS_COMPILE_PREFIX}-")
-          fi
-
           config_options+=("--bindir=${APP_PREFIX}/bin")
           config_options+=("--docdir=${APP_PREFIX}/share/legacy/doc")
           config_options+=("--mandir=${APP_PREFIX}/share/legacy/man")
-          config_options+=("--datadir=${APP_PREFIX}/share/legacy")
+
+          if [ "${TARGET_PLATFORM}" == "win32" ]
+          then
+            # On Windows, use the default top folder .../*`
+            # config_options+=("--datadir=${APP_PREFIX}")
+            config_options+=("--cross-prefix=${CROSS_COMPILE_PREFIX}-")
+          else
+            # On Unix, use subfolder .../share/legacy/qemu/*`
+            config_options+=("--datadir=${APP_PREFIX}/share/legacy")
+          fi
+
 
           config_options+=("--cc=${CC}")
           config_options+=("--cxx=${CXX}")
