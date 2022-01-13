@@ -379,7 +379,9 @@ relative path.
 
 ## Documentation
 
-The original documentation is available in the `share/doc` folder.
+The original documentation is available on-line:
+
+- <https://www.qemu.org/docs/master/>
 
 ## Build
 
