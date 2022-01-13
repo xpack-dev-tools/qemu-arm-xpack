@@ -130,9 +130,6 @@ function build_versions()
           build_vde "2.3.2"
         fi
 
-        build_qemu "${QEMU_VERSION}" "arm"
-        trim_qemu_arm
-
         # Build legacy qemu-system-gnuarmeclipse is not available
         # on Apple Silicon.
         if [ "${TARGET_PLATFORM}" == "darwin" -a "${TARGET_ARCH}" == "arm64" ]
@@ -141,6 +138,10 @@ function build_versions()
         else
           build_qemu_legacy "${QEMU_LEGACY_VERSION}"
         fi
+
+        # After legacy, to prevent it overriding newer files.
+        build_qemu "${QEMU_VERSION}" "arm"
+        trim_qemu_arm
       )
 
     # -------------------------------------------------------------------------
