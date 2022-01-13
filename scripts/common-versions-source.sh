@@ -27,7 +27,6 @@ function build_versions()
   fi
 
   export QEMU_VERSION="$(echo "${RELEASE_VERSION}" | sed -e 's|-.*||')"
-  export QEMU_LEGACY_VERSION="2.8.0"
 
   # Keep them in sync with combo archive content.
   if [[ "${RELEASE_VERSION}" =~ 6\.2\.*-* ]]
@@ -42,7 +41,8 @@ function build_versions()
         QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack-develop"}
         QEMU_GIT_COMMIT=${QEMU_GIT_COMMIT:-"v${RELEASE_VERSION}-xpack-arm"}
 
-        QEMU_LEGACY_GIT_COMMIT=${QEMU_LEGACY_GIT_COMMIT:-"b1ab9f0b322a905f8c5983692e800472a6556323"}
+        QEMU_LEGACY_VERSION="${QEMU_LEGACY_VERSION:-"2.8.0-14"}"
+        QEMU_LEGACY_GIT_COMMIT="${QEMU_LEGACY_GIT_COMMIT:-"v${QEMU_LEGACY_VERSION}-xpack-legacy"}"
         QEMU_LEGACY_GIT_PATCH="qemu-2.8.0.git-patch"
 
         build_zlib "1.2.11"
