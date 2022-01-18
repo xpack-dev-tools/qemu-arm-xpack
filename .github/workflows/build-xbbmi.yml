@@ -38,7 +38,7 @@ jobs:
   macos-x64:
     name: 'macOS Intel - QEMU ${{ github.event.inputs.version }} build'
     timeout-minutes: 2880 # 2 days
-    runs-on: [self-hosted, macos, intel, ${{ github.event.inputs.macos_intel_version }}]
+    runs-on: [self-hosted, macos, intel, '${{ github.event.inputs.macos_intel_version }}'']
     steps:
       - name: 'Machine'
         run: uname -a
