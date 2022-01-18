@@ -30,6 +30,7 @@ on:
         default: 'current'
       macos-intel-version:
         description: 'The macOS Intel version (10.13, 10.14)'
+        required: false
         default: '10.13'
 
 jobs:
@@ -54,7 +55,7 @@ jobs:
       - name: 'Build macOS x64 binary'
         timeout-minutes: 1440
         run: bash scripts/helper/build.sh --version "${{ github.event.inputs.version }}" --macos
-  
+
       - name: 'Publish pre-release'
         # https://github.com/ncipollo/release-action
         uses: ncipollo/release-action@v1
