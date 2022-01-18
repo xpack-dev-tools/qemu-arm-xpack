@@ -28,6 +28,10 @@ on:
         description: 'The semver of the release'
         required: false
         default: 'current'
+      macos_intel_version:
+        description: 'The macOS Intel version (10.13, 10.14)'
+        required: false
+        default: '10.13'
 
 jobs:
 
