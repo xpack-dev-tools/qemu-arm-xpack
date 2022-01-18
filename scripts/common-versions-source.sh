@@ -139,6 +139,10 @@ function build_versions()
           build_qemu_legacy "${QEMU_LEGACY_VERSION}"
         fi
 
+        if [ "${RELEASE_VERSION}" == "6.2.0-1" ]
+        then
+          export ENABLE_QEMU_SDL="y"
+        fi
         # After legacy, to prevent it overriding newer files.
         build_qemu "${QEMU_VERSION}" "arm"
         trim_qemu_arm
