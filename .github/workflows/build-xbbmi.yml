@@ -28,17 +28,13 @@ on:
         description: 'The semver of the release'
         required: false
         default: 'current'
-      macos_intel_version:
-        description: 'The macOS Intel version (10.13, 10.14)'
-        required: false
-        default: '10.13'
 
 jobs:
 
   macos-x64:
     name: 'macOS Intel - QEMU ${{ github.event.inputs.version }} build'
     timeout-minutes: 2880 # 2 days
-    runs-on: [self-hosted, macos, intel, '${{ github.event.inputs.macos_intel_version }}']
+    runs-on: [self-hosted, macos, intel, 10.14]
     steps:
       - name: 'Machine'
         run: uname -a
