@@ -2,6 +2,11 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2022-01-18
+
+- v6.2.0-2 released
+- enable Cocoa for macOS, SDL is not functional
+
 ## 2022-01-13
 
 - v6.2.0-1.1 published on npmjs.com

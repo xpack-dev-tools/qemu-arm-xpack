@@ -32,7 +32,7 @@ function build_versions()
   if [[ "${RELEASE_VERSION}" =~ 6\.2\.*-* ]]
   then
 
-    if [[ "${RELEASE_VERSION}" =~ 6\.2\.0-1 ]]
+    if [[ "${RELEASE_VERSION}" =~ 6\.2\.0-[12] ]]
     then
       (
         xbb_activate
