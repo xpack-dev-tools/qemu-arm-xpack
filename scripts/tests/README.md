@@ -9,12 +9,12 @@ The binaries can be available from one of the pre-releases:
 The test script is part of the QEMU Arm xPack:
 
 ```sh
-rm -rf ~/Downloads/qemu-arm-xpack.git; \
+rm -rf ${HOME}/Work/qemu-arm-xpack.git; \
 git clone \
   --branch xpack-develop \
   https://github.com/xpack-dev-tools/qemu-arm-xpack.git  \
-  ~/Downloads/qemu-arm-xpack.git; \
-git -C ~/Downloads/qemu-arm-xpack.git submodule update --init --recursive
+  ${HOME}/Work/qemu-arm-xpack.git; \
+git -C ${HOME}/Work/qemu-arm-xpack.git submodule update --init --recursive
 ```
 
 ## Start a local test
@@ -22,7 +22,7 @@ git -C ~/Downloads/qemu-arm-xpack.git submodule update --init --recursive
 To check if QEMU Arm starts on the current platform, run a native test:
 
 ```sh
-bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/tests/native-test.sh \
+bash ${HOME}/Work/qemu-arm-xpack.git/scripts/helper/tests/native-test.sh \
   --base-url "https://github.com/xpack-dev-tools/pre-releases/releases/download/test/"
 ```
 
@@ -41,15 +41,15 @@ The multi-platform tests run on GitHub Actions; they do not fire on
 git commits, but only via a manual POST to the GitHub API.
 
 ```sh
-bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/tests/trigger-workflow-test-prime.sh \
+bash ${HOME}/Work/qemu-arm-xpack.git/scripts/helper/tests/trigger-workflow-test-prime.sh \
   --branch xpack-develop \
   --base-url "https://github.com/xpack-dev-tools/pre-releases/releases/download/test/"
 
-bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/tests/trigger-workflow-test-docker-linux-intel.sh \
+bash ${HOME}/Work/qemu-arm-xpack.git/scripts/helper/tests/trigger-workflow-test-docker-linux-intel.sh \
   --branch xpack-develop \
   --base-url "https://github.com/xpack-dev-tools/pre-releases/releases/download/test/"
 
-bash ~/Downloads/qemu-arm-xpack.git/scripts/helper/tests/trigger-workflow-test-docker-linux-arm.sh \
+bash ${HOME}/Work/qemu-arm-xpack.git/scripts/helper/tests/trigger-workflow-test-docker-linux-arm.sh \
   --branch xpack-develop \
   --base-url "https://github.com/xpack-dev-tools/pre-releases/releases/download/test/"
 
