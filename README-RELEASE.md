@@ -221,6 +221,25 @@ The test results are available from
 Install the binaries on all supported platforms and check if they are
 functional.
 
+Download the platform specific archive from
+<https://github.com/xpack-dev-tools/pre-releases/releases/tag/test/>.
+
+On macOS, remove the `com.apple.quarantine` flag:
+
+```sh
+xattr -dr com.apple.quarantine ${HOME}/Downloads/xpack-qemu-arm-*
+```
+
+To test graphical mode, use Thomas Huth's presentation:
+
+```sh
+curl -L https://www.qemu-advent-calendar.org/2018/download/day16.tar.xz \
+  -o ${HOME}/Downloads/day16.tar.xz
+(cd ${HOME}/Downloads; tar xvf day16.tar.xz)
+export PATH=${HOME}/Downloads/xpack-qemu-arm-6.2.0-2/bin:$PATH
+bash ${HOME}/Downloads/day16/run.sh
+```
+
 ## Create a new GitHub pre-release draft
 
 - in `CHANGELOG.md`, add the release date and a message like _- v6.2.0-2 released_
