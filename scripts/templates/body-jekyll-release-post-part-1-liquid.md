@@ -52,7 +52,7 @@ The binary files are available from GitHub [Releases]({% raw %}{{ page.download_
 - Intel Windows 64-bit: Windows 7 with the Universal C Runtime
   ([UCRT](https://support.microsoft.com/en-us/topic/update-for-universal-c-runtime-in-windows-c0514201-7fe6-95a3-b0a5-287930f3560c)),
   Windows 8, Windows 10
-- macOS Intel 64-bit: 10.13 or later
+- macOS Intel 64-bit: 10.13 or later; graphical mode available on 10.14 or later
 - macOS Apple Silicon 64-bit: 11.6 or later
 
 On GNU/Linux, QEMU requires the X11 libraries to be present. On Debian derived
@@ -103,9 +103,9 @@ Eclipse will automatically
 identify binaries installed with
 `xpm` and provide a convenient method to manage paths.
 
-{% include note.html content="Eclipse has integrated support only for
+{% raw %}{% include note.html content="Eclipse has integrated support only for
 `qemu-system-gnuarmeclipse`. `qemu-system-arm` can be used in debug
-sessions only when started outside Eclipse." %}
+sessions only when started outside Eclipse." %}{% endraw %}
 
 ### Uninstall
 
@@ -330,9 +330,9 @@ Supported MCUs:
   STM32F429ZITx <- new>
 ```
 
-{% include warning.html content="In this old release,
+{% raw %}{% include warning.html content="In this old release,
 support for hardware floating point on
-Cortex-M4 devices is not available." %}
+Cortex-M4 devices is not available." %}{% endraw %}
 
 ## Bug fixes
 
