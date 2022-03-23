@@ -143,9 +143,9 @@ it to your favourite tools.
 ### Git client
 
 For macOS and Windows, the recommended Git client is
-[Sourcetree](https://www.sourcetreeapp.com/).
+[Fork](https://fork.dev).
 
-Since Sourcetree is not available for GNU/Linux, another choice is
+Since Fork is not available for GNU/Linux, another choice is
 Git Kraken, which can be downloaded for free from
 [gitkraken.com](https://www.gitkraken.com/download).
 
