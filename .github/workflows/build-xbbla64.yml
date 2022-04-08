@@ -19,7 +19,7 @@
 # -----------------------------------------------------------------------------
 
 
-name: 'Build xPack QEMU xbbma'
+name: 'Build xPack QEMU xbbla64'
 
 on:
   workflow_dispatch:
@@ -31,16 +31,10 @@ on:
 
 jobs:
 
-  macos-arm64:
-    name: 'macOS Arm - QEMU ${{ github.event.inputs.version }} build'
+  linux-arm64:
+    name: 'Linux Arm 64 - QEMU ${{ github.event.inputs.version }} build'
     timeout-minutes: 2880 # 2 days
-
-    runs-on: [self-hosted, macos, apple]
-
-    defaults:
-      run:
-        shell: "/usr/bin/arch -arch arm64e /bin/bash -l {0}"
-
+    runs-on: [self-hosted, linux, arm64, xbbla64]
     steps:
       - name: 'Machine'
         run: uname -a
@@ -53,11 +47,10 @@ jobs:
 
       - name: 'Clean working area'
         run: rm -rf ~/Work/qemu-arm-${{ github.event.inputs.version }}*
-
-      - name: 'Build macOS arm64 binary'
+      - name: 'Build Linux arm64 binary'
         timeout-minutes: 1440
-        run: bash scripts/helper/build.sh --version "${{ github.event.inputs.version }}" --macos
-  
+        run: bash scripts/helper/build.sh --version "${{ github.event.inputs.version }}" --arm64
+
       - name: 'Publish pre-release'
         # https://github.com/ncipollo/release-action
         uses: ncipollo/release-action@v1

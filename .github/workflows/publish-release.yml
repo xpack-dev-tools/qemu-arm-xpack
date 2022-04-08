@@ -54,10 +54,11 @@ jobs:
           allowUpdates: true
           artifacts: '~/Work/qemu-arm-${{ github.event.inputs.version }}/deploy/*'
           bodyFile: '.github/workflows/body-github-release.md'
-          commit: 'master'
+          commit: 'xpack-develop'
           draft: true
           name: 'xPack QEMU v${{ github.event.inputs.version }}'
           omitBodyDuringUpdate: true
+          omitDraftDuringUpdate: true
           omitNameDuringUpdate: true
           owner: 'xpack-dev-tools'
           prerelease: true
@@ -70,9 +71,9 @@ jobs:
 
 
 
-  linux-arm64:
-    name: 'Linux Arm - QEMU ${{ github.event.inputs.version }} publish release'
-    runs-on: [self-hosted, linux, arm64]
+  linux-arm:
+    name: 'Linux Arm 32 - QEMU ${{ github.event.inputs.version }} publish release'
+    runs-on: [self-hosted, linux, arm, xbbla32]
     steps:
       - name: 'Machine'
         run: uname -a
@@ -93,10 +94,51 @@ jobs:
           allowUpdates: true
           artifacts: '~/Work/qemu-arm-${{ github.event.inputs.version }}/deploy/*'
           bodyFile: '.github/workflows/body-github-release.md'
-          commit: 'master'
+          commit: 'xpack-develop'
           draft: true
           name: 'xPack QEMU v${{ github.event.inputs.version }}'
           omitBodyDuringUpdate: true
+          omitDraftDuringUpdate: true
+          omitNameDuringUpdate: true
+          owner: 'xpack-dev-tools'
+          prerelease: true
+          replacesArtifacts: true
+          repo: 'qemu-arm-xpack'
+          tag: 'v${{ github.event.inputs.version }}'
+          token: ${{ secrets.PUBLISH_TOKEN }}
+      - name: 'Show SHA'
+        run: cat ~/Work/qemu-arm-${{ github.event.inputs.version }}/deploy/*.sha
+
+
+
+  linux-arm64:
+    name: 'Linux Arm 64 - QEMU ${{ github.event.inputs.version }} publish release'
+    runs-on: [self-hosted, linux, arm64, xbbla64]
+    steps:
+      - name: 'Machine'
+        run: uname -a
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 3
+          submodules: true
+      - name: 'Create body'
+        run: |
+          npm install
+          cat scripts/templates/body-github-release-liquid.md | npm run liquidjs --silent -- '{ "RELEASE_VERSION": "${{ github.event.inputs.version }}" }' >.github/workflows/body-github-release.md
+          cat .github/workflows/body-github-release.md
+      - name: 'Publish release'
+        # https://github.com/ncipollo/release-action
+        uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          artifacts: '~/Work/qemu-arm-${{ github.event.inputs.version }}/deploy/*'
+          bodyFile: '.github/workflows/body-github-release.md'
+          commit: 'xpack-develop'
+          draft: true
+          name: 'xPack QEMU v${{ github.event.inputs.version }}'
+          omitBodyDuringUpdate: true
+          omitDraftDuringUpdate: true
           omitNameDuringUpdate: true
           owner: 'xpack-dev-tools'
           prerelease: true
@@ -134,10 +176,11 @@ jobs:
           allowUpdates: true
           artifacts: '~/Work/qemu-arm-${{ github.event.inputs.version }}/deploy/*'
           bodyFile: '.github/workflows/body-github-release.md'
-          commit: 'master'
+          commit: 'xpack-develop'
           draft: true
           name: 'xPack QEMU v${{ github.event.inputs.version }}'
           omitBodyDuringUpdate: true
+          omitDraftDuringUpdate: true
           omitNameDuringUpdate: true
           owner: 'xpack-dev-tools'
           prerelease: true
@@ -180,10 +223,11 @@ jobs:
           allowUpdates: true
           artifacts: '~/Work/qemu-arm-${{ github.event.inputs.version }}/deploy/*'
           bodyFile: '.github/workflows/body-github-release.md'
-          commit: 'master'
+          commit: 'xpack-develop'
           draft: true
           name: 'xPack QEMU v${{ github.event.inputs.version }}'
           omitBodyDuringUpdate: true
+          omitDraftDuringUpdate: true
           omitNameDuringUpdate: true
           owner: 'xpack-dev-tools'
           prerelease: true
