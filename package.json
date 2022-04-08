@@ -87,7 +87,8 @@
         "cp scripts/helper/templates/body-github-pre-releases-test.md .github/workflows/",
         "cat scripts/helper/templates/build-liquid.yml | {{ properties.LIQUIDJS }} > .github/workflows/build-all.yml",
         "cat scripts/helper/templates/build-xbbli-liquid.yml | {{ properties.LIQUIDJS }} > .github/workflows/build-xbbli.yml",
-        "cat scripts/helper/templates/build-xbbla-liquid.yml | {{ properties.LIQUIDJS }} > .github/workflows/build-xbbla.yml",
+        "cat scripts/helper/templates/build-xbbla32-liquid.yml | {{ properties.LIQUIDJS }} > .github/workflows/build-xbbla32.yml",
+        "cat scripts/helper/templates/build-xbbla64-liquid.yml | {{ properties.LIQUIDJS }} > .github/workflows/build-xbbla64.yml",
         "cat scripts/helper/templates/build-xbbmi-liquid.yml | {{ properties.LIQUIDJS }} > .github/workflows/build-xbbmi.yml",
         "cat scripts/helper/templates/build-xbbma-liquid.yml | {{ properties.LIQUIDJS }} > .github/workflows/build-xbbma.yml",
         "cat scripts/helper/templates/test-prime-liquid.yml | {{ properties.LIQUIDJS }} > .github/workflows/test-prime.yml",
@@ -98,7 +99,8 @@
       ],
       "trigger-workflow-build-all": "bash scripts/helper/trigger-workflow-build.sh",
       "trigger-workflow-build-xbbli": "bash scripts/helper/trigger-workflow-build.sh --machine xbbli",
-      "trigger-workflow-build-xbbla": "bash scripts/helper/trigger-workflow-build.sh --machine xbbla",
+      "trigger-workflow-build-xbbla32": "bash scripts/helper/trigger-workflow-build.sh --machine xbbla32",
+      "trigger-workflow-build-xbbla64": "bash scripts/helper/trigger-workflow-build.sh --machine xbbla64",
       "trigger-workflow-build-xbbmi": "bash scripts/helper/trigger-workflow-build.sh --machine xbbmi",
       "trigger-workflow-build-xbbma": "bash scripts/helper/trigger-workflow-build.sh --machine xbbma",
       "trigger-workflow-test-prime": "bash scripts/helper/tests/trigger-workflow-test-prime.sh",
@@ -106,7 +108,7 @@
       "trigger-workflow-test-docker-linux-arm": "bash scripts/helper/tests/trigger-workflow-test-docker-linux-arm.sh",
       "trigger-travis-macos": "bash scripts/helper/tests/trigger-travis-macos.sh",
       "trigger-workflow-publish-release": "bash scripts/helper/trigger-workflow-publish-release.sh",
-      "generate-jekyll-post": "XBBMI_HOSTNAME=xbbmi14 bash scripts/helper/generate-jekyll-post.sh",
+      "generate-jekyll-post": "bash scripts/helper/generate-jekyll-post.sh",
       "update-package-binaries": "bash scripts/helper/update-package-binaries.sh",
       "trigger-workflow-test-xpm": "bash scripts/helper/tests/trigger-workflow-test-xpm.sh"
     }
