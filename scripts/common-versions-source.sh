@@ -32,14 +32,16 @@ function build_versions()
   if [[ "${RELEASE_VERSION}" =~ 6\.2\.*-* ]]
   then
 
-    if [[ "${RELEASE_VERSION}" =~ 6\.2\.0-[12] ]]
+    if [[ "${RELEASE_VERSION}" =~ 6\.2\.0-[123] ]]
     then
       (
         xbb_activate
 
         # For now use the same code as the RISC-V build.
-        QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack-develop"}
-        QEMU_GIT_COMMIT=${QEMU_GIT_COMMIT:-"v${RELEASE_VERSION}-xpack-arm"}
+        # QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"xpack-develop"}
+        # QEMU_GIT_COMMIT=${QEMU_GIT_COMMIT:-"v${RELEASE_VERSION}-xpack-arm"}
+        QEMU_GIT_BRANCH=${QEMU_GIT_BRANCH:-"branding-patch"}
+        QEMU_GIT_COMMIT=${QEMU_GIT_COMMIT:-"8cbbe264ab0e738263759404d0e1e91090046267"}
 
         QEMU_LEGACY_VERSION="${QEMU_LEGACY_VERSION:-"2.8.0-14"}"
         QEMU_LEGACY_GIT_COMMIT="${QEMU_LEGACY_GIT_COMMIT:-"v${QEMU_LEGACY_VERSION}-xpack-legacy"}"
@@ -136,7 +138,7 @@ function build_versions()
         then
           : # Skip.
         else
-          build_qemu_legacy "${QEMU_LEGACY_VERSION}"
+          : # build_qemu_legacy "${QEMU_LEGACY_VERSION}"
         fi
 
         if [ "${RELEASE_VERSION}" == "6.2.0-1" ]
