@@ -160,7 +160,7 @@ function build_versions()
       then
         : # Skip.
       else
-        QEMU_LEGACY_VERSION="${QEMU_LEGACY_VERSION:-"2.8.0-14"}"
+        QEMU_LEGACY_VERSION="${QEMU_LEGACY_VERSION:-"2.8.0-15"}"
         QEMU_LEGACY_GIT_COMMIT="${QEMU_LEGACY_GIT_COMMIT:-"v${QEMU_LEGACY_VERSION}-xpack-legacy"}"
         QEMU_LEGACY_GIT_PATCH="qemu-2.8.0.git-patch"
 
