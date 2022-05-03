@@ -216,6 +216,10 @@ function build_qemu_legacy()
           config_options+=("--docdir=${APP_PREFIX}/share/legacy/doc")
           config_options+=("--mandir=${APP_PREFIX}/share/legacy/man")
 
+          # This seems redundant, but without it the greeting
+          # string is suffixed by -dirty.
+          config_options+=("--with-pkgversion=${QEMU_LEGACY_GIT_COMMIT}")
+
           if [ "${TARGET_PLATFORM}" == "win32" ]
           then
             # On Windows, use the default top folder .../*`
