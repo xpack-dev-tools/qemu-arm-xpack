@@ -84,7 +84,7 @@ With a git client, go to the helper repo and update to the latest master commit.
 
 ### Development run the build scripts
 
-Before the real build, run a test build on the development machine (`wks`)
+Before the real build, run a test build on the development machine (`wksi`)
 or the production machines (`xbbma`, `xbbmi`):
 
 ```sh
@@ -131,12 +131,12 @@ The automation is provided by GitHub Actions and three self-hosted runners.
 Run the `generate-workflows` to re-generate the
 GitHub workflow files; commit and push if necessary.
 
-- on the macOS machine (`xbbmi`) open ssh sessions to the Linux
-machines (`xbbli`, `xbbla64` and `xbbla32`):
+- on the macOS machine (`xbbmi`) open ssh sessions to the build
+machines (`xbbma`, `xbbli`, `xbbla64` and `xbbla32`):
 
 ```sh
+caffeinate ssh xbbma
 caffeinate ssh xbbli
-
 caffeinate ssh xbbla64
 caffeinate ssh xbbla32
 ```
@@ -318,7 +318,7 @@ watching this project.
   possibly adjust `.npmignore`
 - `npm version 6.2.0-2.1`; the first 5 numbers are the same as the
   GitHub release; the sixth number is the npm specific version
-- the commits and the tag should have beed pushed by the `postversion` script;
+- the commits and the tag should have been pushed by the `postversion` script;
   if not, push them with `git push origin --tags`
 - `npm publish --tag next` (use `--access public` when publishing for
   the first time)

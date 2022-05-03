@@ -133,7 +133,7 @@ be added only as pre-release strings, separated by a dash,
 like `6.2.0-2`. When published as a npm package, the version gets
 a fifth number, like `6.2.0-2.1`.
 
-Since adherance of third party packages to semver is not guaranteed,
+Since adherence of third party packages to semver is not guaranteed,
 it is recommended to use semver expressions like `^6.2.0` and `~6.2.0`
 with caution, and prefer exact matches, like `6.2.0-2.1`.
 
