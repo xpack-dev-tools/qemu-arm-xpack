@@ -90,6 +90,9 @@ sudo rm -rf ~/Work/qemu-arm-*-*
 caffeinate bash ~/Work/qemu-arm-xpack.git/scripts/helper/build.sh --develop --macos
 ```
 
+Note: on macOS 11.x and higher, a separately installed Python 2 is required
+by the legacy QEMU configure script.
+
 Similarly on the Intel Linux (`xbbli`):
 
 ```sh
