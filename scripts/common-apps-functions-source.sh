@@ -196,11 +196,6 @@ function build_qemu_legacy()
           fi
 
           echo
-          echo "Overriding version..."
-          # Note: it must be in the form x.y.z-w.
-          echo "${qemu_legacy_version}" | sed -e 's|-.*||' > "${QEMU_LEGACY_SRC_FOLDER_PATH}/VERSION"
-
-          echo
           echo "Running qemu legacy configure..."
 
           if [ "${IS_DEVELOP}" == "y" ]
