@@ -64,11 +64,7 @@ recreate the archives with the correct file.
 
 ### Update qemu.git
 
-In qemu.git:
-
-- switch to `master`
-- merge `develop` into `master`
-- add a `v7.0.0-1-xpack` tag
+Currently not necessary.
 
 ### Update the version specific code
 
