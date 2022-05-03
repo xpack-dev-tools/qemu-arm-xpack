@@ -117,7 +117,7 @@ not be accepted by bash.
 
 ## Versioning
 
-The version string is an extension to semver, the format looks like `6.2.0-2`.
+The version string is an extension to semver, the format looks like `7.0.0-1`.
 It includes the three digits with the original QEMU version and a fourth
 digit with the xPack release number.
 
@@ -220,10 +220,10 @@ archives and their SHA signatures, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/qemu-arm-*/deploy
 total 37100
--rw-rw-r-- 1 ilg ilg  8796275 Oct 14 21:38 xpack-qemu-arm-6.2.0-2-linux-x64.tar.gz
--rw-rw-r-- 1 ilg ilg      107 Oct 14 21:38 xpack-qemu-arm-6.2.0-2-linux-x64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 10393964 Oct 14 21:44 xpack-qemu-arm-6.2.0-2-win32-x64.zip
--rw-rw-r-- 1 ilg ilg      104 Oct 14 21:44 xpack-qemu-arm-6.2.0-2-win32-x64.zip.sha
+-rw-rw-r-- 1 ilg ilg  8796275 Oct 14 21:38 xpack-qemu-arm-7.0.0-1-linux-x64.tar.gz
+-rw-rw-r-- 1 ilg ilg      107 Oct 14 21:38 xpack-qemu-arm-7.0.0-1-linux-x64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 10393964 Oct 14 21:44 xpack-qemu-arm-7.0.0-1-win32-x64.zip
+-rw-rw-r-- 1 ilg ilg      104 Oct 14 21:44 xpack-qemu-arm-7.0.0-1-win32-x64.zip.sha
 ```
 
 ### Build the Arm GNU/Linux binaries
@@ -292,10 +292,10 @@ archives and their SHA signatures, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/qemu-arm-*/deploy
 total 16856
--rw-rw-r-- 1 ilg ilg 8777442 Oct 14 18:58 xpack-qemu-arm-6.2.0-2-linux-arm64.tar.gz
--rw-rw-r-- 1 ilg ilg     109 Oct 14 18:58 xpack-qemu-arm-6.2.0-2-linux-arm64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 8472838 Oct 14 19:22 xpack-qemu-arm-6.2.0-2-linux-arm.tar.gz
--rw-rw-r-- 1 ilg ilg     107 Oct 14 19:22 xpack-qemu-arm-6.2.0-2-linux-arm.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 8777442 Oct 14 18:58 xpack-qemu-arm-7.0.0-1-linux-arm64.tar.gz
+-rw-rw-r-- 1 ilg ilg     109 Oct 14 18:58 xpack-qemu-arm-7.0.0-1-linux-arm64.tar.gz.sha
+-rw-rw-r-- 1 ilg ilg 8472838 Oct 14 19:22 xpack-qemu-arm-7.0.0-1-linux-arm.tar.gz
+-rw-rw-r-- 1 ilg ilg     107 Oct 14 19:22 xpack-qemu-arm-7.0.0-1-linux-arm.tar.gz.sha
 ```
 
 ### Build the macOS binaries
@@ -339,8 +339,8 @@ archive and its SHA signature, created in the `deploy` folder:
 ```console
 $ ls -l ~/Work/qemu-arm-*/deploy
 total 15120
--rw-r--r--  1 ilg  staff  7735782 Oct 14 20:24 xpack-qemu-arm-6.2.0-2-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff      108 Oct 14 20:24 xpack-qemu-arm-6.2.0-2-darwin-x64.tar.gz.sha
+-rw-r--r--  1 ilg  staff  7735782 Oct 14 20:24 xpack-qemu-arm-7.0.0-1-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff      108 Oct 14 20:24 xpack-qemu-arm-7.0.0-1-darwin-x64.tar.gz.sha
 ```
 
 ## Subsequent runs
@@ -421,15 +421,15 @@ The result of the `configure` step on CentOS 6, with most of the
 options disabled, is:
 
 ```console
-Source path       /Host/Work/qemu-arm-6.2.0-2/qemu.git
+Source path       /Host/Work/qemu-arm-7.0.0-1/qemu.git
 C compiler        gcc
 Host C compiler   cc
 C++ compiler      g++
 Objective-C compiler gcc
 ARFLAGS           rv
 CFLAGS            -O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -g -ffunction-sections -fdata-sections -m64 -pipe -O2 -Wno-format-truncation -Wno-incompatible-pointer-types -Wno-unused-function -Wno-unused-but-set-variable -Wno-unused-result
-QEMU_CFLAGS       -I/Host/Work/qemu-arm-6.2.0-2/install/centos64/include/pixman-1 -I$(SRC_PATH)/dtc/libfdt -pthread -I/Host/Work/qemu-arm-6.2.0-2/install/centos64/include/glib-2.0 -I/Host/Work/qemu-arm-6.2.0-2/install/centos64/lib/glib-2.0/include -fPIE -DPIE -m64 -mcx16 -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Wstrict-prototypes -Wredundant-decls -Wall -Wundef -Wwrite-strings -Wmissing-prototypes -fno-strict-aliasing -fno-common -fwrapv  -ffunction-sections -fdata-sections -m64 -pipe -O2 -Wno-format-truncation -Wno-incompatible-pointer-types -Wno-unused-function -Wno-unused-but-set-variable -Wno-unused-result -I/Host/Work/qemu-arm-6.2.0-2/install/centos64/include -Wendif-labels -Wno-shift-negative-value -Wmissing-include-dirs -Wempty-body -Wnested-externs -Wformat-security -Wformat-y2k -Winit-self -Wignored-qualifiers -Wold-style-declaration -Wold-style-definition -Wtype-limits -fstack-protector-strong
-LDFLAGS           -Wl,--warn-common -Wl,-z,relro -Wl,-z,now -pie -m64 -g -L/Host/Work/qemu-arm-6.2.0-2/install/centos64/lib -L/Host/Work/qemu-arm-6.2.0-2/install/centos64/lib
+QEMU_CFLAGS       -I/Host/Work/qemu-arm-7.0.0-1/install/centos64/include/pixman-1 -I$(SRC_PATH)/dtc/libfdt -pthread -I/Host/Work/qemu-arm-7.0.0-1/install/centos64/include/glib-2.0 -I/Host/Work/qemu-arm-7.0.0-1/install/centos64/lib/glib-2.0/include -fPIE -DPIE -m64 -mcx16 -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Wstrict-prototypes -Wredundant-decls -Wall -Wundef -Wwrite-strings -Wmissing-prototypes -fno-strict-aliasing -fno-common -fwrapv  -ffunction-sections -fdata-sections -m64 -pipe -O2 -Wno-format-truncation -Wno-incompatible-pointer-types -Wno-unused-function -Wno-unused-but-set-variable -Wno-unused-result -I/Host/Work/qemu-arm-7.0.0-1/install/centos64/include -Wendif-labels -Wno-shift-negative-value -Wmissing-include-dirs -Wempty-body -Wnested-externs -Wformat-security -Wformat-y2k -Winit-self -Wignored-qualifiers -Wold-style-declaration -Wold-style-definition -Wtype-limits -fstack-protector-strong
+LDFLAGS           -Wl,--warn-common -Wl,-z,relro -Wl,-z,now -pie -m64 -g -L/Host/Work/qemu-arm-7.0.0-1/install/centos64/lib -L/Host/Work/qemu-arm-7.0.0-1/install/centos64/lib
 make              make
 install           install
 python            python -B
@@ -536,8 +536,8 @@ program from there. For example on macOS the output should
 look like:
 
 ```console
-$ .../xpack-qemu-arm-6.2.0-2/bin/qemu-system-gnuarmeclipse --version
-xPack 64-bit QEMU emulator version 6.2.0-2 (v6.2.0-22-dirty)
+$ .../xpack-qemu-arm-7.0.0-1/bin/qemu-system-gnuarmeclipse --version
+xPack 64-bit QEMU emulator version 7.0.0-1 (v7.0.0-12-dirty)
 Copyright (c) 2003-2016 Fabrice Bellard and the QEMU Project developers
 ```
 
@@ -547,8 +547,8 @@ After install, the package should create a structure like this (macOS files;
 only the first two depth levels are shown):
 
 ```console
-$ tree -L 2 /Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/6.2.0-2.1/.content
-/Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/6.2.0-2.1/.content
+$ tree -L 2 /Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/7.0.0-1.1/.content
+/Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/7.0.0-1.1/.content
 ├── README.md
 ├── bin
 │   └── qemu-system-gnuarmeclipse
