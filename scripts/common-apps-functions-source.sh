@@ -96,6 +96,8 @@ function test_qemu_arm()
 
 # -----------------------------------------------------------------------------
 
+# The configure step requires Python 2.
+
 function build_qemu_legacy()
 {
   local qemu_legacy_version="$1"
@@ -229,7 +231,6 @@ function build_qemu_legacy()
             # On Unix, use subfolder .../share/legacy/qemu/*`
             config_options+=("--datadir=${APP_PREFIX}/share/legacy")
           fi
-
 
           config_options+=("--cc=${CC}")
           config_options+=("--cxx=${CXX}")
