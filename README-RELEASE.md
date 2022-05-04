@@ -62,9 +62,18 @@ Note: if you missed to update the `CHANGELOG.md` before starting the build,
 edit the file and rerun the build, it should take only a few minutes to
 recreate the archives with the correct file.
 
-### Update qemu.git
+### Update qemu.git for development builds
 
-Currently not necessary.
+In the `xpack-dev-tools/qemu` git repo:
+
+- checkout the `master` branch
+- merge the `v7.0.0` tag into current
+- push `master`
+- checkout the `xpack-develop` branch
+- merge `master` into current
+- push `xpack-develop`
+- add a `v7.0.0-tag` tag
+- push tag to `origin`
 
 ### Update the version specific code
 
@@ -115,6 +124,14 @@ bash ${HOME}/Work/qemu-arm-xpack.git/scripts/helper/build.sh --develop --arm32
 
 Work on the scripts until all platforms pass the build.
 
+### Update qemu.git for release builds
+
+In the `xpack-dev-tools/qemu` git repo:
+
+- checkout the `xpack` branch
+- merge `xpack-develop` into current
+- push `xpack`
+
 ## Push the build scripts
 
 In this Git repo:
@@ -144,7 +161,7 @@ caffeinate ssh xbbla32
 Start the runner on all three machines:
 
 ```sh
-~/actions-runner/run.sh
+~/actions-runners/xpack-dev-tools/run.sh &
 ```
 
 Check that both the project Git and the submodule are pushed to GitHub.
@@ -164,7 +181,13 @@ in the environment.
 
 This command uses the `xpack-develop` branch of this repo.
 
-The builds take about 45 minutes to complete.
+The builds may take about one hour to complete:
+
+- `xbbmi`: 35 min
+- `xbbma`: 23 min
+- `xbbli`: 24 min
+- `xbbla64`: 60 min
+- `xbbla32`: 60 min
 
 The workflow result and logs are available from the
 [Actions](https://github.com/xpack-dev-tools/qemu-arm-xpack/actions/) page.
@@ -177,6 +200,20 @@ The resulting binaries are available for testing from
 ### CI tests
 
 The automation is provided by GitHub Actions.
+
+On the macOS machine (`xbbmi`) open a ssh sessions to the Arm/Linux
+test machine `xbbla`:
+
+```sh
+caffeinate ssh xbbla
+```
+
+Start both runners (to allow the 32/64-bit tests to run in parallel):
+
+```sh
+~/actions-runners/xpack-dev-tools/1/run.sh &
+~/actions-runners/xpack-dev-tools/2/run.sh &
+```
 
 To trigger the GitHub Actions tests, use the xPack actions:
 
@@ -381,3 +418,11 @@ In case the previous version is not functional and needs to be unpublished:
 
 - go to <https://github.com/xpack-dev-tools/pre-releases/releases/tag/test/>
 - remove the test binaries
+
+## Clean the work area
+
+Run the xPack action `trigger-workflow-deep-clean`, this
+will remove the build folders on all supported platforms.
+
+The tests results are available from the
+[Actions](https://github.com/xpack-dev-tools/qemu-riscv-xpack/actions/) page.
