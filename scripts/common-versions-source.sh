@@ -148,9 +148,14 @@ function build_versions()
       # Stick to upstream as long as possible.
       # https://github.com/qemu/qemu/tags
 
-      QEMU_GIT_URL="https://git.qemu.org/git/qemu.git"
-      QEMU_GIT_BRANCH="master"
-      QEMU_GIT_COMMIT="v${QEMU_VERSION}"
+      QEMU_GIT_URL="https://github.com/xpack-dev-tools/qemu.git"
+      if [ "${IS_DEVELOP}" == "y" ]
+      then
+        QEMU_GIT_BRANCH="xpack-develop"
+      else
+        QEMU_GIT_BRANCH="xpack"
+      fi
+      QEMU_GIT_COMMIT="v${QEMU_VERSION}-xpack"
 
       build_qemu "${QEMU_VERSION}" "arm"
 
