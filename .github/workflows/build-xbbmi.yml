@@ -19,7 +19,7 @@
 # -----------------------------------------------------------------------------
 
 
-name: 'Build xPack QEMU xbbmi'
+name: 'Build xPack QEMU Arm xbbmi'
 
 on:
   workflow_dispatch:
@@ -32,10 +32,10 @@ on:
 jobs:
 
   macos-x64:
-    name: 'macOS Intel - QEMU ${{ github.event.inputs.version }} build'
+    name: 'macOS Intel - QEMU Arm ${{ github.event.inputs.version }} build'
     timeout-minutes: 2880 # 2 days
 
-    runs-on: [self-hosted, macos, intel, 10.14]
+    runs-on: [self-hosted, macos, intel]
 
     steps:
       - name: 'Machine'

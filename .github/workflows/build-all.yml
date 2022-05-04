@@ -19,7 +19,7 @@
 # -----------------------------------------------------------------------------
 
 
-name: 'Build xPack QEMU'
+name: 'Build xPack QEMU Arm'
 
 on:
   workflow_dispatch:
@@ -32,7 +32,7 @@ on:
 jobs:
 
   linux-x64:
-    name: 'Linux Intel - QEMU ${{ github.event.inputs.version }} build'
+    name: 'Linux Intel - QEMU Arm ${{ github.event.inputs.version }} build'
     timeout-minutes: 5760 # 4 days
     runs-on: [self-hosted, linux, x64]
     steps:
@@ -79,7 +79,7 @@ jobs:
 
 
   linux-arm:
-    name: 'Linux Arm 32 - QEMU ${{ github.event.inputs.version }} build'
+    name: 'Linux Arm 32 - QEMU Arm ${{ github.event.inputs.version }} build'
     timeout-minutes: 2880 # 2 days
     runs-on: [self-hosted, linux, arm, xbbla32]
     steps:
@@ -120,7 +120,7 @@ jobs:
 
 
   linux-arm64:
-    name: 'Linux Arm 64 - QEMU ${{ github.event.inputs.version }} build'
+    name: 'Linux Arm 64 - QEMU Arm ${{ github.event.inputs.version }} build'
     timeout-minutes: 2880 # 2 days
     runs-on: [self-hosted, linux, arm64, xbbla64]
     steps:
@@ -162,10 +162,10 @@ jobs:
 
 
   macos-x64:
-    name: 'macOS Intel - QEMU ${{ github.event.inputs.version }} build'
+    name: 'macOS Intel - QEMU Arm ${{ github.event.inputs.version }} build'
     timeout-minutes: 2880 # 2 days
 
-    runs-on: [self-hosted, macos, intel, 10.14]
+    runs-on: [self-hosted, macos, intel]
 
     steps:
       - name: 'Machine'
@@ -207,7 +207,7 @@ jobs:
 
 
   macos-arm64:
-    name: 'macOS Arm - QEMU ${{ github.event.inputs.version }} build'
+    name: 'macOS Arm - QEMU Arm ${{ github.event.inputs.version }} build'
     timeout-minutes: 2880 # 2 days
 
     runs-on: [self-hosted, macos, apple]

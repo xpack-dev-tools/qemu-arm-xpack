@@ -19,7 +19,7 @@
 # -----------------------------------------------------------------------------
 
 
-name: 'Publish the xPack QEMU release'
+name: 'Publish the xPack QEMU Arm release'
 
 on:
   workflow_dispatch:
@@ -32,7 +32,7 @@ on:
 jobs:
 
   linux-x64:
-    name: 'Linux Intel - QEMU ${{ github.event.inputs.version }} publish release'
+    name: 'Linux Intel - QEMU Arm ${{ github.event.inputs.version }} publish release'
     runs-on: [self-hosted, linux, x64]
     steps:
       - name: 'Machine'
@@ -56,7 +56,7 @@ jobs:
           bodyFile: '.github/workflows/body-github-release.md'
           commit: 'xpack-develop'
           draft: true
-          name: 'xPack QEMU v${{ github.event.inputs.version }}'
+          name: 'xPack QEMU Arm v${{ github.event.inputs.version }}'
           omitBodyDuringUpdate: true
           omitDraftDuringUpdate: true
           omitNameDuringUpdate: true
@@ -72,7 +72,7 @@ jobs:
 
 
   linux-arm:
-    name: 'Linux Arm 32 - QEMU ${{ github.event.inputs.version }} publish release'
+    name: 'Linux Arm 32 - QEMU Arm ${{ github.event.inputs.version }} publish release'
     runs-on: [self-hosted, linux, arm, xbbla32]
     steps:
       - name: 'Machine'
@@ -96,7 +96,7 @@ jobs:
           bodyFile: '.github/workflows/body-github-release.md'
           commit: 'xpack-develop'
           draft: true
-          name: 'xPack QEMU v${{ github.event.inputs.version }}'
+          name: 'xPack QEMU Arm v${{ github.event.inputs.version }}'
           omitBodyDuringUpdate: true
           omitDraftDuringUpdate: true
           omitNameDuringUpdate: true
@@ -112,7 +112,7 @@ jobs:
 
 
   linux-arm64:
-    name: 'Linux Arm 64 - QEMU ${{ github.event.inputs.version }} publish release'
+    name: 'Linux Arm 64 - QEMU Arm ${{ github.event.inputs.version }} publish release'
     runs-on: [self-hosted, linux, arm64, xbbla64]
     steps:
       - name: 'Machine'
@@ -136,7 +136,7 @@ jobs:
           bodyFile: '.github/workflows/body-github-release.md'
           commit: 'xpack-develop'
           draft: true
-          name: 'xPack QEMU v${{ github.event.inputs.version }}'
+          name: 'xPack QEMU Arm v${{ github.event.inputs.version }}'
           omitBodyDuringUpdate: true
           omitDraftDuringUpdate: true
           omitNameDuringUpdate: true
@@ -152,9 +152,9 @@ jobs:
 
 
   macos-x64:
-    name: 'macOS Intel - QEMU ${{ github.event.inputs.version }} publish release'
+    name: 'macOS Intel - QEMU Arm ${{ github.event.inputs.version }} publish release'
 
-    runs-on: [self-hosted, macos, intel, 10.14]
+    runs-on: [self-hosted, macos, intel]
 
     steps:
       - name: 'Machine'
@@ -178,7 +178,7 @@ jobs:
           bodyFile: '.github/workflows/body-github-release.md'
           commit: 'xpack-develop'
           draft: true
-          name: 'xPack QEMU v${{ github.event.inputs.version }}'
+          name: 'xPack QEMU Arm v${{ github.event.inputs.version }}'
           omitBodyDuringUpdate: true
           omitDraftDuringUpdate: true
           omitNameDuringUpdate: true
@@ -194,7 +194,7 @@ jobs:
 
 
   macos-arm64:
-    name: 'macOS Arm - QEMU ${{ github.event.inputs.version }} publish release'
+    name: 'macOS Arm - QEMU Arm ${{ github.event.inputs.version }} publish release'
 
     runs-on: [self-hosted, macos, apple]
 
@@ -225,7 +225,7 @@ jobs:
           bodyFile: '.github/workflows/body-github-release.md'
           commit: 'xpack-develop'
           draft: true
-          name: 'xPack QEMU v${{ github.event.inputs.version }}'
+          name: 'xPack QEMU Arm v${{ github.event.inputs.version }}'
           omitBodyDuringUpdate: true
           omitDraftDuringUpdate: true
           omitNameDuringUpdate: true

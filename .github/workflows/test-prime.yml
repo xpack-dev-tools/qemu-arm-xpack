@@ -20,7 +20,7 @@
 # -----------------------------------------------------------------------------
 
 
-name: 'Test xPack QEMU on supported platforms'
+name: 'Test xPack QEMU Arm on supported platforms'
 
 on:
   workflow_dispatch:
@@ -37,7 +37,7 @@ on:
 jobs:
 
   linux-x64:
-    name: 'Linux x64 QEMU ${{ github.event.inputs.version }} test'
+    name: 'Linux x64 QEMU Arm ${{ github.event.inputs.version }} test'
     runs-on: ubuntu-latest
     steps:
       - name: 'Machine'
@@ -52,7 +52,7 @@ jobs:
 
   
   linux-arm64:
-    name: 'Linux arm64 QEMU ${{ github.event.inputs.version }} test'
+    name: 'Linux arm64 QEMU Arm ${{ github.event.inputs.version }} test'
     runs-on: [self-hosted, linux, arm64, xbbla]
     steps:
       - name: 'Machine'
@@ -70,7 +70,7 @@ jobs:
 
   
   linux-arm32:
-    name: 'Linux arm32 QEMU ${{ github.event.inputs.version }} test'
+    name: 'Linux arm32 QEMU Arm ${{ github.event.inputs.version }} test'
     runs-on: [self-hosted, linux, arm64, xbbla]
     steps:
       - name: 'Machine'
@@ -88,7 +88,7 @@ jobs:
 
   
   macos-x64:
-    name: 'macOS x64 QEMU ${{ github.event.inputs.version }} test'
+    name: 'macOS x64 QEMU Arm ${{ github.event.inputs.version }} test'
     runs-on: macos-latest
     steps:
       - name: 'Machine'
@@ -103,7 +103,7 @@ jobs:
 
   
   macos-arm64:
-    name: 'macOS arm64 QEMU ${{ github.event.inputs.version }} test'
+    name: 'macOS arm64 QEMU Arm ${{ github.event.inputs.version }} test'
     runs-on: [self-hosted, macos, apple]
     defaults:
       run:
@@ -122,7 +122,7 @@ jobs:
 
   
   windows-x64:
-    name: 'Windows x64 QEMU ${{ github.event.inputs.version }} test'
+    name: 'Windows x64 QEMU Arm ${{ github.event.inputs.version }} test'
     runs-on: windows-latest
     steps:
       - name: 'Machine'
