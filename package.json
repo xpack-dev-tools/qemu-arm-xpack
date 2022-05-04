@@ -66,11 +66,6 @@
       }
     },
     "bin": {
-      "qemu-edid": "./.content/bin/qemu-edid",
-      "qemu-img": "./.content/bin/qemu-img",
-      "qemu-io": "./.content/bin/qemu-io",
-      "qemu-nbd": "./.content/bin/qemu-nbd",
-      "qemu-storage-daemon": "./.content/bin/qemu-storage-daemon",
       "qemu-system-arm": "./.content/bin/qemu-system-arm",
       "qemu-system-aarch64": "./.content/bin/qemu-system-aarch64",
       "qemu-system-gnuarmeclipse": "./.content/bin/qemu-system-gnuarmeclipse"
