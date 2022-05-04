@@ -413,7 +413,7 @@ The binaries were testes on Windows 10 Pro 64-bit, Intel Ubuntu 18
 LTS 64-bit, macOS 10.15 (Intel) and 11.6 (Apple Silicon).
 
 For `qemu-system-arm` and `qemu-system-aarch64`, the tests consist in
-simple, non-graphical, semihostig apps. The binaries are borrowed
+simple, non-graphical, semihosting apps. The binaries are borrowed
 from µTest++ and are available from the
 [tests](https://github.com/xpack-dev-tools/qemu-arm-xpack/tree/xpack/tests)
 folder.
