@@ -49,6 +49,7 @@
     "libz",
     "libzstd",
     "ncipollo",
+    "npmignore",
     "npmjs",
     "postversion",
     "prerelease",
