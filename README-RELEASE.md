@@ -181,13 +181,13 @@ in the environment.
 
 This command uses the `xpack-develop` branch of this repo.
 
-The builds may take about one hour to complete:
+The builds may take a bit over one hour to complete:
 
-- `xbbmi`: 35 min
-- `xbbma`: 23 min
-- `xbbli`: 24 min
-- `xbbla64`: 60 min
-- `xbbla32`: 60 min
+- `xbbmi`: 38 min
+- `xbbma`: 11 min
+- `xbbli`: 32 min (Windows included)
+- `xbbla64`: 66 min
+- `xbbla32`: 68 min
 
 The workflow result and logs are available from the
 [Actions](https://github.com/xpack-dev-tools/qemu-arm-xpack/actions/) page.
