@@ -158,7 +158,7 @@ caffeinate ssh xbbla64
 caffeinate ssh xbbla32
 ```
 
-Start the runner on all three machines:
+Start the runner on all machines:
 
 ```sh
 ~/actions-runners/xpack-dev-tools/run.sh &
@@ -168,16 +168,27 @@ Check that both the project Git and the submodule are pushed to GitHub.
 
 To trigger the GitHub Actions build, use the xPack action:
 
-- `trigger-workflow-build-all`
+- `trigger-workflow-build-xbbli`
+- `trigger-workflow-build-xbbla64`
+- `trigger-workflow-build-xbbla32`
+- `trigger-workflow-build-xbbmi`
+- `trigger-workflow-build-xbbma`
 
 This is equivalent to:
 
 ```sh
-bash ${HOME}/Work/qemu-arm-xpack.git/scripts/helper/trigger-workflow-build.sh
+bash ${HOME}/Work/qemu-arm-xpack.git/scripts/helper/trigger-workflow-build.sh --machine xbbli
+bash ${HOME}/Work/qemu-arm-xpack.git/scripts/helper/trigger-workflow-build.sh --machine xbbla64
+bash ${HOME}/Work/qemu-arm-xpack.git/scripts/helper/trigger-workflow-build.sh --machine xbbla32
+bash ${HOME}/Work/qemu-arm-xpack.git/scripts/helper/trigger-workflow-build.sh --machine xbbmi
+bash ${HOME}/Work/qemu-arm-xpack.git/scripts/helper/trigger-workflow-build.sh --machine xbbma
 ```
 
-This script requires the `GITHUB_API_DISPATCH_TOKEN` to be present
-in the environment.
+These scripts require the `GITHUB_API_DISPATCH_TOKEN` variable to be present
+in the environment, and the organization `PUBLISH_TOKEN` to be visible in the
+Settings → Action →
+[Secrets](https://github.com/xpack-dev-tools/qemu-arm-xpack/settings/secrets/actions)
+page.
 
 This command uses the `xpack-develop` branch of this repo.
 
@@ -288,6 +299,9 @@ bash ${HOME}/Downloads/day16/run.sh
 - commit and push the `xpack-develop` branch
 - run the xPack action `trigger-workflow-publish-release`
 
+The workflow result and logs are available from the
+[Actions](https://github.com/xpack-dev-tools/qemu-arm-xpack/actions/) page.
+
 The result is a
 [draft pre-release](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/)
 tagged like **v7.0.0-1** (mind the dash in the middle!) and
@@ -330,6 +344,19 @@ If any, refer to closed
 
 Note: at this moment the system should send a notification to all clients
 watching this project.
+
+## Update the README-BUILD listings and examples
+
+- check and possibly update the `ls -l` output
+- check and possibly update the output of the `--version` runs
+- check and possibly update the output of `tree -L 2`
+- commit changes
+
+## Check the list of links
+
+- open the `package.json` file
+- check if the links in the `bin` property cover the actual binaries
+- if necessary, also check on Windows
 
 ## Update package.json binaries
 
