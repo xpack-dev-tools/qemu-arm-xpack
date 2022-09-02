@@ -414,7 +414,7 @@ TODO: format properly
     "configurations": [
         {
             "name": "qemu-debug",
-            "compileCommands": "/Users/ilg/Work/qemu-arm-dev/darwin-x64/build/qemu-7.0.0/compile_commands.json"
+            "compileCommands": "/Users/ilg/Work/qemu-arm-dev/darwin-x64/build/qemu-7.1.0/compile_commands.json"
         }
     ],
     "version": 4
@@ -469,7 +469,7 @@ TODO: format properly
       "name": "(lldb) Launch qemu-arm-aarch64 --help",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${env:HOME}/Work/qemu-arm-dev/darwin-x64/build/qemu-7.0.0/qemu-system-aarch64",
+      "program": "${env:HOME}/Work/qemu-arm-dev/darwin-x64/build/qemu-7.1.0/qemu-system-aarch64",
       "args": [
         "--help"
       ],

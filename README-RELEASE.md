@@ -20,13 +20,16 @@ No need to add a tag here, it'll be added when the release is created.
 
 ### Check the latest upstream release
 
-Get the version from the upstream
-[VERSION](https://github.com/qemu/qemu/blob/master/VERSION) file.
+Identify the latest stable [tag](https://gitlab.com/qemu-project/qemu/-/tags),
+like `v7.1.0`.
+
+Also check the very latest
+[VERSION](https://gitlab.com/qemu-project/qemu/-/blob/master/VERSION) file.
 
 ### Increase the version
 
-Determine the version (like `7.0.0`) and update the `scripts/VERSION`
-file; the format is `7.0.0-1`. The fourth number is the xPack release number
+Determine the version (like `7.1.0`) and update the `scripts/VERSION`
+file; the format is `7.1.0-1`. The fourth number is the xPack release number
 of this version. A fifth number will be added when publishing
 the package on the `npm` server.
 
@@ -37,7 +40,7 @@ Check GitHub issues and pull requests:
 - <https://github.com/xpack-dev-tools/qemu-arm-xpack/issues/>
 - <https://github.com/xpack-dev-tools/qemu/issues/>
 
-and fix them; assign them to a milestone (like `7.0.0-1`).
+and fix them; assign them to a milestone (like `7.1.0-1`).
 
 ### Check `README.md`
 
@@ -55,8 +58,8 @@ but in the version specific release page.
 
 - open the `CHANGELOG.md` file
 - check if all previous fixed issues are in
-- add a new entry like _- v7.0.0-1 prepared_
-- commit with a message like _prepare v7.0.0-1_
+- add a new entry like _- v7.1.0-1 prepared_
+- commit with a message like _prepare v7.1.0-1_
 
 Note: if you missed to update the `CHANGELOG.md` before starting the build,
 edit the file and rerun the build, it should take only a few minutes to
@@ -67,12 +70,12 @@ recreate the archives with the correct file.
 In the `xpack-dev-tools/qemu` git repo:
 
 - checkout the `master` branch
-- merge the `v7.0.0` tag into current
+- merge the `v7.1.0` tag into current
 - push `master`
 - checkout the `xpack-develop` branch
 - merge `master` into current
 - push `xpack-develop`
-- add a `v7.0.0-tag` tag
+- add a `v7.1.0-tag` tag
 - push tag to `origin`
 
 ### Update the version specific code
@@ -289,13 +292,13 @@ To test graphical mode, use Thomas Huth's presentation:
 curl -L https://www.qemu-advent-calendar.org/2018/download/day16.tar.xz \
   -o ${HOME}/Downloads/day16.tar.xz
 (cd ${HOME}/Downloads; tar xvf day16.tar.xz)
-export PATH=${HOME}/Downloads/xpack-qemu-arm-7.0.0-1/bin:$PATH
+export PATH=${HOME}/Downloads/xpack-qemu-arm-7.1.0-1/bin:$PATH
 bash ${HOME}/Downloads/day16/run.sh
 ```
 
 ## Create a new GitHub pre-release draft
 
-- in `CHANGELOG.md`, add the release date and a message like _- v7.0.0-1 released_
+- in `CHANGELOG.md`, add the release date and a message like _- v7.1.0-1 released_
 - commit with _CHANGELOG update_
 - check and possibly update the `templates/body-github-release-liquid.md`
 - push the `xpack-develop` branch
@@ -306,8 +309,8 @@ The workflow result and logs are available from the
 
 The result is a
 [draft pre-release](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/)
-tagged like **v7.0.0-1** (mind the dash in the middle!) and
-named like **xPack QEMU Arm v7.0.0-1** (mind the dash),
+tagged like **v7.1.0-1** (mind the dash in the middle!) and
+named like **xPack QEMU Arm v7.1.0-1** (mind the dash),
 with all binaries attached.
 
 - edit the draft and attach it to the `xpack-develop` branch (important!)
@@ -330,7 +333,7 @@ If any, refer to closed
 ## Update the preview Web
 
 - commit the `develop` branch of `xpack/web-jekyll` GitHub repo;
-  use a message like _xPack QEMU Arm v7.0.0-1 released_
+  use a message like _xPack QEMU Arm v7.1.0-1 released_
 - push to GitHub
 - wait for the GitHub Pages build to complete
 - the preview web is <https://xpack.github.io/web-preview/news/>
@@ -372,18 +375,18 @@ watching this project.
 - compare the SHA sums with those shown by `cat *.sha`
 - check the executable names
 - commit all changes, use a message like
-  _package.json: update urls for 7.0.0-1.1 release_ (without _v_)
+  _package.json: update urls for 7.1.0-1.1 release_ (without _v_)
 
 ## Publish on the npmjs.com server
 
 - select the `xpack-develop` branch
 - check the latest commits `npm run git-log`
-- update `CHANGELOG.md`, add a line like _- v7.0.0-1.1 published on npmjs.com_
-- commit with a message like _CHANGELOG: publish npm v7.0.0-1.1_
+- update `CHANGELOG.md`, add a line like _- v7.1.0-1.1 published on npmjs.com_
+- commit with a message like _CHANGELOG: publish npm v7.1.0-1.1_
 - `npm pack` and check the content of the archive, which should list
   only the `package.json`, the `README.md`, `LICENSE` and `CHANGELOG.md`;
   possibly adjust `.npmignore`
-- `npm version 7.0.0-1.1`; the first 5 numbers are the same as the
+- `npm version 7.1.0-1.1`; the first 5 numbers are the same as the
   GitHub release; the sixth number is the npm specific version
 - the commits and the tag should have been pushed by the `postversion` script;
   if not, push them with `git push origin --tags`
@@ -412,12 +415,12 @@ The tests results are available from the
 When the release is considered stable, promote it as `latest`:
 
 - `npm dist-tag ls @xpack-dev-tools/qemu-arm`
-- `npm dist-tag add @xpack-dev-tools/qemu-arm@7.0.0-1.1 latest`
+- `npm dist-tag add @xpack-dev-tools/qemu-arm@7.1.0-1.1 latest`
 - `npm dist-tag ls @xpack-dev-tools/qemu-arm`
 
 In case the previous version is not functional and needs to be unpublished:
 
-- `npm unpublish @xpack-dev-tools/qemu-arm@7.0.0-1.X`
+- `npm unpublish @xpack-dev-tools/qemu-arm@7.1.0-1.X`
 
 ## Update the Web
 
@@ -439,7 +442,7 @@ In case the previous version is not functional and needs to be unpublished:
 
 - in a separate browser windows, open [TweetDeck](https://tweetdeck.twitter.com/)
 - using the `@xpack_project` account
-- paste the release name like **xPack QEMU Arm v7.0.0-1 released**
+- paste the release name like **xPack QEMU Arm v7.1.0-1 released**
 - paste the link to the Web page
   [release](https://xpack.github.io/qemu-arm/releases/)
 - click the **Tweet** button
