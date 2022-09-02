@@ -429,7 +429,7 @@ https://github.com/xpack-dev-tools/qemu-arm-xpack/raw/xpack/tests/mps2-an386-sam
 
 .../xpack-qemu-arm-6.2.0-1/bin/qemu-system-arm \
 --machine mps2-an386 \
---kernel ~Downloads/mps2-an386-sample-test.elf \
+--kernel ~/Downloads/mps2-an386-sample-test.elf \
 --nographic \
 -d unimp,guest_errors \
 --semihosting-config enable=on,target=native,arg=sample-test,arg=one,arg=two
