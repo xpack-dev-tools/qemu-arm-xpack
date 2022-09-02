@@ -12,9 +12,13 @@
   "cSpell.ignoreWords": [
     "Bellard",
     "Fabrice",
+    "Huth",
+    "Ionescu",
     "LIQUIDJS",
     "LLDB",
+    "Liviu",
     "RPATH",
+    "Somsubhra",
     "UCRT",
     "USERPROFILE",
     "aarch64",
@@ -25,6 +29,8 @@
     "caffeinate",
     "cleanall",
     "cleanlibs",
+    "cmdline",
+    "cppdbg",
     "dylib",
     "endcase",
     "endfor",
@@ -50,6 +56,7 @@
     "libvdeplug",
     "libz",
     "libzstd",
+    "mkdir",
     "ncipollo",
     "nographic",
     "npmignore",
@@ -59,6 +66,10 @@
     "readelf",
     "riscv",
     "runpath",
+    "semihosting",
+    "softmmu",
+    "ungit",
+    "unimp",
     "wksi",
     "xattr",
     "xbbla",
@@ -66,6 +77,8 @@
     "xbbla64",
     "xbbli",
     "xbbma",
-    "xbbmi"
+    "xbbmi",
+    "xpack",
+    "xpacks"
   ]
 }
