@@ -30,9 +30,9 @@ it on a different macOS, please contribute back the changes to the script.
 The Ubuntu XBB is currently a dedicated Ubuntu Desktop 18 LTS 64-bit.
 It can run on any virtualisation
 platform, or even be a physical machine. However, for consistent and
-reproducible results, it is recommended to avoid installiing many
+reproducible results, it is recommended to avoid installing many
 other packages and use it as a general purpose machine, thus a virtual
-machine is prefered.
+machine is preferred.
 
 To install it, please read the separate
 [The Ubuntu Native XBB](https://github.com/xpack/xpack-build-box/tree/master/ubuntu/README-NATIVE.md)
