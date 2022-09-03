@@ -78,8 +78,7 @@ git -C ${HOME}/Work/qemu-arm-xpack.git submodule update --init --recursive
 > Note: the repository uses submodules; for a successful build it is
 > mandatory to recurse the submodules.
 
-For development purposes, clone the `xpack-develop`
-branch:
+For development purposes, clone the `xpack-develop` branch:
 
 ```sh
 rm -rf ${HOME}/Work/qemu-arm-xpack.git; \

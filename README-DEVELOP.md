@@ -178,8 +178,7 @@ git clone \
 git -C ${HOME}/Work/qemu-arm-xpack.git submodule update --init --recursive
 ```
 
-For development purposes, clone the `xpack-develop`
-branch:
+For development purposes, clone the `xpack-develop` branch:
 
 ```sh
 rm -rf ${HOME}/Work/qemu-arm-xpack.git; \
