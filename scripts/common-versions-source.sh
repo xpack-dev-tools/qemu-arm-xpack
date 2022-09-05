@@ -86,7 +86,7 @@ function build_versions()
 
       # TODO "2.72.1" (meson)
       # https://download.gnome.org/sources/glib/
-      build_glib "2.56.4"
+      build_glib2 "2.56.4"
 
       # Not toghether with nettle.
       # build_libgpg_error "1.43"
@@ -226,7 +226,7 @@ function build_versions()
       build_gettext "0.21"
 
       # TODO "2.70.2" (meson)
-      build_glib "2.56.4" #
+      build_glib2 "2.56.4" #
 
       # Not toghether with nettle.
       # build_libgpg_error "1.43"
@@ -313,7 +313,7 @@ function build_versions()
 
       # in certain configurations it requires libxml2 on windows
       build_gettext "0.21" # "0.19.8.1"
-      build_glib "2.56.4"
+      build_glib2 "2.56.4"
       build_pixman "0.40.0" # "0.38.0"
 
       build_qemu_legacy "${QEMU_LEGACY_VERSION}"
