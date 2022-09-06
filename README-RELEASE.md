@@ -221,7 +221,7 @@ The builds may take a bit over one hour to complete:
 
 - `xbbmi`: 0h30
 - `xbbma`: 0h12
-- `xbbli`: 0h25 (0h13 Linux, 0h14 Windows)
+- `xbbli`: 0h26 (0h14 Linux, 0h12 Windows)
 - `xbbla64`: 1h14
 - `xbbla32`: 1h12
 
