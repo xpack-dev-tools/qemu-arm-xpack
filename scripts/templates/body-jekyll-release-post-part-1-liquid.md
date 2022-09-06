@@ -7,6 +7,11 @@ summary: "Version **{{ RELEASE_VERSION }}** is a new release; it follows the ups
 
 version: "{{ RELEASE_VERSION }}"
 npm_subversion: 1
+qemu_version: "7.1.0"
+qemu_short_commit: "621da7789"
+qemu_long_commit: "621da7789083b80d6f1ff1c0fb499334007b4f51"
+qemu_date: "30 August 2022"
+
 download_url: https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/tag/v{{ RELEASE_VERSION }}/
 
 date:   {{ RELEASE_DATE }}
@@ -131,9 +136,9 @@ with some changes.
 
 There are two sets of binaries:
 
-- `qemu-system-arm` and `qemu-system-aarch64`, based on QEMU version 6.2.0,
-  commit [44f28df2](https://github.com/xpack-dev-tools/qemu/commit/44f28df24767cf9dca1ddc9b23157737c4cbb645)
-  from Dec 14th, 2021;
+- `qemu-system-arm` and `qemu-system-aarch64`, based on QEMU version {% raw %}{{ page.qemu_version }}{% endraw %},
+  commit [{% raw %}{{ page.qemu_short_commit }}{% endraw %}](https://github.com/xpack-dev-tools/qemu/commit/{% raw %}{{ page.qemu_long_commit }}{% endraw %})
+  from {% raw %}{{ page.qemu_date }}{% endraw %};
 
 - `qemu-system-gnuarmeclipse`, based on QEMU version 2.8.0,
   commit [0737f32](https://github.com/xpack-dev-tools/qemu/commit/0737f32daf35f3730ed2461ddfaaf034c2ec7ff0)
@@ -150,8 +155,10 @@ The supported boards and CPUs are:
 $ .../qemu-system-arm -machine help
 Supported machines are:
 akita                Sharp SL-C1000 (Akita) PDA (PXA270)
+ast1030-evb          Aspeed AST1030 MiniBMC (Cortex-M4)
 ast2500-evb          Aspeed AST2500 EVB (ARM1176)
 ast2600-evb          Aspeed AST2600 EVB (Cortex-A7)
+bletchley-bmc        Facebook Bletchley BMC (Cortex-A7)
 borzoi               Sharp SL-C3100 (Borzoi) PDA (PXA270)
 canon-a1100          Canon PowerShot A1100 IS (ARM946)
 cheetah              Palm Tungsten|E aka. Cheetah PDA (OMAP310)
@@ -159,6 +166,8 @@ collie               Sharp SL-5500 (Collie) PDA (SA-1110)
 connex               Gumstix Connex (PXA255)
 cubieboard           cubietech cubieboard (Cortex-A8)
 emcraft-sf2          SmartFusion2 SOM kit from Emcraft (M2S010)
+fby35-bmc            Facebook fby35 BMC (Cortex-A7)
+fby35                Meta Platforms fby35
 fp5280g2-bmc         Inspur FP5280G2 BMC (ARM1176)
 fuji-bmc             Facebook Fuji BMC (Cortex-A7)
 g220a-bmc            Bytedance G220A BMC (ARM1176)
@@ -174,6 +183,7 @@ mcimx6ul-evk         Freescale i.MX6UL Evaluation Kit (Cortex-A7)
 mcimx7d-sabre        Freescale i.MX7 DUAL SABRE (Cortex-A7)
 microbit             BBC micro:bit (Cortex-M0)
 midway               Calxeda Midway (ECX-2000)
+mori-bmc             Mori BMC (Cortex-A9)
 mps2-an385           ARM MPS2 with AN385 FPGA image for Cortex-M3
 mps2-an386           ARM MPS2 with AN386 FPGA image for Cortex-M4
 mps2-an500           ARM MPS2 with AN500 FPGA image for Cortex-M7
@@ -194,6 +204,8 @@ npcm750-evb          Nuvoton NPCM750 Evaluation Board (Cortex-A9)
 nuri                 Samsung NURI board (Exynos4210)
 orangepi-pc          Orange Pi PC (Cortex-A7)
 palmetto-bmc         OpenPOWER Palmetto BMC (ARM926EJ-S)
+qcom-dc-scm-v1-bmc   Qualcomm DC-SCM V1 BMC (Cortex A7)
+qcom-firework-bmc    Qualcomm DC-SCM V1/Firework BMC (Cortex A7)
 quanta-gbs-bmc       Quanta GBS (Cortex-A9)
 quanta-gsj           Quanta GSJ (Cortex-A9)
 quanta-q71l-bmc      Quanta-Q71l BMC (ARM926EJ-S)
@@ -212,7 +224,6 @@ sonorapass-bmc       OCP SonoraPass BMC (ARM1176)
 spitz                Sharp SL-C3000 (Spitz) PDA (PXA270)
 stm32vldiscovery     ST STM32VLDISCOVERY (Cortex-M3)
 supermicrox11-bmc    Supermicro X11 BMC (ARM926EJ-S)
-swift-bmc            OpenPOWER Swift BMC (ARM1176) (deprecated)
 sx1                  Siemens SX1 (OMAP310) V2
 sx1-v1               Siemens SX1 (OMAP310) V1
 tacoma-bmc           OpenPOWER Tacoma BMC (Cortex-A7)
@@ -240,8 +251,10 @@ virt-5.1             QEMU 5.1 ARM Virtual Machine
 virt-5.2             QEMU 5.2 ARM Virtual Machine
 virt-6.0             QEMU 6.0 ARM Virtual Machine
 virt-6.1             QEMU 6.1 ARM Virtual Machine
-virt                 QEMU 6.2 ARM Virtual Machine (alias of virt-6.2)
 virt-6.2             QEMU 6.2 ARM Virtual Machine
+virt-7.0             QEMU 7.0 ARM Virtual Machine
+virt                 QEMU 7.1 ARM Virtual Machine (alias of virt-7.1)
+virt-7.1             QEMU 7.1 ARM Virtual Machine
 witherspoon-bmc      OpenPOWER Witherspoon BMC (ARM1176)
 xilinx-zynq-a9       Xilinx Zynq Platform Baseboard for Cortex-A9
 z2                   Zipit Z2 (PXA27x)
@@ -324,11 +337,11 @@ Supported MCUs:
   STM32F107VC
   STM32F405RG
   STM32F407VG
-  STM32F407VGTx <- new
+  STM32F407VGTx
   STM32F407ZG
   STM32F411RE
   STM32F429ZI
-  STM32F429ZITx <- new>
+  STM32F429ZITx
 ```
 
 {% raw %}{% include warning.html content="In this old release,
