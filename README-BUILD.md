@@ -218,11 +218,11 @@ archives and their SHA signatures, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/qemu-arm-*/deploy
-total 37100
--rw-rw-r-- 1 ilg ilg  8796275 Oct 14 21:38 xpack-qemu-arm-7.1.0-1-linux-x64.tar.gz
--rw-rw-r-- 1 ilg ilg      107 Oct 14 21:38 xpack-qemu-arm-7.1.0-1-linux-x64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 10393964 Oct 14 21:44 xpack-qemu-arm-7.1.0-1-win32-x64.zip
--rw-rw-r-- 1 ilg ilg      104 Oct 14 21:44 xpack-qemu-arm-7.1.0-1-win32-x64.zip.sha
+total 87332
+-rw-rw-rw- 1 ilg ilg 36390614 Sep  6 13:12 xpack-qemu-arm-7.1.0-1-linux-x64.tar.gz
+-rw-rw-rw- 1 ilg ilg      106 Sep  6 13:12 xpack-qemu-arm-7.1.0-1-linux-x64.tar.gz.sha
+-rw-rw-rw- 1 ilg ilg 53024163 Sep  6 13:23 xpack-qemu-arm-7.1.0-1-win32-x64.zip
+-rw-rw-rw- 1 ilg ilg      103 Sep  6 13:23 xpack-qemu-arm-7.1.0-1-win32-x64.zip.sha
 ```
 
 ### Build the Arm GNU/Linux binaries
@@ -290,11 +290,18 @@ archives and their SHA signatures, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/qemu-arm-*/deploy
-total 16856
--rw-rw-r-- 1 ilg ilg 8777442 Oct 14 18:58 xpack-qemu-arm-7.1.0-1-linux-arm64.tar.gz
--rw-rw-r-- 1 ilg ilg     109 Oct 14 18:58 xpack-qemu-arm-7.1.0-1-linux-arm64.tar.gz.sha
--rw-rw-r-- 1 ilg ilg 8472838 Oct 14 19:22 xpack-qemu-arm-7.1.0-1-linux-arm.tar.gz
--rw-rw-r-- 1 ilg ilg     107 Oct 14 19:22 xpack-qemu-arm-7.1.0-1-linux-arm.tar.gz.sha
+total 35556
+-rw-rw-rw- 1 ilg ilg 36403433 Sep  6 14:11 xpack-qemu-arm-7.1.0-1-linux-arm64.tar.gz
+-rw-rw-rw- 1 ilg ilg      108 Sep  6 14:11 xpack-qemu-arm-7.1.0-1-linux-arm64.tar.gz.sha
+```
+
+and
+
+```console
+$ ls -l ~/Work/qemu-arm-*/deploy
+total 34372
+-rw-rw-rw- 1 ilg ilg 35190906 Sep  6 14:10 xpack-qemu-arm-7.1.0-1-linux-arm.tar.gz
+-rw-rw-rw- 1 ilg ilg      106 Sep  6 14:10 xpack-qemu-arm-7.1.0-1-linux-arm.tar.gz.sha
 ```
 
 ### Build the macOS binaries
@@ -337,9 +344,18 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/qemu-arm-*/deploy
-total 15120
--rw-r--r--  1 ilg  staff  7735782 Oct 14 20:24 xpack-qemu-arm-7.1.0-1-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff      108 Oct 14 20:24 xpack-qemu-arm-7.1.0-1-darwin-x64.tar.gz.sha
+total 65032
+-rw-r--r--  1 ilg  staff  32935171 Sep  6 13:28 xpack-qemu-arm-7.1.0-1-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff       107 Sep  6 13:28 xpack-qemu-arm-7.1.0-1-darwin-x64.tar.gz.sha
+```
+
+and
+
+```console
+$ ls -l ~/Work/qemu-arm-*/deploy
+total 53896
+-rw-r--r--  1 ilg  staff  27102432 Sep  6 13:09 xpack-qemu-arm-7.1.0-1-darwin-arm64.tar.gz
+-rw-r--r--  1 ilg  staff       109 Sep  6 13:09 xpack-qemu-arm-7.1.0-1-darwin-arm64.tar.gz.sha
 ```
 
 ## Subsequent runs
@@ -416,19 +432,231 @@ the build folder, it might be necessary to run a recursive `chown`.
 
 ## Actual configuration
 
-The result of the `configure` step on CentOS 6, with most of the
+The result of the meson configuration is:
+
+```console
+qemu 7.1.0
+
+  Directories
+    Install prefix               : /Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/qemu-arm
+    BIOS directory               : share/qemu
+    firmware path                : share/qemu-firmware
+    binary directory             : /Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/qemu-arm/bin
+    library directory            : /Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/qemu-arm/lib
+    module directory             : lib/qemu
+    libexec directory            : /Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/qemu-arm/libexec
+    include directory            : /Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/qemu-arm/include
+    config directory             : /Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/qemu-arm/etc
+    local state directory        : /Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/qemu-arm/var
+    Manual directory             : /Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/qemu-arm/share/man
+    Doc directory                : /Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/qemu-arm/share/doc
+    Build directory              : /Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/build/qemu-7.1.0
+    Source path                  : /Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/sources/qemu-7.1.0.git
+    GIT submodules               : ui/keycodemapdb tests/fp/berkeley-testfloat-3 tests/fp/berkeley-softfloat-3 dtc slirp
+
+  Host binaries
+    git                          : git
+    make                         : make
+    python                       : /Users/ilg/.local/xbb/bin/python3 (version: 3.9)
+    sphinx-build                 : /Users/ilg/.local/xbb/bin/sphinx-build
+    iasl                         : NO
+    genisoimage                  :
+    smbd                         : /usr/sbin/smbd
+
+  Configurable features
+    Documentation                : NO
+    system-mode emulation        : YES
+    user-mode emulation          : NO
+    block layer                  : YES
+    Install blobs                : YES
+    module support               : NO
+    fuzzing support              : NO
+    Audio drivers                : coreaudio
+    Trace backends               : log
+    D-Bus display                : NO
+    QOM debugging                : NO
+    vhost-kernel support         : NO
+    vhost-net support            : NO
+    vhost-user support           : NO
+    vhost-user-crypto support    : NO
+    vhost-user-blk server support: NO
+    vhost-vdpa support           : NO
+    build guest agent            : NO
+
+  Compilation
+    host CPU                     : x86_64
+    host endianness              : little
+    C compiler                   : clang -m64 -mcx16
+    Host C compiler              : clang -m64 -mcx16
+    C++ compiler                 : clang++ -m64 -mcx16
+    Objective-C compiler         : clang -m64 -mcx16
+    CFLAGS                       : -ffunction-sections -fdata-sections -pipe -m64 -O2 -mmacosx-version-min=10.13 -w -I/Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/libs/include -O2 -g
+    CXXFLAGS                     : -ffunction-sections -fdata-sections -pipe -m64 -O2 -mmacosx-version-min=10.13 -w -I/Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/libs/include -I/Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/libs/include -O2 -g
+    OBJCFLAGS                    : -I/Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/libs/include -O2 -g
+    LDFLAGS                      : -ffunction-sections -fdata-sections -pipe -m64 -O2 -mmacosx-version-min=10.13 -w -L/Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/libs/lib -O2 -v -Wl,-macosx_version_min,10.13 -Wl,-headerpad_max_install_names -Wl,-dead_strip -I/Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/libs/include -I/Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/libs/include
+    QEMU_CFLAGS                  : -DOS_OBJECT_USE_OBJC=0 -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Wstrict-prototypes -Wredundant-decls -Wundef -Wwrite-strings -Wmissing-prototypes -fno-strict-aliasing -fno-common -fwrapv -Wold-style-declaration -Wold-style-definition -Wtype-limits -Wformat-security -Wformat-y2k -Winit-self -Wignored-qualifiers -Wempty-body -Wnested-externs -Wendif-labels -Wexpansion-to-defined -Wimplicit-fallthrough=2 -Wno-initializer-overrides -Wno-missing-include-dirs -Wno-shift-negative-value -Wno-string-plus-int -Wno-typedef-redefinition -Wno-tautological-type-limit-compare -Wno-psabi -fstack-protector-strong
+    QEMU_CXXFLAGS                : -D__STDC_LIMIT_MACROS -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -DOS_OBJECT_USE_OBJC=0 -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Wundef -Wwrite-strings -fno-strict-aliasing -fno-common -fwrapv -Wtype-limits -Wformat-security -Wformat-y2k -Winit-self -Wignored-qualifiers -Wempty-body -Wendif-labels -Wexpansion-to-defined -Wimplicit-fallthrough=2 -Wno-initializer-overrides -Wno-missing-include-dirs -Wno-shift-negative-value -Wno-string-plus-int -Wno-typedef-redefinition -Wno-tautological-type-limit-compare -Wno-psabi -fstack-protector-strong
+    QEMU_OBJCFLAGS               : -Wold-style-definition -Wtype-limits -Wformat-security -Wformat-y2k -Winit-self -Wignored-qualifiers -Wempty-body -Wnested-externs -Wendif-labels -Wexpansion-to-defined -Wno-initializer-overrides -Wno-missing-include-dirs -Wno-shift-negative-value -Wno-string-plus-int -Wno-typedef-redefinition -Wno-tautological-type-limit-compare -Wno-psabi
+    QEMU_LDFLAGS                 : -fstack-protector-strong
+    profiler                     : NO
+    link-time optimization (LTO) : NO
+    PIE                          : YES
+    static build                 : NO
+    malloc trim support          : NO
+    membarrier                   : NO
+    debug stack usage            : NO
+    mutex debugging              : NO
+    memory allocator             : system
+    avx2 optimization            : NO
+    avx512f optimization         : NO
+    gprof enabled                : NO
+    gcov                         : NO
+    thread sanitizer             : NO
+    CFI support                  : NO
+    strip binaries               : NO
+    sparse                       : NO
+    mingw32 support              : NO
+
+  Targets and accelerators
+    KVM support                  : NO
+    HAX support                  : NO
+    HVF support                  : NO
+    WHPX support                 : NO
+    NVMM support                 : NO
+    Xen support                  : NO
+    TCG support                  : YES
+    TCG backend                  : native (x86_64)
+    TCG plugins                  : YES
+    TCG debug enabled            : NO
+    target list                  : arm-softmmu aarch64-softmmu
+    default devices              : YES
+    out of process emulation     : NO
+    vfio-user server             : NO
+
+  Block layer support
+    coroutine backend            : sigaltstack
+    coroutine pool               : YES
+    Block whitelist (rw)         :
+    Block whitelist (ro)         :
+    Use block whitelist in tools : NO
+    VirtFS support               : YES
+    build virtiofs daemon        : NO
+    Live block migration         : YES
+    replication support          : YES
+    bochs support                : YES
+    cloop support                : YES
+    dmg support                  : YES
+    qcow v1 support              : YES
+    vdi support                  : YES
+    vvfat support                : YES
+    qed support                  : YES
+    parallels support            : YES
+    FUSE exports                 : NO
+    VDUSE block exports          : NO
+
+  Crypto
+    TLS priority                 : NORMAL
+    GNUTLS support               : NO
+    libgcrypt                    : NO
+    nettle                       : YES 3.8.1
+      XTS                        : YES
+    AF_ALG support               : NO
+    rng-none                     : NO
+    Linux keyring                : NO
+
+  Dependencies
+    Cocoa support                : YES
+    vmnet.framework support      : YES
+    SDL support                  : NO
+    SDL image support            : NO
+    GTK support                  : NO
+    pixman                       : YES 0.40.0
+    VTE support                  : NO
+    slirp support                : internal
+    libtasn1                     : NO
+    PAM                          : YES
+    iconv support                : YES
+    curses support               : YES
+    virgl support                : NO
+    curl support                 : NO
+    Multipath support            : NO
+    PNG support                  : YES 1.6.37
+    VNC support                  : YES
+    VNC SASL support             : YES
+    VNC JPEG support             : YES 9.5.0
+    CoreAudio support            : YES
+    JACK support                 : NO
+    brlapi support               : NO
+    vde support                  : YES
+    netmap support               : NO
+    l2tpv3 support               : NO
+    Linux AIO support            : NO
+    Linux io_uring support       : NO
+    ATTR/XATTR support           : NO
+    RDMA support                 : NO
+    PVRDMA support               : NO
+    fdt support                  : internal
+    libcap-ng support            : NO
+    bpf support                  : NO
+    spice protocol support       : NO
+    rbd support                  : NO
+    smartcard support            : NO
+    U2F support                  : NO
+    libusb                       : YES 1.0.26
+    usb net redir                : NO
+    OpenGL support (epoxy)       : NO
+    GBM                          : NO
+    libiscsi support             : NO
+    libnfs support               : NO
+    seccomp support              : NO
+    GlusterFS support            : NO
+    TPM support                  : YES
+    libssh support               : YES 0.10.1
+    lzo support                  : YES
+    snappy support               : NO
+    bzip2 support                : YES
+    lzfse support                : NO
+    zstd support                 : YES 1.5.2
+    NUMA host support            : NO
+    capstone                     : NO
+    libpmem support              : NO
+    libdaxctl support            : NO
+    libudev                      : NO
+    FUSE lseek                   : NO
+    selinux                      : NO
+
+  User defined options
+    Native files                 : config-meson.cross
+    bindir                       : /Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/qemu-arm/bin
+    prefix                       : /Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/qemu-arm
+    cocoa                        : enabled
+    curses                       : enabled
+    gtk                          : disabled
+    guest_agent                  : disabled
+    hvf                          : disabled
+    libssh                       : enabled
+    lzo                          : enabled
+    nettle                       : enabled
+    pkgversion                   : v7.1.0-xpack
+    sdl                          : disabled
+    tools                        : disabled
+    vde                          : enabled
+    vfio_user_server             : disabled
+```
+
+The result of the `configure` for the legacy version, with most of the
 options disabled, is:
 
 ```console
-Source path       /Host/Work/qemu-arm-7.1.0-1/qemu.git
-C compiler        gcc
+Source path       /Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/sources/qemu-2.8.0-15-legacy.git
+C compiler        clang
 Host C compiler   cc
-C++ compiler      g++
-Objective-C compiler gcc
+C++ compiler      clang++
+Objective-C compiler clang
 ARFLAGS           rv
-CFLAGS            -O2 -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -g -ffunction-sections -fdata-sections -m64 -pipe -O2 -Wno-format-truncation -Wno-incompatible-pointer-types -Wno-unused-function -Wno-unused-but-set-variable -Wno-unused-result
-QEMU_CFLAGS       -I/Host/Work/qemu-arm-7.1.0-1/install/centos64/include/pixman-1 -I$(SRC_PATH)/dtc/libfdt -pthread -I/Host/Work/qemu-arm-7.1.0-1/install/centos64/include/glib-2.0 -I/Host/Work/qemu-arm-7.1.0-1/install/centos64/lib/glib-2.0/include -fPIE -DPIE -m64 -mcx16 -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Wstrict-prototypes -Wredundant-decls -Wall -Wundef -Wwrite-strings -Wmissing-prototypes -fno-strict-aliasing -fno-common -fwrapv  -ffunction-sections -fdata-sections -m64 -pipe -O2 -Wno-format-truncation -Wno-incompatible-pointer-types -Wno-unused-function -Wno-unused-but-set-variable -Wno-unused-result -I/Host/Work/qemu-arm-7.1.0-1/install/centos64/include -Wendif-labels -Wno-shift-negative-value -Wmissing-include-dirs -Wempty-body -Wnested-externs -Wformat-security -Wformat-y2k -Winit-self -Wignored-qualifiers -Wold-style-declaration -Wold-style-definition -Wtype-limits -fstack-protector-strong
-LDFLAGS           -Wl,--warn-common -Wl,-z,relro -Wl,-z,now -pie -m64 -g -L/Host/Work/qemu-arm-7.1.0-1/install/centos64/lib -L/Host/Work/qemu-arm-7.1.0-1/install/centos64/lib
+CFLAGS            -g -ffunction-sections -fdata-sections -pipe -m64 -O2 -mmacosx-version-min=10.13 -w
+QEMU_CFLAGS       -I/Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/libs/include/pixman-1 -I$(SRC_PATH)/dtc/libfdt -I/Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/libs/include -I/Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/libs/include/glib-2.0 -I/Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/libs/lib/glib-2.0/include -I/Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/libs/include -m64 -mcx16 -DOS_OBJECT_USE_OBJC=0 -arch x86_64 -D_GNU_SOURCE -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -Wstrict-prototypes -Wredundant-decls -Wall -Wundef -Wwrite-strings -Wmissing-prototypes -fno-strict-aliasing -fno-common -fwrapv  -ffunction-sections -fdata-sections -pipe -m64 -O2 -mmacosx-version-min=10.13 -w -I/Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/libs/include  -Wno-string-plus-int -Wno-initializer-overrides -Wendif-labels -Wno-shift-negative-value -Wmissing-include-dirs -Wempty-body -Wnested-externs -Wformat-security -Wformat-y2k -Winit-self -Wignored-qualifiers -Wold-style-declaration -Wold-style-definition -Wtype-limits -fstack-protector-strong
+LDFLAGS           -m64 -framework CoreFoundation -framework IOKit -arch x86_64 -g -L/Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/libs/lib  -O2 -v -Wl,-macosx_version_min,10.13 -Wl,-headerpad_max_install_names -Wl,-dead_strip -static-libstdc++ -L/Users/ilg/Work/qemu-arm-7.1.0-1/darwin-x64/install/libs/lib  -O2 -v -Wl,-macosx_version_min,10.13 -Wl,-headerpad_max_install_names -Wl,-dead_strip -static-libstdc++
 make              make
 install           install
 python            python -B
@@ -442,8 +670,9 @@ sparse enabled    no
 strip binaries    no
 profiler          no
 static build      no
+Cocoa support     no
 pixman            system
-SDL support       yes (2.0.5)
+SDL support       yes (2.24.0)
 GTK support       no
 GTK GL support    no
 VTE support       no
@@ -468,11 +697,11 @@ xen support       no
 brlapi support    no
 bluez  support    no
 Documentation     yes
-PIE               yes
-vde support       no
+PIE               no
+vde support       yes
 netmap support    no
 Linux AIO support no
-ATTR/XATTR support yes
+ATTR/XATTR support no
 Install blobs     no
 KVM support       no
 COLO support      yes
@@ -480,13 +709,13 @@ RDMA support      no
 TCG interpreter   no
 fdt support       yes
 preadv support    yes
-fdatasync         yes
+fdatasync         no
 madvise           yes
 posix_madvise     yes
 libcap-ng support no
-vhost-net support yes
-vhost-scsi support yes
-vhost-vsock support yes
+vhost-net support no
+vhost-scsi support no
+vhost-vsock support no
 Trace backends    log
 spice support     no
 rbd support       no
@@ -503,7 +732,7 @@ QGA VSS support   no
 QGA w32 disk info no
 QGA MSI support   no
 seccomp support   no
-coroutine backend ucontext
+coroutine backend sigaltstack
 coroutine pool    yes
 debug stack usage no
 GlusterFS support no
@@ -520,7 +749,7 @@ bzip2 support     no
 NUMA host support no
 tcmalloc support  no
 jemalloc support  no
-avx2 optimization yes
+avx2 optimization no
 replication support yes
 ```
 
@@ -536,8 +765,8 @@ look like:
 
 ```console
 $ .../xpack-qemu-arm-7.1.0-1/bin/qemu-system-gnuarmeclipse --version
-xPack 64-bit QEMU emulator version 7.1.0-1 (v7.1.0-12-dirty)
-Copyright (c) 2003-2016 Fabrice Bellard and the QEMU Project developers
+xPack QEMU emulator version 7.1.0 (v7.1.0-xpack)
+Copyright (c) 2003-2022 Fabrice Bellard and the QEMU Project developers
 ```
 
 ## Installed folders
@@ -550,30 +779,55 @@ $ tree -L 2 /Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/7.1.0-1.1/.conte
 /Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/7.1.0-1.1/.content
 ├── README.md
 ├── bin
+│   ├── qemu-system-aarch64
+│   ├── qemu-system-arm
 │   └── qemu-system-gnuarmeclipse
 ├── distro-info
 │   ├── CHANGELOG.md
 │   ├── licenses
 │   ├── patches
 │   └── scripts
+├── include
+│   └── qemu-plugin.h
 ├── libexec
 │   ├── libSDL2-2.0.0.dylib
 │   ├── libSDL2_image-2.0.0.dylib
-│   ├── libgcc_s.1.dylib
+│   ├── libcrypto.1.1.dylib
+│   ├── libffi.8.dylib
+│   ├── libgio-2.0.0.dylib
 │   ├── libglib-2.0.0.dylib
+│   ├── libgmodule-2.0.0.dylib
+│   ├── libgmp.10.dylib
+│   ├── libgobject-2.0.0.dylib
 │   ├── libgthread-2.0.0.dylib
+│   ├── libhogweed.6.6.dylib
+│   ├── libhogweed.6.dylib -> libhogweed.6.6.dylib
 │   ├── libiconv.2.dylib
 │   ├── libintl.8.dylib
-│   ├── libpixman-1.0.dylib
-│   ├── libssp.0.dylib
-│   ├── libstdc++.6.dylib
-│   ├── libz.1.2.11.dylib
-│   └── libz.1.dylib -> libz.1.2.11.dylib
+│   ├── libjpeg.9.dylib
+│   ├── liblzo2.2.dylib
+│   ├── libncursesw.6.dylib
+│   ├── libnettle.8.6.dylib
+│   ├── libnettle.8.dylib -> libnettle.8.6.dylib
+│   ├── libpcre2-8.0.dylib
+│   ├── libpixman-1.0.40.0.dylib
+│   ├── libpixman-1.0.dylib -> libpixman-1.0.40.0.dylib
+│   ├── libpng16.16.dylib
+│   ├── libssh.4.9.1.dylib
+│   ├── libssh.4.dylib -> libssh.4.9.1.dylib
+│   ├── libusb-1.0.0.dylib
+│   ├── libvdeplug.3.dylib
+│   ├── libz.1.2.12.dylib
+│   ├── libz.1.dylib -> libz.1.2.12.dylib
+│   ├── libzstd.1.5.2.dylib
+│   └── libzstd.1.dylib -> libzstd.1.5.2.dylib
 └── share
-    ├── doc
+    ├── applications
+    ├── icons
+    ├── legacy
     └── qemu
 
-9 directories, 15 files
+12 directories, 37 files
 ```
 
 ## Uninstall
