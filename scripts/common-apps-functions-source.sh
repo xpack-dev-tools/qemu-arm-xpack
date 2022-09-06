@@ -77,20 +77,34 @@ function test_qemu_arm()
   run_app "${TEST_BIN_PATH}/qemu-system-arm" --version
   run_app "${TEST_BIN_PATH}/qemu-system-aarch64" --version
 
+  echo
   echo "Running semihosting tests..."
+
   run_app "${TEST_BIN_PATH}/qemu-system-arm" \
-    --machine mps2-an386 \
-    --kernel "${tests_folder_path}/mps2-an386-sample-test.elf" \
+    --machine mps2-an500 \
+    --cpu cortex-m7 \
+    --kernel "${tests_folder_path}/assets/hello-world-cortex-m7f.elf" \
     --nographic \
     -d unimp,guest_errors \
-    --semihosting-config enable=on,target=native,arg=sample-test,arg=one,arg=two
+    --semihosting-config enable=on,target=native,arg=hello-world,arg=M7
+
+  run_app "${TEST_BIN_PATH}/qemu-system-arm" \
+    --machine virt \
+    --cpu cortex-a15 \
+    --kernel "${tests_folder_path}/assets/hello-world-cortex-a15.elf" \
+    --nographic \
+    -smp 1 \
+    -d unimp,guest_errors \
+    --semihosting-config enable=on,target=native,arg=hello-world,arg=A15
 
   run_app "${TEST_BIN_PATH}/qemu-system-aarch64" \
-    --machine mps2-an386 \
-    --kernel "${tests_folder_path}/mps2-an386-sample-test.elf" \
+    --machine virt \
+    --cpu cortex-a72 \
+    --kernel "${tests_folder_path}/assets/hello-world-cortex-a72.elf" \
     --nographic \
+    -smp 1 \
     -d unimp,guest_errors \
-    --semihosting-config enable=on,target=native,arg=sample-test,arg=one,arg=two
+    --semihosting-config enable=on,target=native,arg=hello-world,arg=A72
 
 }
 
@@ -340,7 +354,7 @@ function test_qemu_legacy()
   run_app "${TEST_BIN_PATH}/qemu-system-gnuarmeclipse" \
     --board STM32F4-Discovery \
     --mcu STM32F407VG \
-    --image "${tests_folder_path}/stm32f4discovery-sample-test.elf" \
+    --image "${tests_folder_path}/assets/stm32f4discovery-sample-test.elf" \
     --nographic \
     --verbose \
     -d unimp,guest_errors \
