@@ -1,18 +1,18 @@
 ---
-title:  xPack QEMU Arm v{{ RELEASE_VERSION }} released
+title:  xPack QEMU Arm v{{ XBB_RELEASE_VERSION }} released
 
 TODO: select one summary
-summary: "Version **{{ RELEASE_VERSION }}** is a maintenance release; it fixes several bugs."
-summary: "Version **{{ RELEASE_VERSION }}** is a new release; it follows the upstream QEMU release."
+summary: "Version **{{ XBB_RELEASE_VERSION }}** is a maintenance release; it fixes several bugs."
+summary: "Version **{{ XBB_RELEASE_VERSION }}** is a new release; it follows the upstream QEMU release."
 
-version: "{{ RELEASE_VERSION }}"
+version: "{{ XBB_RELEASE_VERSION }}"
 npm_subversion: 1
 qemu_version: "7.1.0"
 qemu_short_commit: "621da7789"
 qemu_long_commit: "621da7789083b80d6f1ff1c0fb499334007b4f51"
 qemu_date: "30 August 2022"
 
-download_url: https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/tag/v{{ RELEASE_VERSION }}/
+download_url: https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/tag/v{{ XBB_RELEASE_VERSION }}/
 
 date:   {{ RELEASE_DATE }}
 
@@ -115,7 +115,7 @@ sessions only when started outside Eclipse." %}{% endraw %}
 
 ### Uninstall
 
-To remove the links from the current project:
+To remove the links created by xpm in the current project:
 
 ```sh
 cd my-project

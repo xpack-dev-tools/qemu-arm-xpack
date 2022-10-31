@@ -1,16 +1,17 @@
 .DS_Store
-/.git/
-/.github/
+.git/
+.github/
 .gitignore
 .gitmodules
 
-/.vscode/
+.vscode/
 
-/patches/
-/pkgconfig/
-/scripts/
-/tests/
+patches/
+pkgconfig/
+scripts/
+tests/
 
 README-*
-*.tgz
 LICENSE-*
+
+*.tgz

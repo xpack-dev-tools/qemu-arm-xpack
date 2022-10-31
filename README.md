@@ -1,6 +1,8 @@
 
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/xpack-dev-tools/qemu-arm-xpack)](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases)
-[![npm (scoped)](https://img.shields.io/npm/v/@xpack-dev-tools/qemu-arm.svg)](https://www.npmjs.com/package/@xpack-dev-tools/qemu-arm)
+[![GitHub package.json version](https://img.shields.io/github/package-json/v/xpack-dev-tools/qemu-arm-xpack)](https://github.com/xpack-dev-tools/qemu-arm-xpack/blob/xpack/package.json)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/xpack-dev-tools/qemu-arm-xpack)](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/)
+[![npm (scoped)](https://img.shields.io/npm/v/@xpack-dev-tools/qemu-arm.svg?color=blue)](https://www.npmjs.com/package/@xpack-dev-tools/qemu-arm/)
+[![license](https://img.shields.io/github/license/xpack-dev-tools/qemu-arm-xpack)](https://github.com/xpack-dev-tools/qemu-arm-xpack/blob/xpack/LICENSE)
 
 # The xPack QEMU Arm
 
@@ -48,11 +50,17 @@ from the [`npmjs.com`](https://www.npmjs.com) registry.
 
 #### Prerequisites
 
-The only requirement is a recent
-`xpm`, which is a portable
-[Node.js](https://nodejs.org) command line application. To install it,
-follow the instructions from the
-[xpm](https://xpack.github.io/xpm/install/) page.
+A recent [xpm](https://xpack.github.io/xpm/),
+which is a portable [Node.js](https://nodejs.org/) command line application.
+
+It is recommended to update to the latest version with:
+
+```sh
+npm install --location=global xpm@latest
+```
+
+For details please follow the instructions in the
+[xPack install](https://xpack.github.io/install/) page.
 
 #### Install
 
@@ -95,9 +103,74 @@ Eclipse will automatically
 identify binaries installed with
 `xpm` and provide a convenient method to manage paths.
 
+After install, the package should create a structure like this (macOS files;
+only the first two depth levels are shown):
+
+```console
+$ tree -L 2 /Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/7.1.0-1.1/.content
+/Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/7.1.0-1.1/.content
+├── README.md
+├── bin
+│   ├── qemu-system-aarch64
+│   ├── qemu-system-arm
+│   └── qemu-system-gnuarmeclipse
+├── distro-info
+│   ├── CHANGELOG.md
+│   ├── licenses
+│   ├── patches
+│   └── scripts
+├── include
+│   └── qemu-plugin.h
+├── libexec
+│   ├── libSDL2-2.0.0.dylib
+│   ├── libSDL2_image-2.0.0.dylib
+│   ├── libcrypto.1.1.dylib
+│   ├── libffi.8.dylib
+│   ├── libgio-2.0.0.dylib
+│   ├── libglib-2.0.0.dylib
+│   ├── libgmodule-2.0.0.dylib
+│   ├── libgmp.10.dylib
+│   ├── libgobject-2.0.0.dylib
+│   ├── libgthread-2.0.0.dylib
+│   ├── libhogweed.6.6.dylib
+│   ├── libhogweed.6.dylib -> libhogweed.6.6.dylib
+│   ├── libiconv.2.dylib
+│   ├── libintl.8.dylib
+│   ├── libjpeg.9.dylib
+│   ├── liblzo2.2.dylib
+│   ├── libncursesw.6.dylib
+│   ├── libnettle.8.6.dylib
+│   ├── libnettle.8.dylib -> libnettle.8.6.dylib
+│   ├── libpcre2-8.0.dylib
+│   ├── libpixman-1.0.40.0.dylib
+│   ├── libpixman-1.0.dylib -> libpixman-1.0.40.0.dylib
+│   ├── libpng16.16.dylib
+│   ├── libssh.4.9.1.dylib
+│   ├── libssh.4.dylib -> libssh.4.9.1.dylib
+│   ├── libusb-1.0.0.dylib
+│   ├── libvdeplug.3.dylib
+│   ├── libz.1.2.12.dylib
+│   ├── libz.1.dylib -> libz.1.2.12.dylib
+│   ├── libzstd.1.5.2.dylib
+│   └── libzstd.1.dylib -> libzstd.1.5.2.dylib
+└── share
+    ├── applications
+    ├── icons
+    ├── legacy
+    └── qemu
+
+12 directories, 37 files
+```
+
+No other files are installed in any system folders or other locations.
+
 #### Uninstall
 
-To remove the links from the current project:
+The binaries are distributed as portable archives; thus they do not need
+to run a setup and do not require an uninstall; simply removing the
+folder is enough.
+
+To remove the links created by xpm in the current project:
 
 ```sh
 cd my-project
@@ -139,9 +212,8 @@ with caution, and prefer exact matches, like `7.1.0-1.1`.
 
 ## Maintainer info
 
-- [How to build](https://github.com/xpack-dev-tools/qemu-arm-xpack/blob/xpack/README-BUILD.md)
-- [How to make new releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/blob/xpack/README-RELEASE.md)
-- [Developer info](https://github.com/xpack-dev-tools/qemu-arm-xpack/blob/xpack/README-DEVELOP.md)
+For maintainer info, please see the
+[README-MAINTAINER](https://github.com/xpack-dev-tools/qemu-arm-xpack/blob/xpack/README-MAINTAINER.md)
 
 ## Apple Silicon notice
 
