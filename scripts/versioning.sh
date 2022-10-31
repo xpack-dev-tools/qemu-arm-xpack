@@ -159,8 +159,15 @@ function build_application_versioned_components()
         # required by vde
         # https://www.tcpdump.org/release/
         build_libpcap "1.10.1"
-        # https://sourceforge.net/projects/vde/files/vde2/
-        build_vde "2.3.2"
+        (
+          if [ "${XBB_TARGET_PLATFORM}" == "darwin" -a "${XBB_TARGET_ARCH}" == "arm64" ]
+          then
+            # To fix Apple Silicon recognition.
+            XBB_WITH_UPDATE_CONFIG_SUB="y"
+          fi
+          # https://sourceforge.net/projects/vde/files/vde2/
+          build_vde "2.3.2"
+        )
       fi
 
       xbb_set_binaries_install "${XBB_APPLICATION_INSTALL_FOLDER_PATH}"
