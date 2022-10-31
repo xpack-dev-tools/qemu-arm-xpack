@@ -42,6 +42,13 @@ git clone \
 xpm link -C ~/Work/xbb-helper-xpack.git
 ```
 
+Or, if the repos are already cloned:
+
+```sh
+git -C ~/Work/qemu-arm-xpack.git pull
+git -C ~/Work/xbb-helper-xpack.git pull
+```
+
 ## Prerequisites
 
 A recent [xpm](https://xpack.github.io/xpm/), which is a portable
@@ -659,7 +666,7 @@ In case the previous version is not functional and needs to be unpublished:
   [release](https://xpack.github.io/qemu-arm/releases/)
 - click the **Tweet** button
 
-## Remove pre-release binaries
+## Remove the pre-release binaries
 
 - go to <https://github.com/xpack-dev-tools/pre-releases/releases/tag/test/>
 - remove the test binaries
