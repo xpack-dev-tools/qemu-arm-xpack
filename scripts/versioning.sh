@@ -104,7 +104,7 @@ function build_application_versioned_components()
 
       # https://download.gnome.org/sources/glib/
       # ERROR: glib-2.56 gthread-2.0 is required to compile QEMU
-      build_glib2 "2.73.3" # "2.56.4"
+      build_glib "2.74.1" # "2.73.3" # "2.56.4"
 
       # Not toghether with nettle.
       # build_libgpg_error "1.43"
