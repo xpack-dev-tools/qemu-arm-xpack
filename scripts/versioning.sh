@@ -20,32 +20,41 @@ function build_application_versioned_components()
   # Keep them in sync with combo archive content.
   if [[ "${XBB_RELEASE_VERSION}" =~ 7\.1\.0-1 ]]
   then
+      # -----------------------------------------------------------------------
+      # The application starts with a native target.
+
+      xbb_set_binaries_install "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
+      xbb_set_libraries_install "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
+
+      # https://ftp.gnu.org/pub/gnu/libiconv/
+      build_libiconv "1.17" # "1.16"
+
+      # https://ftp.gnu.org/gnu/autoconf/
+      build_autoconf "2.71"
+
+      # https://ftp.gnu.org/gnu/automake/
+      # depends on autoconf.
+      build_automake "1.16.5"
+
+      # http://ftpmirror.gnu.org/libtool/
+      build_libtool "2.4.7"
+
+      # configure.ac:34: error: Macro PKG_PROG_PKG_CONFIG is not available. It is usually defined in file pkg.m4 provided by package pkg-config.
+      # https://pkgconfig.freedesktop.org/releases/
+      # depends on libiconv
+      build_pkg_config "0.29.2"
+
+      # -----------------------------------------------------------------------
+      # Revert to requested target.
+
+      xbb_set_target "requested"
+
       xbb_set_binaries_install "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
       xbb_set_libraries_install "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
 
       # required by glib
       # https://ftp.gnu.org/pub/gnu/libiconv/
       build_libiconv "1.17" # "1.16"
-
-      if [ "${XBB_TARGET_PLATFORM}" == "darwin" ]
-      then
-
-        # https://ftp.gnu.org/gnu/autoconf/
-        build_autoconf "2.71"
-
-        # https://ftp.gnu.org/gnu/automake/
-        # depends on autoconf.
-        build_automake "1.16.5"
-
-        # http://ftpmirror.gnu.org/libtool/
-        build_libtool "2.4.7"
-
-        # configure.ac:34: error: Macro PKG_PROG_PKG_CONFIG is not available. It is usually defined in file pkg.m4 provided by package pkg-config.
-        # https://pkgconfig.freedesktop.org/releases/
-        # depends on libiconv
-        build_pkg_config "0.29.2"
-
-      fi
 
       # http://zlib.net/fossils/
       build_zlib "1.2.12" # "1.2.11"
