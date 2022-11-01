@@ -25,6 +25,8 @@ XBB_APPLICATION_DESCRIPTION="${XBB_APPLICATION_DISTRO_NAME} ${XBB_APPLICATION_NA
 declare -a XBB_APPLICATION_DEPENDENCIES=( qemu-arm qemu-arm-legacy )
 declare -a XBB_APPLICATION_COMMON_DEPENDENCIES=( libiconv autoconf automake libtool pkg-config zlib bzip2 zstd gmp libpng jpeg libxml2 sdl2 libffi gettext termcap readline pcre2 glib openssl libssh ncurses libusb-w32 libusb1 lzo nettle pixman libpcap vde qemu )
 
+XBB_APPLICATION_INITIAL_TARGET="native"
+
 # -----------------------------------------------------------------------------
 
 XBB_GITHUB_ORG="${XBB_GITHUB_ORG:-"xpack-dev-tools"}"
