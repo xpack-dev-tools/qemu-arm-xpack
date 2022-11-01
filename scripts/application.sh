@@ -23,7 +23,7 @@ XBB_APPLICATION_DISTRO_TOP_FOLDER=${XBB_APPLICATION_DISTRO_TOP_FOLDER:-"xPacks"}
 XBB_APPLICATION_DESCRIPTION="${XBB_APPLICATION_DISTRO_NAME} ${XBB_APPLICATION_NAME}"
 
 declare -a XBB_APPLICATION_DEPENDENCIES=( qemu-arm qemu-arm-legacy )
-declare -a XBB_APPLICATION_COMMON_DEPENDENCIES=( libiconv autoconf automake libtool pkg-config zlib bzip2 zstd gmp libpng jpeg libxml2 sdl2 libffi gettext termcap readline pcre2 glib2 openssl libssh ncurses libusb-w32 libusb1 lzo nettle pixman libpcap vde qemu )
+declare -a XBB_APPLICATION_COMMON_DEPENDENCIES=( libiconv autoconf automake libtool pkg-config zlib bzip2 zstd gmp libpng jpeg libxml2 sdl2 libffi gettext termcap readline pcre2 glib openssl libssh ncurses libusb-w32 libusb1 lzo nettle pixman libpcap vde qemu )
 
 # -----------------------------------------------------------------------------
 
