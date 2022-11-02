@@ -42,11 +42,13 @@ git clone \
 xpm link -C ~/Work/xbb-helper-xpack.git
 ```
 
-Or, if the repos are already cloned:
+Or, if the repos were already cloned:
 
 ```sh
 git -C ~/Work/qemu-arm-xpack.git pull
+
 git -C ~/Work/xbb-helper-xpack.git pull
+xpm link -C ~/Work/xbb-helper-xpack.git
 ```
 
 ## Prerequisites
@@ -147,200 +149,350 @@ In the `xpack-dev-tools/qemu` git repo:
 ## Build
 
 The builds currently run on 5 dedicated machines (Intel GNU/Linux,
-Arm 32 GNU/Linux, Arm 64 GNU/Linux, Intel macOS and Arm macOS).
+Arm 32 GNU/Linux, Arm 64 GNU/Linux, Intel macOS and Apple Silicon macOS).
 
 ### Development run the build scripts
 
-Before the real build, run a test build on all platforms.
+Before the real build, run test builds on all platforms.
 
+#### Visual Studio Code
+
+All actions are defined as **xPack actions** and can be
+conveniently triggered via the VS Code graphical interface.
 
 #### Intel macOS
 
-For Intel macOS, first run the build on the development machine (`wksi`):
+For Intel macOS, first run the build on the development machine
+(`wksi`, a recent macOS):
+
+Update the build scripts (or clone them at the first use):
 
 ```sh
-# Update the build scripts.
 git -C ~/Work/qemu-arm-xpack.git pull
 
-xpm install -C ~/Work/qemu-arm-xpack.git
+xpm run deep-clean -C ~/Work/qemu-arm-xpack.git
+```
 
-# For backup overhead reasons, on the development machine
-# the builds happen on a separate Work folder.
-rm -rf ~/Work/qemu-arm-[0-9]*-*
+If the helper is also under development and needs changes,
+update it too:
+
+```sh
+git -C ~/Work/xbb-helper-xpack.git pull
+```
+
+Install project dependencies:
+
+```sh
+xpm install -C ~/Work/qemu-arm-xpack.git
+```
+
+If the writeable helper is used,
+link it in the place of the read-only package:
+
+```sh
+xpm link -C ~/Work/xbb-helper-xpack.git
+
+xpm run link-deps -C ~/Work/qemu-arm-xpack.git
+```
+
+For repeated builds, clean the build folder and install de
+build configuration dependencies:
+
+```sh
+xpm run deep-clean --config darwin-x64  -C ~/Work/qemu-arm-xpack.git
 
 xpm install --config darwin-x64 -C ~/Work/qemu-arm-xpack.git
+```
+
+Run the native build:
+
+```sh
 caffeinate xpm run build-develop --config darwin-x64 -C ~/Work/qemu-arm-xpack.git
 ```
 
+The build takes about 22 minutes.
+
 When functional, push the `xpack-develop` branch to GitHub.
 
-Run the build on the production machine (`xbbmi`):
+Run the native build on the production machine
+(`xbbmi`, an older macOS);
+start a VS Code remote session, or connect with a terminal:
 
 ```sh
 caffeinate ssh xbbmi
 ```
 
 ```sh
-# Update the build scripts (or clone them the first time).
+# Update the build scripts (or clone them at the first use).
 git -C ~/Work/qemu-arm-xpack.git pull
 
+xpm run deep-clean -C ~/Work/qemu-arm-xpack.git
+
 xpm install -C ~/Work/qemu-arm-xpack.git
-
-xpm run deep-clean --config darwin-x64 -C ~/Work/qemu-arm-xpack.git
-
 xpm install --config darwin-x64 -C ~/Work/qemu-arm-xpack.git
+```
+
+If the helper is also under development and needs changes,
+link it in the place of the read-only package:
+
+```sh
+git -C ~/Work/xbb-helper-xpack.git pull
+xpm link -C ~/Work/xbb-helper-xpack.git
+
+xpm run link-deps -C ~/Work/qemu-arm-xpack.git
+```
+
+```sh
 caffeinate xpm run build-develop --config darwin-x64 -C ~/Work/qemu-arm-xpack.git
 ```
 
-Several minutes later, the output of the build script is a compressed
+About 26 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
-$ ls -l ~/Work/qemu-arm-xpack.git/build/darwin-x64/deploy
-total 1080
--rw-r--r--  1 ilg  staff  547972 May 17 09:50 xpack-qemu-arm-1.11.1-2-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff     111 May 17 09:50 xpack-qemu-arm-1.11.1-2-darwin-x64.tar.gz.sha
+$ ls -l ~/Work/qemu-arm-xpack.git/build/darwin-x64/deploy]
+total 65392
+-rw-r--r--  1 ilg  staff  32955568 Nov  2 08:47 xpack-qemu-arm-7.1.0-1-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff       107 Nov  2 08:47 xpack-qemu-arm-7.1.0-1-darwin-x64.tar.gz.sha
 ```
 
 #### Apple Silicon macOS
 
-Run the build on the production machine (`xbbma`):
+Run the native build on the production machine
+(`xbbma`, an older macOS);
+start a VS Code remote session, or connect with a terminal:
 
 ```sh
 caffeinate ssh xbbma
 ```
 
 ```sh
-# Update the build scripts (or clone them the first time).
+# Update the build scripts (or clone them at the first use).
 git -C ~/Work/qemu-arm-xpack.git pull
 
+xpm run deep-clean -C ~/Work/qemu-arm-xpack.git
+
 xpm install -C ~/Work/qemu-arm-xpack.git
-
-xpm run deep-clean --config darwin-arm64 -C ~/Work/qemu-arm-xpack.git
-
 xpm install --config darwin-arm64 -C ~/Work/qemu-arm-xpack.git
+```
+
+If the helper is also under development and needs changes,
+link it in the place of the read-only package:
+
+```sh
+git -C ~/Work/xbb-helper-xpack.git pull
+xpm link -C ~/Work/xbb-helper-xpack.git
+
+xpm run link-deps -C ~/Work/qemu-arm-xpack.git
+```
+
+```sh
 caffeinate xpm run build-develop --config darwin-arm64 -C ~/Work/qemu-arm-xpack.git
 ```
 
-Several minutes later, the output of the build script is a compressed
+About 12 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
-$ ls -l ~/Work/qemu-arm-xpack.git/build/darwin-arm64/deploy
-total 1056
--rw-r--r--  1 ilg  staff  533014 May 17 09:49 xpack-qemu-arm-1.11.1-2-darwin-arm64.tar.gz
--rw-r--r--  1 ilg  staff     113 May 17 09:49 xpack-qemu-arm-1.11.1-2-darwin-arm64.tar.gz.sha
+$ ls -l ~/Work/qemu-arm-xpack.git/build/darwin-arm64/deploy]
+total 53040
+-rw-r--r--  1 ilg  staff  27124079 Nov  2 08:38 xpack-qemu-arm-7.1.0-1-darwin-arm64.tar.gz
+-rw-r--r--  1 ilg  staff       109 Nov  2 08:38 xpack-qemu-arm-7.1.0-1-darwin-arm64.tar.gz.sha
 ```
 
 #### Intel GNU/Linux
 
-Run the build on the production machine (`xbbli`):
+Run the docker build on the production machine (`xbbli`);
+start a VS Code remote session, or connect with a terminal:
 
 ```sh
 caffeinate ssh xbbli
 ```
 
-Build the GNU/Linux binaries:
+##### Build the GNU/Linux binaries
+
+Update the build scripts (or clone them at the first use):
 
 ```sh
-# Update the build scripts (or clone them the first time).
 git -C ~/Work/qemu-arm-xpack.git pull
 
-xpm install -C ~/Work/qemu-arm-xpack.git
-
-xpm run deep-clean --config linux-x64 -C ~/Work/qemu-arm-xpack.git
-
-xpm install --config linux-x64 -C ~/Work/qemu-arm-xpack.git
-xpm run build-develop --config linux-x64 -C ~/Work/qemu-arm-xpack.git
+xpm run deep-clean -C ~/Work/qemu-arm-xpack.git
 ```
 
-Several minutes later, the output of the build script is a compressed
+Clean the build folder and prepare the docker container:
+
+```sh
+xpm run deep-clean --config linux-x64 -C ~/Work/qemu-arm-xpack.git
+
+xpm run docker-prepare --config linux-x64 -C ~/Work/qemu-arm-xpack.git
+```
+
+If the helper is also under development and needs changes,
+link it in the place of the read-only package:
+
+```sh
+git -C ~/Work/xbb-helper-xpack.git pull
+
+xpm run docker-link-deps --config linux-x64 -C ~/Work/qemu-arm-xpack.git
+```
+
+Run the docker build:
+
+```sh
+xpm run docker-build-develop --config linux-x64 -C ~/Work/qemu-arm-xpack.git
+```
+
+About 12 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
-$ ls -l ~/Work/qemu-arm-xpack.git/build/linux-x64/deploy
-total 1480
--rw-rw-rw- 1 ilg ilg 551495 May 17 09:49 xpack-qemu-arm-1.11.1-2-linux-x64.tar.gz
--rw-rw-rw- 1 ilg ilg    110 May 17 09:49 xpack-qemu-arm-1.11.1-2-linux-x64.tar.gz.sha
+$ ls -l ~/Work/qemu-arm-xpack.git/build/linux-x64/deploy]
+total 34664
+-rw-r--r-- 1 ilg ilg 35491744 Nov  2 07:02 xpack-qemu-arm-7.1.0-1-linux-x64.tar.gz
+-rw-r--r-- 1 ilg ilg      106 Nov  2 07:02 xpack-qemu-arm-7.1.0-1-linux-x64.tar.gz.sha
 ```
 
-Build the Windows binaries:
+##### Build the Windows binaries
+
+Clean the build folder and prepare the docker container:
 
 ```sh
 xpm run deep-clean --config win32-x64 -C ~/Work/qemu-arm-xpack.git
 
-xpm install --config win32-x64 -C ~/Work/qemu-arm-xpack.git
-xpm run build-develop --config win32-x64 -C ~/Work/qemu-arm-xpack.git
+xpm run docker-prepare --config win32-x64 -C ~/Work/qemu-arm-xpack.git
 ```
 
-Several minutes later, the output of the build script is a compressed
+If the helper is also under development and needs changes,
+link it in the place of the read-only package:
+
+```sh
+xpm run docker-link-deps --config win32-x64 -C ~/Work/qemu-arm-xpack.git
+```
+
+Run the docker build:
+
+```sh
+xpm run docker-build-develop --config win32-x64 -C ~/Work/qemu-arm-xpack.git
+```
+
+About 13 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
-$ ls -l ~/Work/qemu-arm-xpack.git/build/win32-x64/deploy
-total 1480
--rw-rw-rw- 1 ilg ilg 951474 May 17 09:50 xpack-qemu-arm-1.11.1-2-win32-x64.zip
--rw-rw-rw- 1 ilg ilg    107 May 17 09:50 xpack-qemu-arm-1.11.1-2-win32-x64.zip.sha
+$ ls -l ~/Work/qemu-arm-xpack.git/build/win32-x64/deploy]
+total 41300
+-rw-r--r-- 1 ilg ilg 42284069 Nov  2 07:24 xpack-qemu-arm-7.1.0-1-win32-x64.zip
+-rw-r--r-- 1 ilg ilg      103 Nov  2 07:24 xpack-qemu-arm-7.1.0-1-win32-x64.zip.sha
 ```
 
 #### Arm GNU/Linux 64-bit
 
-Run the build on the production machine (`xbbla64`):
+Run the docker build on the production machine (`xbbla64`);
+start a VS Code remote session, or connect with a terminal:
 
 ```sh
 caffeinate ssh xbbla64
 ```
 
+Update the build scripts (or clone them at the first use):
+
 ```sh
-# Update the build scripts (or clone if the first time)
 git -C ~/Work/qemu-arm-xpack.git pull
 
-xpm install -C ~/Work/qemu-arm-xpack.git
-
-xpm run deep-clean --config linux-arm64 -C ~/Work/qemu-arm-xpack.git
-
-xpm install --config linux-arm64 -C ~/Work/qemu-arm-xpack.git
-xpm run build-develop --config linux-arm64 -C ~/Work/qemu-arm-xpack.git
+xpm run deep-clean -C ~/Work/qemu-arm-xpack.git
 ```
 
-Several minutes later, the output of the build script is a compressed
+If the helper is also under development and needs changes,
+update it too:
+
+```sh
+git -C ~/Work/xbb-helper-xpack.git pull
+```
+
+For repeated builds, clean the build folder and prepare the docker container:
+
+```sh
+xpm run deep-clean --config linux-arm64 -C ~/Work/qemu-arm-xpack.git
+
+xpm run docker-prepare --config linux-arm64 -C ~/Work/qemu-arm-xpack.git
+```
+
+If the writeable helper is used,
+link it in the place of the read-only package:
+
+```sh
+xpm run docker-link-deps --config linux-arm64 -C ~/Work/qemu-arm-xpack.git
+```
+
+Run the docker build:
+
+```sh
+xpm run docker-build-develop --config linux-arm64 -C ~/Work/qemu-arm-xpack.git
+```
+
+About 1h30 later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
-$ ls -l ~/Work/qemu-arm-xpack.git/build/linux-arm64/deploy
-total 532
--rw-rw-rw- 1 ilg ilg 538649 May 17 09:51 xpack-qemu-arm-1.11.1-2-linux-arm64.tar.gz
--rw-rw-rw- 1 ilg ilg    112 May 17 09:51 xpack-qemu-arm-1.11.1-2-linux-arm64.tar.gz.sha
+$ ls -l ~/Work/qemu-arm-xpack.git/build/linux-arm64/deploy]
+total 33940
+-rw-r--r-- 1 ilg ilg 34746510 Nov  2 16:10 xpack-qemu-arm-7.1.0-1-linux-arm64.tar.gz
+-rw-r--r-- 1 ilg ilg      108 Nov  2 16:10 xpack-qemu-arm-7.1.0-1-linux-arm64.tar.gz.sha
 ```
 
 #### Arm GNU/Linux 32-bit
 
-Run the build on the production machine (`xbbla32`):
+Run the docker build on the production machine (`xbbla32`);
+start a VS Code remote session, or connect with a terminal:
 
 ```sh
 caffeinate ssh xbbla32
 ```
 
+Update the build scripts (or clone them at the first use):
+
 ```sh
-# Update the build scripts (or clone if the first time)
 git -C ~/Work/qemu-arm-xpack.git pull
 
-xpm install -C ~/Work/qemu-arm-xpack.git
-
-xpm run deep-clean --config linux-arm -C ~/Work/qemu-arm-xpack.git
-
-xpm install --config linux-arm -C ~/Work/qemu-arm-xpack.git
-xpm run build-develop --config linux-arm -C ~/Work/qemu-arm-xpack.git
+xpm run deep-clean -C ~/Work/qemu-arm-xpack.git
 ```
 
-Several minutes later, the output of the build script is a compressed
+If the helper is also under development and needs changes,
+update it too:
+
+```sh
+git -C ~/Work/xbb-helper-xpack.git pull
+```
+
+For repeated builds, clean the build folder and prepare the docker container:
+
+```sh
+xpm run deep-clean --config linux-arm -C ~/Work/qemu-arm-xpack.git
+
+xpm run docker-prepare --config linux-arm -C ~/Work/qemu-arm-xpack.git
+```
+
+If the writeable helper is used,
+link it in the place of the read-only package:
+
+```sh
+xpm run docker-link-deps --config linux-arm -C ~/Work/qemu-arm-xpack.git
+```
+
+Run the docker build:
+
+```sh
+xpm run docker-build-develop --config linux-arm -C ~/Work/qemu-arm-xpack.git
+```
+
+About 1h10 later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
-$ ls -l ~/Work/qemu-arm-xpack.git/build/linux-arm/deploy
-total 500
--rw-rw-rw- 1 ilg ilg 506541 May 17 09:51 xpack-qemu-arm-1.11.1-2-linux-arm.tar.gz
--rw-rw-rw- 1 ilg ilg    110 May 17 09:51 xpack-qemu-arm-1.11.1-2-linux-arm.tar.gz.sha
+$ ls -l ~/Work/qemu-arm-xpack.git/build/linux-arm/deploy]
+total 32688
+-rw-r--r-- 1 ilg ilg 33466799 Nov  2 17:21 xpack-qemu-arm-7.1.0-1-linux-arm.tar.gz
+-rw-r--r-- 1 ilg ilg      106 Nov  2 17:21 xpack-qemu-arm-7.1.0-1-linux-arm.tar.gz.sha
 ```
 
 ### Files cache
