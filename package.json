@@ -227,12 +227,18 @@
       "linux-arm64": {
         "inherit": [
           "linux-x64"
-        ]
+        ],
+        "properties": {
+          "dockerImage": "ilegeul/ubuntu:arm64v8-18.04-xbb-v5.0.0"
+        }
       },
       "linux-arm": {
         "inherit": [
           "linux-x64"
-        ]
+        ],
+        "properties": {
+          "dockerImage": "ilegeul/ubuntu:arm32v7-18.04-xbb-v5.0.0"
+        }
       },
       "win32-x64": {
         "inherit": [
