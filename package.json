@@ -84,7 +84,10 @@
       "dbg": ""
     },
     "actions": {
-      "deep-clean": "rm -rf build xpacks node_modules package-lock.json",
+      "deep-clean": [
+        "rm -rf build xpacks node_modules package-lock.json",
+        "rm -rf ${HOME}/Work/{{ properties.appLCName }}-[0-9]*-*"
+      ],
       "install": [
         "npm install",
         "xpm install"
@@ -148,7 +151,10 @@
       "common-actions": {
         "hidden": true,
         "actions": {
-          "deep-clean": "rm -rf {{ properties.buildFolderRelativePathPosix }}",
+          "deep-clean": [
+            "rm -rf {{ properties.buildFolderRelativePathPosix }}",
+            "rm -rf ${HOME}/Work/{{ properties.appLCName }}-[0-9]*-*/{{ configuration.name }}"
+          ],
           "install": "xpm install --config {{ configuration.name }}",
           "build": "{{ properties.commandBashBuild }}",
           "build-develop": "{{ properties.commandBashBuild }} --develop",
