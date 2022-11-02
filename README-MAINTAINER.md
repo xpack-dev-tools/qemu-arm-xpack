@@ -186,7 +186,7 @@ Install project dependencies:
 xpm install -C ~/Work/qemu-arm-xpack.git
 ```
 
-If the writeable helper is used,
+If the writable helper is used,
 link it in the place of the read-only package:
 
 ```sh
@@ -222,50 +222,7 @@ start a VS Code remote session, or connect with a terminal:
 caffeinate ssh xbbmi
 ```
 
-Update the build scripts (or clone them at the first use):
-
-```sh
-git -C ~/Work/qemu-arm-xpack.git pull
-
-xpm run deep-clean -C ~/Work/qemu-arm-xpack.git
-```
-
-If the helper is also under development and needs changes,
-update it too:
-
-```sh
-git -C ~/Work/xbb-helper-xpack.git pull
-```
-
-Install project dependencies:
-
-```sh
-xpm install -C ~/Work/qemu-arm-xpack.git
-```
-
-If the writeable helper is used,
-link it in the place of the read-only package:
-
-```sh
-xpm link -C ~/Work/xbb-helper-xpack.git
-
-xpm run link-deps -C ~/Work/qemu-arm-xpack.git
-```
-
-For repeated builds, clean the build folder and install de
-build configuration dependencies:
-
-```sh
-xpm run deep-clean --config darwin-x64  -C ~/Work/qemu-arm-xpack.git
-
-xpm install --config darwin-x64 -C ~/Work/qemu-arm-xpack.git
-```
-
-Run the native build:
-
-```sh
-caffeinate xpm run build-develop --config darwin-x64 -C ~/Work/qemu-arm-xpack.git
-```
+Repeat the same steps as before.
 
 About 26 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
@@ -308,7 +265,7 @@ Install project dependencies:
 xpm install -C ~/Work/qemu-arm-xpack.git
 ```
 
-If the writeable helper is used,
+If the writable helper is used,
 link it in the place of the read-only package:
 
 ```sh
@@ -459,7 +416,7 @@ xpm run deep-clean --config linux-arm64 -C ~/Work/qemu-arm-xpack.git
 xpm run docker-prepare --config linux-arm64 -C ~/Work/qemu-arm-xpack.git
 ```
 
-If the writeable helper is used,
+If the writable helper is used,
 link it in the place of the read-only package:
 
 ```sh
@@ -514,7 +471,7 @@ xpm run deep-clean --config linux-arm -C ~/Work/qemu-arm-xpack.git
 xpm run docker-prepare --config linux-arm -C ~/Work/qemu-arm-xpack.git
 ```
 
-If the writeable helper is used,
+If the writable helper is used,
 link it in the place of the read-only package:
 
 ```sh
