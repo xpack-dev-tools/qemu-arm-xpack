@@ -44,6 +44,13 @@ function build_application_versioned_components()
       # depends on libiconv
       build_pkg_config "0.29.2"
 
+      # checking for GNU M4 that supports accurate traces... configure: error: no acceptable m4 could be found in $PATH.
+      # GNU M4 1.4.6 or later is required; 1.4.16 or newer is recommended.
+      # GNU M4 1.4.15 uses a buggy replacement strstr on some systems.
+      # Glibc 2.9 - 2.12 and GNU M4 1.4.11 - 1.4.15 have another strstr bug.
+      # https://ftp.gnu.org/gnu/m4/
+      build_m4 "1.4.19"
+
       # -----------------------------------------------------------------------
       # Revert to requested target.
 
