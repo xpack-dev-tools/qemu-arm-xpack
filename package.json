@@ -173,7 +173,6 @@
             "docker rm --force {{ properties.containerName }}",
             "docker create --name {{ properties.containerName }} --tty --hostname docker --volume $(pwd):$(pwd) --volume ${HOME}/Work/xbb-helper-xpack.git:${HOME}/Work/xbb-helper-xpack.git --volume ${HOME}/.local/xPacks:${HOME}/.local/xPacks --volume ${HOME}/.cache/xPacks:${HOME}/.cache/xPacks --volume ${HOME}/Work/cache:${HOME}/Work/cache --volume ${HOME}/.wine:${HOME}/.wine --workdir $(pwd) {{ properties.dockerImage }}",
             "docker start {{ properties.containerName }}",
-            "echo docker exec {{ properties.containerName }} apt-get install python3-distutils",
             "docker exec {{ properties.containerName }} npm install --location=global xpm@latest",
             "docker exec {{ properties.containerName }} userdel node",
             "docker exec {{ properties.containerName }} groupadd --gid $(id -g) --force $(id -gn)",
