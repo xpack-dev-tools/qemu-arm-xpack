@@ -58,8 +58,8 @@ A recent [xpm](https://xpack.github.io/xpm/), which is a portable
 
 ## Release schedule
 
-The releases are intended to fix bugs and add new features,
-and do not have a fixed schedule.
+The xPack QEMU Arm release schedule generally follows the original upstream
+[releases](https://download.qemu.org/).
 
 ## How to make new releases
 
