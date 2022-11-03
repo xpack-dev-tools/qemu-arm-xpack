@@ -71,7 +71,7 @@
       "qemu-system-gnuarmeclipse": "./.content/bin/qemu-system-gnuarmeclipse"
     },
     "devDependencies": {
-      "@xpack-dev-tools/xbb-helper": "^0.9.6"
+      "@xpack-dev-tools/xbb-helper": "^0.10.0"
     },
     "properties": {
       "appName": "QEMU Arm",
