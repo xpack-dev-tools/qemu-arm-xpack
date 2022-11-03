@@ -15,7 +15,7 @@ function tests_run_all()
 
   test_qemu_arm "${test_bin_path}"
 
-  if [ "${XBB_TARGET_PLATFORM}" == "darwin" -a "${TARGET_ARCH}" == "arm64" ]
+  if [ "${XBB_TARGET_PLATFORM}" == "darwin" -a "${XBB_TARGET_ARCH}" == "arm64" ]
   then
     : # Not available on Apple Silicon.
   else
