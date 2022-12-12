@@ -98,7 +98,7 @@ function build_application_versioned_components()
       # https://ftp.gnu.org/pub/gnu/gettext/
       build_gettext "0.21"
 
-      if [ "${XBB_TARGET_PLATFORM}" == "win32" ]
+    if [ "${XBB_REQUESTED_HOST_PLATFORM}" == "win32" ]
       then
         # required by readline
         # https://ftp.gnu.org/gnu/termcap/
@@ -128,7 +128,7 @@ function build_application_versioned_components()
 
       # libcurl
 
-      if [ "${XBB_TARGET_PLATFORM}" != "win32" ]
+    if [ "${XBB_REQUESTED_HOST_PLATFORM}" != "win32" ]
       then
         # required by libssh
         # https://www.openssl.org/source/
@@ -143,7 +143,7 @@ function build_application_versioned_components()
         build_ncurses "6.3"
       fi
 
-      if [ "${XBB_TARGET_PLATFORM}" == "win32" ]
+    if [ "${XBB_REQUESTED_HOST_PLATFORM}" == "win32" ]
       then
         # TODO: check if QEMU can use it or something else is needed.
         # https://sourceforge.net/projects/libusb-win32/files/libusb-win32-releases/
@@ -165,7 +165,7 @@ function build_application_versioned_components()
       # https://github.com/Homebrew/homebrew-core/blob/master/Formula/snappy.rb
       # snappy - Compression/decompression library aiming for high speed
 
-      if [ "${XBB_TARGET_PLATFORM}" != "win32" ]
+    if [ "${XBB_REQUESTED_HOST_PLATFORM}" != "win32" ]
       then
         # required by vde
         # https://www.tcpdump.org/release/
@@ -199,7 +199,7 @@ function build_application_versioned_components()
 
       # Build legacy qemu-system-gnuarmeclipse is not available
       # on Apple Silicon.
-      if [ "${XBB_TARGET_PLATFORM}" == "darwin" -a "${XBB_TARGET_ARCH}" == "arm64" ]
+    if [ "${XBB_REQUESTED_HOST_PLATFORM}" == "darwin" -a "${XBB_REQUESTED_HOST_ARCH}" == "arm64" ]
       then
         : # Skip.
       else
