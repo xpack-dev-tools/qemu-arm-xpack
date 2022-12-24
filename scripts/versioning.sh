@@ -7,10 +7,6 @@
 # for any purpose is hereby granted, under the terms of the MIT license.
 # -----------------------------------------------------------------------------
 
-# Helper script used in the xPack build scripts. As the name implies,
-# it should contain only functions and should be included with 'source'
-# by the build scripts (both native and container).
-
 # -----------------------------------------------------------------------------
 
 function application_build_versioned_components()
@@ -20,11 +16,8 @@ function application_build_versioned_components()
   # Keep them in sync with combo archive content.
   if [[ "${XBB_RELEASE_VERSION}" =~ 7\.1\.0-1 ]]
   then
-      # -----------------------------------------------------------------------
-      # The application starts with a native target.
-
-      xbb_set_binaries_install "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
-      xbb_set_libraries_install "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
+   # -------------------------------------------------------------------------
+    # Build the native dependencies.
 
     # https://ftp.gnu.org/pub/gnu/libiconv/
     libiconv_build "1.17" # "1.16"
@@ -46,11 +39,13 @@ function application_build_versioned_components()
     pkg_config_build "0.29.2"
 
     # -------------------------------------------------------------------------
+    # Build the target dependencies.
 
-      xbb_set_target "requested"
+    xbb_reset_env
+    xbb_set_target "requested"
 
-      xbb_set_binaries_install "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
-      xbb_set_libraries_install "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
+    xbb_set_executables_install_path "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
+    xbb_set_libraries_install_path "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
 
     # required by glib
     # https://ftp.gnu.org/pub/gnu/libiconv/
@@ -179,38 +174,42 @@ function application_build_versioned_components()
       )
     fi
 
-      xbb_set_binaries_install "${XBB_APPLICATION_INSTALL_FOLDER_PATH}"
+    # -------------------------------------------------------------------------
+    # Build the application binaries.
 
-      # Stick to upstream as long as possible.
-      # https://github.com/qemu/qemu/tags
+    xbb_set_executables_install_path "${XBB_APPLICATION_INSTALL_FOLDER_PATH}"
+    xbb_set_libraries_install_path "${XBB_DEPENDENCIES_INSTALL_FOLDER_PATH}"
 
-      XBB_QEMU_GIT_URL="https://github.com/xpack-dev-tools/qemu.git"
-      if [ "${XBB_IS_DEVELOP}" == "y" ]
-      then
-        XBB_QEMU_GIT_BRANCH="xpack-develop"
-      else
-        XBB_QEMU_GIT_BRANCH="xpack"
-      fi
-      XBB_QEMU_GIT_COMMIT="v${XBB_QEMU_VERSION}-xpack"
+    # Stick to upstream as long as possible.
+    # https://github.com/qemu/qemu/tags
+
+    XBB_QEMU_GIT_URL="https://github.com/xpack-dev-tools/qemu.git"
+    if [ "${XBB_IS_DEVELOP}" == "y" ]
+    then
+      XBB_QEMU_GIT_BRANCH="xpack-develop"
+    else
+      XBB_QEMU_GIT_BRANCH="xpack"
+    fi
+    XBB_QEMU_GIT_COMMIT="v${XBB_QEMU_VERSION}-xpack"
 
     qemu_build "${XBB_QEMU_VERSION}" "arm"
 
-      # Build legacy qemu-system-gnuarmeclipse is not available
-      # on Apple Silicon.
+    # Build legacy qemu-system-gnuarmeclipse is not available
+    # on Apple Silicon.
     if [ "${XBB_REQUESTED_HOST_PLATFORM}" == "darwin" -a "${XBB_REQUESTED_HOST_ARCH}" == "arm64" ]
-      then
-        : # Skip.
-      else
-        XBB_QEMU_ARM_LEGACY_VERSION="${XBB_QEMU_ARM_LEGACY_VERSION:-"2.8.0-16"}"
-        XBB_QEMU_ARM_LEGACY_GIT_COMMIT="${XBB_QEMU_ARM_LEGACY_GIT_COMMIT:-"v${XBB_QEMU_ARM_LEGACY_VERSION}-xpack-legacy"}"
-        XBB_QEMU_ARM_LEGACY_GIT_PATCH="none"
+    then
+      : # Skip.
+    else
+      XBB_QEMU_ARM_LEGACY_VERSION="${XBB_QEMU_ARM_LEGACY_VERSION:-"2.8.0-16"}"
+      XBB_QEMU_ARM_LEGACY_GIT_COMMIT="${XBB_QEMU_ARM_LEGACY_GIT_COMMIT:-"v${XBB_QEMU_ARM_LEGACY_VERSION}-xpack-legacy"}"
+      XBB_QEMU_ARM_LEGACY_GIT_PATCH="none"
 
       qemu_arm_legacy_build "${XBB_QEMU_ARM_LEGACY_VERSION}"
-      fi
+    fi
 
   # ---------------------------------------------------------------------------
   else
-    echo "Unsupported version ${XBB_RELEASE_VERSION}."
+    echo "Unsupported ${XBB_APPLICATION_LOWER_CASE_NAME} version ${XBB_RELEASE_VERSION}"
     exit 1
   fi
 }

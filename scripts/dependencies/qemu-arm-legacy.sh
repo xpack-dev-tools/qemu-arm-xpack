@@ -50,7 +50,7 @@ function qemu_arm_legacy_build()
         run_verbose git apply "${patch_file}"
       fi
 
-      if [ "${XBB_TARGET_PLATFORM}" == "win32" ]
+      if [ "${XBB_HOST_PLATFORM}" == "win32" ]
       then
         # Disable building the optionrom, since it requires multilib
         # mingw-w64, not yet available.
@@ -74,7 +74,7 @@ function qemu_arm_legacy_build()
       mkdir -p "${XBB_BUILD_FOLDER_PATH}/${qemu_arm_legacy_folder_name}"
       cd "${XBB_BUILD_FOLDER_PATH}/${qemu_arm_legacy_folder_name}"
 
-      xbb_activate_installed_dev
+      xbb_activate_dependencies_dev
 
       CPPFLAGS="${XBB_CPPFLAGS}"
       if [ "${XBB_IS_DEBUG}" == "y" ]
@@ -89,11 +89,7 @@ function qemu_arm_legacy_build()
 
       # LDFLAGS="${XBB_LDFLAGS_APP_STATIC_GCC}"
       LDFLAGS="${XBB_LDFLAGS_APP}"
-      if [ "${XBB_TARGET_PLATFORM}" == "linux" ]
-      then
-        xbb_activate_cxx_rpath
-        LDFLAGS+=" -Wl,-rpath,${LD_LIBRARY_PATH}"
-      fi
+      xbb_adjust_ldflags_rpath
 
       export CPPFLAGS
       export CFLAGS
@@ -119,24 +115,24 @@ function qemu_arm_legacy_build()
 
           config_options=()
 
-          config_options+=("--prefix=${XBB_BINARIES_INSTALL_FOLDER_PATH}")
+          config_options+=("--prefix=${XBB_EXECUTABLES_INSTALL_FOLDER_PATH}")
 
-          config_options+=("--bindir=${XBB_BINARIES_INSTALL_FOLDER_PATH}/bin")
-          config_options+=("--docdir=${XBB_BINARIES_INSTALL_FOLDER_PATH}/share/legacy/doc")
-          config_options+=("--mandir=${XBB_BINARIES_INSTALL_FOLDER_PATH}/share/legacy/man")
+          config_options+=("--bindir=${XBB_EXECUTABLES_INSTALL_FOLDER_PATH}/bin")
+          config_options+=("--docdir=${XBB_EXECUTABLES_INSTALL_FOLDER_PATH}/share/legacy/doc")
+          config_options+=("--mandir=${XBB_EXECUTABLES_INSTALL_FOLDER_PATH}/share/legacy/man")
 
           # This seems redundant, but without it the greeting
           # string is suffixed by -dirty.
           config_options+=("--with-pkgversion=${XBB_QEMU_ARM_LEGACY_GIT_COMMIT}")
 
-          if [ "${XBB_TARGET_PLATFORM}" == "win32" ]
+          if [ "${XBB_HOST_PLATFORM}" == "win32" ]
           then
             # On Windows, use the default top folder .../*`
-            # config_options+=("--datadir=${XBB_BINARIES_INSTALL_FOLDER_PATH}")
-            config_options+=("--cross-prefix=${XBB_CROSS_COMPILE_PREFIX}-")
+            # config_options+=("--datadir=${XBB_EXECUTABLES_INSTALL_FOLDER_PATH}")
+            config_options+=("--cross-prefix=${XBB_TARGET_TRIPLET}-")
           else
             # On Unix, use subfolder .../share/legacy/qemu/*`
-            config_options+=("--datadir=${XBB_BINARIES_INSTALL_FOLDER_PATH}/share/legacy")
+            config_options+=("--datadir=${XBB_EXECUTABLES_INSTALL_FOLDER_PATH}/share/legacy")
           fi
 
           config_options+=("--cc=${CC}")
@@ -189,25 +185,9 @@ function qemu_arm_legacy_build()
         run_verbose make install
         run_verbose make install-gme
 
-        (
-          # xbb_activate_tex
-
-          if [ "${XBB_WITH_PDF}" == "y" ]
-          then
-            make pdf
-            make install-pdf
-          fi
-
-          if [ "${XBB_WITH_HTML}" == "y" ]
-          then
-            make html
-            make install-html
-          fi
-        )
-
         if [ "${XBB_IS_DEVELOP}" == "y" ]
         then
-          run_verbose ls -lR "${XBB_BINARIES_INSTALL_FOLDER_PATH}"
+          run_verbose ls -lR "${XBB_EXECUTABLES_INSTALL_FOLDER_PATH}"
         fi
 
       ) 2>&1 | tee "${XBB_LOGS_FOLDER_PATH}/${qemu_arm_legacy_folder_name}/make-output-$(ndate).txt"
@@ -221,7 +201,7 @@ function qemu_arm_legacy_build()
     touch "${qemu_arm_legacy_stamp_file_path}"
 
   else
-    echo "Component qemu arm legacy already installed."
+    echo "Component qemu arm legacy already installed"
   fi
 
   tests_add "qemu_arm_legacy_test" "${XBB_EXECUTABLES_INSTALL_FOLDER_PATH}/bin"
@@ -233,16 +213,16 @@ function qemu_arm_legacy_test()
 
   echo
   echo "Checking the qemu legacy shared libraries..."
-  show_libs "${test_bin_path}/qemu-system-gnuarmeclipse"
+  show_host_libs "${test_bin_path}/qemu-system-gnuarmeclipse"
 
   echo
   echo "Checking if qemu legacy starts..."
-  run_app "${test_bin_path}/qemu-system-gnuarmeclipse" --version
-  # run_app "${test_bin_path}/qemu-system-gnuarmeclipse" --help
+  run_host_app_verbose "${test_bin_path}/qemu-system-gnuarmeclipse" --version
+  # run_host_app_verbose "${test_bin_path}/qemu-system-gnuarmeclipse" --help
 
   echo
   echo "Running semihosting test..."
-  run_app "${test_bin_path}/qemu-system-gnuarmeclipse" \
+  run_host_app_verbose "${test_bin_path}/qemu-system-gnuarmeclipse" \
     --board STM32F4-Discovery \
     --mcu STM32F407VG \
     --image "${project_folder_path}/tests/assets/stm32f4discovery-sample-test.elf" \
