@@ -11,7 +11,7 @@
 
 # The configure step requires Python 2.
 
-function build_qemu_arm_legacy()
+function qemu_arm_legacy_build()
 {
   local qemu_arm_legacy_version="$1"
 
@@ -224,10 +224,10 @@ function build_qemu_arm_legacy()
     echo "Component qemu arm legacy already installed."
   fi
 
-  tests_add "test_qemu_legacy" "${XBB_BINARIES_INSTALL_FOLDER_PATH}/bin"
+  tests_add "qemu_arm_legacy_test" "${XBB_EXECUTABLES_INSTALL_FOLDER_PATH}/bin"
 }
 
-function test_qemu_legacy()
+function qemu_arm_legacy_test()
 {
   local test_bin_path="$1"
 

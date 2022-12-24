@@ -13,13 +13,13 @@ function tests_run_all()
 {
   local test_bin_path="$1"
 
-  test_qemu_arm "${test_bin_path}"
+  qemu_arm_test "${test_bin_path}"
 
   if [ "${XBB_TARGET_PLATFORM}" == "darwin" -a "${XBB_TARGET_ARCH}" == "arm64" ]
   then
     : # Not available on Apple Silicon.
   else
-    test_qemu_legacy "${test_bin_path}"
+    qemu_arm_legacy_test "${test_bin_path}"
   fi
 
   # TODO: add more, if possible.

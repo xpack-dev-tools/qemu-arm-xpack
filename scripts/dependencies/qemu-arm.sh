@@ -14,7 +14,7 @@
 # -----------------------------------------------------------------------------
 
 # Not used.
-function _trim_qemu_arm()
+function _qemu_arm_trim()
 {
   (
     if [ "${XBB_TARGET_PLATFORM}" == "win32" ]
@@ -57,7 +57,7 @@ function _trim_qemu_arm()
 
 # -----------------------------------------------------------------------------
 
-function test_qemu_arm()
+function qemu_arm_test()
 {
   local test_bin_path="$1"
 
