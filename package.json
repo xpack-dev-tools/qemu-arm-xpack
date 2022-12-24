@@ -75,9 +75,9 @@
     },
     "properties": {
       "appName": "QEMU Arm",
-      "appLCName": "qemu-arm",
+      "appLcName": "qemu-arm",
       "platforms": "linux-x64,linux-arm64,linux-arm,darwin-x64,darwin-arm64,win32-x64",
-      "LIQUIDJS": "liquidjs '{ \"XBB_APPLICATION_NAME\": \"{{ properties.appName }}\", \"XBB_APPLICATION_LOWER_CASE_NAME\": \"{{ properties.appLCName }}\", \"platforms\": \"{{ properties.platforms }}\" }'",
+      "LIQUIDJS": "liquidjs '{ \"XBB_APPLICATION_NAME\": \"{{ properties.appName }}\", \"XBB_APPLICATION_LOWER_CASE_NAME\": \"{{ properties.appLcName }}\", \"platforms\": \"{{ properties.platforms }}\" }'",
       "buildFolderRelativePath": "{{ 'build' | path_join: configuration.name | to_filename | downcase }}",
       "buildFolderRelativePathPosix": "{{ 'build' | path_posix_join: configuration.name | downcase }}",
       "commandBashBuild": "bash {{ properties.dbg }} scripts/build.sh --target {{ configuration.name }} --build-folder {{ properties.buildFolderRelativePathPosix }}",
@@ -86,7 +86,7 @@
     "actions": {
       "deep-clean": [
         "rm -rf build xpacks node_modules package-lock.json",
-        "rm -rf ${HOME}/Work/{{ properties.appLCName }}-[0-9]*-*"
+        "rm -rf ${HOME}/Work/{{ properties.appLcName }}-[0-9]*-*"
       ],
       "install": [
         "npm install",
@@ -94,6 +94,9 @@
       ],
       "link-deps": [
         "xpm link @xpack-dev-tools/xbb-helper"
+      ],
+      "git-pull-helper": [
+        "git -C ${HOME}/Work/xbb-helper-xpack.git pull"
       ],
       "generate-workflows": [
         "mkdir -p .github/workflows/",
@@ -110,8 +113,8 @@
         "cat xpacks/xpack-dev-tools-xbb-helper/templates/publish-release-liquid.yml | {{ properties.LIQUIDJS }} > .github/workflows/publish-release.yml",
         "cat xpacks/xpack-dev-tools-xbb-helper/templates/test-xpm-liquid.yml | {{ properties.LIQUIDJS }} > .github/workflows/test-xpm.yml",
         "cat xpacks/xpack-dev-tools-xbb-helper/templates/deep-clean-liquid.yml | {{ properties.LIQUIDJS }} > .github/workflows/deep-clean.yml",
-        "cp xpacks/xpack-dev-tools-xbb-helper/templates/.gitignore .",
-        "cp xpacks/xpack-dev-tools-xbb-helper/templates/.npmignore .",
+        "cp xpacks/xpack-dev-tools-xbb-helper/templates/dot.gitignore .gitignore",
+        "cp xpacks/xpack-dev-tools-xbb-helper/templates/dot.npmignore .npmignore",
         "cp xpacks/xpack-dev-tools-xbb-helper/templates/build.sh scripts/",
         "cp xpacks/xpack-dev-tools-xbb-helper/templates/test.sh scripts/"
       ],
@@ -131,7 +134,7 @@
       "trigger-workflow-test-xpm": "bash xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-test-xpm.sh",
       "trigger-workflow-deep-clean": "bash xpacks/xpack-dev-tools-xbb-helper/github-actions/trigger-workflow-deep-clean.sh",
       "test-native": "bash {{ properties.dbg }} scripts/test.sh",
-      "test-pre-release": "bash {{ properties.dbg }} scripts/test.sh --base-url pre-release",
+      "test-pre-release": "bash {{ properties.dbg }} scripts/test.sh --base-url pre-release --develop --cache",
       "test-xpm": "bash {{ properties.dbg }} scripts/test.sh --xpm",
       "build-native": "bash {{ properties.dbg }} scripts/build.sh",
       "build-native-develop": "bash {{ properties.dbg }} scripts/build.sh --develop",
@@ -154,19 +157,23 @@
         "actions": {
           "deep-clean": [
             "rm -rf {{ properties.buildFolderRelativePathPosix }}",
-            "rm -rf ${HOME}/Work/{{ properties.appLCName }}-[0-9]*-*/{{ configuration.name }}"
+            "rm -rf ${HOME}/Work/{{ properties.appLcName }}-[0-9]*-*/{{ configuration.name }}"
           ],
-          "install": "xpm install --config {{ configuration.name }}",
+          "install": "xpm install --config {{ configuration.name }}"
+        }
+      },
+      "common-actions-native": {
+        "hidden": true,
+        "actions": {
           "build": "{{ properties.commandBashBuild }}",
           "build-develop": "{{ properties.commandBashBuild }} --develop",
-          "build-develop-tests-only": "{{ properties.commandBashBuild }} --develop --tests-only",
-          "publish": "echo publish"
+          "build-develop-tests-only": "{{ properties.commandBashBuild }} --develop --tests-only"
         }
       },
       "common-docker": {
         "hidden": true,
         "properties": {
-          "containerName": "{{ properties.appLCName }}-{{ package.version }}-{{ configuration.name }}"
+          "containerName": "{{ properties.appLcName }}-{{ package.version }}-{{ configuration.name }}"
         },
         "actions": {
           "docker-prepare": [
@@ -177,7 +184,7 @@
             "docker exec {{ properties.containerName }} npm install --location=global xpm@latest",
             "docker exec {{ properties.containerName }} userdel node",
             "docker exec {{ properties.containerName }} groupadd --gid $(id -g) --force $(id -gn)",
-            "docker exec {{ properties.containerName }} useradd --home-dir ${HOME} --uid $(id -u) --gid $(id -g) --non-unique $(id -un)",
+            "docker exec {{ properties.containerName }} useradd --home-dir ${HOME} --uid $(id -u) --gid $(id -g) $(id -un)",
             "docker exec --user $(id -un) {{ properties.containerName }} bash -c 'lsb_release -sd && whoami && pwd && ls -lLA'",
             "docker exec --user $(id -un) {{ properties.containerName }} xpm install",
             "docker exec --user $(id -un) {{ properties.containerName }} xpm install --config {{ configuration.name }}"
@@ -204,8 +211,9 @@
       "darwin-x64": {
         "inherit": [
           "common-dependencies",
-          "common-actions"
-        ],
+          "common-actions",
+          "common-actions-native"
+       ],
         "devDependencies": {
           "@xpack-dev-tools/clang": "14.0.6-2.1",
           "@xpack-dev-tools/realpath": "9.1.0-1.1",
@@ -226,6 +234,7 @@
         "inherit": [
           "common-dependencies",
           "common-actions",
+          "common-actions-native",
           "common-docker"
         ],
         "devDependencies": {
@@ -265,6 +274,11 @@
         },
         "properties": {
           "dockerImage": "ilegeul/ubuntu:amd64-18.04-xbb-v5.0.0"
+        },
+        "actions": {
+          "build": "{{ properties.commandBashBuild }} --windows",
+          "build-develop": "{{ properties.commandBashBuild }} --windows --develop",
+          "build-develop-tests-only": "{{ properties.commandBashBuild }} --windows --develop --tests-only"
         }
       }
     }
