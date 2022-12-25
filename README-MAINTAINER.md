@@ -244,7 +244,7 @@ xpm install --config darwin-x64 -C ~/Work/qemu-arm-xpack.git
 caffeinate xpm run build-develop --config darwin-x64 -C ~/Work/qemu-arm-xpack.git
 ```
 
-About 26 minutes later, the output of the build script is a compressed
+About 30 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
@@ -278,7 +278,7 @@ xpm install --config darwin-arm64 -C ~/Work/qemu-arm-xpack.git
 caffeinate xpm run build-develop --config darwin-arm64 -C ~/Work/qemu-arm-xpack.git
 ```
 
-About 12 minutes later, the output of the build script is a compressed
+About 15 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
@@ -311,7 +311,7 @@ xpm run docker-link-deps --config linux-x64 -C ~/Work/qemu-arm-xpack.git
 xpm run docker-build-develop --config linux-x64 -C ~/Work/qemu-arm-xpack.git
 ```
 
-About 12 minutes later, the output of the build script is a compressed
+About 15 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
