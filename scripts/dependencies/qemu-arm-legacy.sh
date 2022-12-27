@@ -13,6 +13,9 @@
 
 function qemu_arm_legacy_build()
 {
+  echo_develop
+  echo_develop "[${FUNCNAME[0]} $@]"
+
   local qemu_arm_legacy_version="$1"
 
   XBB_QEMU_ARM_LEGACY_GIT_COMMIT=${XBB_QEMU_ARM_LEGACY_GIT_COMMIT:-""}
