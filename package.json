@@ -71,7 +71,7 @@
       "qemu-system-gnuarmeclipse": "./.content/bin/qemu-system-gnuarmeclipse"
     },
     "devDependencies": {
-      "@xpack-dev-tools/xbb-helper": "^0.11.39"
+      "@xpack-dev-tools/xbb-helper": "^1.0.0"
     },
     "properties": {
       "appName": "QEMU Arm",
@@ -238,8 +238,8 @@
           "common-docker"
         ],
         "devDependencies": {
-          "@xpack-dev-tools/gcc": "12.2.0-1.1",
-          "@xpack-dev-tools/patchelf": "0.15.0-1.1"
+          "@xpack-dev-tools/gcc": "12.2.0-2.1",
+          "@xpack-dev-tools/patchelf": "0.17.0-1.1"
         },
         "properties": {
           "dockerImage": "ilegeul/ubuntu:amd64-18.04-xbb-v5.0.0"
@@ -268,7 +268,7 @@
           "common-docker"
         ],
         "devDependencies": {
-          "@xpack-dev-tools/gcc": "12.2.0-1.1",
+          "@xpack-dev-tools/gcc": "12.2.0-2.1",
           "@xpack-dev-tools/mingw-w64-gcc": "11.3.0-1.3",
           "@xpack-dev-tools/wine": "6.17.0-1.1"
         },
