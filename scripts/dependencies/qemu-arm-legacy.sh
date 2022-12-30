@@ -94,6 +94,14 @@ function qemu_arm_legacy_build()
       LDFLAGS="${XBB_LDFLAGS_APP}"
       xbb_adjust_ldflags_rpath
 
+      if [ "${XBB_HOST_PLATFORM}" == "linux" ]
+      then
+        # The error messages are confusing, check the log for actual cause.
+        # For example:
+        # ERROR: User requested feature sdl
+        LDFLAGS+=" -lm -lpthread -lrt -ldl"
+      fi
+
       export CPPFLAGS
       export CFLAGS
       export CXXFLAGS
