@@ -91,7 +91,6 @@ function qemu_arm_legacy_build()
       CXXFLAGS="${XBB_CXXFLAGS_NO_W}"
 
       LDFLAGS="${XBB_LDFLAGS_APP}"
-      xbb_adjust_ldflags_rpath
 
       if [ "${XBB_HOST_PLATFORM}" == "linux" ]
       then
@@ -100,6 +99,8 @@ function qemu_arm_legacy_build()
         # ERROR: User requested feature sdl
         LDFLAGS+=" -lm -lpthread -lrt -ldl"
       fi
+
+      xbb_adjust_ldflags_rpath
 
       export CPPFLAGS
       export CFLAGS
