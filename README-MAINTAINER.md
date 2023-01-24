@@ -302,10 +302,11 @@ Update the build scripts (or clone them at the first use):
 ```sh
 git -C ~/Work/qemu-arm-xpack.git pull && \
 xpm run install -C ~/Work/qemu-arm-xpack.git && \
+git -C ~/Work/xbb-helper-xpack.git pull && \
+xpm link -C ~/Work/xbb-helper-xpack.git && \
 xpm run link-deps -C ~/Work/qemu-arm-xpack.git && \
 xpm run deep-clean --config linux-x64 -C ~/Work/qemu-arm-xpack.git && \
 xpm run docker-prepare --config linux-x64 -C ~/Work/qemu-arm-xpack.git && \
-git -C ~/Work/xbb-helper-xpack.git pull && \
 xpm run docker-link-deps --config linux-x64 -C ~/Work/qemu-arm-xpack.git
 xpm run docker-build-develop --config linux-x64 -C ~/Work/qemu-arm-xpack.git
 ```
@@ -327,10 +328,11 @@ Clean the build folder and prepare the docker container:
 ```sh
 git -C ~/Work/qemu-arm-xpack.git pull && \
 xpm run install -C ~/Work/qemu-arm-xpack.git && \
+git -C ~/Work/xbb-helper-xpack.git pull && \
+xpm link -C ~/Work/xbb-helper-xpack.git && \
 xpm run link-deps -C ~/Work/qemu-arm-xpack.git && \
 xpm run deep-clean --config win32-x64 -C ~/Work/qemu-arm-xpack.git && \
 xpm run docker-prepare --config win32-x64 -C ~/Work/qemu-arm-xpack.git && \
-git -C ~/Work/xbb-helper-xpack.git pull && \
 xpm run docker-link-deps --config win32-x64 -C ~/Work/qemu-arm-xpack.git
 xpm run docker-build-develop --config win32-x64 -C ~/Work/qemu-arm-xpack.git
 ```
@@ -359,10 +361,11 @@ Update the build scripts (or clone them at the first use):
 ```sh
 git -C ~/Work/qemu-arm-xpack.git pull && \
 xpm run install -C ~/Work/qemu-arm-xpack.git && \
+git -C ~/Work/xbb-helper-xpack.git pull && \
+xpm link -C ~/Work/xbb-helper-xpack.git && \
 xpm run link-deps -C ~/Work/qemu-arm-xpack.git && \
 xpm run deep-clean --config linux-arm64 -C ~/Work/qemu-arm-xpack.git && \
 xpm run docker-prepare --config linux-arm64 -C ~/Work/qemu-arm-xpack.git && \
-git -C ~/Work/xbb-helper-xpack.git pull && \
 xpm run docker-link-deps --config linux-arm64 -C ~/Work/qemu-arm-xpack.git
 xpm run docker-build-develop --config linux-arm64 -C ~/Work/qemu-arm-xpack.git
 ```
@@ -391,10 +394,11 @@ Update the build scripts (or clone them at the first use):
 ```sh
 git -C ~/Work/qemu-arm-xpack.git pull && \
 xpm run install -C ~/Work/qemu-arm-xpack.git && \
+git -C ~/Work/xbb-helper-xpack.git pull && \
+xpm link -C ~/Work/xbb-helper-xpack.git && \
 xpm run link-deps -C ~/Work/qemu-arm-xpack.git && \
 xpm run deep-clean --config linux-arm -C ~/Work/qemu-arm-xpack.git && \
 xpm run docker-prepare --config linux-arm -C ~/Work/qemu-arm-xpack.git && \
-git -C ~/Work/xbb-helper-xpack.git pull && \
 xpm run docker-link-deps --config linux-arm -C ~/Work/qemu-arm-xpack.git
 xpm run docker-build-develop --config linux-arm -C ~/Work/qemu-arm-xpack.git
 ```
