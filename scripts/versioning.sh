@@ -11,9 +11,9 @@
 
 function application_build_versioned_components()
 {
-  export XBB_QEMU_VERSION="$(echo "${XBB_RELEASE_VERSION}" | sed -e 's|-.*||')"
+  export XBB_QEMU_VERSION="$(xbb_strip_version_pre_release "${XBB_RELEASE_VERSION}")"
 
-  # Keep them in sync with combo archive content.
+  # Keep them in sync with the combo archive content.
   if [[ "${XBB_RELEASE_VERSION}" =~ 7[.]1[.]0-1 ]]
   then
     # -------------------------------------------------------------------------
