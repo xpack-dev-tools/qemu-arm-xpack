@@ -4,6 +4,7 @@ Entries in this file are in reverse chronological order.
 
 ## 2023-01-31
 
+* v7.2.0-1 released
 * 5dccc65 prepare v7.2.0-1
 * 7d8e649 templates updates
 * 6a21f36 re-generate workflows
