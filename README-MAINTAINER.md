@@ -243,14 +243,14 @@ xpm install --config darwin-x64 -C ~/Work/qemu-arm-xpack.git
 xpm run build-develop --config darwin-x64 -C ~/Work/qemu-arm-xpack.git
 ```
 
-About 30 minutes later, the output of the build script is a compressed
+About 25 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/qemu-arm-xpack.git/build/darwin-x64/deploy
-total 65392
--rw-r--r--  1 ilg  staff  32955568 Nov  2 08:47 xpack-qemu-arm-7.2.0-1-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff       107 Nov  2 08:47 xpack-qemu-arm-7.2.0-1-darwin-x64.tar.gz.sha
+total 65072
+-rw-r--r--  1 ilg  staff  33060606 Jan 31 11:46 xpack-qemu-arm-7.2.0-1-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff       107 Jan 31 11:46 xpack-qemu-arm-7.2.0-1-darwin-x64.tar.gz.sha
 ```
 
 #### Apple Silicon macOS
@@ -281,9 +281,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/qemu-arm-xpack.git/build/darwin-arm64/deploy
-total 53040
--rw-r--r--  1 ilg  staff  27124079 Nov  2 08:38 xpack-qemu-arm-7.2.0-1-darwin-arm64.tar.gz
--rw-r--r--  1 ilg  staff       109 Nov  2 08:38 xpack-qemu-arm-7.2.0-1-darwin-arm64.tar.gz.sha
+total 55088
+-rw-r--r--  1 ilg  staff  27946797 Jan 31 11:32 xpack-qemu-arm-7.2.0-1-darwin-arm64.tar.gz
+-rw-r--r--  1 ilg  staff       109 Jan 31 11:32 xpack-qemu-arm-7.2.0-1-darwin-arm64.tar.gz.sha
 ```
 
 #### Intel GNU/Linux
@@ -316,9 +316,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/qemu-arm-xpack.git/build/linux-x64/deploy
-total 34664
--rw-r--r-- 1 ilg ilg 35491744 Nov  2 07:02 xpack-qemu-arm-7.2.0-1-linux-x64.tar.gz
--rw-r--r-- 1 ilg ilg      106 Nov  2 07:02 xpack-qemu-arm-7.2.0-1-linux-x64.tar.gz.sha
+total 34812
+-rw-r--r-- 1 ilg ilg 35641059 Jan 31 09:33 xpack-qemu-arm-7.2.0-1-linux-x64.tar.gz
+-rw-r--r-- 1 ilg ilg      106 Jan 31 09:33 xpack-qemu-arm-7.2.0-1-linux-x64.tar.gz.sha
 ```
 
 ##### Build the Windows binaries
@@ -342,9 +342,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/qemu-arm-xpack.git/build/win32-x64/deploy
-total 41300
--rw-r--r-- 1 ilg ilg 42284069 Nov  2 07:24 xpack-qemu-arm-7.2.0-1-win32-x64.zip
--rw-r--r-- 1 ilg ilg      103 Nov  2 07:24 xpack-qemu-arm-7.2.0-1-win32-x64.zip.sha
+total 40700
+-rw-r--r-- 1 ilg ilg 41672162 Jan 31 09:52 xpack-qemu-arm-7.2.0-1-win32-x64.zip
+-rw-r--r-- 1 ilg ilg      103 Jan 31 09:52 xpack-qemu-arm-7.2.0-1-win32-x64.zip.sha
 ```
 
 #### Arm GNU/Linux 64-bit
@@ -370,14 +370,14 @@ xpm run docker-link-deps --config linux-arm64 -C ~/Work/qemu-arm-xpack.git
 xpm run docker-build-develop --config linux-arm64 -C ~/Work/qemu-arm-xpack.git
 ```
 
-About 1h30 later, the output of the build script is a compressed
+About 1h05 later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/qemu-arm-xpack.git/build/linux-arm64/deploy
-total 33940
--rw-r--r-- 1 ilg ilg 34746510 Nov  2 16:10 xpack-qemu-arm-7.2.0-1-linux-arm64.tar.gz
--rw-r--r-- 1 ilg ilg      108 Nov  2 16:10 xpack-qemu-arm-7.2.0-1-linux-arm64.tar.gz.sha
+total 34060
+-rw-r--r-- 1 ilg ilg 34873341 Jan 31 10:26 xpack-qemu-arm-7.2.0-1-linux-arm64.tar.gz
+-rw-r--r-- 1 ilg ilg      108 Jan 31 10:26 xpack-qemu-arm-7.2.0-1-linux-arm64.tar.gz.sha
 ```
 
 #### Arm GNU/Linux 32-bit
@@ -403,14 +403,14 @@ xpm run docker-link-deps --config linux-arm -C ~/Work/qemu-arm-xpack.git
 xpm run docker-build-develop --config linux-arm -C ~/Work/qemu-arm-xpack.git
 ```
 
-About 1h10 later, the output of the build script is a compressed
+About 1 hour later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/qemu-arm-xpack.git/build/linux-arm/deploy
-total 32688
--rw-r--r-- 1 ilg ilg 33466799 Nov  2 17:21 xpack-qemu-arm-7.2.0-1-linux-arm.tar.gz
--rw-r--r-- 1 ilg ilg      106 Nov  2 17:21 xpack-qemu-arm-7.2.0-1-linux-arm.tar.gz.sha
+total 32804
+-rw-r--r-- 1 ilg ilg 33584125 Jan 31 10:23 xpack-qemu-arm-7.2.0-1-linux-arm.tar.gz
+-rw-r--r-- 1 ilg ilg      106 Jan 31 10:23 xpack-qemu-arm-7.2.0-1-linux-arm.tar.gz.sha
 ```
 
 ### Files cache
