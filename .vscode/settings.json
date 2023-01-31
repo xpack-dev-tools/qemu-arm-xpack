@@ -66,6 +66,7 @@
     "libvdeplug",
     "libz",
     "libzstd",
+    "loglevel",
     "mkdir",
     "ncipollo",
     "nographic",
