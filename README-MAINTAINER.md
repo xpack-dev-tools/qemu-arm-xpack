@@ -66,7 +66,7 @@ A recent [xpm](https://xpack.github.io/xpm/), which is a portable
 ## Release schedule
 
 The xPack QEMU Arm release schedule generally follows the original upstream
-[releases](https://download.qemu.org/).
+[tags](https://github.com/qemu/qemu/tags).
 
 ## How to make new releases
 
@@ -507,11 +507,11 @@ This command uses the `xpack-develop` branch of this repo.
 
 The builds may take a bit over one hour to complete:
 
-- `xbbmi`: 0h29
+- `xbbmi`: 0h27
 - `xbbma`: 0h12
-- `xbbli`: 0h27 (0h13 Linux, 0h14 Windows)
-- `xbbla64`: 1h10
-- `xbbla32`: 1h07
+- `xbbli`: 0h17 (0h15 Linux, 0h17 Windows)
+- `xbbla64`: 1h08
+- `xbbla32`: 1h04
 
 The workflow result and logs are available from the
 [Actions](https://github.com/xpack-dev-tools/qemu-arm-xpack/actions/) page.
@@ -623,6 +623,7 @@ with all binaries attached.
 ## Prepare a new blog post
 
 - check and possibly update the `templates/body-jekyll-release-*-liquid.md`
+  (for the release dates use <https://github.com/qemu/qemu/tags>)
 - run the xPack action `generate-jekyll-post`; this will leave a file
 on the Desktop.
 
