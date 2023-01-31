@@ -107,8 +107,8 @@ After install, the package should create a structure like this (macOS files;
 only the first two depth levels are shown):
 
 ```console
-$ tree -L 2 /Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/7.1.0-1.1/.content/
-/Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/7.1.0-1.1/.content/
+$ tree -L 2 /Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/7.2.0-1.1/.content/
+/Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/7.2.0-1.1/.content/
 ├── README.md
 ├── bin
 │   ├── qemu-system-aarch64
@@ -124,6 +124,7 @@ $ tree -L 2 /Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/7.1.0-1.1/.conte
 ├── libexec
 │   ├── libSDL2-2.0.0.dylib
 │   ├── libSDL2_image-2.0.0.dylib
+│   ├── libbz2.1.0.8.dylib
 │   ├── libcrypto.1.1.dylib
 │   ├── libffi.8.dylib
 │   ├── libgio-2.0.0.dylib
@@ -142,24 +143,22 @@ $ tree -L 2 /Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/7.1.0-1.1/.conte
 │   ├── libnettle.8.6.dylib
 │   ├── libnettle.8.dylib -> libnettle.8.6.dylib
 │   ├── libpcre2-8.0.dylib
-│   ├── libpixman-1.0.40.0.dylib
-│   ├── libpixman-1.0.dylib -> libpixman-1.0.40.0.dylib
+│   ├── libpixman-1.0.42.2.dylib
+│   ├── libpixman-1.0.dylib -> libpixman-1.0.42.2.dylib
 │   ├── libpng16.16.dylib
-│   ├── libssh.4.9.1.dylib
-│   ├── libssh.4.dylib -> libssh.4.9.1.dylib
+│   ├── libssh.4.9.4.dylib
 │   ├── libusb-1.0.0.dylib
 │   ├── libvdeplug.3.dylib
-│   ├── libz.1.2.12.dylib
-│   ├── libz.1.dylib -> libz.1.2.12.dylib
-│   ├── libzstd.1.5.2.dylib
-│   └── libzstd.1.dylib -> libzstd.1.5.2.dylib
+│   ├── libz.1.2.13.dylib
+│   ├── libz.1.dylib -> libz.1.2.13.dylib
+│   └── libzstd.1.5.2.dylib
 └── share
     ├── applications
     ├── icons
     ├── legacy
     └── qemu
 
-12 directories, 37 files
+12 directories, 36 files
 ```
 
 No other files are installed in any system folders or other locations.
@@ -200,15 +199,15 @@ For more details please read the
 ### Versioning
 
 The version strings used by the QEMU project are three number strings
-like `7.1.0`; to this string the xPack distribution adds a four number,
+like `7.2.0`; to this string the xPack distribution adds a four number,
 but since semver allows only three numbers, all additional ones can
 be added only as pre-release strings, separated by a dash,
-like `7.1.0-1`. When published as a npm package, the version gets
-a fifth number, like `7.1.0-1.1`.
+like `7.2.0-1`. When published as a npm package, the version gets
+a fifth number, like `7.2.0-1.1`.
 
 Since adherence of third party packages to semver is not guaranteed,
-it is recommended to use semver expressions like `^7.1.0` and `~7.1.0`
-with caution, and prefer exact matches, like `7.1.0-1.1`.
+it is recommended to use semver expressions like `^7.2.0` and `~7.2.0`
+with caution, and prefer exact matches, like `7.2.0-1.1`.
 
 ## Maintainer info
 

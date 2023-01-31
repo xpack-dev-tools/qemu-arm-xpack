@@ -2,18 +2,202 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2023-01-31
+
+* 5dccc65 prepare v7.2.0-1
+* 7d8e649 templates updates
+* 6a21f36 re-generate workflows
+* bcb54c2 package.json: bump deps
+
+## 2023-01-28
+
+* 3a1bc6d versioning.sh: use versioning functions
+* 039599e README-MAINTAINER remove caffeinate xpm
+
+## 2023-01-27
+
+* 2a8dd40 package.json: reorder scripts
+
+## 2023-01-24
+
+* 51d6e2f README updates
+
+## 2023-01-22
+
+* b6ff1e3 README update
+
+## 2023-01-11
+
+* ce94c77 cosmetize xbb_adjust_ldflags_rpath
+
+## 2023-01-09
+
+* a50bcc6 qemu-arm-legacy.sh: cleanups
+* 3c579da package.json: bump deps
+* 141efe8 package.json: loglevel info
+* 7d017fd versioning.sh: add comment before *_installed_bin
+
+## 2023-01-02
+
+* 2610e96 package.json: reformat
+
+## 2023-01-01
+
+* f27c126 package.json: pass xpm version & loglevel
+* 7404206 README update
+
+## 2022-12-30
+
+* 5f735c5 qemu-arm-legacy.sh: LDFLAGS+=" -lm -ldl -lpthread"
+* 421eb2b README-MAINTAINER: xpm run install
+* 180be6e qemu-arm-legacy.sh: LDFLAGS+=" -lm -lpthread -lrt -ldl"
+* 894cef3 package.json: bump deps
+* 6e2ea15 versioning.sh: regexp
+
+## 2022-12-27
+
+* dede07f README update
+* b8a04e8 echo FUNCNAME[0]
+* b5210b1 use autotools_build
+* 2425c3d re-generate from templates
+
+## 2022-12-26
+
+* ba4e96d README updates
+
+## 2022-12-25
+
+* 8fae9df README update
+* 23ca912 versioning.sh: remove explicit xbb_set_executables_install_path
+* 97650ec versioning.sh: add comment M4
+
+## 2022-12-24
+
+* e3c740f README update
+* cc2de25 versioning.sh: explicit set_executable
+* 1fd86af READMEs updates
+* 6cf3f8b updates to xbb v5.x
+* 8fac609 package.json: update
+* aec526e package.json: bump deps
+* 83db152 move patches to helper
+* 3fe4ccc re-generate from templates
+* f98d8ab rename functions
+
+## 2022-12-12
+
+* 75d02b3 package.json: add caffeinate builds for macOS
+* f6fc44f versioning.sh: use XBB_REQUESTED_*
+
+## 2022-11-18
+
+* fe22462 .vscode/settings.json: watcherExclude
+
+## 2022-11-03
+
+* 068168f tests/run.sh: fix darwin-arm64 test
+* df50a76 versioning.sh: remove build_m4
+* 166df6c README update
+* bd152de package.json: add @xpack-dev-tools/m4
+* 9f13d70 package.json: bump dep
+* ccef5b0 CHANGELOG cosmetics
+* 7f10d87 .vscode/settings.json: ignoreWords
+
+## 2022-11-02
+
+* 94dc3d7 README update
+* 1bdf471 README update
+* f7d4c81 README-MAINTAINER: update build sequences for docker
+* 2eed77d package.json: remove docker apt-get install
+* 2b9e066 versioning.sh: build m4 before autoconf
+* 71ad139 package.json: deep-clean remove the Work folder too
+* 1346174 add dependency to native m4.sh
+* ea528f1 package.json: add arm docker images
+
 ## 2022-11-01
 
-* update for XBB v5.0.0
+* df8775c package.json: rework docker
+* f08070a versioning.sh: add native target deps
+* ff7ccab versioning.sh: build_glib 2.74.1
+* ddb251e application.sh: *-INITIAL_TARGET="native"
+* 957ac6c application.sh: update deps
+
+## 2022-10-31
+
+* f94d542 README update
+* a01a057 versioning.sh: XBB_WITH_UPDATE_CONFIG_SUB for build_vde
+* d206251 update for xbb v5.0.0
+* fa4588c re-generate build.sh & test.sh
+* 37d62a3 re-generate workflows
+* 90c352c remove submodule
+
+## 2022-10-04
+
+* 747db56 README update
+* 08d10e2 README-RELEASE update for bullet lists in CHANGELOG
+
+## 2022-09-25
+
+* e918134 README-RELEASE update
+
+## 2022-09-17
+
+* 1004ea2 README-BUILD update
+
+* ceedfa7 README-RELEASE update
+* aca4095 7.1.0-1.1
+* 1bc163c CHANGELOG: publish npm v7.1.0-1.1
+* 10bb3f2 package.json: update urls for 7.1.0-1.1 release
+* ef028e0 README-BUILD updates
+* fc6dee9 body-jekyll update
+* 24e76e4 CHANGELOG update
+* 199fa29 README-RELEASE update
+* 6610dd1 re-generate workflows
+* a76165c README-RELEASE update durations
+* ce0d696 common-versions: qemu-legacy 2.8.0-16
+* 86ee481 .vscode/settings.json: ignoreWords
+* d5ddd26 Use hello-world binaries for tests
 
 ## 2022-09-06
 
 * v7.1.0-1.1 published on npmjs.com
 * v7.1.0-1 released
 
+## 2022-09-05
+
+* f071361 change-versions: add support for 7.1.0
+* 303e725 submodule
+
+## 2022-09-03
+
+* b1f9ec1 READMEs updates
+
+## 2022-09-02
+
+* 68b6959 prepare v7.1.0-1
+* d3f676d body-jekyll: ~/Downloads
+* fdb8368 README-DEVELOP: fix typos
+* 47cbae0 .vscode/settings.json: ignoreWords
+
 ## 2022-09-01
 
-* v7.1.0-1 prepared
+* 20a3769 zypper -q --no-gpg-checks in
+
+## 2022-08-31
+
+* 51836fb body-jekyll update
+* 57db084 README-RELEASE update
+
+## 2022-08-30
+
+* e070c18 README: XPACKS_STORE_FOLDER
+
+* fbac97c package.json: reorder aarch*
+
+## 2022-05-14
+
+* 213669b submodule
+* 4d903cc READMEs updates
+* ed03c8a Travis CI mention
 
 ## 2022-05-05
 
