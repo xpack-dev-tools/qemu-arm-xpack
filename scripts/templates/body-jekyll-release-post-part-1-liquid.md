@@ -2,7 +2,7 @@
 title:  xPack QEMU Arm v{{ XBB_RELEASE_VERSION }} released
 
 TODO: select one summary
-summary: "Version **{{ XBB_RELEASE_VERSION }}** is a maintenance release; it fixes several bugs."
+summary: "Version **{{ XBB_RELEASE_VERSION }}** is a maintenance release; it fixes <...>."
 summary: "Version **{{ XBB_RELEASE_VERSION }}** is a new release; it follows the upstream QEMU release."
 
 version: "{{ XBB_RELEASE_VERSION }}"
