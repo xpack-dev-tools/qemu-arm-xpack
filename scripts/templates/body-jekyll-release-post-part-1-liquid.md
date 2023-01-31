@@ -7,10 +7,10 @@ summary: "Version **{{ XBB_RELEASE_VERSION }}** is a new release; it follows the
 
 version: "{{ XBB_RELEASE_VERSION }}"
 npm_subversion: 1
-qemu_version: "7.1.0"
-qemu_short_commit: "621da7789"
-qemu_long_commit: "621da7789083b80d6f1ff1c0fb499334007b4f51"
-qemu_date: "30 August 2022"
+qemu_version: "7.2.0"
+qemu_short_commit: "b67b00e"
+qemu_long_commit: "b67b00e6b4c7831a3f5bc684bc0df7a9bfd1bd56"
+qemu_date: "Dec 13, 2022"
 
 download_url: https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/tag/v{{ XBB_RELEASE_VERSION }}/
 
@@ -153,7 +153,6 @@ The supported boards and CPUs are:
 
 ```console
 $ .../qemu-system-arm -machine help
-Supported machines are:
 akita                Sharp SL-C1000 (Akita) PDA (PXA270)
 ast1030-evb          Aspeed AST1030 MiniBMC (Cortex-M4)
 ast2500-evb          Aspeed AST2500 EVB (ARM1176)
@@ -253,8 +252,9 @@ virt-6.0             QEMU 6.0 ARM Virtual Machine
 virt-6.1             QEMU 6.1 ARM Virtual Machine
 virt-6.2             QEMU 6.2 ARM Virtual Machine
 virt-7.0             QEMU 7.0 ARM Virtual Machine
-virt                 QEMU 7.1 ARM Virtual Machine (alias of virt-7.1)
 virt-7.1             QEMU 7.1 ARM Virtual Machine
+virt                 QEMU 7.2 ARM Virtual Machine (alias of virt-7.2)
+virt-7.2             QEMU 7.2 ARM Virtual Machine
 witherspoon-bmc      OpenPOWER Witherspoon BMC (ARM1176)
 xilinx-zynq-a9       Xilinx Zynq Platform Baseboard for Cortex-A9
 z2                   Zipit Z2 (PXA27x)
@@ -359,7 +359,9 @@ Cortex-M4 devices is not available." %}{% endraw %}
 ## Known problems
 
 - for `qemu-system-gnuarmeclipse`, Ctrl-C does not interrupt
-the execution if the `--nographic` option is used.
+the execution if the `--nographic` option is used
+- in order to build on macOS 10.13, the Intel macOS version has
+  some functionality related to bridged virtual interfaces disabled.
 
 ## Shared libraries
 
