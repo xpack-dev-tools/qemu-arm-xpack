@@ -4,6 +4,16 @@ Entries in this file are in reverse chronological order.
 
 ## 2023-01-31
 
+* v7.2.0-1.1 published on npmjs.com
+* e0eef12 package.json: update urls for 7.2.0-1.1 release
+* 20341cf CHANGELOG update
+* 22b7fb8 README update
+* 8a34952 body-jekyll update
+* 9570a2d add tests/update.sh
+* a9493a3 .vscode/settings.json: ignoreWords
+* e965ca7 README update
+* 467d6c7 package.json: bump deps
+* f6fd3f6 prepare v7.2.0-1
 * v7.2.0-1 released
 * 5dccc65 prepare v7.2.0-1
 * 7d8e649 templates updates
