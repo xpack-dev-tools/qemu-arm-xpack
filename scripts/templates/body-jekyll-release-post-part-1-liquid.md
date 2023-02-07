@@ -5,12 +5,13 @@ TODO: select one summary
 summary: "Version **{{ XBB_RELEASE_VERSION }}** is a maintenance release; it fixes <...>."
 summary: "Version **{{ XBB_RELEASE_VERSION }}** is a new release; it follows the upstream QEMU release."
 
-version: "{{ XBB_RELEASE_VERSION }}"
-npm_subversion: 1
 qemu_version: "7.2.0"
 qemu_short_commit: "b67b00e"
 qemu_long_commit: "b67b00e6b4c7831a3f5bc684bc0df7a9bfd1bd56"
 qemu_date: "Dec 13, 2022"
+
+version: "{{ XBB_RELEASE_VERSION }}"
+npm_subversion: "1"
 
 download_url: https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/tag/v{{ XBB_RELEASE_VERSION }}/
 
@@ -32,7 +33,7 @@ tags:
 
 [The xPack QEMU Arm](https://xpack.github.io/qemu-arm/)
 is a standalone cross-platform binary distribution of
-[QEMU](http://www.qemu.org), with several extensions for Arm Cortex-M
+[QEMU](https://www.qemu.org), with several extensions for Arm Cortex-M
 devices.
 
 There are separate binaries for **Windows** (64-bit),
@@ -69,7 +70,7 @@ distributions they must be installed explicitly.
 
 The full details of installing the **xPack QEMU Arm** on various platforms
 are presented in the separate
-[Install]({% raw %}{{ site.baseurl }}{% endraw %}/qemu-arm/install/) page.
+[Install]({% raw %}{{ site.baseurl }}{% endraw %}/dev-tools/qemu-arm/install/) page.
 
 ### Easy install
 
@@ -87,7 +88,7 @@ a dependency for a project is quite easy:
 cd my-project
 xpm init # Only at first use.
 
-xpm install @xpack-dev-tools/qemu-arm@latest
+xpm install @xpack-dev-tools/qemu-arm@latest --verbose
 
 ls -l xpacks/.bin
 ```
@@ -95,14 +96,14 @@ ls -l xpacks/.bin
 To install this specific version, use:
 
 ```sh
-xpm install @xpack-dev-tools/qemu-arm@{% raw %}{{ page.version }}.{{ page.npm_subversion }}{% endraw %}
+xpm install @xpack-dev-tools/qemu-arm@{% raw %}{{ page.version }}.{{ page.npm_subversion }}{% endraw %} --verbose
 ```
 
 For xPacks aware tools, like the **Eclipse Embedded C/C++ plug-ins**,
 it is also possible to install QEMU Arm globally, in the user home folder.
 
 ```sh
-xpm install --global @xpack-dev-tools/qemu-arm@latest
+xpm install --global @xpack-dev-tools/qemu-arm@latest --verbose
 ```
 
 Eclipse will automatically
@@ -131,7 +132,7 @@ xpm uninstall --global @xpack-dev-tools/qemu-arm
 
 ## Compliance
 
-The xPack QEMU Arm currently is based on the official [QEMU](http://www.qemu.org),
+The xPack QEMU Arm currently is based on the official [QEMU](https://www.qemu.org),
 with some changes.
 
 There are two sets of binaries:
