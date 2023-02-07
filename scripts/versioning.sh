@@ -34,7 +34,7 @@ function application_build_versioned_components()
     # https://ftp.gnu.org/pub/gnu/libiconv/
     libiconv_build "1.17"
 
-    # http://zlib.net/fossils/
+    # https://zlib.net/fossils/
     zlib_build "1.2.13" # "1.2.12"
 
     # https://sourceware.org/pub/bzip2/
@@ -50,7 +50,7 @@ function application_build_versioned_components()
     # https://sourceforge.net/projects/libpng/files/libpng16/
     libpng_build "1.6.39" # "1.6.37"
 
-    # http://www.ijg.org/files/
+    # https://www.ijg.org/files/
     jpeg_build "9e"
 
     # https://gitlab.gnome.org/GNOME/libxml2/-/releases
@@ -210,7 +210,7 @@ function application_build_versioned_components()
     # https://ftp.gnu.org/pub/gnu/libiconv/
     libiconv_build "1.17" # "1.16"
 
-    # http://zlib.net/fossils/
+    # https://zlib.net/fossils/
     zlib_build "1.2.12" # "1.2.11"
 
     # https://sourceware.org/pub/bzip2/
@@ -226,7 +226,7 @@ function application_build_versioned_components()
     # https://sourceforge.net/projects/libpng/files/libpng16/
     libpng_build "1.6.37"
 
-    # http://www.ijg.org/files/
+    # https://www.ijg.org/files/
     jpeg_build "9e" # "9d"
 
     # https://gitlab.gnome.org/GNOME/libxml2/-/releases
