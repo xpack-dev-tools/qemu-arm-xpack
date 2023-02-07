@@ -7,7 +7,7 @@ an open source project.
 For more details, please read the corresponding release pages:
 
 - <https://xpack.github.io/qemu-arm/releases/>
-- <http://www.qemu.org>
+- <https://www.qemu.org>
 
 Thank you for using open source software,
 

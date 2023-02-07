@@ -434,23 +434,18 @@ In the `xpack-dev-tools/qemu` git repo:
 - merge `xpack-develop` into current
 - push `xpack`
 
-## Push the build scripts
-
-In this Git repo:
-
-- push the `xpack-develop` branch to GitHub
-- possibly push the helper project too
-
-From here it'll be cloned on the production machines.
-
 ## Run the CI build
 
 The automation is provided by GitHub Actions and three self-hosted runners.
 
+### Generate the GitHub workflows
+
 Run the `generate-workflows` to re-generate the
 GitHub workflow files; commit and push if necessary.
 
-- on a permanently running machine (`berry`) open ssh sessions to the build
+### Start the self-hosted runners
+
+- on the development machine (`wksi`) open ssh sessions to the build
 machines (`xbbma`, `xbbli`, `xbbla64` and `xbbla32`):
 
 ```sh
@@ -477,7 +472,19 @@ For `xbbli` & `xbbla64` start two runners:
 ~/actions-runners/xpack-dev-tools/2/run.sh &
 ```
 
-Check that the project is pushed to GitHub.
+### Push the build scripts
+
+- push the `xpack-develop` branch to GitHub
+- possibly push the helper project too
+
+From here it'll be cloned on the production machines.
+
+### Check for disk space
+
+Check if the build machines have enough free space and eventually
+do some cleanups.
+
+### Manually trigger the build GitHub Actions
 
 To trigger the GitHub Actions build, use the xPack action:
 
@@ -503,9 +510,11 @@ Settings → Action →
 [Secrets](https://github.com/xpack-dev-tools/qemu-arm-xpack/settings/secrets/actions)
 page.
 
-This command uses the `xpack-develop` branch of this repo.
+These commands use the `xpack-develop` branch of this repo.
 
-The builds may take a bit over one hour to complete:
+## Durations & results
+
+The  builds may take a bit over one hour to complete:
 
 - `xbbmi`: 0h27
 - `xbbma`: 0h12
