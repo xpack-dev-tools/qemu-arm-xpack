@@ -183,7 +183,7 @@ function application_build_versioned_components()
     then
       : # Skip.
     else
-      XBB_QEMU_ARM_LEGACY_VERSION="${XBB_QEMU_ARM_LEGACY_VERSION:-"2.8.0-16"}"
+      XBB_QEMU_ARM_LEGACY_VERSION="${XBB_QEMU_ARM_LEGACY_VERSION:-"2.8.0-17"}"
       XBB_QEMU_ARM_LEGACY_GIT_COMMIT="${XBB_QEMU_ARM_LEGACY_GIT_COMMIT:-"v${XBB_QEMU_ARM_LEGACY_VERSION}-xpack-legacy"}"
       XBB_QEMU_ARM_LEGACY_GIT_PATCH="none"
 
