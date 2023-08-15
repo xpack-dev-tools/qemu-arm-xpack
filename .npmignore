@@ -16,3 +16,6 @@ README-*
 LICENSE-*
 
 *.tgz
+
+build*/
+wrappers/
