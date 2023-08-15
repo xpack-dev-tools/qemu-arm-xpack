@@ -573,7 +573,7 @@ These commands use the `xpack-develop` branch of this repo.
 
 The  builds may take a bit over one hour to complete:
 
-- `xbbmi`: 0h27
+- `xbbmi`: 0h20 (nuc), 0h27 (vm)
 - `xbbma`: 0h12
 - `xbbli`: 0h17 (0h15 Linux, 0h17 Windows)
 - `xbbla`: 1h08
