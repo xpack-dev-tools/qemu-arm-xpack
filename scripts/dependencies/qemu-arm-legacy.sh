@@ -108,6 +108,8 @@ function qemu_arm_legacy_build()
 
       export LDFLAGS
 
+      export PYTHON=$(which python2 || which python || echo python)
+
       (
         if [ ! -f "config.status" ]
         then
