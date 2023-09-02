@@ -4,7 +4,17 @@ Entries in this file are in reverse chronological order.
 
 ## 2023-09-03
 
-* v8.1.0-1 prepared
+* v7.2.5-1 prepared
+* f3dd09e package.json: xbb-5.1.0
+* 7931154 qemu-arm-legacy.sh: explicit use of python2
+
+## 2023-09-02
+
+* 50172f5 VERSION 7.2.5-1
+* a07cf1f versioning.sh: add 7.2.5
+* 982d025 package.json: bump gcc
+* f0bb4b2 prepare v8.1.0-1
+* b48f760 dot.*ignore
 
 ## 2023-08-28
 

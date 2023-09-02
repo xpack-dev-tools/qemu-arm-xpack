@@ -111,8 +111,8 @@ After install, the package should create a structure like this (macOS files;
 only the first two depth levels are shown):
 
 ```console
-$ tree -L 2 /Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/8.1.0-1.1/.content/
-/Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/8.1.0-1.1/.content/
+$ tree -L 2 /Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/7.2.5-1.1/.content/
+/Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/7.2.5-1.1/.content/
 ├── README.md
 ├── bin
 │   ├── qemu-system-aarch64
@@ -162,7 +162,7 @@ $ tree -L 2 /Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/8.1.0-1.1/.conte
     ├── legacy
     └── qemu
 
-12 directories, 36 files
+13 directories, 36 files
 ```
 
 No other files are installed in any system folders or other locations.
@@ -203,15 +203,15 @@ For more details please read the
 ### Versioning
 
 The version strings used by the QEMU project are three number strings
-like `8.1.0`; to this string the xPack distribution adds a four number,
+like `7.2.5`; to this string the xPack distribution adds a four number,
 but since semver allows only three numbers, all additional ones can
 be added only as pre-release strings, separated by a dash,
-like `8.1.0-1`. When published as a npm package, the version gets
-a fifth number, like `8.1.0-1.1`.
+like `7.2.5-1`. When published as a npm package, the version gets
+a fifth number, like `7.2.5-1.1`.
 
 Since adherence of third party packages to semver is not guaranteed,
-it is recommended to use semver expressions like `^8.1.0` and `~8.1.0`
-with caution, and prefer exact matches, like `8.1.0-1.1`.
+it is recommended to use semver expressions like `^7.2.5` and `~7.2.5`
+with caution, and prefer exact matches, like `7.2.5-1.1`.
 
 ## Maintainer info
 

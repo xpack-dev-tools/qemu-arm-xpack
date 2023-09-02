@@ -1,6 +1,6 @@
 {
   "name": "@xpack-dev-tools/qemu-arm",
-  "version": "8.1.0-1.1.pre",
+  "version": "7.2.5-1.1.pre",
   "description": "A binary xPack with QEMU Arm executables",
   "main": "",
   "scripts": {
@@ -66,7 +66,7 @@
       "qemu-system-gnuarmeclipse": "./.content/bin/qemu-system-gnuarmeclipse"
     },
     "devDependencies": {
-      "@xpack-dev-tools/xbb-helper": "^1.10.7"
+      "@xpack-dev-tools/xbb-helper": "^1.10.8"
     },
     "properties": {
       "appName": "QEMU Arm",
