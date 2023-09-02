@@ -205,12 +205,17 @@ function application_build_versioned_components()
       qemu_arm_legacy_build "${XBB_QEMU_ARM_LEGACY_VERSION}"
     fi
 
-  elif [[ "${XBB_RELEASE_VERSION}" =~ 7[.]2[.]0-.* ]]
+  elif [[ "${XBB_RELEASE_VERSION}" =~ 7[.]2[.][05]-.* ]]
   then
     # -------------------------------------------------------------------------
     # Build the native dependencies.
 
-    autotools_build
+    # No longer needed with recent libxml2.
+    if false
+    then
+      # autoreconf required by libxml2.
+      autotools_build
+    fi
 
     # -------------------------------------------------------------------------
     # Build the target dependencies.
@@ -260,6 +265,15 @@ function application_build_versioned_components()
     # required by glib
     # https://github.com/libffi/libffi/releases
     libffi_build "3.4.4" # "3.4.2"
+    # Without it gettext fails:
+    # Undefined symbols for architecture x86_64:
+    #   "_gl_get_setlocale_null_lock", referenced from:
+    #       _libgettextpo_setlocale_null_r in setlocale_null.o
+    # ld: symbol(s) not found for architecture x86_64
+    # clang-16: error: linker command failed with exit code 1 (use -v to see invocation)
+
+    # https://ftp.gnu.org/gnu/libunistring/
+    libunistring_build "1.1"
 
     # required by glib
     # https://ftp.gnu.org/pub/gnu/gettext/
@@ -358,11 +372,16 @@ function application_build_versioned_components()
     # https://github.com/qemu/qemu/tags
 
     XBB_QEMU_GIT_URL="https://github.com/xpack-dev-tools/qemu.git"
-    if [ "${XBB_IS_DEVELOP}" == "y" ]
+    if [[ "${XBB_RELEASE_VERSION}" =~ 7[.]2[.]5-.* ]]
     then
-      XBB_QEMU_GIT_BRANCH="xpack-develop"
+      XBB_QEMU_GIT_BRANCH="v7.2.5-xpack"
     else
-      XBB_QEMU_GIT_BRANCH="xpack"
+      if [ "${XBB_IS_DEVELOP}" == "y" ]
+      then
+        XBB_QEMU_GIT_BRANCH="xpack-develop"
+      else
+        XBB_QEMU_GIT_BRANCH="xpack"
+      fi
     fi
     XBB_QEMU_GIT_COMMIT="v${XBB_QEMU_VERSION}-xpack"
 
