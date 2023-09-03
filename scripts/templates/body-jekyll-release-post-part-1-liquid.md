@@ -21,7 +21,7 @@ date:   {{ RELEASE_DATE }}
 
 categories:
   - releases
-  - qemu
+  - qemu-arm
 
 tags:
   - releases
