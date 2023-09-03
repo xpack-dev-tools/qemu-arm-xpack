@@ -4,7 +4,11 @@ Entries in this file are in reverse chronological order.
 
 ## 2023-09-03
 
-* v7.2.5-1 released
+* 6274091 package.json: update urls for 7.2.5-1.1 release
+* 02e13b7 template/jekyll update
+* b66973c template/jekyll update
+* b1b5c60 CHANGELOG update
+* 886f752 README update durations
 * b80d6f6 prepare v7.2.5-1
 * f3dd09e package.json: xbb-5.1.0
 * 7931154 qemu-arm-legacy.sh: explicit use of python2
