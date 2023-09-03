@@ -5,10 +5,10 @@ TODO: select one summary
 summary: "Version **{{ XBB_RELEASE_VERSION }}** is a maintenance release; it fixes <...>."
 summary: "Version **{{ XBB_RELEASE_VERSION }}** is a new release; it follows the upstream QEMU release."
 
-qemu_version: "7.2.0"
-qemu_short_commit: "b67b00e"
-qemu_long_commit: "b67b00e6b4c7831a3f5bc684bc0df7a9bfd1bd56"
-qemu_date: "Dec 13, 2022"
+qemu_version: "7.2.5"
+qemu_short_commit: "9abcf97"
+qemu_long_commit: "9abcf9776d8906c53feacab686f3d50137654b62"
+qemu_date: "August 7, 2023"
 
 version: "{{ XBB_RELEASE_VERSION }}"
 npm_subversion: "1"
