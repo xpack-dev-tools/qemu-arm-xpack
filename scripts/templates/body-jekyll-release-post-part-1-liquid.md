@@ -156,6 +156,7 @@ The supported boards and CPUs are:
 
 ```console
 $ .../qemu-system-arm -machine help
+Supported machines are:
 akita                Sharp SL-C1000 (Akita) PDA (PXA270)
 ast1030-evb          Aspeed AST1030 MiniBMC (Cortex-M4)
 ast2500-evb          Aspeed AST2500 EVB (ARM1176)
