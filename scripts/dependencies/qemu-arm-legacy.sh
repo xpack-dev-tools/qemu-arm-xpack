@@ -62,6 +62,8 @@ function qemu_arm_legacy_build()
           -e 's| pc-bios/optionrom | |' \
           -e 's|roms="optionrom"|roms=""|' \
           configure
+
+        run_verbose diff configure.bak configure || true
       fi
     )
   fi
