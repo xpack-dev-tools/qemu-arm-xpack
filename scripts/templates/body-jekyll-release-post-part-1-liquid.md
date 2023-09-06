@@ -8,7 +8,7 @@ summary: "Version **{{ XBB_RELEASE_VERSION }}** is a new release; it follows the
 qemu_version: "7.2.5"
 qemu_short_commit: "9abcf97"
 qemu_long_commit: "9abcf9776d8906c53feacab686f3d50137654b62"
-qemu_date: "August 7, 2023"
+qemu_date: "7 Aug 2023"
 
 version: "{{ XBB_RELEASE_VERSION }}"
 npm_subversion: "1"
@@ -19,10 +19,12 @@ comments: true
 
 date:   {{ RELEASE_DATE }}
 
+# For Jekyll releases selection.
 categories:
   - releases
   - qemu-arm
 
+# For navigation; use scripts/createtag.sh in Jekyll.
 tags:
   - releases
   - qemu
