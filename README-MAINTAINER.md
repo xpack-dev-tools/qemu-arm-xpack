@@ -136,7 +136,7 @@ but in the version specific release page.
 
 ### Update version in `package.json` to a pre-release
 
-Use a new version, suffixed by `.pre`.
+Use the new version, suffixed by `pre`, like `7.2.5-1.pre`.
 
 ### Update `CHANGELOG.md`
 
@@ -185,9 +185,8 @@ triggered via the VS Code graphical interface, using the
 For Intel macOS, first run the build on the development machine
 (`wksi`, a recent macOS):
 
-Update the build scripts (or clone them at the first use):
-
 ```sh
+# Update the build scripts.
 git -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git pull
 
 xpm run install -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git
