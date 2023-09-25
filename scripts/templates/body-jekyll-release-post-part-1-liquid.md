@@ -412,10 +412,6 @@ The binaries for all supported platforms
 of build environments based on slightly older distributions, that should be
 compatible with most recent systems.
 
-The scripts used to build this distribution are in:
-
-- `distro-info/scripts`
-
 For the prerequisites and more details on the build procedure, please see the
 [How to build](https://github.com/xpack-dev-tools/qemu-arm-xpack/blob/xpack/README-BUILD.md) page.
 
