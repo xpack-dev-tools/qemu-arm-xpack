@@ -152,7 +152,8 @@ There are two sets of binaries:
 
 ## Changes
 
-Compared to the upstream `qemu-system-arm`, there are no major changes.
+Compared to the upstream `qemu-system-arm` and `qemu-system-aarch64`,
+there are no major changes.
 
 The supported boards and CPUs are:
 
@@ -264,6 +265,7 @@ virt-7.2             QEMU 7.2 ARM Virtual Machine
 witherspoon-bmc      OpenPOWER Witherspoon BMC (ARM1176)
 xilinx-zynq-a9       Xilinx Zynq Platform Baseboard for Cortex-A9
 z2                   Zipit Z2 (PXA27x)
+
 $ .../qemu-arm/bin/qemu-system-arm -cpu help
 Available CPUs:
   arm1026
@@ -286,6 +288,51 @@ Available CPUs:
   cortex-r5
   cortex-r5f
   max
+  pxa250
+  pxa255
+  pxa260
+  pxa261
+  pxa262
+  pxa270-a0
+  pxa270-a1
+  pxa270
+  pxa270-b0
+  pxa270-b1
+  pxa270-c0
+  pxa270-c5
+  sa1100
+  sa1110
+  ti925t
+
+$ .../qemu-system-aarch64 -cpu help
+Available CPUs:
+  a64fx
+  arm1026
+  arm1136
+  arm1136-r2
+  arm1176
+  arm11mpcore
+  arm926
+  arm946
+  cortex-a15
+  cortex-a35
+  cortex-a53
+  cortex-a57
+  cortex-a7
+  cortex-a72
+  cortex-a76
+  cortex-a8
+  cortex-a9
+  cortex-m0
+  cortex-m3
+  cortex-m33
+  cortex-m4
+  cortex-m55
+  cortex-m7
+  cortex-r5
+  cortex-r5f
+  max
+  neoverse-n1
   pxa250
   pxa255
   pxa260
