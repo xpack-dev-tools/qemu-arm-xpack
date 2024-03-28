@@ -150,7 +150,7 @@
         "devDependencies": {
           "@xpack-dev-tools/cmake": "3.26.5-1.1",
           "@xpack-dev-tools/m4": "1.4.19-3.1",
-          "@xpack-dev-tools/meson-build": "1.0.2-1.1",
+          "@xpack-dev-tools/meson-build": "1.3.0-1.1",
           "@xpack-dev-tools/ninja-build": "1.11.1-3.1",
           "@xpack-dev-tools/pkg-config": "0.29.2-3.1"
         }
