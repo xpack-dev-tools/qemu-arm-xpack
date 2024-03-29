@@ -2,8 +2,87 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2024-03-28
+
+* v8.2.2-1 prepared
+
+## 2024-03-22
+
+* ac24c48 package.json: xpm-version 0.18.0
+
+## 2024-03-08
+
+* 40598f4 package.json: xpm-version 0.18.0
+
+## 2024-03-07
+
+* 25ee895 package.json: xpm-version 0.18.0
+* a225063 package.json: bump deps
+
+## 2024-03-06
+
+* adcf1a6 body-jekyll update
+* f0ce808 package.json: bump deps
+
+## 2024-02-07
+
+* 5e17acf READMEs update
+* cf4963d package.json: bump deps
+
+## 2023-12-03
+
+* ba9b571 package.json: bump deps
+* 87cf64f re-generate workflows
+
+## 2023-11-16
+
+* a9b1064 templates/jekyll add aarch64
+
+## 2023-11-12
+
+* 8f3eaa1 package.json: bump deps
+
+## 2023-09-25
+
+* a16d5db body-jekyll update
+
+## 2023-09-20
+
+* cb95fdc package.json: bump deps
+
+## 2023-09-16
+
+* 1d7bb5f package.json: add linux32
+* d92cd37 body-jekyll update
+
+## 2023-09-11
+
+* 3223267 package.json: bump deps
+
+## 2023-09-08
+
+* 7b1ec03 package.json: bump deps
+* fc20b56 versioning.sh: call libiconv for autotools
+* 607fe8a versioning.sh: cleanups
+
+## 2023-09-06
+
+* 024806a package.json: bump deps
+* 358714d READMEs update
+* 6a05455 body-jekyll update
+
+## 2023-09-05
+
+* 3d1b845 qemu-arm-legacy.sh: run_verbose diff
+* 4ae085e re-generate workflows
+* be06640 READMEs update
+* 136a6dc package.json: bump deps
+
 ## 2023-09-03
 
+* 95c60d1 templates/jekyll update
+* 4616ea0 7.2.5-1.1
+* 82fa944 CHANGELOG: publish npm v7.2.5-1.1
 * 6274091 package.json: update urls for 7.2.5-1.1 release
 * 02e13b7 template/jekyll update
 * b66973c template/jekyll update
