@@ -177,6 +177,7 @@ function qemu_arm_legacy_build()
           config_options+=("--disable-seccomp")
           config_options+=("--disable-bluez")
           config_options+=("--disable-gcrypt")
+          config_options+=("--disable-docs")
 
           if [ "${XBB_WITH_STRIP}" != "y" ]
           then
