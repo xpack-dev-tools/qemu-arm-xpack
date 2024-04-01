@@ -187,6 +187,7 @@ For Intel macOS, first run the build on the development machine
 
 ```sh
 # Update the build scripts.
+rm -f ~/Work/xpack-dev-tools/qemu-arm-xpack.git/package-lock.json
 git -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git pull
 
 xpm run install -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git
@@ -207,7 +208,7 @@ For a debug build:
 xpm run build-develop-debug --config darwin-x64 -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git
 ```
 
-The build takes about 30 minutes.
+The build takes about 36 minutes.
 
 When functional, push the `xpack-develop` branch to GitHub.
 
@@ -222,6 +223,7 @@ caffeinate ssh xbbmi
 Repeat the same steps as before.
 
 ```sh
+rm -f ~/Work/xpack-dev-tools/qemu-arm-xpack.git/package-lock.json && \
 git -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git pull && \
 xpm run install -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git && \
 git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull && \
@@ -238,9 +240,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/xpack-dev-tools/qemu-arm-xpack.git/build/darwin-x64/deploy
-total 64648
--rw-r--r--  1 ilg  staff  32761343 Sep  3 00:49 xpack-qemu-arm-8.2.2-1-darwin-x64.tar.gz
--rw-r--r--  1 ilg  staff       107 Sep  3 00:49 xpack-qemu-arm-8.2.2-1-darwin-x64.tar.gz.sha
+total 70832
+-rw-r--r--  1 ilg  staff  36203947 Apr  1 23:03 xpack-qemu-arm-8.2.2-1-darwin-x64.tar.gz
+-rw-r--r--  1 ilg  staff       107 Apr  1 23:03 xpack-qemu-arm-8.2.2-1-darwin-x64.tar.gz.sha
 ```
 
 #### Apple Silicon macOS
@@ -256,6 +258,7 @@ caffeinate ssh xbbma
 Update the build scripts (or clone them at the first use):
 
 ```sh
+rm -f ~/Work/xpack-dev-tools/qemu-arm-xpack.git/package-lock.json && \
 git -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git pull && \
 xpm run install -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git && \
 git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull && \
@@ -272,9 +275,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/xpack-dev-tools/qemu-arm-xpack.git/build/darwin-arm64/deploy
-total 53040
--rw-r--r--  1 ilg  staff  26972229 Sep  3 00:41 xpack-qemu-arm-8.2.2-1-darwin-arm64.tar.gz
--rw-r--r--  1 ilg  staff       109 Sep  3 00:41 xpack-qemu-arm-8.2.2-1-darwin-arm64.tar.gz.sha
+total 60496
+-rw-r--r--  1 ilg  staff  30581845 Apr  1 22:55 xpack-qemu-arm-8.2.2-1-darwin-arm64.tar.gz
+-rw-r--r--  1 ilg  staff       109 Apr  1 22:55 xpack-qemu-arm-8.2.2-1-darwin-arm64.tar.gz.sha
 ```
 
 #### Intel GNU/Linux
@@ -291,6 +294,7 @@ caffeinate ssh xbbli
 Update the build scripts (or clone them at the first use):
 
 ```sh
+rm -f ~/Work/xpack-dev-tools/qemu-arm-xpack.git/package-lock.json && \
 git -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git pull && \
 xpm run install -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git && \
 git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull && \
@@ -308,9 +312,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/xpack-dev-tools/qemu-arm-xpack.git/build/linux-x64/deploy
-total 34768
--rw-r--r-- 1 ilg ilg 35596691 Sep  2 21:42 xpack-qemu-arm-8.2.2-1-linux-x64.tar.gz
--rw-r--r-- 1 ilg ilg      106 Sep  2 21:42 xpack-qemu-arm-8.2.2-1-linux-x64.tar.gz.sha
+total 38352
+-rw-r--r-- 1 ilg ilg 39267348 Apr  1 19:56 xpack-qemu-arm-8.2.2-1-linux-x64.tar.gz
+-rw-r--r-- 1 ilg ilg      106 Apr  1 19:56 xpack-qemu-arm-8.2.2-1-linux-x64.tar.gz.sha
 ```
 
 ##### Build the Intel Windows binaries
@@ -318,6 +322,7 @@ total 34768
 Clean the build folder and prepare the docker container:
 
 ```sh
+rm -f ~/Work/xpack-dev-tools/qemu-arm-xpack.git/package-lock.json && \
 git -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git pull && \
 xpm run install -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git && \
 git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull && \
@@ -335,9 +340,9 @@ archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/xpack-dev-tools/qemu-arm-xpack.git/build/win32-x64/deploy
-total 40532
--rw-r--r-- 1 ilg ilg 41498012 Sep  2 21:41 xpack-qemu-arm-8.2.2-1-win32-x64.zip
--rw-r--r-- 1 ilg ilg      103 Sep  2 21:41 xpack-qemu-arm-8.2.2-1-win32-x64.zip.sha
+total 44304
+-rw-r--r-- 1 ilg ilg 45361219 Apr  1 19:55 xpack-qemu-arm-8.2.2-1-win32-x64.zip
+-rw-r--r-- 1 ilg ilg      103 Apr  1 19:55 xpack-qemu-arm-8.2.2-1-win32-x64.zip.sha
 ```
 
 #### Arm GNU/Linux 64-bit
@@ -352,6 +357,7 @@ caffeinate ssh xbbla
 Update the build scripts (or clone them at the first use):
 
 ```sh
+rm -f ~/Work/xpack-dev-tools/qemu-arm-xpack.git/package-lock.json && \
 git -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git pull && \
 xpm run install -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git && \
 git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull && \
@@ -364,14 +370,14 @@ xpm run docker-link-deps --config linux-arm64 -C ~/Work/xpack-dev-tools/qemu-arm
 xpm run docker-build-develop --config linux-arm64 -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git
 ```
 
-About 1h24 later, the output of the build script is a compressed
+About 85 minutes later (29 on ampere), the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/xpack-dev-tools/qemu-arm-xpack.git/build/linux-arm64/deploy
-total 33968
--rw-r--r-- 1 ilg ilg 34775925 Sep  2 22:52 xpack-qemu-arm-8.2.2-1-linux-arm64.tar.gz
--rw-r--r-- 1 ilg ilg      108 Sep  2 22:52 xpack-qemu-arm-8.2.2-1-linux-arm64.tar.gz.sha
+total 37532
+-rw-r--r-- 1 ilg ilg 38427532 Apr  1 21:09 xpack-qemu-arm-8.2.2-1-linux-arm64.tar.gz
+-rw-r--r-- 1 ilg ilg      108 Apr  1 21:09 xpack-qemu-arm-8.2.2-1-linux-arm64.tar.gz.sha
 ```
 
 #### Arm GNU/Linux 32-bit
@@ -386,6 +392,7 @@ caffeinate ssh xbbla32
 Update the build scripts (or clone them at the first use):
 
 ```sh
+rm -f ~/Work/xpack-dev-tools/qemu-arm-xpack.git/package-lock.json && \
 git -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git pull && \
 xpm run install -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git && \
 git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull && \
@@ -398,14 +405,14 @@ xpm run docker-link-deps --config linux-arm -C ~/Work/xpack-dev-tools/qemu-arm-x
 xpm run docker-build-develop --config linux-arm -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git
 ```
 
-About 1 hour later, the output of the build script is a compressed
+About 75 minutes later, the output of the build script is a compressed
 archive and its SHA signature, created in the `deploy` folder:
 
 ```console
 $ ls -l ~/Work/xpack-dev-tools/qemu-arm-xpack.git/build/linux-arm/deploy
-total 32804
--rw-r--r-- 1 ilg ilg 33584125 Jan 31 10:23 xpack-qemu-arm-8.2.2-1-linux-arm.tar.gz
--rw-r--r-- 1 ilg ilg      106 Jan 31 10:23 xpack-qemu-arm-8.2.2-1-linux-arm.tar.gz.sha
+total 36244
+-rw-r--r-- 1 ilg ilg 37109751 Apr  1 20:56 xpack-qemu-arm-8.2.2-1-linux-arm.tar.gz
+-rw-r--r-- 1 ilg ilg      106 Apr  1 20:56 xpack-qemu-arm-8.2.2-1-linux-arm.tar.gz.sha
 ```
 
 ### Update README-MAINTAINER listing output
