@@ -5,10 +5,10 @@ TODO: select one summary
 summary: "Version **{{ XBB_RELEASE_VERSION }}** is a maintenance release; it fixes <...>."
 summary: "Version **{{ XBB_RELEASE_VERSION }}** is a new release; it follows the upstream QEMU release."
 
-qemu_version: "7.2.5"
-qemu_short_commit: "9abcf97"
-qemu_long_commit: "9abcf9776d8906c53feacab686f3d50137654b62"
-qemu_date: "7 Aug 2023"
+qemu_version: "8.2.2"
+qemu_short_commit: "11aa0b1f"
+qemu_long_commit: "11aa0b1ff115b86160c4d37e7c37e6a6b13b77ea"
+qemu_date: "4 Mar 2024"
 
 version: "{{ XBB_RELEASE_VERSION }}"
 npm_subversion: "1"
@@ -166,6 +166,7 @@ ast2500-evb          Aspeed AST2500 EVB (ARM1176)
 ast2600-evb          Aspeed AST2600 EVB (Cortex-A7)
 bletchley-bmc        Facebook Bletchley BMC (Cortex-A7)
 borzoi               Sharp SL-C3100 (Borzoi) PDA (PXA270)
+bpim2u               Bananapi M2U (Cortex-A7)
 canon-a1100          Canon PowerShot A1100 IS (ARM946)
 cheetah              Palm Tungsten|E aka. Cheetah PDA (OMAP310)
 collie               Sharp SL-5500 (Collie) PDA (SA-1110)
@@ -208,6 +209,7 @@ netduinoplus2        Netduino Plus 2 Machine (Cortex-M4)
 none                 empty machine
 npcm750-evb          Nuvoton NPCM750 Evaluation Board (Cortex-A9)
 nuri                 Samsung NURI board (Exynos4210)
+olimex-stm32-h405    Olimex STM32-H405 (Cortex-M4)
 orangepi-pc          Orange Pi PC (Cortex-A7)
 palmetto-bmc         OpenPOWER Palmetto BMC (ARM926EJ-S)
 qcom-dc-scm-v1-bmc   Qualcomm DC-SCM V1 BMC (Cortex A7)
@@ -229,13 +231,15 @@ smdkc210             Samsung SMDKC210 board (Exynos4210)
 sonorapass-bmc       OCP SonoraPass BMC (ARM1176)
 spitz                Sharp SL-C3000 (Spitz) PDA (PXA270)
 stm32vldiscovery     ST STM32VLDISCOVERY (Cortex-M3)
+supermicro-x11spi-bmc Supermicro X11 SPI BMC (ARM1176)
 supermicrox11-bmc    Supermicro X11 BMC (ARM926EJ-S)
 sx1                  Siemens SX1 (OMAP310) V2
 sx1-v1               Siemens SX1 (OMAP310) V1
 tacoma-bmc           OpenPOWER Tacoma BMC (Cortex-A7)
 terrier              Sharp SL-C3200 (Terrier) PDA (PXA270)
+tiogapass-bmc        Facebook Tiogapass BMC (ARM1176)
 tosa                 Sharp SL-6000 (Tosa) PDA (PXA255)
-verdex               Gumstix Verdex (PXA270)
+verdex               Gumstix Verdex Pro XL6P COMs (PXA270)
 versatileab          ARM Versatile/AB (ARM926EJ-S)
 versatilepb          ARM Versatile/PB (ARM926EJ-S)
 vexpress-a15         ARM Versatile Express for Cortex-A15
@@ -260,10 +264,14 @@ virt-6.1             QEMU 6.1 ARM Virtual Machine
 virt-6.2             QEMU 6.2 ARM Virtual Machine
 virt-7.0             QEMU 7.0 ARM Virtual Machine
 virt-7.1             QEMU 7.1 ARM Virtual Machine
-virt                 QEMU 7.2 ARM Virtual Machine (alias of virt-7.2)
 virt-7.2             QEMU 7.2 ARM Virtual Machine
+virt-8.0             QEMU 8.0 ARM Virtual Machine
+virt-8.1             QEMU 8.1 ARM Virtual Machine
+virt                 QEMU 8.2 ARM Virtual Machine (alias of virt-8.2)
+virt-8.2             QEMU 8.2 ARM Virtual Machine
 witherspoon-bmc      OpenPOWER Witherspoon BMC (ARM1176)
 xilinx-zynq-a9       Xilinx Zynq Platform Baseboard for Cortex-A9
+yosemitev2-bmc       Facebook YosemiteV2 BMC (ARM1176)
 z2                   Zipit Z2 (PXA27x)
 
 $ .../qemu-arm/bin/qemu-system-arm -cpu help
@@ -286,6 +294,7 @@ Available CPUs:
   cortex-m55
   cortex-m7
   cortex-r5
+  cortex-r52
   cortex-r5f
   max
   pxa250
@@ -317,8 +326,10 @@ Available CPUs:
   cortex-a15
   cortex-a35
   cortex-a53
+  cortex-a55
   cortex-a57
   cortex-a7
+  cortex-a710
   cortex-a72
   cortex-a76
   cortex-a8
@@ -330,9 +341,12 @@ Available CPUs:
   cortex-m55
   cortex-m7
   cortex-r5
+  cortex-r52
   cortex-r5f
   max
   neoverse-n1
+  neoverse-n2
+  neoverse-v1
   pxa250
   pxa255
   pxa260
