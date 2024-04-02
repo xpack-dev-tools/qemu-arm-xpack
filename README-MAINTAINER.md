@@ -555,11 +555,11 @@ These commands use the `xpack-develop` branch of this repo.
 
 The  builds may take a bit over one hour to complete:
 
-- `xbbmi`: 0h25 (nuc)
-- `xbbma`: 0h16
-- `xbbli`: 0h16 Linux, 0h16 Windows
-- `xbbla`: 1h27
-- `xbbla32`: 1h15
+- `xbbmi`: 25m (nuc)
+- `xbbma`: 16m
+- `xbbli`: 16m Linux, 16m Windows
+- `xbbla`: 86m
+- `xbbla32`: 75m
 
 The workflow result and logs are available from the
 [Actions](https://github.com/xpack-dev-tools/qemu-arm-xpack/actions/) page.
