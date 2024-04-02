@@ -119,12 +119,15 @@ $ tree -L 2 /Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/8.2.2-1.1/.conte
 │   ├── qemu-system-arm
 │   └── qemu-system-gnuarmeclipse
 ├── distro-info
-│   ├── CHANGELOG.md
-│   ├── licenses
-│   ├── patches
-│   └── scripts
+│   └── licenses
 ├── include
+│   ├── fdt.h
+│   ├── libfdt.h
+│   ├── libfdt_env.h
 │   └── qemu-plugin.h
+├── lib
+│   ├── libfdt.a
+│   └── pkgconfig
 ├── libexec
 │   ├── libSDL2-2.0.0.dylib
 │   ├── libSDL2_image-2.0.0.dylib
@@ -137,32 +140,33 @@ $ tree -L 2 /Users/ilg/Library/xPacks/@xpack-dev-tools/qemu-arm/8.2.2-1.1/.conte
 │   ├── libgmp.10.dylib
 │   ├── libgobject-2.0.0.dylib
 │   ├── libgthread-2.0.0.dylib
-│   ├── libhogweed.6.6.dylib
-│   ├── libhogweed.6.dylib -> libhogweed.6.6.dylib
+│   ├── libhogweed.6.8.dylib
+│   ├── libhogweed.6.dylib -> libhogweed.6.8.dylib
 │   ├── libiconv.2.dylib
 │   ├── libintl.8.dylib
 │   ├── libjpeg.9.dylib
 │   ├── liblzo2.2.dylib
 │   ├── libncursesw.6.dylib
-│   ├── libnettle.8.6.dylib
-│   ├── libnettle.8.dylib -> libnettle.8.6.dylib
+│   ├── libnettle.8.8.dylib
+│   ├── libnettle.8.dylib -> libnettle.8.8.dylib
 │   ├── libpcre2-8.0.dylib
-│   ├── libpixman-1.0.42.2.dylib
-│   ├── libpixman-1.0.dylib -> libpixman-1.0.42.2.dylib
+│   ├── libpixman-1.0.dylib
 │   ├── libpng16.16.dylib
-│   ├── libssh.4.9.4.dylib
+│   ├── libssh.4.9.6.dylib
+│   ├── libssh.4.dylib -> libssh.4.9.6.dylib
 │   ├── libusb-1.0.0.dylib
 │   ├── libvdeplug.3.dylib
-│   ├── libz.1.2.13.dylib
-│   ├── libz.1.dylib -> libz.1.2.13.dylib
-│   └── libzstd.1.5.2.dylib
+│   ├── libz.1.3.1.dylib
+│   ├── libz.1.dylib -> libz.1.3.1.dylib
+│   ├── libzstd.1.5.5.dylib
+│   └── libzstd.1.dylib -> libzstd.1.5.5.dylib
 └── share
     ├── applications
     ├── icons
     ├── legacy
     └── qemu
 
-13 directories, 36 files
+13 directories, 40 files
 ```
 
 No other files are installed in any system folders or other locations.
