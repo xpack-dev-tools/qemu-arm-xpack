@@ -2,9 +2,27 @@
 
 Entries in this file are in reverse chronological order.
 
-## 2024-03-28
+## 2024-04-02
 
 * v8.2.2-1 prepared
+* 8062ce7 re-generate workflows
+* 0baa2ad package.json: bump deps
+* 2e4384c package-lock.json update
+* abb10b9 README update
+
+## 2024-04-01
+
+* d674055 package.json: bump deps
+
+## 2024-03-29
+
+* 2bbcb09 prepare v8.2.2-1
+* 732b784 qemu-arm-legacy.sh: disable docs
+
+## 2024-03-28
+
+* c31d7df prepare v8.2.2-1
+* 33ea797 package.json: bump deps
 
 ## 2024-03-22
 
