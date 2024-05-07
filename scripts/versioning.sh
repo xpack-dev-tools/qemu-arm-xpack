@@ -125,7 +125,6 @@ function application_build_versioned_components()
       libssh_build "0.10.6" # "0.10.5"
 
       # meson checks for ncursesw, make this explicit.
-      XBB_NCURSES_DISABLE_WIDEC="n"
       # https://ftp.gnu.org/gnu/ncurses/
       ncurses_build "6.4"
     fi
@@ -311,7 +310,6 @@ function application_build_versioned_components()
       libssh_build "0.10.5" # "0.10.4"
 
       # meson checks for ncursesw, make this explicit.
-      XBB_NCURSES_DISABLE_WIDEC="n"
       # https://ftp.gnu.org/gnu/ncurses/
       ncurses_build "6.4"
     fi
@@ -496,7 +494,6 @@ function application_build_versioned_components()
       libssh_build "0.10.4" # "0.10.1"
 
       # meson checks for ncursesw, make this explicit.
-      XBB_NCURSES_DISABLE_WIDEC="n"
       # https://ftp.gnu.org/gnu/ncurses/
       ncurses_build "6.4" # "6.3"
     fi
@@ -681,7 +678,6 @@ function application_build_versioned_components()
       libssh_build "0.10.1" # "0.9.6"
 
       # meson checks for ncursesw, make this explicit.
-      XBB_NCURSES_DISABLE_WIDEC="n"
       # https://ftp.gnu.org/gnu/ncurses/
       ncurses_build "6.3"
     fi
