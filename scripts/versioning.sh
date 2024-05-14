@@ -124,7 +124,7 @@ function application_build_versioned_components()
       # https://www.libssh.org/files/
       libssh_build "0.10.6" # "0.10.5"
 
-      # meson checks for ncursesw, make this explicit.
+      # meson checks for ncursesw, do not use --disable-lib-suffixes.
       # https://ftp.gnu.org/gnu/ncurses/
       ncurses_build "6.4"
     fi
