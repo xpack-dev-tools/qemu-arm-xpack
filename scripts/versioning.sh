@@ -126,7 +126,7 @@ function application_build_versioned_components()
 
       # meson checks for ncursesw, do not use --disable-lib-suffixes.
       # https://ftp.gnu.org/gnu/ncurses/
-      ncurses_build "6.4"
+      ncurses_build "6.4" --enable-lib-suffixes
     fi
 
     if [ "${XBB_REQUESTED_HOST_PLATFORM}" == "win32" ]
@@ -311,7 +311,7 @@ function application_build_versioned_components()
 
       # meson checks for ncursesw, make this explicit.
       # https://ftp.gnu.org/gnu/ncurses/
-      ncurses_build "6.4"
+      ncurses_build "6.4" --enable-lib-suffixes
     fi
 
     if [ "${XBB_REQUESTED_HOST_PLATFORM}" == "win32" ]
@@ -495,7 +495,7 @@ function application_build_versioned_components()
 
       # meson checks for ncursesw, make this explicit.
       # https://ftp.gnu.org/gnu/ncurses/
-      ncurses_build "6.4" # "6.3"
+      ncurses_build "6.4" --enable-lib-suffixes # "6.3"
     fi
 
     if [ "${XBB_REQUESTED_HOST_PLATFORM}" == "win32" ]
@@ -679,7 +679,7 @@ function application_build_versioned_components()
 
       # meson checks for ncursesw, make this explicit.
       # https://ftp.gnu.org/gnu/ncurses/
-      ncurses_build "6.3"
+      ncurses_build "6.3" --enable-lib-suffixes
     fi
 
     if [ "${XBB_REQUESTED_HOST_PLATFORM}" == "win32" ]
