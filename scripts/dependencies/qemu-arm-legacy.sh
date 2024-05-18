@@ -35,8 +35,11 @@ function qemu_arm_legacy_build()
   if [ ! -d "${XBB_QEMU_ARM_LEGACY_SRC_FOLDER_PATH}" ]
   then
     (
-      git_clone "${XBB_QEMU_ARM_LEGACY_GIT_URL}" "${XBB_QEMU_ARM_LEGACY_GIT_BRANCH}" \
-          "${XBB_QEMU_ARM_LEGACY_GIT_COMMIT}" "${XBB_QEMU_ARM_LEGACY_SRC_FOLDER_PATH}"
+      run_verbose git_clone \
+        "${XBB_QEMU_ARM_LEGACY_GIT_URL}" \
+        "${XBB_QEMU_ARM_LEGACY_SRC_FOLDER_PATH}" \
+        --branch="${XBB_QEMU_ARM_LEGACY_GIT_BRANCH:-""}" \
+        --commit="${XBB_QEMU_ARM_LEGACY_GIT_COMMIT:-""}"
 
       cd "${XBB_QEMU_ARM_LEGACY_SRC_FOLDER_PATH}"
 
