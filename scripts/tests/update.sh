@@ -11,6 +11,9 @@
 
 function tests_update_system()
 {
+  echo
+  echo "[${FUNCNAME[0]} $@]"
+
   local image_name="$1"
 
   # Make sure that the minimum prerequisites are met.
@@ -34,9 +37,9 @@ function tests_update_system()
     run_verbose pacman -S --noconfirm --noprogressbar --quiet libx11
   fi
 
-  echo
-  echo "The system C/C++ libraries..."
-  find /usr/lib* /lib -name 'libc.*' -o -name 'libstdc++.*' -o -name 'libgcc_s.*'
+  # echo
+  # echo "The system C/C++ libraries..."
+  # find /usr/lib* /lib -name 'libc.*' -o -name 'libstdc++.*' -o -name 'libgcc_s.*' -name 'libm.*'
 }
 
 # -----------------------------------------------------------------------------
