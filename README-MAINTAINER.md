@@ -503,6 +503,10 @@ screen -S ga
 # Ctrl-a Ctrl-d
 ```
 
+Check if the runners are active:
+
+- <https://github.com/organizations/xpack-dev-tools/settings/actions/runners>
+
 ### Push the build scripts
 
 - push the `xpack-develop` branch to GitHub
