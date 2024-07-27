@@ -17,7 +17,7 @@ download_url: https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/tag/v{{
 
 comments: true
 
-date:   {{ RELEASE_DATE }}
+date: {{ RELEASE_DATE }}
 
 # For Jekyll releases selection.
 categories:
