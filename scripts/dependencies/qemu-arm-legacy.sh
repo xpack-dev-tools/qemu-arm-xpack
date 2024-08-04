@@ -25,7 +25,7 @@ function qemu_arm_legacy_build()
   XBB_QEMU_ARM_LEGACY_SRC_FOLDER_PATH=${XBB_QEMU_ARM_LEGACY_SRC_FOLDER_PATH:-"${XBB_SOURCES_FOLDER_PATH}/${XBB_QEMU_ARM_LEGACY_SRC_FOLDER_NAME}"}
   XBB_QEMU_ARM_LEGACY_GIT_URL=${XBB_QEMU_ARM_LEGACY_GIT_URL:-"https://github.com/xpack-dev-tools/qemu.git"}
 
-  if is_develop # -a "${XBB_IS_DEBUG}" == "y" ]
+  if is_development # -a "${XBB_IS_DEBUG}" == "y" ]
   then
     XBB_QEMU_ARM_LEGACY_GIT_BRANCH=${XBB_QEMU_ARM_LEGACY_GIT_BRANCH:-"xpack-legacy-develop"}
   else
@@ -50,7 +50,7 @@ function qemu_arm_legacy_build()
 
       rm -rf pixman roms
 
-      local patch_file="${XBB_BUILD_GIT_PATH}/patches/${XBB_QEMU_ARM_LEGACY_GIT_PATCH}"
+      local patch_file="${XBB_BUILD_ROOT_PATH}/patches/${XBB_QEMU_ARM_LEGACY_GIT_PATCH}"
       if [ -f "${patch_file}" ]
       then
         run_verbose git apply "${patch_file}"
@@ -124,7 +124,7 @@ function qemu_arm_legacy_build()
           echo
           echo "Running qemu arm legacy configure..."
 
-          if is_develop
+          if is_development
           then
             # Although it shouldn't, the script checks python before --help.
             run_verbose bash "${XBB_QEMU_ARM_LEGACY_SRC_FOLDER_PATH}/configure" \
@@ -204,7 +204,7 @@ function qemu_arm_legacy_build()
         run_verbose make install
         run_verbose make install-gme
 
-        if is_develop
+        if is_development
         then
           run_verbose ls -lR "${XBB_EXECUTABLES_INSTALL_FOLDER_PATH}"
         fi
