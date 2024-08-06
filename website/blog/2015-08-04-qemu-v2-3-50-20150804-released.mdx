@@ -1,0 +1,52 @@
+---
+title:  GNU ARM Eclipse QEMU v2.3.50-20150804*-dev released
+
+date: 2015-08-04 21:29:00 +0300
+
+authors: ilg-ul
+
+# To be listed in the Releases page.
+tags:
+  - releases
+
+# ----- Custom properties -----------------------------------------------------
+
+download_url: https://github.com/gnu-mcu-eclipse/qemu/releases/tag/gae-2.3.50-20150804/
+
+---
+
+Version 2.3.50-201508041609 is a maintenance release, fixing the graphical rendering on Windows and adding support for NUCLEO-F411RE.
+
+<!-- truncate -->
+
+<p><a href={ frontMatter.download_url }>Binary files »</a></p>
+
+## Addressed issues
+
+* the problem affecting the graphical rendering was identified; an explicit event loop was added and rendering seems ok now, on all platforms, including Windows.
+
+## New features
+
+* the **NUCLEO-F411RE** board was added, using **STM32F411RE** device.
+
+## Known problems
+
+* <del>due to a wrong **rpath** definitions, in certain conditions, the GNU/Linux distribution failed to start;</del> **fixed in release 2.3.50-201508161112-dev**.
+
+## Download
+
+The new QEMU can be downloaded from the <a href={ frontMatter.download_url }>GitHub Releases</a> page.
+
+The MD5 sums of the files are:
+
+	9f82a62194b57fdbbdf9c689c2209710
+	gnuarmeclipse-qemu-debian32-2.3.50-201508041609-dev.tgz
+
+	513c858cf247f5ad7e98853f5afec6d5
+	gnuarmeclipse-qemu-debian64-2.3.50-201508041609-dev.tgz
+
+	a2326fe2f576a182f6df4db9784180e6
+	gnuarmeclipse-qemu-osx-2.3.50-201508041609-dev.pkg
+
+	13713073d9e3e036bb518ae34801c34b
+	gnuarmeclipse-qemu-win32-2.3.50-201508041609-dev-setup.exe

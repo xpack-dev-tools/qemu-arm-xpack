@@ -1,0 +1,55 @@
+---
+title:  GNU ARM Eclipse QEMU v2.4.50-20151029*-dev released
+
+date: 2015-10-29 12:00:00 +0200
+
+authors: ilg-ul
+
+# To be listed in the Releases page.
+tags:
+  - releases
+
+# ----- Custom properties -----------------------------------------------------
+
+download_url: https://github.com/gnu-mcu-eclipse/qemu/releases/tag/gae-2.4.50-20151029/
+
+---
+
+Version 2.4.50-201510290935 is a maintenance release, fixing the graphical rendering on macOS 10.11 and the typo related to the name of the Maple board.
+
+<!-- truncate -->
+
+<p><a href={ frontMatter.download_url }>Binary files »</a></p>
+
+## Addressed issues
+
+* the problem affecting the graphical rendering on macOS 10.11 was identified as a bug in the SDL_Image v1.2.12 library; the workaround was to revert to v1.2.10; rendering seems ok now, on all platforms;
+* the name of the Maple board was misspelled; fixed.
+
+## Versioning
+
+The content is identical to that of 2.3.50, only that in the mean time the official release is 2.4.
+
+## Download
+
+The new QEMU can be downloaded from the <a href={ frontMatter.download_url }>GitHub Releases</a> page.
+
+The MD5 sums of the files are:
+
+```txt
+00fa757a9bd0f80ce897e6d546183b58
+gnuarmeclipse-qemu-debian32-2.4.50-201510290935-dev.tgz
+
+69588b16c19006275cb79aba7ee2c3f8
+gnuarmeclipse-qemu-debian64-2.4.50-201510290935-dev.tgz
+
+8709c93b74f4085f5a0eacaa075300a9
+gnuarmeclipse-qemu-osx-2.4.50-201510290935-dev.pkg
+
+39b0c7dd39ef499ab630bd74ca87b6c3
+gnuarmeclipse-qemu-win32-2.4.50-201510290935-dev-setup.exe
+
+70881d71c1516aeb9c7efc514cd1f32c
+gnuarmeclipse-qemu-win64-2.4.50-201510290935-dev-setup.exe
+
+```

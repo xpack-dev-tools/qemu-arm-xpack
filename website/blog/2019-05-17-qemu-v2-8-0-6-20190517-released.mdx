@@ -1,0 +1,94 @@
+---
+title:  GNU MCU Eclipse QEMU v2.8.0-6 20190517 released
+
+date: 2019-05-17 15:50:00 +0300
+
+authors: ilg-ul
+
+# To be listed in the Releases page.
+tags:
+  - releases
+
+# ----- Custom properties -----------------------------------------------------
+
+download_url: https://github.com/gnu-mcu-eclipse/qemu/releases/tag/v2.8.0-6-20190517/
+
+---
+
+Version 2.8.0-6 20190517 is a maintenance release, to fix the bug
+affecting the graphical mode in GNU/Linux, introduced in the previous release.
+
+<!-- truncate -->
+
+<p><a href={ frontMatter.download_url }>Binary files »</a></p>
+
+## Bug fixes
+
+- [[#68](https://github.com/gnu-mcu-eclipse/qemu/issues/68)] in the
+  previous version, due to a build error, the SDL2 library did not include
+  X11 support, and QEMU was not able to start in graphical mode when
+  running on GNU/Linux; X11 support was added to the build environment
+  and the included SDL2 was fixed.
+
+## Known problems
+
+- Ctrl-C does not interrupt the execution if the `--nographic` option is used.
+
+## Binaries
+
+Binaries for **Windows**, **macOS** and **GNU/Linux** are provided.
+
+## Build notes
+
+The GNU/Linux binaries were built on two CentOS 6 Docker images (32/64-bit),
+and run on any distribution based on CentOS 6 or later.
+
+The Windows binaries were built with mingw-w64, and run on any reasonably
+recent **i686** and **x86_64** Windows machines.
+
+## Easy install
+
+QEMU is also available as an
+[xPack](https://www.npmjs.com/package/@gnu-mcu-eclipse/qemu) and can be
+conveniently installed with [`xpm`](https://www.npmjs.com/package/xpm):
+
+```sh
+xpm install --global @gnu-mcu-eclipse/qemu@2.8.0-6.1
+```
+
+To install the latest version available, use:
+
+```sh
+xpm install --global @gnu-mcu-eclipse/qemu
+```
+
+:::note
+
+The method to select the path based on the xPack version was already added to the Eclipse plug-in, but for now is only available in the version published on the test site (https://gnu-mcu-eclipse.netlify.com/v4-neon-updates-test/).
+
+:::
+
+## Manual install
+
+Instructions on how to install the binaries are available in the [Install Guide](/docs/install/).
+
+## Checksums
+
+The SHA-256 hashes for the files are:
+
+```txt
+e5d2e1beffc0b19d422c90ec98c4bd76e6e4036d6b2e1625cd8d93f6ac6f046a
+gnu-mcu-eclipse-qemu-2.8.0-6-20190517-1329-centos32.tgz
+
+ab94e8d71f54e1d28fdae63b5f0d0cbd792234de371e3883583aaf920d9f64cf
+gnu-mcu-eclipse-qemu-2.8.0-6-20190517-1329-centos64.tgz
+
+85c787c9d20751ba03b0557d47c268b5f06fde3dfb245b83fe1b44f45362a7b1
+gnu-mcu-eclipse-qemu-2.8.0-6-20190517-1329-macos.tgz
+
+4bf582db378aeaa40f324c34f80356b36c4016365607f3c7d820182de853f76f
+gnu-mcu-eclipse-qemu-2.8.0-6-20190517-1329-win32.zip
+
+894c25c79cdc9b0017e3d977725496192f37f6d536d4107e8e07a9cf4fbf9d22
+gnu-mcu-eclipse-qemu-2.8.0-6-20190517-1329-win64.zip
+```

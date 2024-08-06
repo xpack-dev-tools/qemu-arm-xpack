@@ -1,0 +1,64 @@
+---
+title:  GNU ARM Eclipse QEMU v2.7.0-20161128* released
+
+date: 2016-11-28 23:19:00 +0300
+
+authors: ilg-ul
+
+# To be listed in the Releases page.
+tags:
+  - releases
+
+# ----- Custom properties -----------------------------------------------------
+
+download_url: https://github.com/gnu-mcu-eclipse/qemu/releases/tag/gae-2.7.0-20161128/
+
+---
+
+Version 2.7.0-201611282115 is a new release, adding support for active graphical buttons.
+
+## Changes
+
+As the old version 1.2 of the SDL graphical library was less and less supported, the build procedure was updated to use SDL2.
+
+## New features
+
+- the most compelling new feature is **the addition of active graphical buttons**; the rectangles around the buttons are sensitive, and moving the mouse over them **changes the cursor to a hand**; clicking the buttons is also functional, the **Reset** button triggers a board reset; the user button is also connected to the corresponding GPIO pin, and can be checked by **reading the GPIO pin input** value; it is also possible to configure the EXTI device to **trigger interrupts on GPIO pin changes**;
+- ths **STM32** implementation was extended to support the `EXTI` and the `SYSCFG` peripherals; now it is possible to trigger interrupts on GPIO pin changes;
+- the debug options were extended with two new trace options, `func` and `mr` (use them after `-d`).
+
+## Known problems
+
+- the graphical buttons are currently available only for the STM32F4DISCOVERY board (the user button is connected to GPIO A0); more boards will be added in future versions;
+- Ctrl-C does not interrupt the execution if the `--nographic` option is used.
+
+## How to test the buttons
+
+An Eclipse project that can be used to test the STM32F4DISCOVERY button is available from
+
+[https://github.com/gnu-mcu-eclipse/eclipse-qemu-test-projects/tree/master/f407-disc-birq](https://github.com/gnu-mcu-eclipse/eclipse-qemu-test-projects/tree/master/f407-disc-birq)
+
+To use it, clone the [gnuarmeclipse/eclipse-qemu-test-projects](https://github.com/gnu-mcu-eclipse/eclipse-qemu-test-projects) git and import the `f407-disc-birq` project. Build and run the application; the four coloured LEDs will lit for a second, then turn off; click the blue button; the LEDs will lit one by one. Click the black button; the board will reset.
+
+## Download
+
+The new QEMU can be downloaded from the <a href={ frontMatter.download_url }>GitHub Releases</a> page.
+
+The MD5 sums of the files are:
+
+```txt
+95a4af83d5e053bef92c418f47341cfc
+gnuarmeclipse-qemu-debian32-2.7.0-201611282115-dev.tgz
+
+d03755819d618f4ddd2a75b63a848135
+gnuarmeclipse-qemu-debian64-2.7.0-201611282115-dev.tgz
+
+24473650547470808002f7aa0a02ef17
+gnuarmeclipse-qemu-osx-2.7.0-201611282115-dev.pkg
+
+9f157e9a6bd4ed7d3d3de81c2a56f065
+gnuarmeclipse-qemu-win32-2.7.0-201611282115-dev-setup.exe
+
+e9de44232334a41678972aafb3260c16
+gnuarmeclipse-qemu-win64-2.7.0-201611282115-dev-setup.exe
+```
