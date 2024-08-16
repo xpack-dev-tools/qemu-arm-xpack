@@ -4,6 +4,6 @@ Version **{{ XBB_RELEASE_VERSION }}** is a maintenance release of the **xPack QE
 
 Version **{{ XBB_RELEASE_VERSION }}** is a new release of the **xPack QEMU Arm** package; it follows the upstream release.
 
-[Continue reading »](TODO: edit, add URL!)
+[Continue reading »](will-be-updated-shortly)
 
 _At this moment the binaries are provided for tests only!_
