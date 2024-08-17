@@ -1,8 +1,8 @@
-![Github Releases (by Release)](https://img.shields.io/github/downloads/xpack-dev-tools/qemu-arm-xpack/v{{ XBB_RELEASE_VERSION }}/total.svg)
+![Github Releases (by Release)](https://img.shields.io/github/downloads/xpack-dev-tools/qemu-arm-xpack/v{{releaseVersion}}/total.svg)
 
-Version **{{ XBB_RELEASE_VERSION }}** is a maintenance release of the **xPack QEMU Arm** package; it fixes <...>.
+Version **{{releaseVersion}}** is a maintenance release of the **xPack QEMU Arm** package; it fixes ...
 
-Version **{{ XBB_RELEASE_VERSION }}** is a new release of the **xPack QEMU Arm** package; it follows the upstream release.
+Version **{{releaseVersion}}** is a new release of the **xPack QEMU Arm** package; it follows the upstream release.
 
 [Continue reading »](will-be-updated-shortly)
 
