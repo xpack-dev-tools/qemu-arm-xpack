@@ -33,7 +33,7 @@ on:
       package-version:
         description: 'The semver of the npm release'
         required: false
-        default: 'next'
+        default: 'test'
       version:
         description: 'The GitHub release version'
         required: false
@@ -337,9 +337,6 @@ jobs:
           touch ${{github.workspace}}/build-assets/artefacts/tests-report.md
           echo "---" >>${{github.workspace}}/build-assets/artefacts/tests-report.md
           echo "title: QEMU Arm ${{github.event.inputs.version}} test results" >>${{github.workspace}}/build-assets/artefacts/tests-report.md
-          echo "permalink: /dev-tools/qemu-arm/tests/${{github.event.inputs.version}}/" >>${{github.workspace}}/build-assets/artefacts/tests-report.md
-          echo >>${{github.workspace}}/build-assets/artefacts/tests-report.md
-          echo "comments: true" >>${{github.workspace}}/build-assets/artefacts/tests-report.md
           echo >>${{github.workspace}}/build-assets/artefacts/tests-report.md
           echo "date: $(date "+%Y-%m-%d %H:%M:%S %z")" >>${{github.workspace}}/build-assets/artefacts/tests-report.md
           echo >>${{github.workspace}}/build-assets/artefacts/tests-report.md
