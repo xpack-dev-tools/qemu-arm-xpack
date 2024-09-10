@@ -176,14 +176,17 @@ function application_build_versioned_components()
     # Stick to upstream as long as possible.
     # https://github.com/qemu/qemu/tags
 
-    XBB_QEMU_GIT_URL="https://github.com/xpack-dev-tools/qemu.git"
-    if is_development
+    if [[ "${XBB_RELEASE_VERSION}" =~ 8[.]2[.]2-[0-9]* ]]
     then
-      XBB_QEMU_GIT_BRANCH="xpack-develop"
-    else
-      XBB_QEMU_GIT_BRANCH="xpack"
+      XBB_QEMU_GIT_URL="https://github.com/xpack-dev-tools/qemu.git"
+      if is_development
+      then
+        XBB_QEMU_GIT_BRANCH="xpack-develop"
+      else
+        XBB_QEMU_GIT_BRANCH="xpack"
+      fi
+      XBB_QEMU_GIT_COMMIT="v${XBB_QEMU_VERSION}-xpack"
     fi
-    XBB_QEMU_GIT_COMMIT="v${XBB_QEMU_VERSION}-xpack"
 
     qemu_build "${XBB_QEMU_VERSION}" "arm"
 
