@@ -2,9 +2,13 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2024-09-12
+
+* 448c6fe qemu-arm*.sh: show machines/cpus
+
 ## 2024-09-11
 
-* v8.2.6-1 prepared
+* daefc33 prepare v8.2.6-1
 * 76b55cc move tests to test-assets
 * 516f9e4 update copyright notices
 * 8e091c8 README updates
