@@ -250,6 +250,16 @@ function qemu_arm_legacy_test()
     -d unimp,guest_errors \
     --semihosting-config enable=on,target=native \
     --semihosting-cmdline sample-test one two
+
+  if [ "${XBB_IS_DEVELOP}" == "y" ]
+  then
+    echo
+    echo "Showing supported machines/cpus..."
+
+    run_host_app_verbose "${test_bin_path}/qemu-system-gnuarmeclipse" -machine help
+    run_host_app_verbose "${test_bin_path}/qemu-system-gnuarmeclipse" -mcu help
+  fi
+
 }
 
 # -----------------------------------------------------------------------------
