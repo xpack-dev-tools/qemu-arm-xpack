@@ -73,7 +73,7 @@ function qemu_arm_test()
   run_host_app_verbose "${test_bin_path}/qemu-system-arm" \
     --machine mps2-an500 \
     --cpu cortex-m7 \
-    --kernel "${project_folder_path}/tests/assets/hello-world-cortex-m7f.elf" \
+    --kernel "${root_folder_path}/test-assets/hello-world-cortex-m7f.elf" \
     --nographic \
     -d unimp,guest_errors \
     --semihosting-config enable=on,target=native,arg=hello-world,arg=M7
@@ -81,7 +81,7 @@ function qemu_arm_test()
   run_host_app_verbose "${test_bin_path}/qemu-system-arm" \
     --machine virt \
     --cpu cortex-a15 \
-    --kernel "${project_folder_path}/tests/assets/hello-world-cortex-a15.elf" \
+    --kernel "${root_folder_path}/test-assets/hello-world-cortex-a15.elf" \
     --nographic \
     -smp 1 \
     -d unimp,guest_errors \
@@ -90,7 +90,7 @@ function qemu_arm_test()
   run_host_app_verbose "${test_bin_path}/qemu-system-aarch64" \
     --machine virt \
     --cpu cortex-a72 \
-    --kernel "${project_folder_path}/tests/assets/hello-world-cortex-a72.elf" \
+    --kernel "${root_folder_path}/test-assets/hello-world-cortex-a72.elf" \
     --nographic \
     -smp 1 \
     -d unimp,guest_errors \

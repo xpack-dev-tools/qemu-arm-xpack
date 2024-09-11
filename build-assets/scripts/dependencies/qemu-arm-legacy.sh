@@ -244,7 +244,7 @@ function qemu_arm_legacy_test()
   run_host_app_verbose "${test_bin_path}/qemu-system-gnuarmeclipse" \
     --board STM32F4-Discovery \
     --mcu STM32F407VG \
-    --image "${project_folder_path}/tests/assets/stm32f4discovery-sample-test.elf" \
+    --image "${root_folder_path}/test-assets/stm32f4discovery-sample-test.elf" \
     --nographic \
     --verbose \
     -d unimp,guest_errors \
