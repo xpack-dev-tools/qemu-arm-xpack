@@ -2,6 +2,19 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2024-09-11
+
+* v8.2.6-1 prepared
+* 76b55cc move tests to test-assets
+* 516f9e4 update copyright notices
+* 8e091c8 README updates
+* c7d2499 versioning.sh: switch to upstream download
+
+## 2024-09-10
+
+* e4684ea re-generate workflows
+* e859cca prepare 8.2.6-1
+
 ## 2024-08-17
 
 * 7634aa7 website remove preliminary

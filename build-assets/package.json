@@ -7,7 +7,7 @@
   "xpack": {
     "minimumXpmRequired": "0.16.3",
     "devDependencies": {
-      "@xpack-dev-tools/xbb-helper": "^3.0.14"
+      "@xpack-dev-tools/xbb-helper": "^3.0.15"
     },
     "properties": {
       "appName": "QEMU Arm",
@@ -15,6 +15,10 @@
       "$platforms": "linux-x64,linux-arm64,linux-arm,darwin-x64,darwin-arm64,win32-x64",
       "platforms": "all",
       "customFields": {
+        "programName": "qemu-system-arm",
+        "branding": "xPack QEMU emulator version ",
+        "$link": "https://gitlab.com/qemu-project/qemu/-/tags",
+        "upstreamReleaseDate": "16 July 2024"
       },
       "buildFolderRelativePath": "{{ 'build' | path_join: configuration.name | to_filename | downcase }}",
       "buildFolderRelativePathPosix": "{{ 'build' | path_posix_join: configuration.name | downcase }}",
