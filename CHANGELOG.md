@@ -4,7 +4,12 @@ Entries in this file are in reverse chronological order.
 
 ## 2024-09-12
 
-* v8.2.6-1 released
+* v8.2.6-1 published on npmjs.com
+* 4517bf7 package.json: update urls for 8.2.6-1.1 release
+* 21b5679 blog post release 8.2.6-1 published
+* 9921621 website content added
+* 1d598db build-assets/templates updates
+* 808befa CHANGELOG update
 * 49abd5d build-assets/templates update
 * e70a1ec CHANGELOG update
 * 448c6fe qemu-arm*.sh: show machines/cpus
