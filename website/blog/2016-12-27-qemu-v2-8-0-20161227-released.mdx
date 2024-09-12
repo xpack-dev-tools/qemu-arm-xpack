@@ -1,0 +1,69 @@
+---
+title:  GNU ARM Eclipse QEMU v2.8.0-20161227* released
+
+date: 2016-12-27 18:29:00 +0300
+
+authors: ilg-ul
+
+# To be listed in the Releases page.
+tags:
+  - releases
+
+# ----- Custom properties -----------------------------------------------------
+
+download_url: https://github.com/gnu-mcu-eclipse/qemu/releases/tag/gae-2.8.0-20161227/
+
+---
+
+Version 2.8.0-201612271623 is a new release, adding support for active graphical buttons to all supported boards.
+
+## Changes
+
+The main internal change is the use of CMSIS SVD files to generate the peripheral registers. This ensures the best possible accuracy in the register bit-fields implementation.
+
+## New features
+
+- the most compelling new feature is **the addition of active graphical buttons**; the rectangles around the buttons are sensitive, and moving the mouse over them **changes the cursor to a hand**; clicking the buttons is also functional, the **Reset** button triggers a board reset; the user button is also connected to the corresponding GPIO pin, and can be checked by **reading the GPIO pin input** value; it is also possible to configure the EXTI device to **trigger interrupts on GPIO pin changes**;
+- the **STM32** implementation was extended to support the `EXTI` and the `SYSCFG` or `AFIO` peripherals; now it is possible to trigger interrupts on GPIO pin changes;
+- the **STM32F0DISCOVERY** board was added, as a Cortex-M0 board.
+
+## Addressed bugs
+
+- [[#31](https://github.com/gnu-mcu-eclipse/qemu/issues/31)] - the GPIO toggling using the ODR register is now functional;
+- [[#24](https://github.com/gnu-mcu-eclipse/qemu/issues/24)] - command line options located after `--semihosting-cmdline` are no longer parsed, but passed to the application.
+
+## Known problems
+
+- Ctrl-C does not interrupt the execution if the `--nographic` option is used.
+
+## How to test the buttons
+
+An Eclipse project that can be used to test the STM32F4DISCOVERY button is available from
+
+[https://github.com/gnu-mcu-eclipse/eclipse-qemu-test-projects/tree/master/f407-disc-blink](https://github.com/gnu-mcu-eclipse/eclipse-qemu-test-projects/tree/master/f407-disc-blink)
+
+To use it, clone the [gnuarmeclipse/eclipse-qemu-test-projects](https://github.com/gnu-mcu-eclipse/eclipse-qemu-test-projects) git and import the `f407-disc-blink` project. Build and run the application; the four coloured LEDs will lit for a second, then turn off; click the blue button; the LEDs will lit one by one. Click the black button; the board will reset.
+
+## Download
+
+The new QEMU can be downloaded from the <a href={frontMatter.download_url}>GitHub Releases</a> page.
+
+The MD5 sums of the files are:
+
+```txt
+c081412c60e9111f045ea7c6aaf54ce7
+gnuarmeclipse-qemu-debian32-2.8.0-201612271623-dev.tgz
+
+9402b283bd9006fc1a9300b522ffd91b
+gnuarmeclipse-qemu-debian64-2.8.0-201612271623-dev.tgz
+
+4a6fed49c4d4fd6e5b581f939d81461a
+gnuarmeclipse-qemu-osx-2.8.0-201612271623-dev.pkg
+
+9330ef6cd0a456226bad279d217c68b2
+gnuarmeclipse-qemu-win32-2.8.0-201612271623-dev-setup.exe
+
+30a423b245df15cc41b7e05ce842d95a
+gnuarmeclipse-qemu-win64-2.8.0-201612271623-dev-setup.exe
+
+```

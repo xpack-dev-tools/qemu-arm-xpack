@@ -1,0 +1,85 @@
+---
+title:  GNU ARM Eclipse QEMU v2.2.92-20150404*-dev released
+
+date: 2015-04-04 23:09:00 +0300
+
+authors: ilg-ul
+
+# To be listed in the Releases page.
+tags:
+  - releases
+
+# ----- Custom properties -----------------------------------------------------
+
+download_url: https://github.com/gnu-mcu-eclipse/qemu/releases/gae-2.2.92-20150404/
+
+---
+
+This is the initial release of the [GNU ARM Eclipse QEMU](/dev-tools/qemu-arm/). It is mainly a technology preview (most of the supported boards are present, but functionality is limited and only projects created with the generic Cortex-M3 template are supported).
+
+<!-- truncate -->
+
+<p><a href={frontMatter.download_url}>Binary files »</a></p>
+
+## Supported boards
+
+The boards initially added to **GNU ARM Eclipse QEMU** are:
+
+* EK-TM4C123GXL – TI Tiva C Series TM4C123GXL LaunchPad Evaluation Kit (Experimental)
+* FRDM-K20D50M – Freescale Freedom Development Platform for Kinetis K20 USB MCUs (Experimental)
+* FRDM-K22F – Freescale Freedom Development Platform for Kinetis K22 MCUs (Experimental)
+* FRDM-K64F – Freescale Freedom Development Platform for Kinetis K6[34] and K24 MCUs (Experimental)
+* FRDM-KL25Z – Freescale Freedom Development Platform for Kinetis KL[12][45] MCUs (Experimental)
+* FRDM-KL26Z – Freescale Freedom Development Platform for Kinetis KL[12]6 MCUs (Experimental)
+* FRDM-KL43Z – Freescale Freedom Development Platform for Kinetis KL[34]3, KL[12]7 MCUs (Experimental)
+* FRDM-KL46Z – Freescale Freedom Development Platform for Kinetis KL[34]x MCUs (Experimental)
+* LPCXpresso-LPC1769 – Embedded Artists LPCXpresso LPC1769 Development Board (Experimental)
+* Maple – LeafLab Arduino-style STM32 microcontroller board (Experimental)
+* NUCLEO-F103RB – ST Nucleo Development Board for STM32 F1 series (Experimental)
+* NUCLEO-F334R8 – ST Nucleo Development Board for STM32 F3 series (Experimental)
+* NUCLEO-F411RE – ST Nucleo Development Board for STM32 F4 series (Experimental)
+* NUCLEO-L152RE – ST Nucleo Development Board with STM32L152RET6 (Experimental)
+* Netduino2 – Netduino Development Board with STM32F2 (Experimental)
+* NetduinoGo – Netduino GoBus Development Board with STM32F4 (Experimental)
+* NetduinoPlus2 – Netduino Development Board with STM32F4 (Experimental)
+* OLIMEXINO-STM32 – Olimex Maple (Arduino-like) Development Board (Experimental)
+* SAM3-H256 – Olimex Header Board for ATSAM3S4BA (Experimental)
+* STM32-E407 – Olimex Development Board for STM32F407ZGT6 (Experimental)
+* STM32-H103 – Olimex Header Board for STM32F103RBT6 (Experimental)
+* STM32-P103 – Olimex Prototype Board for STM32F103RBT6 (Experimental)
+* STM32-P107 – Olimex Prototype Board for STM32F107VCT6 (Experimental)
+* STM32F0-Discovery – ST Discovery kit for STM32F051 line (Experimental)
+* STM32F3-Discovery – ST Discovery kit for STM32F303 line (Experimental)
+* STM32F4-Discovery – ST Discovery kit for STM32F407/417 lines (Experimental)
+* STM32F429I-Discovery – ST Discovery kit for STM32F429/439 lines (Experimental)
+* STM32VL-Discovery – ST Discovery kit for STM32F100 Value Line (Experimental)
+* TWR-K60F120M – Freescale Kinetis K60 120 MHz Tower System Module (Experimental)
+* XMC 2Go – Infineon XMC 2Go Kit with XMC1100 (Experimental)
+* XMC1100 Boot Kit – Infineon CPU Card XMC1100 Boot Kit Entry Series (Experimental)
+* XMC1200 Boot Kit – Infineon CPU Card XMC1200 Boot Kit Feature Series (Experimental)
+* XMC1300 Boot Kit – Infineon CPU Card XMC1300 Boot Kit Control Series (Experimental)
+* XMC4200 Enterprise Kit – Infineon CPU Board XMC4200 Actuator (Experimental)
+* XMC4400 Enterprise Kit – Infineon CPU Board XMC4400 General Purpose (Experimental)
+* XMC4500 Enterprise Kit – Infineon CPU Board XMC4500 General Purpose (Experimental)
+* XMC4500 Relax Kit – Infineon CPU Board XMC4500 Relax Kit (Experimental)
+* XMC4500 Relax Lite Kit – Infineon CPU Board XMC4500 Relax Lite Kit (Experimental)
+
+As clearly marked, support for these boards is **experimental.** The boards generally include the right ARM core ID and should reflect the real memory banks, but since currently QEMU supports only Cortex-M3 cores, the boards behave like Cortex-M3 cores, so the emulation is not yet very accurate.
+
+## Changes from QEMU 2.2.92
+
+* **-verbose** added, with multiple levels to increase verbosity; the first level of verbosity is always enabled by the plug-in, to get the feedback required when starting the server backend for the debugging session;
+* **-semihosting-cmdline** added, to define the semihosting command line, required when running unit tests;
+* build script for macOS, Debian 32-bit/64-bit and Windows 32-bit/64-bit (using MinGW-w64) added; the required libraries are build locally
+
+## Eclipse plug-in
+
+The **GNU ARM Eclipse QEMU** is by design intended to be integrated with the **GNU ARM Eclipse plug-ins**. QEMU behaves like a GDB server, allowing to load the application into processor memory and debug as any real board. (Note: the Eclipse plug-in will be available shortly).
+
+## Known problems
+
+<del>The 64-bit version for Windows has some run-time problems and does not execute properly;</del> it was deleted from the released files section; until a solution will be available, the 32-bit version of QEMU can be used on Windows 64-bit; **fixed in release 2.3.50-201508051820-dev**.
+
+## Download
+
+The new QEMU can be downloaded from the [GitHub Releases](https://github.com/gnu-mcu-eclipse/qemu/releases/tag/gae-2.2.92-20150404) page.

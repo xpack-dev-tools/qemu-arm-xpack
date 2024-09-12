@@ -1,0 +1,99 @@
+---
+title:  GNU MCU Eclipse QEMU v2.8.0-5 20190424 released
+
+date: 2019-04-24 22:39:00 +0300
+
+authors: ilg-ul
+
+# To be listed in the Releases page.
+tags:
+  - releases
+
+# ----- Custom properties -----------------------------------------------------
+
+download_url: https://github.com/gnu-mcu-eclipse/qemu/releases/tag/v2.8.0-5-20190424/
+
+---
+
+Version 2.8.0-5 20190424 is a maintenance release, to fix several bugs.
+
+<!-- truncate -->
+
+<p><a href={frontMatter.download_url}>Binary files »</a></p>
+
+## Bug fixes
+
+- [[#66](https://github.com/gnu-mcu-eclipse/qemu/issues/66)] for some STM32
+  devices, the USART SR reset value was wrong; fixed.
+- [[#63](https://github.com/gnu-mcu-eclipse/qemu/issues/63)] the command
+  line option to set the total memory size (`-memory size=kb`) was ignored;
+  fixed.
+- [[#43](https://github.com/gnu-mcu-eclipse/qemu/issues/43)] the values
+  returned by the semihosting command `SYS_HEAPINFO` were not accurate;
+  since these values cannot be computed, now the command returns all 0.
+- [[#39](https://github.com/gnu-mcu-eclipse/qemu/issues/39)] in certain
+  conditions, when referring an unknown board, the program crashed;
+  fixed, now an error message is issued.
+
+## Known problems
+
+- Ctrl-C does not interrupt the execution if the `--nographic` option is used.
+
+## Binaries
+
+Binaries for **Windows**, **macOS** and **GNU/Linux** are provided.
+
+## Build notes
+
+The GNU/Linux binaries were built on two CentOS 6 Docker images (32/64-bit),
+and run on any distribution based on CentOS 6 or later.
+
+The Windows binaries were built with mingw-w64, and run on any reasonably
+recent **i686** and **x86_64** Windows machines.
+
+## Easy install
+
+QEMU is also available as an
+[xPack](https://www.npmjs.com/package/@gnu-mcu-eclipse/qemu) and can be
+conveniently installed with [`xpm`](https://www.npmjs.com/package/xpm):
+
+```sh
+xpm install --global @gnu-mcu-eclipse/qemu@2.8.0-5.1
+```
+
+To install the latest version available, use:
+
+```sh
+xpm install --global @gnu-mcu-eclipse/qemu
+```
+
+:::note
+
+The method to select the path based on the xPack version was already added to the Eclipse plug-in, but for now is only available in the version published on the test site (https://gnu-mcu-eclipse.netlify.com/v4-neon-updates-test/).
+
+:::
+
+## Manual install
+
+Instructions on how to install the binaries are available in the [Install Guide](/docs/install/).
+
+## Checksums
+
+The SHA-256 hashes for the files are:
+
+```txt
+fe599df8d544942bb463668049aa734f3e5bb8c9e4404390d978120b7b78ecf2
+gnu-mcu-eclipse-qemu-2.8.0-5-20190424-0724-centos32.tgz
+
+dd9d31233eeb9fb116dfd4e4d9bc49e12e683f498a13bdd680b37c2d9111f3dd
+gnu-mcu-eclipse-qemu-2.8.0-5-20190424-0724-centos64.tgz
+
+a3d87dff41417bb469d2993c6d33943a21e97113ba0545ce2978b7bdcc32c4bc
+gnu-mcu-eclipse-qemu-2.8.0-5-20190424-0724-macos.tgz
+
+cc4cd29ae9cd676a7b2309f3f82e7f885e0de0419af744b57bcb2ab4629d4ca7
+gnu-mcu-eclipse-qemu-2.8.0-5-20190424-0724-win32.zip
+
+ca23c5b7af40d58ee0b3e0a29295bdd443d318cdb7d9b9cf2220e4801c555164
+gnu-mcu-eclipse-qemu-2.8.0-5-20190424-0724-win64.zip
+```
