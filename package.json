@@ -1,6 +1,6 @@
 {
   "name": "@xpack-dev-tools/qemu-arm",
-  "version": "8.2.6-1.1.pre",
+  "version": "8.2.6-1.1",
   "description": "A binary xPack with QEMU Arm executables",
   "main": "",
   "scripts": {
