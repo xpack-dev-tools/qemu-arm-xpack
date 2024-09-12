@@ -1,39 +1,41 @@
 ---
 title:  xPack QEMU Arm v{{releaseVersion}} released
 
-TODO: select one summary
-summary: "Version **{{releaseVersion}}** is a maintenance release; it fixes ..."
-summary: "Version **{{releaseVersion}}** is a new release; it follows the upstream QEMU release."
+date: {{releaseDate}}
 
-qemu_version: "8.2.2"
-qemu_short_commit: "11aa0b1f"
-qemu_long_commit: "11aa0b1ff115b86160c4d37e7c37e6a6b13b77ea"
-qemu_date: "4 Mar 2024"
+authors: ilg-ul
+
+# To be listed in the Releases page.
+tags:
+  - releases
+
+# ----- Custom properties -----------------------------------------------------
+
+qemu_version: "{{upstreamVersion}}"
+qemu_commit: "{{customFields.upstreamCommitId}}"
+qemu_release_date: "{{customFields.upstreamReleaseDate}}"
 
 version: "{{releaseVersion}}"
 npm_subversion: "1"
 
 download_url: https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/tag/v{{releaseVersion}}/
 
-comments: true
-
-date: {{releaseDate}}
-
-# For Jekyll releases selection.
-categories:
-  - releases
-  - qemu-arm
-
-# For navigation; use scripts/createtag.sh in Jekyll.
-tags:
-  - releases
-  - qemu
-  - emulator
-  - arm
-  - aarch64
-  - cortex-m
-
 ---
+
+TODO: select one summary
+
+Version **{{releaseVersion}}** is a maintenance release; it fixes ...
+
+Version **{{releaseVersion}}** is a new release; it follows the upstream QEMU release.
+
+<!-- truncate -->
+
+import Image from '@theme/IdealImage';
+import CodeBlock from '@theme/CodeBlock';
+
+import Prerequisites from './_common/_prerequisites-glib-2.27.mdx'
+import DeprecationNotices from './_common/_deprecation-notices-glib-2.27.mdx'
+import DownloadAnalytics from './_common/_download-analytics.mdx'
 
 The [xPack QEMU Arm](https://xpack-dev-tools.github.io/qemu-arm-xpack/)
 is a standalone cross-platform binary distribution of
@@ -44,95 +46,24 @@ There are separate binaries for **Windows** (64-bit),
 **macOS** (Intel 64-bit, Apple Silicon 64-bit)
 and **GNU/Linux** (Intel 64-bit, Arm 32/64-bit).
 
-{% raw %}{% include note.html content="The main targets for the Arm binaries
-are the **Raspberry Pi** class devices (armv7l and aarch64;
-armv6 is not supported)." %}{% endraw %}
+:::note Raspberry Pi
+
+The main targets for the GNU/Linux Arm
+binaries are the **Raspberry Pi** class devices (armv7l and aarch64;
+armv6 is not supported).
+
+:::
 
 ## Download
 
-The binary files are available from GitHub [Releases]({% raw %}{{page.download_url}}{% endraw %}).
+The binary files are available from <a href={frontMatter.download_url}>GitHub Releases</a>.
 
-## Prerequisites
-
-- GNU/Linux Intel 64-bit: any system with **GLIBC 2.27** or higher
-  (like Ubuntu 18 or later, Debian 10 or later, RedHat 8 or later,
-  Fedora 29 or later, etc)
-- GNU/Linux Arm 32/64-bit: any system with **GLIBC 2.27** or higher
-  (like Raspberry Pi OS, Ubuntu 18 or later, Debian 10 or later, RedHat 8 or later,
-  Fedora 29 or later, etc)
-- Intel Windows 64-bit: Windows 7 with the Universal C Runtime
-  ([UCRT](https://support.microsoft.com/en-us/topic/update-for-universal-c-runtime-in-windows-c0514201-7fe6-95a3-b0a5-287930f3560c)),
-  Windows 8, Windows 10
-- macOS Intel 64-bit: 10.13 or later; graphical mode available on 10.14 or later
-- macOS Apple Silicon 64-bit: 11.6 or later
-
-On GNU/Linux, QEMU requires the X11 libraries to be present. On Debian derived
-distribution they are already in the system; on RedHat & Arch derived
-distributions they must be installed explicitly.
+<Prerequisites/>
 
 ## Install
 
 The full details of installing the **xPack QEMU Arm** on various platforms
-are presented in the separate
-[Install]({% raw %}{{site.baseurl}}{% endraw %}/dev-tools/qemu-arm/install/) page.
-
-### Easy install
-
-The easiest way to install QEMU Arm is with
-[`xpm`]({% raw %}{{site.baseurl}}{% endraw %}/xpm/)
-by using the **binary xPack**, available as
-[`@xpack-dev-tools/qemu-arm`](https://www.npmjs.com/package/@xpack-dev-tools/qemu-arm)
-from the [`npmjs.com`](https://www.npmjs.com) registry.
-
-With the `xpm` tool available, installing
-the latest version of the package and adding it as
-a development dependency for a project is quite easy:
-
-```sh
-cd my-project
-xpm init # Add a package.json if not already present
-
-xpm install @xpack-dev-tools/qemu-arm@latest --verbose
-
-ls -l xpacks/.bin
-```
-
-To install this specific version, use:
-
-```sh
-xpm install @xpack-dev-tools/qemu-arm@{% raw %}{{page.version}}.{{page.npm_subversion}}{% endraw %} --verbose
-```
-
-For xPacks aware tools, like the **Eclipse Embedded C/C++ plug-ins**,
-it is also possible to install QEMU Arm globally, in the user home folder.
-
-```sh
-xpm install --global @xpack-dev-tools/qemu-arm@latest --verbose
-```
-
-Eclipse will automatically
-identify binaries installed with
-`xpm` and provide a convenient method to manage paths.
-
-{% raw %}{% include note.html content="Eclipse has integrated support only for
-`qemu-system-gnuarmeclipse`. `qemu-system-arm` can be used in debug
-sessions only when started outside Eclipse." %}{% endraw %}
-
-### Uninstall
-
-To remove the links created by xpm in the current project:
-
-```sh
-cd my-project
-
-xpm uninstall @xpack-dev-tools/qemu-arm
-```
-
-To completely remove the package from the central xPack store:
-
-```sh
-xpm uninstall --global @xpack-dev-tools/qemu-arm
-```
+are presented in the [Install Guide](/docs/install/).
 
 ## Compliance
 
@@ -141,14 +72,12 @@ with some changes.
 
 There are two sets of binaries:
 
-- `qemu-system-arm` and `qemu-system-aarch64`, based on QEMU version {% raw %}{{page.qemu_version}}{% endraw %},
-  commit [{% raw %}{{page.qemu_short_commit}}{% endraw %}](https://github.com/xpack-dev-tools/qemu/commit/{% raw %}{{page.qemu_long_commit}}{% endraw %})
-  from {% raw %}{{page.qemu_date}}{% endraw %};
-
+- `qemu-system-arm` and `qemu-system-aarch64`, based on QEMU version {frontMatter.qemu_version},
+  from {frontMatter.qemu_release_date}
 - `qemu-system-gnuarmeclipse`, based on QEMU version 2.8.0,
   commit [0737f32](https://github.com/xpack-dev-tools/qemu/commit/0737f32daf35f3730ed2461ddfaaf034c2ec7ff0)
-  from Dec 20th, 2016; this is end-of-life and will be preserved only for
-  compatibility reasons.
+  from Dec 20th, 2016; this is end-of-life and will be preserved
+  for a while only for compatibility reasons.
 
 ## Changes
 
@@ -531,9 +460,13 @@ Supported MCUs:
   STM32F429ZITx
 ```
 
-{% raw %}{% include warning.html content="In this old release,
+:::warn
+
+In this old release,
 support for hardware floating point on
-Cortex-M4 devices is not available." %}{% endraw %}
+Cortex-M4 devices is not available.
+
+:::
 
 ## Bug fixes
 
@@ -550,41 +483,11 @@ the execution if the `--nographic` option is used
 - in order to build on macOS 10.13, the Intel macOS version has
   some functionality related to bridged virtual interfaces disabled.
 
-## Shared libraries
-
-On all platforms the packages are standalone, and expect only the standard
-runtime to be present on the host.
-
-All dependencies that are build as shared libraries are copied locally
-in the `libexec` folder (or in the same folder as the executable for Windows).
-
-### `DT_RPATH` and `LD_LIBRARY_PATH`
-
-On GNU/Linux the binaries are adjusted to use a relative path:
-
-```console
-$ readelf -d library.so | grep runpath
- 0x000000000000001d (RPATH)            Library rpath: [$ORIGIN]
-```
-
-In the GNU ld.so search strategy, the `DT_RPATH` has
-the highest priority, higher than `LD_LIBRARY_PATH`, so if this later one
-is set in the environment, it should not interfere with the xPack binaries.
-
-Please note that previous versions, up to mid-2020, used `DT_RUNPATH`, which
-has a priority lower than `LD_LIBRARY_PATH`, and does not tolerate setting
-it in the environment.
-
-### `@rpath` and `@loader_path`
-
-Similarly, on macOS, the binaries are adjusted with `install_name_tool` to use a
-relative path.
-
 ## Documentation
 
 The original documentation is available on-line:
 
-- <https://www.qemu.org/docs/master/>
+- https://www.qemu.org/docs/master/
 
 ## Build
 
@@ -595,7 +498,7 @@ of build environments based on slightly older distributions, that should be
 compatible with most recent systems.
 
 For the prerequisites and more details on the build procedure, please see the
-[How to build](https://github.com/xpack-dev-tools/qemu-arm-xpack/blob/xpack/README-BUILD.md) page.
+[Maintainer Info](/docs/maintainer/) page.
 
 ## CI tests
 
@@ -613,7 +516,7 @@ LTS 64-bit, macOS 10.15 (Intel) and 11.6 (Apple Silicon).
 For `qemu-system-arm` and `qemu-system-aarch64`, the tests consist in
 simple, non-graphical, semihosting apps. The binaries are borrowed
 from µTest++ and are available from the
-[tests](https://github.com/xpack-dev-tools/qemu-arm-xpack/tree/xpack/tests)
+[tests](https://github.com/xpack-dev-tools/qemu-arm-xpack/tree/xpack/build-assets/test-assets)
 folder.
 
 ```console
