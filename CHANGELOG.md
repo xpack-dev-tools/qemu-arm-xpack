@@ -4,6 +4,9 @@ Entries in this file are in reverse chronological order.
 
 ## 2024-09-12
 
+* v8.2.6-1 released
+* 49abd5d build-assets/templates update
+* e70a1ec CHANGELOG update
 * 448c6fe qemu-arm*.sh: show machines/cpus
 
 ## 2024-09-11
