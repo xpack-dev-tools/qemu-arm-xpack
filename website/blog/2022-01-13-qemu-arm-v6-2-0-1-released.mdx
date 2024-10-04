@@ -23,6 +23,7 @@ Version **6.2.0-1** is a new release; it follows the upstream QEMU release.
 <!-- truncate -->
 
 import Image from '@theme/IdealImage';
+import CodeBlock from '@theme/CodeBlock';
 
 The [xPack QEMU Arm](https://xpack-dev-tools.github.io/qemu-arm-xpack)
 is a standalone cross-platform binary distribution of
@@ -30,8 +31,8 @@ is a standalone cross-platform binary distribution of
 devices.
 
 There are separate binaries for **Windows** (64-bit),
-**macOS** (Intel 64-bit, Apple Silicon 64-bit)
-and **GNU/Linux** (Intel 64-bit, Arm 32/64-bit).
+**macOS** (x64, arm64)
+and **GNU/Linux** (x64, arm64 and arm).
 
 :::note Raspberry Pi
 
@@ -65,8 +66,14 @@ distributions they must be installed explicitly.
 
 ## Install
 
-The full details of installing the **xPack QEMU Arm** on various platforms
-are presented in the [Install Guide](/docs/install/).
+The easiest way to install this specific version, is by using **xpm**:
+
+<CodeBlock language="console"> {
+`xpm install @xpack-dev-tools/qemu-arm@${frontMatter.version}.${frontMatter.npm_subversion} -verbose
+`} </CodeBlock>
+
+Comprehensive instructions for installing **xPack QEMU Arm** on different platforms
+can be found in the [Install Guide](/docs/install/).
 
 ## Compliance
 
@@ -329,8 +336,8 @@ set of platforms. The results are available from:
 
 ## Tests
 
-The binaries were testes on Windows 10 Pro 64-bit, Intel Ubuntu 18
-LTS 64-bit, macOS 10.15 (Intel) and 11.6 (Apple Silicon).
+The binaries were testes on Windows 10 Pro (x64), Ubuntu 18
+LTS (x64), macOS 10.15 (x64) and 11.6 (arm64).
 
 For `qemu-system-arm` and `qemu-system-aarch64`, the tests consist in
 simple, non-graphical, semihosting apps. The binaries are borrowed
@@ -428,11 +435,11 @@ xpack-qemu-arm-6.2.0-1-win32-x64.zip
 
 ### 32-bit support
 
-Support for 32-bit Intel Linux and Intel Windows was
-dropped in 2022. Support for 32-bit Arm Linux will be preserved
+Support for 32-bit x86 GNU/Linux and x86 Windows was
+dropped in 2022. Support for 32-bit Arm GNU/Linux will be preserved
 for a while, due to the large user base of 32-bit Raspberry Pi systems.
 
-### Linux minimum requirements
+### GNU/Linux minimum requirements
 
 Support for RedHat 7 was dropped in 2022 and the
 minimum requirement was raised to GLIBC 2.27, available starting
