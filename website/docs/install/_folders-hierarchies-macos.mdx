@@ -1,0 +1,90 @@
+
+import CodeBlock from '@theme/CodeBlock';
+
+import customField from '@site/src/libs/customField';
+
+{/* ------------------------------------------------------------------------ */}
+
+<CodeBlock language="console"> {
+`$ tree -L 2 ~/Library/xPacks/\@xpack-dev-tools/qemu-arm/${customField('xpackVersion')}/.content/
+/Users/ilg/Library/xPacks/\@xpack-dev-tools/qemu-arm/${customField('xpackVersion')}/.content/
+├── README.md
+├── bin
+│   ├── qemu-system-aarch64
+│   ├── qemu-system-arm
+│   └── qemu-system-gnuarmeclipse
+├── distro-info
+│   └── licenses
+├── include
+│   ├── fdt.h
+│   ├── libfdt.h
+│   ├── libfdt_env.h
+│   └── qemu-plugin.h
+├── lib
+│   └── x86_64-linux-gnu
+├── libexec
+│   ├── libSDL2-2.0.so.0 -> libSDL2-2.0.so.0.3000.1
+│   ├── libSDL2-2.0.so.0.3000.1
+│   ├── libSDL2_image-2.0.so.0 -> libSDL2_image-2.0.so.0.800.2
+│   ├── libSDL2_image-2.0.so.0.800.2
+│   ├── libcrypto.so.1.1
+│   ├── libffi.so.8 -> libffi.so.8.1.4
+│   ├── libffi.so.8.1.4
+│   ├── libgcc_s.so.1
+│   ├── libgio-2.0.so.0 -> libgio-2.0.so.0.8000.0
+│   ├── libgio-2.0.so.0.8000.0
+│   ├── libglib-2.0.so.0 -> libglib-2.0.so.0.8000.0
+│   ├── libglib-2.0.so.0.8000.0
+│   ├── libgmodule-2.0.so.0 -> libgmodule-2.0.so.0.8000.0
+│   ├── libgmodule-2.0.so.0.8000.0
+│   ├── libgmp.so.10 -> libgmp.so.10.5.0
+│   ├── libgmp.so.10.5.0
+│   ├── libgobject-2.0.so.0 -> libgobject-2.0.so.0.8000.0
+│   ├── libgobject-2.0.so.0.8000.0
+│   ├── libgthread-2.0.so.0 -> libgthread-2.0.so.0.8000.0
+│   ├── libgthread-2.0.so.0.8000.0
+│   ├── libhogweed.so.6 -> libhogweed.so.6.8
+│   ├── libhogweed.so.6.8
+│   ├── libiconv.so.2 -> libiconv.so.2.6.1
+│   ├── libiconv.so.2.6.1
+│   ├── libjpeg.so.9 -> libjpeg.so.9.6.0
+│   ├── libjpeg.so.9.6.0
+│   ├── liblzo2.so.2 -> liblzo2.so.2.0.0
+│   ├── liblzo2.so.2.0.0
+│   ├── libncursesw.so.6 -> libncursesw.so.6.4
+│   ├── libncursesw.so.6.4
+│   ├── libnettle.so.8 -> libnettle.so.8.8
+│   ├── libnettle.so.8.8
+│   ├── libpcre2-8.so.0 -> libpcre2-8.so.0.12.0
+│   ├── libpcre2-8.so.0.12.0
+│   ├── libpixman-1.so.0 -> libpixman-1.so.0.43.4
+│   ├── libpixman-1.so.0.43.4
+│   ├── libpng16.so.16 -> libpng16.so.16.43.0
+│   ├── libpng16.so.16.43.0
+│   ├── libresolv-2.27.so
+│   ├── libresolv.so.2 -> libresolv-2.27.so
+│   ├── libssh.so.4 -> libssh.so.4.9.6
+│   ├── libssh.so.4.9.6
+│   ├── libssp.so.0 -> libssp.so.0.0.0
+│   ├── libssp.so.0.0.0
+│   ├── libstdc++.so.6 -> libstdc++.so.6.0.32
+│   ├── libstdc++.so.6.0.32
+│   ├── libudev.so.1 -> libudev.so.1.6.9
+│   ├── libudev.so.1.6.9
+│   ├── libusb-1.0.so.0 -> libusb-1.0.so.0.4.0
+│   ├── libusb-1.0.so.0.4.0
+│   ├── libvdeplug.so.3 -> libvdeplug.so.3.0.1
+│   ├── libvdeplug.so.3.0.1
+│   ├── libz.so.1 -> libz.so.1.3.1
+│   ├── libz.so.1.3.1
+│   ├── libzstd.so.1 -> libzstd.so.1.5.5
+│   ├── libzstd.so.1.5.5
+│   └── qemu-bridge-helper
+└── share
+    ├── applications
+    ├── icons
+    ├── legacy
+    └── qemu
+
+12 directories, 65 files
+`} </CodeBlock>

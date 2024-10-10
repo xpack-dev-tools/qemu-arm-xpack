@@ -41,9 +41,9 @@ function HomepageHeader() {
 export default function Home(): JSX.Element {
   const {siteConfig} = useDocusaurusContext();
   return (
-    <Layout
-      title={`Hello from xPack Binary Development Tools`}
-      description="A binary package with the QEMU Arm executables">
+    <Layout 
+      title={`Hello from qemu-arm`}
+      description="A binary package with the qemu-arm executables">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

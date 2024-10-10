@@ -1,0 +1,188 @@
+
+import CodeBlock from '@theme/CodeBlock';
+
+import customField from '@site/src/libs/customField';
+
+{/* ------------------------------------------------------------------------ */}
+
+<CodeBlock language="console"> {
+`C:\> tree /f %USERPROFILE%\\AppData\\Roaming\\xPacks\\@xpack-dev-tools\\qemu-arm\\${customField('xpackVersion')}\\.content
+Folder PATH listing
+Volume serial number is B02D-925C
+├── README.md
+├── bin
+│   ├── SDL2.dll
+│   ├── SDL2_image.dll
+│   ├── libffi-8.dll
+│   ├── libgcc_s_seh-1.dll
+│   ├── libgio-2.0-0.dll
+│   ├── libglib-2.0-0.dll
+│   ├── libgmodule-2.0-0.dll
+│   ├── libgmp-10.dll
+│   ├── libgobject-2.0-0.dll
+│   ├── libhogweed-6.dll
+│   ├── libintl-8.dll
+│   ├── libjpeg-9.dll
+│   ├── liblzo2-2.dll
+│   ├── libnettle-8.dll
+│   ├── libpcre2-8-0.dll
+│   ├── libpixman-1-0.dll
+│   ├── libssp-0.dll
+│   ├── libwinpthread-1.dll
+│   ├── libzstd.dll
+│   ├── qemu-system-aarch64.exe
+│   ├── qemu-system-aarch64w.exe
+│   ├── qemu-system-arm.exe
+│   ├── qemu-system-armw.exe
+│   ├── qemu-system-gnuarmeclipse.exe
+│   └── qemu-system-gnuarmeclipsew.exe
+├── devices
+│   ├── README.md
+│   ├── STM32F0x1-qemu.json
+│   ├── STM32F0x2-qemu.json
+│   ├── STM32F103xx-qemu.json
+│   ├── STM32F107xx-qemu.json
+│   ├── STM32F40x-qemu.json
+│   ├── STM32F411xx-qemu.json
+│   └── STM32F429x-qemu.json
+├── distro-info
+│   └── licenses
+├── graphics
+│   ├── Maple.jpg
+│   ├── NUCLEO-F072RB.jpg
+│   ├── NUCLEO-F103RB.jpg
+│   ├── NUCLEO-F411RE.jpg
+│   ├── NetduinoGo.jpg
+│   ├── NetduinoPlus2.jpg
+│   ├── OLIMEXINO-STM32.jpg
+│   ├── STM32-Bluepill.jpg
+│   ├── STM32-E407.jpg
+│   ├── STM32-H103.jpg
+│   ├── STM32-P103.jpg
+│   ├── STM32-P107.jpg
+│   ├── STM32F0-Discovery.jpg
+│   ├── STM32F4-Discovery.jpg
+│   └── STM32F429I-Discovery.jpg
+├── include
+│   ├── fdt.h
+│   ├── libfdt.h
+│   ├── libfdt_env.h
+│   └── qemu-plugin.h
+├── keymaps
+│   ├── ar
+│   ├── bepo
+│   ├── common
+│   ├── cz
+│   ├── da
+│   ├── de
+│   ├── de-ch
+│   ├── en-gb
+│   ├── en-us
+│   ├── es
+│   ├── et
+│   ├── fi
+│   ├── fo
+│   ├── fr
+│   ├── fr-be
+│   ├── fr-ca
+│   ├── fr-ch
+│   ├── hr
+│   ├── hu
+│   ├── is
+│   ├── it
+│   ├── ja
+│   ├── lt
+│   ├── lv
+│   ├── mk
+│   ├── modifiers
+│   ├── nl
+│   ├── nl-be
+│   ├── no
+│   ├── pl
+│   ├── pt
+│   ├── pt-br
+│   ├── ru
+│   ├── sl
+│   ├── sv
+│   ├── th
+│   └── tr
+├── lib
+│   ├── libfdt.a
+│   ├── libqemu_plugin_api.a
+│   └── pkgconfig
+├── share
+│   ├── QEMU,cgthree.bin
+│   ├── QEMU,tcx.bin
+│   ├── applications
+│   ├── bamboo.dtb
+│   ├── bios-256k.bin
+│   ├── bios-microvm.bin
+│   ├── bios.bin
+│   ├── canyonlands.dtb
+│   ├── edk2-aarch64-code.fd
+│   ├── edk2-arm-code.fd
+│   ├── edk2-arm-vars.fd
+│   ├── edk2-i386-code.fd
+│   ├── edk2-i386-secure-code.fd
+│   ├── edk2-i386-vars.fd
+│   ├── edk2-licenses.txt
+│   ├── edk2-x86_64-code.fd
+│   ├── edk2-x86_64-secure-code.fd
+│   ├── efi-e1000.rom
+│   ├── efi-e1000e.rom
+│   ├── efi-eepro100.rom
+│   ├── efi-ne2k_pci.rom
+│   ├── efi-pcnet.rom
+│   ├── efi-rtl8139.rom
+│   ├── efi-virtio.rom
+│   ├── efi-vmxnet3.rom
+│   ├── firmware
+│   ├── hppa-firmware.img
+│   ├── icons
+│   ├── keymaps
+│   ├── kvmvapic.bin
+│   ├── linuxboot.bin
+│   ├── linuxboot_dma.bin
+│   ├── multiboot.bin
+│   ├── multiboot_dma.bin
+│   ├── npcm7xx_bootrom.bin
+│   ├── openbios-ppc
+│   ├── openbios-sparc32
+│   ├── openbios-sparc64
+│   ├── opensbi-riscv32-generic-fw_dynamic.bin
+│   ├── opensbi-riscv64-generic-fw_dynamic.bin
+│   ├── palcode-clipper
+│   ├── petalogix-ml605.dtb
+│   ├── petalogix-s3adsp1800.dtb
+│   ├── pvh.bin
+│   ├── pxe-e1000.rom
+│   ├── pxe-eepro100.rom
+│   ├── pxe-ne2k_pci.rom
+│   ├── pxe-pcnet.rom
+│   ├── pxe-rtl8139.rom
+│   ├── pxe-virtio.rom
+│   ├── qboot.rom
+│   ├── qemu-nsis.bmp
+│   ├── qemu_vga.ndrv
+│   ├── s390-ccw.img
+│   ├── s390-netboot.img
+│   ├── skiboot.lid
+│   ├── slof.bin
+│   ├── trace-events-all
+│   ├── u-boot-sam460-20100605.bin
+│   ├── u-boot.e500
+│   ├── vgabios-ati.bin
+│   ├── vgabios-bochs-display.bin
+│   ├── vgabios-cirrus.bin
+│   ├── vgabios-qxl.bin
+│   ├── vgabios-ramfb.bin
+│   ├── vgabios-stdvga.bin
+│   ├── vgabios-virtio.bin
+│   ├── vgabios-vmware.bin
+│   ├── vgabios.bin
+│   ├── vof-nvram.bin
+│   └── vof.bin
+└── trace-events-all
+
+14 directories, 160 files
+`} </CodeBlock>
