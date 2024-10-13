@@ -3,7 +3,7 @@
 # DO NOT EDIT!
 # Automatically generated from xbb-helper/templates/docusaurus/common.
 
-title: Releases of qemu-arm
+title: The xPack QEMU Arm releases
 description: The full list of project releases.
 keywords:
   - xpack
@@ -16,11 +16,14 @@ date: 2020-07-21 17:53:00 +0300
 
 ---
 
+<head><title>{frontMatter.title}</title></head>
+<head><meta property="og:title" content={frontMatter.title}/></head>
+
 import {ReleasesList} from '@site/src/components/ReleasesList';
 
 {/* ------------------------------------------------------------------------ */}
 
-# The xPack QEMU Arm releases
+# {frontMatter.title}
 
 The releases, in reverse chronological order are:
 
