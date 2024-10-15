@@ -1,5 +1,6 @@
 ---
 title: GNU MCU Eclipse QEMU v2.8.0-5 20190424 released
+seo_title: Version 2.8.0-5 20190424 released
 description: Version 2.8.0-5 20190424 is a maintenance release of GNU MCU Eclipse QEMU.
 keywords:
   - xpack
@@ -16,26 +17,23 @@ tags:
 
 # ----- Custom properties -----------------------------------------------------
 
-app_name: "GNU MCU Eclipse QEMU"
-
 download_url: https://github.com/gnu-mcu-eclipse/qemu/releases/tag/v2.8.0-5-20190424/
 
 ---
 
-<head>
-  <title>{frontMatter.title}</title>
-  <meta property="og:title" content={frontMatter.title} />
-</head>
+import {PageMetadata} from '@docusaurus/theme-common';
+import Image from '@theme/IdealImage';
+import CodeBlock from '@theme/CodeBlock';
 
-Version 2.8.0-5 20190424 is a maintenance release.
-
-<!-- truncate -->
-
-Version 2.8.0-5 20190424 is a maintenance release, to fix several bugs.
+Version **2.8.0-5 20190424** is a maintenance release, to fix several bugs.
 
 <!-- truncate -->
 
-<p><a href={frontMatter.download_url}>Binary files »</a></p>
+<PageMetadata title={frontMatter.seo_title} />
+
+## Download
+
+The binary files are available from <a href={frontMatter.download_url}>GitHub Releases</a>.
 
 ## Bug fixes
 

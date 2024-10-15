@@ -1,5 +1,6 @@
 ---
 title: GNU ARM Eclipse QEMU v2.7.0-20161128* released
+seo_title: Version 2.7.0-20161128* released
 description: Version 2.7.0-201611282115 is a new release of GNU ARM Eclipse QEMU.
 keywords:
   - xpack
@@ -16,26 +17,23 @@ tags:
 
 # ----- Custom properties -----------------------------------------------------
 
-app_name: "GNU ARM Eclipse QEMU"
-
 download_url: https://github.com/gnu-mcu-eclipse/qemu/releases/tag/gae-2.7.0-20161128/
 
 ---
 
-<head>
-  <title>{frontMatter.title}</title>
-  <meta property="og:title" content={frontMatter.title} />
-</head>
+import {PageMetadata} from '@docusaurus/theme-common';
+import Image from '@theme/IdealImage';
+import CodeBlock from '@theme/CodeBlock';
 
-Version 2.7.0-201611282115 is a new release.
-
-<!-- truncate -->
-
-Version 2.7.0-201611282115 is a new release, adding support for active graphical buttons.
+Version **2.7.0-201611282115** is a new release, adding support for active graphical buttons.
 
 <!-- truncate -->
 
-<p><a href={frontMatter.download_url}>Binary files »</a></p>
+<PageMetadata title={frontMatter.seo_title} />
+
+## Download
+
+The binary files are available from <a href={frontMatter.download_url}>GitHub Releases</a>.
 
 ## Changes
 

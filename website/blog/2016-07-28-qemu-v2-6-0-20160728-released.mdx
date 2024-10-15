@@ -1,5 +1,6 @@
 ---
 title: GNU ARM Eclipse QEMU v2.6.0-20160728* released
+seo_title: Version 2.6.0-20160728* released
 description: Version 2.6.0-201607280535 is a stable release of GNU ARM Eclipse QEMU.
 keywords:
   - xpack
@@ -16,26 +17,23 @@ tags:
 
 # ----- Custom properties -----------------------------------------------------
 
-app_name: "GNU ARM Eclipse QEMU"
-
 download_url: https://github.com/gnu-mcu-eclipse/qemu/releases/tag/gae-2.6.0-20160728/
 
 ---
 
-<head>
-  <title>{frontMatter.title}</title>
-  <meta property="og:title" content={frontMatter.title} />
-</head>
+import {PageMetadata} from '@docusaurus/theme-common';
+import Image from '@theme/IdealImage';
+import CodeBlock from '@theme/CodeBlock';
 
-Version 2.6.0-201607280535 is a stable release.
-
-<!-- truncate -->
-
-Version 2.6.0-201607280535 is a stable release, adding support for BASEPRI, in order for RTOSes (like FreeRTOS, [µOS++ IIIe / CMSIS++](https://micro-os-plus.github.io)) to properly implement critical sections.
+Version **2.6.0-201607280535** is a stable release, adding support for BASEPRI, in order for RTOSes (like FreeRTOS, [µOS++ IIIe / CMSIS++](https://micro-os-plus.github.io)) to properly implement critical sections.
 
 <!-- truncate -->
 
-<p><a href={frontMatter.download_url}>Binary files »</a></p>
+<PageMetadata title={frontMatter.seo_title} />
+
+## Download
+
+The binary files are available from <a href={frontMatter.download_url}>GitHub Releases</a>.
 
 ## Addressed issues
 

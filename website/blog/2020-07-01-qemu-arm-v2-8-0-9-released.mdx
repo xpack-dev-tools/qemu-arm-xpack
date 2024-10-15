@@ -1,5 +1,6 @@
 ---
 title: xPack QEMU Arm v2.8.0-9 released
+seo_title: Version 2.8.0-9 released
 description: Version 2.8.0-9 is a maintenance release of xPack QEMU Arm.
 keywords:
   - xpack
@@ -23,17 +24,15 @@ download_url: https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/tag/v2.
 
 ---
 
-<head>
-  <title>{frontMatter.title}</title>
-  <meta property="og:title" content={frontMatter.title} />
-</head>
+import {PageMetadata} from '@docusaurus/theme-common';
+import Image from '@theme/IdealImage';
+import CodeBlock from '@theme/CodeBlock';
 
-Version 2.8.0-9 is a maintenance release; it **adds support for running on Arm platforms**, like **Raspberry Pi**.
+Version **2.8.0-9** is a maintenance release; it **adds support for running on Arm platforms**, like **Raspberry Pi**.
 
 <!-- truncate -->
 
-import Image from '@theme/IdealImage';
-import CodeBlock from '@theme/CodeBlock';
+<PageMetadata title={frontMatter.seo_title} />
 
 This is the **xPack** distribution of **QEMU** for Arm Cortex-M
 devices  (formerly part of the GNU MCU Eclipse project).

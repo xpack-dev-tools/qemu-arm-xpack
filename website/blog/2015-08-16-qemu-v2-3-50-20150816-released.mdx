@@ -1,5 +1,6 @@
 ---
 title: GNU ARM Eclipse QEMU v2.3.50-20150816*-dev released
+seo_title: Version 2.3.50-20150816*-dev released
 description: Version 2.3.50-201508161112 is a maintenance partial release of GNU ARM Eclipse QEMU.
 keywords:
   - xpack
@@ -20,20 +21,19 @@ download_url: https://github.com/gnu-mcu-eclipse/qemu/releases/tag/gae-2.3.50-20
 
 ---
 
-<head>
-  <title>{frontMatter.title}</title>
-  <meta property="og:title" content={frontMatter.title} />
-</head>
+import {PageMetadata} from '@docusaurus/theme-common';
+import Image from '@theme/IdealImage';
+import CodeBlock from '@theme/CodeBlock';
 
-Version 2.3.50-201508161112 is a maintenance partial release.
-
-<!-- truncate -->
-
-Version 2.3.50-201508161112 is a maintenance partial release, fixing the GNU/Linux distribution.
+Version **2.3.50-201508161112** is a maintenance partial release, fixing the GNU/Linux distribution.
 
 <!-- truncate -->
 
-<p><a href={frontMatter.download_url}>Binary files »</a></p>
+<PageMetadata title={frontMatter.seo_title} />
+
+## Download
+
+The binary files are available from <a href={frontMatter.download_url}>GitHub Releases</a>.
 
 ## Addressed issues
 

@@ -1,5 +1,6 @@
 ---
 title: GNU ARM Eclipse QEMU v2.8.0-20161227* released
+seo_title: Version 2.8.0-20161227* released
 description: Version 2.8.0-201612271623 is a new release of GNU ARM Eclipse QEMU.
 keywords:
   - xpack
@@ -16,26 +17,23 @@ tags:
 
 # ----- Custom properties -----------------------------------------------------
 
-app_name: "GNU ARM Eclipse QEMU"
-
 download_url: https://github.com/gnu-mcu-eclipse/qemu/releases/tag/gae-2.8.0-20161227/
 
 ---
 
-<head>
-  <title>{frontMatter.title}</title>
-  <meta property="og:title" content={frontMatter.title} />
-</head>
+import {PageMetadata} from '@docusaurus/theme-common';
+import Image from '@theme/IdealImage';
+import CodeBlock from '@theme/CodeBlock';
 
-Version 2.8.0-201612271623 is a new release.
-
-<!-- truncate -->
-
-Version 2.8.0-201612271623 is a new release, adding support for active graphical buttons to all supported boards.
+Version **2.8.0-201612271623** is a new release, adding support for active graphical buttons to all supported boards.
 
 <!-- truncate -->
 
-<p><a href={frontMatter.download_url}>Binary files »</a></p>
+<PageMetadata title={frontMatter.seo_title} />
+
+## Download
+
+The binary files are available from <a href={frontMatter.download_url}>GitHub Releases</a>.
 
 ## Changes
 

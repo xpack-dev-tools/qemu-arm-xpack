@@ -1,5 +1,6 @@
 ---
 title: xPack QEMU Arm v7.2.5-1 released
+seo_title: Version 7.2.5-1 released
 description: Version 7.2.5-1 is a new release of xPack QEMU Arm.
 keywords:
   - xpack
@@ -28,17 +29,15 @@ download_url: https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/tag/v7.
 
 ---
 
-<head>
-  <title>{frontMatter.title}</title>
-  <meta property="og:title" content={frontMatter.title} />
-</head>
+import {PageMetadata} from '@docusaurus/theme-common';
+import Image from '@theme/IdealImage';
+import CodeBlock from '@theme/CodeBlock';
 
 Version **7.2.5-1** is a new release; it follows the upstream QEMU release.
 
 <!-- truncate -->
 
-import Image from '@theme/IdealImage';
-import CodeBlock from '@theme/CodeBlock';
+<PageMetadata title={frontMatter.seo_title} />
 
 The [xPack QEMU Arm](https://xpack-dev-tools.github.io/qemu-arm-xpack/)
 is a standalone cross-platform binary distribution of

@@ -1,5 +1,6 @@
 ---
 title: GNU ARM Eclipse QEMU v2.3.50-20150801*-dev released
+seo_title: Version 2.3.50-20150801*-dev released
 description: Version 2.3.50-201508012214 is the first production release of GNU ARM Eclipse QEMU.
 keywords:
   - xpack
@@ -16,26 +17,23 @@ tags:
 
 # ----- Custom properties -----------------------------------------------------
 
-app_name: "GNU ARM Eclipse QEMU"
-
 download_url: https://github.com/gnu-mcu-eclipse/qemu/releases/tag/gae-2.3.50-20150801/
 
 ---
 
-<head>
-  <title>{frontMatter.title}</title>
-  <meta property="og:title" content={frontMatter.title} />
-</head>
+import {PageMetadata} from '@docusaurus/theme-common';
+import Image from '@theme/IdealImage';
+import CodeBlock from '@theme/CodeBlock';
 
-Version 2.3.50-201508012214 is the first production release.
-
-<!-- truncate -->
-
-Version 2.3.50-201508012214 is the first production release of the **GNU ARM Eclipse QEMU**. It supports a range of STM boards, and fully implements the user LEDs available on these boards, presenting them graphically, in real time animation, over the board picture.
+Version **2.3.50-201508012214** is the first production release of the **GNU ARM Eclipse QEMU**. It supports a range of STM boards, and fully implements the user LEDs available on these boards, presenting them graphically, in real time animation, over the board picture.
 
 <!-- truncate -->
 
-<p><a href={frontMatter.download_url}>Binary files »</a></p>
+<PageMetadata title={frontMatter.seo_title} />
+
+## Download
+
+The binary files are available from <a href={frontMatter.download_url}>GitHub Releases</a>.
 
 ## Animated LEDs
 

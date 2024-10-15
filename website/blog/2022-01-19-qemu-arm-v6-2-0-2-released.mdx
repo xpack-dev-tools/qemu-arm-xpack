@@ -1,5 +1,6 @@
 ---
 title: xPack QEMU Arm v6.2.0-2 released
+seo_title: Version 6.2.0-2 released
 description: Version 6.2.0-2 is a maintenance release of xPack QEMU Arm.
 keywords:
   - xpack
@@ -23,17 +24,15 @@ download_url: https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/tag/v6.
 
 ---
 
-<head>
-  <title>{frontMatter.title}</title>
-  <meta property="og:title" content={frontMatter.title} />
-</head>
+import {PageMetadata} from '@docusaurus/theme-common';
+import Image from '@theme/IdealImage';
+import CodeBlock from '@theme/CodeBlock';
 
 Version **6.2.0-2** is a maintenance release; it fixes graphical issues on macOS.
 
 <!-- truncate -->
 
-import Image from '@theme/IdealImage';
-import CodeBlock from '@theme/CodeBlock';
+<PageMetadata title={frontMatter.seo_title} />
 
 The [xPack QEMU Arm](https://xpack-dev-tools.github.io/qemu-arm-xpack/)
 is a standalone cross-platform binary distribution of
