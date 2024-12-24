@@ -1,0 +1,7 @@
+Sitemap: https://xpack-dev-tools.github.io/qemu-arm-xpack/sitemap.xml
+
+User-agent: *
+Disallow: /qemu-arm-xpack/blog/archive/
+Disallow: /qemu-arm-xpack/blog/authors/
+Disallow: /qemu-arm-xpack/blog/page/
+Disallow: /qemu-arm-xpack/blog/tags/
