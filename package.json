@@ -1,7 +1,7 @@
 {
   "name": "@xpack-dev-tools/qemu-arm",
   "version": "8.2.6-1.1",
-  "description": "A binary xPack with QEMU Arm executables",
+  "description": "A binary xpm package with QEMU Arm executables",
   "main": "",
   "scripts": {
     "postversion": "git push origin --all && git push origin --tags",
