@@ -13,7 +13,7 @@
     "url": "https://github.com/xpack-dev-tool/qemu-arm-xpack.git"
   },
   "bugs": {
-    "url": "https://github.com/xpack-dev-tool/qemu-arm-xpack/issues/"
+    "url": "https://github.com/xpack-dev-tool/qemu-arm-xpack/issues"
   },
   "homepage": "https://github.com/xpack-dev-tool/qemu-arm-xpack#readme",
   "keywords": [
@@ -24,7 +24,7 @@
   "author": {
     "name": "Liviu Ionescu",
     "email": "ilg@livius.net",
-    "url": "https://github.com/ilg-ul/"
+    "url": "https://github.com/ilg-ul"
   },
   "license": "MIT",
   "xpack": {
