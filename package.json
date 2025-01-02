@@ -10,12 +10,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/xpack-dev-tool/qemu-arm-xpack.git"
+    "url": "https://github.com/xpack-dev-tools/qemu-arm-xpack.git"
   },
   "bugs": {
-    "url": "https://github.com/xpack-dev-tool/qemu-arm-xpack/issues"
+    "url": "https://github.com/xpack-dev-tools/qemu-arm-xpack/issues"
   },
-  "homepage": "https://github.com/xpack-dev-tool/qemu-arm-xpack#readme",
+  "homepage": "https://xpack-dev-tools.github.io/qemu-arm-xpack/",
   "keywords": [
     "xpack",
     "qemu",
