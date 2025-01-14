@@ -4,13 +4,18 @@
   "description": "A binary xpm package with QEMU Arm executables",
   "main": "",
   "scripts": {
-    "postversion": "git push origin --all && git push origin --tags",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "liquidjs": "liquidjs"
+    "generate-top-commons": "bash node_modules/@xpack/npm-packages-helper/maintenance-scripts/generate-top-commons.sh --xpack-dev-tools",
+    "npm-install": "npm install",
+    "npm-link-helpers": "npm link @xpack/npm-packages-helper @xpack/docusaurus-template-liquid",
+    "npm-outdated": "npm outdated",
+    "npm-pack": "npm pack",
+    "npm-link": "npm link",
+    "deep-clean": "del-cli node_modules package-lock.json *.tgz",
+    "postversion": "git push origin --all && git push origin --tags"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/xpack-dev-tools/qemu-arm-xpack.git"
+    "url": "git+https://github.com/xpack-dev-tools/qemu-arm-xpack.git"
   },
   "bugs": {
     "url": "https://github.com/xpack-dev-tools/qemu-arm-xpack/issues"
@@ -65,5 +70,16 @@
       "qemu-system-aarch64": "./.content/bin/qemu-system-aarch64",
       "qemu-system-gnuarmeclipse": "./.content/bin/qemu-system-gnuarmeclipse"
     }
+  },
+  "devDependencies": {
+    "del-cli": "^6.0.0",
+    "json": "^11.0.0",
+    "liquidjs": "^10.19.1"
+  },
+  "topConfig": {
+    "longName": "QEMU Arm"
+  },
+  "engines": {
+    "node": " >=18.0.0"
   }
 }
