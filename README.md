@@ -5,8 +5,7 @@
 
 # The xPack QEMU Arm
 
-A standalone cross-platform (Windows, macOS, GNU/Linux)
-binary distribution of QEMU Arm,
+A standalone, cross-platform (Windows, macOS, GNU/Linux) binary distribution of QEMU Arm,
 intended for reproducible builds.
 
 ## Project documentation
