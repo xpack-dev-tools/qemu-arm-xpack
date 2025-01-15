@@ -40,7 +40,7 @@ The binary files are available from <a href={frontMatter.download_url}>GitHub Re
 
 ## Bug fixes
 
-- [[#62](https://github.com/gnu-mcu-eclipse/qemu/issues/62)] in certain
+- [[#62](https://github.com/gnu-mcu-eclipse/qemu/issues/62)]: in certain
   conditions, like half-word or byte accesses, clearing the STM32F GPIO pins
   was not effective; the problem was identified as an erroneous persistence
   of the BRR/BSRR registers, and was fixed by disabling the persistence.

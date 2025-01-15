@@ -40,14 +40,14 @@ The binary files are available from <a href={frontMatter.download_url}>GitHub Re
 
 ## Addressed issues
 
-- [Issue:[#21](https://github.com/gnu-mcu-eclipse/qemu/issues/21)] in the original QEMU, the Cortex-M3/M4/M7 `BASEPRI` register was ignored when processing interrupts, so it was not possible to implement critical sections by manipulating `BASEPRI`; fixed.
-- [Issue:[#13](https://github.com/gnu-mcu-eclipse/qemu/issues/13)] in certain conditions, writing a half word was not effective; fixed.
+- [[#21](https://github.com/gnu-mcu-eclipse/qemu/issues/21)]: in the original QEMU, the Cortex-M3/M4/M7 `BASEPRI` register was ignored when processing interrupts, so it was not possible to implement critical sections by manipulating `BASEPRI`; fixed.
+- [[#13](https://github.com/gnu-mcu-eclipse/qemu/issues/13)]: in certain conditions, writing a half word was not effective; fixed.
 - in the original QEMU, the **CoreDebug** registers were not implemented; added, with minimal functionality; in the `DHCSR` register, the `C_DEBUGEN` bit is set to 1 if the program runs under the GDB server.
-- [Issue:[#23](https://github.com/gnu-mcu-eclipse/qemu/issues/23)] make the `BKPT` instruction interrupt the CPU while in DEBUG
-- [Issue:[#20](https://github.com/gnu-mcu-eclipse/qemu/issues/20)] The special registered were not visible in the GDB server list; `MSP`, `PSP`, `PRIMASK`, `BASEPRI`, `FAULTMASK`, `CONTROL` were added.
-- [Issue:[#19](https://github.com/gnu-mcu-eclipse/qemu/issues/19)] in certain conditions, the resetting the peripheral registers was not effective; fixed.
+- [[#23](https://github.com/gnu-mcu-eclipse/qemu/issues/23)]: make the `BKPT` instruction interrupt the CPU while in DEBUG
+- [[#20](https://github.com/gnu-mcu-eclipse/qemu/issues/20)]: The special registered were not visible in the GDB server list; `MSP`, `PSP`, `PRIMASK`, `BASEPRI`, `FAULTMASK`, `CONTROL` were added.
+- [[#19](https://github.com/gnu-mcu-eclipse/qemu/issues/19)]: in certain conditions, the resetting the peripheral registers was not effective; fixed.
 - add reset for all USARTs on the STM32 devices.
-- [Issue:[#9](https://github.com/gnu-mcu-eclipse/qemu/issues/9)] the LEDs on the OLIMEX STM32-P107 board were swapped; fixed.
+- [[#9](https://github.com/gnu-mcu-eclipse/qemu/issues/9)]: the LEDs on the OLIMEX STM32-P107 board were swapped; fixed.
 
 ## Download
 

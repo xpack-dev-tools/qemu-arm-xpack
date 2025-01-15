@@ -128,7 +128,7 @@ available yet.
 
 ## Enhancements
 
-- [[#5](https://github.com/xpack-dev-tools/qemu/pull/5)] - add support
+- [[#5](https://github.com/xpack-dev-tools/qemu/pull/5)]: add support
 for STM32F407VGTx and STM32F429ZITx.
 
 ## Known problems

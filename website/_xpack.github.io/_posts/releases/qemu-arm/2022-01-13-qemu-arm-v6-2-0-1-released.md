@@ -347,7 +347,7 @@ Supported MCUs:
 
 ## Known problems
 
-- [[#18](https://github.com/xpack-dev-tools/qemu-arm-xpack/issues/18)]
+- [[#18](https://github.com/xpack-dev-tools/qemu-arm-xpack/issues/18)]:
 graphical mode on macOS is not functional, due to some
 QEMU internal issues related to SDL; fixed in 6.2.0-2, by
 reverting to Cocoa

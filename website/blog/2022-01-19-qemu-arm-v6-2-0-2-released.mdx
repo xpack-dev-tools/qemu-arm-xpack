@@ -302,7 +302,7 @@ In this old release, support for hardware floating point on Cortex-M4 devices is
 
 ## Bug fixes
 
-- [#18] the SDL requirement to run the graphical loop on the main thread
+- [[#18](https://github.com/xpack-dev-tools/qemu-arm-xpack/issues/18)]: the SDL requirement to run the graphical loop on the main thread
   is enforced on new macOS versions, and the QEMU SDL support requires some
   more work; revert to Cocoa; this also required running the x64 macOS
   build on macOS 10.14.

@@ -40,15 +40,15 @@ The binary files are available from <a href={frontMatter.download_url}>GitHub Re
 
 ## Bug fixes
 
-- [[#66](https://github.com/gnu-mcu-eclipse/qemu/issues/66)] for some STM32
+- [[#66](https://github.com/gnu-mcu-eclipse/qemu/issues/66)]: for some STM32
   devices, the USART SR reset value was wrong; fixed.
-- [[#63](https://github.com/gnu-mcu-eclipse/qemu/issues/63)] the command
+- [[#63](https://github.com/gnu-mcu-eclipse/qemu/issues/63)]: the command
   line option to set the total memory size (`-memory size=kb`) was ignored;
   fixed.
-- [[#43](https://github.com/gnu-mcu-eclipse/qemu/issues/43)] the values
+- [[#43](https://github.com/gnu-mcu-eclipse/qemu/issues/43)]: the values
   returned by the semihosting command `SYS_HEAPINFO` were not accurate;
   since these values cannot be computed, now the command returns all 0.
-- [[#39](https://github.com/gnu-mcu-eclipse/qemu/issues/39)] in certain
+- [[#39](https://github.com/gnu-mcu-eclipse/qemu/issues/39)]: in certain
   conditions, when referring an unknown board, the program crashed;
   fixed, now an error message is issued.
 

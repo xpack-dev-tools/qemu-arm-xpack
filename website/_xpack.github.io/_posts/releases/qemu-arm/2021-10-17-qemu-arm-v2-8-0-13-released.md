@@ -178,7 +178,7 @@ available yet.
 
 ## Bug fixes
 
-- [[#15](https://github.com/xpack-dev-tools/qemu/issues/15)] -
+- [[#15](https://github.com/xpack-dev-tools/qemu/issues/15)]:
 in certain conditions, with some linker script memory configurations,
 the emulator failed complaining that the flash regions overlap; the
 problem was fixed on in v2.11 and the two related patches were cherry
