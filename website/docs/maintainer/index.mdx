@@ -47,7 +47,7 @@ import PlatformDockerBuild from './_common/_platform-docker-build.mdx'
 # How to make new xPack QEMU Arm releases
 
 [![license](https://img.shields.io/github/license/xpack-dev-tools/qemu-arm-xpack)](https://github.com/xpack-dev-tools/qemu-arm-xpack/blob/xpack/LICENSE)
-[![GitHub issues](https://img.shields.io/github/issues/xpack-dev-tools/qemu-arm-xpack.svg)](https://github.com/xpack-dev-tools/qemu-arm-xpack/issues/)
+[![GitHub issues](https://img.shields.io/github/issues/xpack-dev-tools/qemu-arm-xpack.svg)](https://github.com/xpack-dev-tools/qemu-arm-xpack/issues)
 [![GitHub pulls](https://img.shields.io/github/issues-pr/xpack-dev-tools/qemu-arm-xpack.svg)](https://github.com/xpack-dev-tools/qemu-arm-xpack/pulls)
 
 This page is designed for maintainers of the
@@ -631,7 +631,7 @@ These commands use the `xpack-development` branch of this repo.
 <GitHubActionsDurations/>
 
 The workflow results and logs are available from the
-[GitHub Actions](https://github.com/xpack-dev-tools/qemu-arm-xpack/actions/) page.
+[GitHub Actions](https://github.com/xpack-dev-tools/qemu-arm-xpack/actions) page.
 
 Update the values in `website/docs/maintainer/_github-actions-durations.mdx`
 with those shown by GitHub Actions.
@@ -676,7 +676,7 @@ Some of the `docker-linux-arm` tests have an issue on Debian and the
 :::
 
 The tests results are available from the
-[GitHub Actions](https://github.com/xpack-dev-tools/qemu-arm-xpack/actions/) page.
+[GitHub Actions](https://github.com/xpack-dev-tools/qemu-arm-xpack/actions) page.
 
 After running the prime tests, download the test results and compare
 with previous runs.
@@ -738,10 +738,10 @@ xpm run trigger-workflow-publish-release -C ~/Work/xpack-dev-tools/qemu-arm-xpac
 ```
 
 The workflow result and logs are available from the
-[GitHub Actions](https://github.com/xpack-dev-tools/qemu-arm-xpack/actions/) page.
+[GitHub Actions](https://github.com/xpack-dev-tools/qemu-arm-xpack/actions) page.
 
 The result is a
-[draft pre-release](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/)
+[draft pre-release](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases)
 tagged like **v{customField('xpackVersion')}** (mind the dash in the middle!) and
 named like **xPack QEMU Arm v{customField('xpackVersion')}** (mind the dash),
 with all binaries attached.
@@ -849,7 +849,7 @@ xpm run trigger-workflow-test-xpm -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git/b
 This will install the package via `xpm install` on all supported platforms.
 
 The tests results are available from the
-[GitHub Actions](https://github.com/xpack-dev-tools/qemu-arm-xpack/actions/) page.
+[GitHub Actions](https://github.com/xpack-dev-tools/qemu-arm-xpack/actions) page.
 
 
 
@@ -915,7 +915,7 @@ Avoid further updates to the `xpack` branch until the next release.
 
 ### Create the final GitHub release
 
-- go to the [GitHub Releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/) page
+- go to the [GitHub Releases](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases) page
 - check the download counter, it should match the number of tests
 - add a link to the Web blog `[Continue reading »]()`; use an same blog URL
 - remove the _tests only_ notice
@@ -945,7 +945,7 @@ xpm run trigger-workflow-deep-clean -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git
 This will remove the build folders on all self-hosted runners.
 
 The results are available from the
-[GitHub Actions](https://github.com/xpack-dev-tools/qemu-arm-xpack/actions/) page.
+[GitHub Actions](https://github.com/xpack-dev-tools/qemu-arm-xpack/actions) page.
 
 ### Close possible open issues
 
@@ -962,7 +962,7 @@ Close those that were addressed.
 - using the **`@xpack_project`** account
 - paste the release name like _**xPack QEMU Arm v{customField('xpackVersion')} released**_
 - paste the link to the blog post
-  [release](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/)
+  [release](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases)
 - click the **Tweet** button
 
 <ShareCustom/>
@@ -971,8 +971,8 @@ Close those that were addressed.
 
 - GitHub [`xpack-dev-tools/qemu-arm-xpack`](https://github.com/xpack-dev-tools/qemu-arm-xpack/) repo
   - latest xPack release
-[![Github All Releases](https://img.shields.io/github/downloads/xpack-dev-tools/qemu-arm-xpack/latest/total.svg)](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/)
-  - all xPack releases [![Github All Releases](https://img.shields.io/github/downloads/xpack-dev-tools/qemu-arm-xpack/total.svg)](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/)
+[![Github All Releases](https://img.shields.io/github/downloads/xpack-dev-tools/qemu-arm-xpack/latest/total.svg)](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases)
+  - all xPack releases [![Github All Releases](https://img.shields.io/github/downloads/xpack-dev-tools/qemu-arm-xpack/total.svg)](https://github.com/xpack-dev-tools/qemu-arm-xpack/releases)
   - [individual file counters](https://somsubhra.github.io/github-release-stats/?username=xpack-dev-tools&repository=qemu-arm-xpack) (grouped by release)
 - npmjs.com [`@xpack-dev-tools/qemu-arm`](https://www.npmjs.com/package/@xpack-dev-tools/qemu-arm/) xPack
   - latest release, per month
