@@ -275,7 +275,7 @@ const config: Config = {
           label: 'GitHub',
           items: [
             {
-              label: `qemu-arm-xpack`,
+              label: `qemu-arm-xpack project`,
               href: `https://github.com/xpack-dev-tools/qemu-arm-xpack/`,
             },
             {
@@ -348,7 +348,7 @@ const config: Config = {
               href: 'https://www.paypal.com/donate/?hosted_button_id=5MFRG9ZRBETQ8',
             },
             {
-              label: 'GitHub qemu-arm-xpack',
+              label: 'GitHub qemu-arm-xpack project',
               href: 'https://github.com/xpack-dev-tools/qemu-arm-xpack/',
             },
             {
