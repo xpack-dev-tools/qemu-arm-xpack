@@ -57,7 +57,7 @@ platform specific archives.
 
 ## Automated install
 
-The easiest (and recommended) way to install QEMU Arm
+The easiest (and recommended) way to install xPack QEMU Arm
 is via **xpm** and the package available
 as <a href={`https://www.npmjs.com/package/@xpack-dev-tools/qemu-arm`}><code>@xpack-dev-tools/qemu-arm</code></a> from
 the [`npmjs.com`](https://www.npmjs.com) registry.
@@ -349,7 +349,7 @@ The above `xpm install` command will do the following:
   <code>xpacks/@xpack-dev-tools/qemu-arm/.content/bin</code>;
 * add <code>@xpack-dev-tools/qemu-arm</code> to
   `package.json` as a
-  development dependency; this associates a specific version of QEMU Arm with
+  development dependency; this associates a specific version of xPack QEMU Arm with
   the current project (details below).
 
 :::tip
@@ -405,7 +405,7 @@ This is particularly useful for CI/CD environments.
 ### Install globally
 
 For older development environments,
-it is also possible to install QEMU Arm only globally in
+it is also possible to install xPack QEMU Arm only globally in
 the **user global xPacks store**, without any
 local links/forwarders; it
 is the developer's responsibility to configure the path to the tools.
@@ -427,7 +427,7 @@ install the packages globally will fail with _already installed_.
 <details>
 <summary>PATH setup</summary>
 
-In order to access the QEMU Arm binaries installed in
+In order to access the xPack QEMU Arm binaries installed in
 the user global xPacks store,
 the project build configurations need a PATH adjustment:
 

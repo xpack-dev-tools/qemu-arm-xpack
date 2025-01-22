@@ -39,6 +39,10 @@ export const redirects = {
       to: '/docs/user',
     },
     {
+      from: '/docs/about',
+      to: '/docs/project/about',
+    },
+    {
       from: '/blog/2019/11/05/qemu-arm-v2-8-0-8-released/',
       to: '/blog/2019/11/04/qemu-arm-v2-8-0-8-released/',
     },
@@ -74,5 +78,5 @@ export const redirects = {
         existingPath.replace('/maintainer-info', '/maintainer')
       ];
     }
-}
+  }
 }
