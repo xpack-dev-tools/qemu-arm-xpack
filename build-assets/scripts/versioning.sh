@@ -68,7 +68,14 @@ function application_build_versioned_components()
 
     # required by glib
     # https://github.com/libffi/libffi/releases
-    libffi_build "3.4.6" # "3.4.4"
+    if [[ "${XBB_RELEASE_VERSION}" =~ 8[.]2[.][0-9]*-2 ]]
+    then
+      # On arm64 macOS, with clang 19, 3.4.6 fails with:
+      # error: invalid CFI advance_loc expression
+      libffi_build "3.4.7" # "3.4.6"
+    else
+      libffi_build "3.4.6" # "3.4.4"
+    fi
 
     # Without it gettext fails:
     # Undefined symbols for architecture x86_64:
