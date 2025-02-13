@@ -51,10 +51,6 @@
           "fileName": "xpack-qemu-arm-8.2.6-1-linux-arm64.tar.gz",
           "sha256": "e1f437379fe4acbbed11417ed991bfc504714c468cc61ea2291ca3d045a5e699"
         },
-        "linux-arm": {
-          "fileName": "xpack-qemu-arm-8.2.6-1-linux-arm.tar.gz",
-          "sha256": "d06182dcc1fec359a4b90aeca37c48f5f0882fdd83351cb8eea7caa25a63a5e0"
-        },
         "linux-x64": {
           "fileName": "xpack-qemu-arm-8.2.6-1-linux-x64.tar.gz",
           "sha256": "cda4027bba825d7974a047e8c02bcbc263f39ea91ac34e4955fe0de8c5d509f7"
