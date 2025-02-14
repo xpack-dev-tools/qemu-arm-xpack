@@ -95,6 +95,7 @@ function application_build_versioned_components()
     then
       # required by readline
       # https://ftp.gnu.org/gnu/termcap/
+      # PATCH!
       termcap_build "1.3.1"
     fi
 
@@ -207,7 +208,12 @@ function application_build_versioned_components()
       XBB_QEMU_ARM_LEGACY_GIT_COMMIT="${XBB_QEMU_ARM_LEGACY_GIT_COMMIT:-"v${XBB_QEMU_ARM_LEGACY_VERSION}-xpack-legacy"}"
       XBB_QEMU_ARM_LEGACY_GIT_PATCH="none"
 
-      qemu_arm_legacy_build "${XBB_QEMU_ARM_LEGACY_VERSION}"
+      if [[ "${XBB_RELEASE_VERSION}" =~ 8[.]2[.][0-9]*-2 ]]
+      then
+        : # Not any more.
+      else
+        qemu_arm_legacy_build "${XBB_QEMU_ARM_LEGACY_VERSION}"
+      fi
     fi
 
   elif [[ "${XBB_RELEASE_VERSION}" =~ 8[.]1[.][0-9]*-[0-9]* ]]
