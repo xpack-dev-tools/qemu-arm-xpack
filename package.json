@@ -63,8 +63,7 @@
     },
     "bin": {
       "qemu-system-arm": "./.content/bin/qemu-system-arm",
-      "qemu-system-aarch64": "./.content/bin/qemu-system-aarch64",
-      "qemu-system-gnuarmeclipse": "./.content/bin/qemu-system-gnuarmeclipse"
+      "qemu-system-aarch64": "./.content/bin/qemu-system-aarch64"
     }
   },
   "devDependencies": {
