@@ -33,7 +33,7 @@
   },
   "license": "MIT",
   "xpack": {
-    "minimumXpmRequired": "0.16.3",
+    "minimumXpmRequired": "0.20.5",
     "binaries": {
       "destination": "./.content",
       "baseUrl": "https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/download/v8.2.6-1",
@@ -61,7 +61,7 @@
         }
       }
     },
-    "bin": {
+    "executables": {
       "qemu-system-arm": "./.content/bin/qemu-system-arm",
       "qemu-system-aarch64": "./.content/bin/qemu-system-aarch64"
     }
