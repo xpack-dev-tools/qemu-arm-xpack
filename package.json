@@ -72,8 +72,9 @@
     "liquidjs": "^10.19.1"
   },
   "topConfig": {
-    "longName": "QEMU Arm",
-    "shortName": "qemu-arm"
+    "descriptiveName": "QEMU Arm",
+    "permalinkName": "qemu-arm",
+    "useSelfHostedRunners": "true"
   },
   "engines": {
     "node": " >=18.0.0"
