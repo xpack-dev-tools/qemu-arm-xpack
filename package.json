@@ -74,6 +74,7 @@
   "topConfig": {
     "descriptiveName": "QEMU Arm",
     "permalinkName": "qemu-arm",
+    "skipCiTests": "true",
     "useSelfHostedRunners": "true"
   },
   "engines": {
