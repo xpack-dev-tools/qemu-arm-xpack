@@ -15,7 +15,7 @@
 
   on:
     schedule:
-      - cron: '39 15 * * 6' # every Sunday
+      - cron: '25 13 * * 6' # every Sunday
     workflow_dispatch:
 
   jobs:
@@ -67,7 +67,7 @@
             platforms="win32-x64,win32-ia32,linux-x64,linux-ia32,linux-arm64,linux-arm,darwin-x64"
             download_sourceforge "${name}" "2.8.0-13" ${threshold} "${platforms}"
             download_sourceforge "${name}" "2.8.0-12" ${threshold} "${platforms}"
- 
+
             # 2020
             platforms="win32-x64,win32-ia32,linux-x64,linux-ia32,linux-arm64,linux-arm,darwin-x64"
             download_sourceforge "${name}" "2.8.0-11" ${threshold} "${platforms}"
