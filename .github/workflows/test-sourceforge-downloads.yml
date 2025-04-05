@@ -1,0 +1,82 @@
+# -----------------------------------------------------------------------------
+#
+# This file is part of the xPack project (http://xpack.github.io).
+# Copyright (c) 2025 Liviu Ionescu. All rights reserved.
+#
+# Permission to use, copy, modify, and/or distribute this software
+# for any purpose is hereby granted, under the terms of the MIT license.
+#
+# If a copy of the license was not distributed with this file, it can
+# be obtained from https://opensource.org/licenses/MIT.
+#
+# -----------------------------------------------------------------------------
+
+  name: 'Test SourceForge downloads'
+
+  on:
+    schedule:
+      - cron: '39 15 * * 6' # every Sunday
+    workflow_dispatch:
+
+  jobs:
+    test:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v2
+          with:
+            repository: xpack-dev-tools/xbb-helper-xpack
+            ref: 'xpack-development'
+
+        - name: Show environment
+          run: |
+            ls -lLA
+            env | sort | grep -E '^[^ \t]+='
+
+        - name: Run test
+          run: |
+            #!/usr/bin/env bash
+            set -e
+
+            # The script is in the xbb-helper-xpack repo.
+            source maintenance-scripts/download-sourceforge-source.sh
+
+            date
+
+            # https://sourceforge.net/projects/qemu-arm-xpack/files/
+            name="qemu-arm"
+            threshold=0 # 16383 # (50%)
+
+            # 2024
+            platforms="win32-x64,linux-x64,linux-arm64,linux-arm,darwin-x64,darwin-arm64"
+            download_sourceforge "${name}" "8.2.6-1" ${threshold} "${platforms}"
+            download_sourceforge "${name}" "8.2.2-1" ${threshold} "${platforms}"
+
+            # 2023
+            platforms="win32-x64,linux-x64,linux-arm64,linux-arm,darwin-x64,darwin-arm64"
+            download_sourceforge "${name}" "7.2.5-1" ${threshold} "${platforms}"
+            download_sourceforge "${name}" "7.2.0-1" ${threshold} "${platforms}"
+
+            # 2022
+            platforms="win32-x64,linux-x64,linux-arm64,linux-arm,darwin-x64,darwin-arm64"
+            download_sourceforge "${name}" "7.1.0-1" ${threshold} "${platforms}"
+            download_sourceforge "${name}" "7.0.0-1" ${threshold} "${platforms}"
+            download_sourceforge "${name}" "6.2.0-2" ${threshold} "${platforms}"
+
+            # 2021
+            platforms="win32-x64,win32-ia32,linux-x64,linux-ia32,linux-arm64,linux-arm,darwin-x64"
+            download_sourceforge "${name}" "2.8.0-13" ${threshold} "${platforms}"
+            download_sourceforge "${name}" "0.58.2-1" ${threshold} "${platforms}"
+            download_sourceforge "${name}" "0.57.2-1" ${threshold} "${platforms}"
+            download_sourceforge "${name}" "0.56.2-2" ${threshold} "${platforms}"
+
+            # 2020
+            platforms="win32-x64,win32-ia32,linux-x64,linux-ia32,linux-arm64,linux-arm,darwin-x64"
+            download_sourceforge "${name}" "2.8.0-11" ${threshold} "${platforms}"
+            download_sourceforge "${name}" "2.8.0-10" ${threshold} "${platforms}"
+            download_sourceforge "${name}" "2.8.0-9" ${threshold} "${platforms}"
+
+            # 2019
+            platforms="win32-x64,win32-x32,linux-x64,linux-x32,darwin-x64"
+            download_sourceforge "${name}" "2.8.0-8" ${threshold} "${platforms}"
+            download_sourceforge "${name}" "2.8.0-7" ${threshold} "${platforms}"
