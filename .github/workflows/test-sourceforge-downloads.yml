@@ -47,32 +47,29 @@
             name="qemu-arm"
             threshold=16383 # (50%)
 
-            # 2024
+            # 2025
+            platforms="win32-x64,linux-x64,linux-arm64,darwin-x64,darwin-arm64"
+
+            # 2024-2022
             platforms="win32-x64,linux-x64,linux-arm64,linux-arm,darwin-x64,darwin-arm64"
+
             download_sourceforge "${name}" "8.2.6-1" ${threshold} "${platforms}"
             download_sourceforge "${name}" "8.2.2-1" ${threshold} "${platforms}"
-
-            # 2023
-            platforms="win32-x64,linux-x64,linux-arm64,linux-arm,darwin-x64,darwin-arm64"
             download_sourceforge "${name}" "7.2.5-1" ${threshold} "${platforms}"
             download_sourceforge "${name}" "7.2.0-1" ${threshold} "${platforms}"
-
-            # 2022
-            platforms="win32-x64,linux-x64,linux-arm64,linux-arm,darwin-x64,darwin-arm64"
             download_sourceforge "${name}" "7.1.0-1" ${threshold} "${platforms}"
             download_sourceforge "${name}" "7.0.0-1" ${threshold} "${platforms}"
             download_sourceforge "${name}" "6.2.0-2" ${threshold} "${platforms}"
 
             # 2021
             platforms="win32-x64,win32-ia32,linux-x64,linux-ia32,linux-arm64,linux-arm,darwin-x64"
+
             download_sourceforge "${name}" "2.8.0-13" ${threshold} "${platforms}"
             download_sourceforge "${name}" "2.8.0-12" ${threshold} "${platforms}"
-
-            # 2020
-            platforms="win32-x64,win32-ia32,linux-x64,linux-ia32,linux-arm64,linux-arm,darwin-x64"
             download_sourceforge "${name}" "2.8.0-11" ${threshold} "${platforms}"
 
-            # 2019
-            platforms="win32-x64,win32-x32,linux-x64,linux-x32,darwin-x64"
+            # 2020
+            platforms="win32-x64,win32-x32,linux-x64,linux-x32,linux-arm64,linux-arm,darwin-x64"
+
             download_sourceforge "${name}" "2.8.0-10" ${threshold} "${platforms}"
             download_sourceforge "${name}" "2.8.0-9" ${threshold} "${platforms}"
