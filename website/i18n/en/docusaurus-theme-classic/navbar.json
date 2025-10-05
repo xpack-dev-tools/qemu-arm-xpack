@@ -1,0 +1,90 @@
+{
+  "title": {
+    "message": "The xPack Binary Tools",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "xPack Logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.qemu-arm": {
+    "message": "qemu-arm",
+    "description": "Navbar item with label qemu-arm"
+  },
+  "item.label.Documentation": {
+    "message": "Documentation",
+    "description": "Navbar item with label Documentation"
+  },
+  "item.label.Blog": {
+    "message": "Blog",
+    "description": "Navbar item with label Blog"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  },
+  "item.label.9.2.4-1": {
+    "message": "9.2.4-1",
+    "description": "Navbar item with label 9.2.4-1"
+  },
+  "item.label.Getting Started": {
+    "message": "Getting Started",
+    "description": "Navbar item with label Getting Started"
+  },
+  "item.label.Installation Guide": {
+    "message": "Installation Guide",
+    "description": "Navbar item with label Installation Guide"
+  },
+  "item.label.User's Guide": {
+    "message": "User's Guide",
+    "description": "Navbar item with label User's Guide"
+  },
+  "item.label.Contributor's Guide": {
+    "message": "Contributor's Guide",
+    "description": "Navbar item with label Contributor's Guide"
+  },
+  "item.label.Maintainer's Guide": {
+    "message": "Maintainer's Guide",
+    "description": "Navbar item with label Maintainer's Guide"
+  },
+  "item.label.FAQ": {
+    "message": "FAQ",
+    "description": "Navbar item with label FAQ"
+  },
+  "item.label.Help Centre": {
+    "message": "Help Centre",
+    "description": "Navbar item with label Help Centre"
+  },
+  "item.label.Releases": {
+    "message": "Releases",
+    "description": "Navbar item with label Releases"
+  },
+  "item.label.About": {
+    "message": "About",
+    "description": "Navbar item with label About"
+  },
+  "item.label.Recent": {
+    "message": "Recent",
+    "description": "Navbar item with label Recent"
+  },
+  "item.label.Archive": {
+    "message": "Archive",
+    "description": "Navbar item with label Archive"
+  },
+  "item.label.Tags": {
+    "message": "Tags",
+    "description": "Navbar item with label Tags"
+  },
+  "item.label.qemu-arm-xpack project": {
+    "message": "qemu-arm-xpack project",
+    "description": "Navbar item with label qemu-arm-xpack project"
+  },
+  "item.label.xpack org": {
+    "message": "xpack org",
+    "description": "Navbar item with label xpack org"
+  },
+  "item.label.xpack-dev-tools org": {
+    "message": "xpack-dev-tools org",
+    "description": "Navbar item with label xpack-dev-tools org"
+  }
+}

@@ -17,7 +17,7 @@ For information on how to install and use this project, please refer to the
 ## Project source
 
 The source code of the current release is available on
-[GitHub tag v8.2.6-1.1 tree](https://github.com/xpack-dev-tools/qemu-arm-xpack/tree/v8.2.6-1.1).
+[GitHub tag v9.2.4-1.1 tree](https://github.com/xpack-dev-tools/qemu-arm-xpack/tree/v9.2.4-1.1).
 
 ## License
 

@@ -2,8 +2,287 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2025-10-05
+
+* v9.2.4-1 prepared
+* 2cfd622 re-generate website commons
+* d450250 re-generate top commons
+
+## 2025-04-09
+
+* af006bf test-sourceforge*: on every Saturday
+
+## 2025-04-06
+
+* 49ab73f test-sourceforge-downloads.yml update
+
+## 2025-04-05
+
+* d3a75db test-sourceforge-downloads.yml update
+* 063ec37 test-sourceforge-downloads.yml update
+* 3a8f681 test-sourceforge-downloads.yml update
+* 8f9b1fa test-sourceforge-downloads.yml update
+* aeb06bd add test-sourceforge-downloads.yml
+
+## 2025-03-23
+
+* e5e2668 update /licenses/MIT
+* 845ea8f website: re-generate commons
+* 4bcc3fe re-generate commons
+* 1d5247c website package.json shareOnTwitter update
+* 9017a52 website package.json author update
+* fc8de8e website generate-website-commons update
+
+## 2025-02-24
+
+* 4a23ce2 website: re-generate descriptive & permalink names
+* d6da8ae re-generate descriptive & permalink names
+
+## 2025-02-23
+
+* fe3f372 website: re-generate commons
+* 8192817 re-generate commons
+
+## 2025-02-21
+
+* 413d1ba website: project/history update
+
+## 2025-02-18
+
+* 7171360 package.json: bump minimumXpmRequired 0.20.5
+* 477a85b package.json: bump xpm 0.20.5
+
+## 2025-02-16
+
+* 4531099 package-lock.json update
+
+## 2025-02-14
+
+* a33204c package.json: remove qemu-system-gnuarmeclipse
+* 23c00cb pacakge.json: revert version to 8.2.6-1.1
+* c4425cb versioning.sh: disable qemu_arm_legacy_build
+* 7f850bb re-generate commons
+* 73c722b re-generate commons
+
+## 2025-02-13
+
+* e353e45 re-generate commons
+
+## 2025-02-10
+
+* 77e1a17 8.2.6-2 with ffi3.4.7
+
+## 2025-02-07
+
+* 518cd52 website: re-generate commons
+
+## 2025-02-04
+
+* 554781b website: re-generate commons
+* 119a61e build-assets: update generate-website-blog-post
+
+## 2025-02-03
+
+* fc8aa86 build-assets: bump deps
+* 5b898bb website: re-generate commons
+* ba5a32f website: re-generate commons
+
+## 2025-02-02
+
+* 817e04b website: re-generate commons
+
+## 2025-01-31
+
+* b103eb7 website: updates and final common rework
+
+## 2025-01-30
+
+* 184cfd5 website: rework getting-started
+* 1817c72 website: more rework with commons
+
+## 2025-01-29
+
+* 7e3d844 website: more rework with commons
+
+## 2025-01-27
+
+* 0958df8 website: cosmetise imports
+
+## 2025-01-26
+
+* 0dc9e05 website: rework with _project
+
+## 2025-01-23
+
+* 94929d6 website: re-generate commons
+
+## 2025-01-22
+
+* 52457d4 website: re-generate commons
+
+## 2025-01-21
+
+* 46a4148 build-assets: cleanup actions
+* 5db8693 website: re-generate commons
+* d4ee1b4 website: re-generate commons
+* d770e3b website: re-generate commons
+
+## 2025-01-20
+
+* 919a2fe re-generate commons
+* 3234105 website: re-generate commons
+
+## 2025-01-19
+
+* a6e9e52 website: remove unused customField.js
+* cf57265 build-assets: move customFields to websiteConfig
+* c7a6048 website: re-generate commons
+
+## 2025-01-17
+
+* 9ef764c website: re-generate commons
+* 8d67176 re-generate commons
+* 0d535b2 website: re-generate commons
+
+## 2025-01-16
+
+* 88e0903 website: re-generate commons
+* 2f00b5a re-generate commons
+
+## 2025-01-15
+
+* f5c4753 website: updates
+* 6a0a613 re-generate commons
+
+## 2025-01-14
+
+* c90e1bd re-generate commons
+* 4e330db re-generate commons
+
+## 2025-01-13
+
+* a13fefe re-generate workflows
+* 828b008 copyright updates
+* 12cb550 copyright updates
+
+## 2025-01-10
+
+* 8db54f3 website: updates
+* 7412fcc website: updates
+* ca117e5 website: updates
+
+## 2025-01-09
+
+* 296d7f9 build-assets/package.json: bump deps
+* bb7c69d website: updates
+
+## 2025-01-02
+
+* f4b77b2 top package.json: fix homepage url
+* 0d44c0b package.json: cosmetics
+* a7387a8 website: updates
+* 8950e02 build-assets/package.json: bump deps
+
+## 2024-12-31
+
+* 9a5455b website: updates
+
+## 2024-12-30
+
+* cc989d2 package.json: bump deps
+* 33435a7 website: updates
+
+## 2024-12-24
+
+* efee30f website: updates
+* 5853c6c website: updates
+
+## 2024-12-22
+
+* 1cad71d website: update redirects
+* 9754598 website: updates
+* 851c3cd website: add _xpack.github.io
+
+## 2024-12-20
+
+* b0c3da9 website: updates
+* b1b29e5 website: updates
+* d80c19e website: updates
+
+## 2024-12-11
+
+* 2d5ba66 website: updates
+* 9518050 website/blog updates
+* 6128f19 website/blog/_templates/blog-post-release*
+* 7173585 build-assets/package.json: bump deps
+
+## 2024-12-04
+
+* 815fbcc website: updates
+
+## 2024-10-15
+
+* 31bb066 website: updates
+* b11abc3 website: updates
+
+## 2024-10-14
+
+* 704ce47 website: updates
+
+## 2024-10-13
+
+* 236ca1f website: updates
+* 66fb848 website: updates
+* 4cb24b3 website: updates
+
+## 2024-10-11
+
+* b2953b4 website: updates
+* d817559 website/blog/_templates/blog-post-release*
+* f595777 website/blog/_templates/blog-post-release*
+
+## 2024-10-10
+
+* 5f71b1b website: updates
+* fa024dc website: updates
+
+## 2024-10-09
+
+* 5ab32a8 website move blog post templates
+* 2f65025 website: updates
+* 3f4cc79 website: updates
+
+## 2024-10-07
+
+* 73a4740 website: updates
+* d72ff1d ISSUE_TEMPLATE update
+* 7c157f1 website: updates
+
+## 2024-10-06
+
+* 7bdbcbc website: updates
+* 4ea0549 website: updates
+* a95029c re-generate workflows
+
+## 2024-10-04
+
+* 7547ce3 website: updates
+* a4249ec templates/body-blog update
+
+## 2024-09-18
+
+* 7ba619b website: updates
+* 4335f26 website update
+* 2d0c8b6 build-assets/package.json: bump deps
+* a708919 build-assets/templates updates
+
 ## 2024-09-12
 
+* aeb95ae website update
+* f685e0a build-assets/templates update
+* 6cdd7d7 website update
+* 7cf8b8e 8.2.6-1.1
+* fbd7977 CHANGELOG: publish npm v8.2.6-1.1
 * v8.2.6-1 published on npmjs.com
 * 4517bf7 package.json: update urls for 8.2.6-1.1 release
 * 21b5679 blog post release 8.2.6-1 published
@@ -131,10 +410,12 @@ Entries in this file are in reverse chronological order.
 
 ## 2024-04-02
 
-2024-05-02 * 535a236 package.json: clang 17.0.6-1.1
-2024-05-02 * b1d1f16 README update
-2024-04-02 * cecfb8f 8.2.2-1.1
-2024-04-02 * ed0a915 CHANGELOG: publish npm v8.2.2-1.1
+## 2024-05-02
+
+* 535a236 package.json: clang 17.0.6-1.1
+* b1d1f16 README update
+* cecfb8f 8.2.2-1.1
+* ed0a915 CHANGELOG: publish npm v8.2.2-1.1
 * d9dc847 package.json: update urls for 8.2.2-1.1 release
 * 78ea298 README update
 * 14f8eb4 body-jekyll update

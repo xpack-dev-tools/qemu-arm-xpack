@@ -76,7 +76,7 @@
     "programName": "qemu-system-arm",
     "branding": "xPack QEMU emulator version ",
     "$link": "https://gitlab.com/qemu-project/qemu/-/tags/",
-    "qemuReleaseDate": "16 Jul 2024",
+    "qemuReleaseDate": "28 May 2025",
     "shareOnTwitter": "true"
   },
   "engines": {

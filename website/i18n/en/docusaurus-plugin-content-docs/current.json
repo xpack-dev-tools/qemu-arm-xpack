@@ -1,0 +1,54 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.docsSidebar.category.Project": {
+    "message": "Project",
+    "description": "The label for category Project in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.link.License": {
+    "message": "License",
+    "description": "The label for link License in sidebar docsSidebar, linking to https://opensource.org/license/mit"
+  },
+  "sidebar.docsSidebar.doc.Getting Started": {
+    "message": "Getting Started",
+    "description": "The label for the doc item Getting Started in sidebar docsSidebar, linking to the doc getting-started/index"
+  },
+  "sidebar.docsSidebar.doc.Installation Guide": {
+    "message": "Installation Guide",
+    "description": "The label for the doc item Installation Guide in sidebar docsSidebar, linking to the doc install/index"
+  },
+  "sidebar.docsSidebar.doc.User's Guide": {
+    "message": "User's Guide",
+    "description": "The label for the doc item User's Guide in sidebar docsSidebar, linking to the doc user/index"
+  },
+  "sidebar.docsSidebar.doc.Contributor's Guide": {
+    "message": "Contributor's Guide",
+    "description": "The label for the doc item Contributor's Guide in sidebar docsSidebar, linking to the doc developer/index"
+  },
+  "sidebar.docsSidebar.doc.Maintainer's Guide": {
+    "message": "Maintainer's Guide",
+    "description": "The label for the doc item Maintainer's Guide in sidebar docsSidebar, linking to the doc maintainer/index"
+  },
+  "sidebar.docsSidebar.doc.FAQ": {
+    "message": "FAQ",
+    "description": "The label for the doc item FAQ in sidebar docsSidebar, linking to the doc faq/index"
+  },
+  "sidebar.docsSidebar.doc.Help Centre": {
+    "message": "Help Centre",
+    "description": "The label for the doc item Help Centre in sidebar docsSidebar, linking to the doc support/index"
+  },
+  "sidebar.docsSidebar.doc.Releases": {
+    "message": "Releases",
+    "description": "The label for the doc item Releases in sidebar docsSidebar, linking to the doc releases/index"
+  },
+  "sidebar.docsSidebar.doc.About": {
+    "message": "About",
+    "description": "The label for the doc item About in sidebar docsSidebar, linking to the doc project/about/index"
+  },
+  "sidebar.docsSidebar.doc.History": {
+    "message": "History",
+    "description": "The label for the doc item History in sidebar docsSidebar, linking to the doc project/history/index"
+  }
+}
