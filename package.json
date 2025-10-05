@@ -72,12 +72,13 @@
     "liquidjs": "^10.19.1"
   },
   "topConfig": {
-    "descriptiveName": "QEMU Arm",
+    "descriptiveName": "xPack QEMU Arm",
+    "upstreamDescriptiveName": "QEMU Arm",
     "permalinkName": "qemu-arm",
     "skipCiTests": "true",
-    "useSelfHostedRunners": "true"
+    "useSelfHostedRunners": "false"
   },
   "engines": {
-    "node": " >=18.0.0"
+    "node": " >=20.0"
   }
 }

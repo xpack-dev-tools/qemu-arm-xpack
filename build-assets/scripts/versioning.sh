@@ -84,7 +84,7 @@ function application_build_versioned_components()
     # ld: symbol(s) not found for architecture x86_64
     # clang-16: error: linker command failed with exit code 1 (use -v to see invocation)
 
-    # https://ftp.gnu.org/gnu/libunistring/
+    # https://ftpmirror.gnu.org/gnu/libunistring/
     libunistring_build "1.2" # "1.1"
 
     # required by glib
@@ -94,13 +94,13 @@ function application_build_versioned_components()
     if [ "${XBB_REQUESTED_HOST_PLATFORM}" == "win32" ]
     then
       # required by readline
-      # https://ftp.gnu.org/gnu/termcap/
+      # https://ftpmirror.gnu.org/gnu/termcap/
       # PATCH!
       termcap_build "1.3.1"
     fi
 
     # required by pcre2
-    # https://ftp.gnu.org/gnu/readline/
+    # https://ftpmirror.gnu.org/gnu/readline/
     # x86_64-w64-mingw32/bin/ld: cannot find -ltermcap
     readline_build "8.1.2" # ! "8.2" fails on mingw
 
@@ -133,7 +133,7 @@ function application_build_versioned_components()
       libssh_build "0.10.6" # "0.10.5"
 
       # meson checks for ncursesw, do not use --disable-lib-suffixes.
-      # https://ftp.gnu.org/gnu/ncurses/
+      # https://ftpmirror.gnu.org/gnu/ncurses/
       ncurses_build "6.4" --enable-lib-suffixes
     fi
 
@@ -150,7 +150,7 @@ function application_build_versioned_components()
     # https://www.oberhumer.com/opensource/lzo/
     lzo_build "2.10"
 
-    # https://ftp.gnu.org/gnu/nettle/
+    # https://ftpmirror.gnu.org/gnu/nettle/
     nettle_build "3.9.1" # "3.8.1"
 
     # https://www.cairographics.org/releases/
@@ -279,7 +279,7 @@ function application_build_versioned_components()
     # ld: symbol(s) not found for architecture x86_64
     # clang-16: error: linker command failed with exit code 1 (use -v to see invocation)
 
-    # https://ftp.gnu.org/gnu/libunistring/
+    # https://ftpmirror.gnu.org/gnu/libunistring/
     libunistring_build "1.1"
 
     # required by glib
@@ -289,12 +289,12 @@ function application_build_versioned_components()
     if [ "${XBB_REQUESTED_HOST_PLATFORM}" == "win32" ]
     then
       # required by readline
-      # https://ftp.gnu.org/gnu/termcap/
+      # https://ftpmirror.gnu.org/gnu/termcap/
       termcap_build "1.3.1"
     fi
 
     # required by pcre2
-    # https://ftp.gnu.org/gnu/readline/
+    # https://ftpmirror.gnu.org/gnu/readline/
     # x86_64-w64-mingw32/bin/ld: cannot find -ltermcap
     readline_build "8.1.2" # ! "8.2" fails on mingw
 
@@ -326,7 +326,7 @@ function application_build_versioned_components()
       libssh_build "0.10.5" # "0.10.4"
 
       # meson checks for ncursesw, make this explicit.
-      # https://ftp.gnu.org/gnu/ncurses/
+      # https://ftpmirror.gnu.org/gnu/ncurses/
       ncurses_build "6.4" --enable-lib-suffixes
     fi
 
@@ -343,7 +343,7 @@ function application_build_versioned_components()
     # https://www.oberhumer.com/opensource/lzo/
     lzo_build "2.10"
 
-    # https://ftp.gnu.org/gnu/nettle/
+    # https://ftpmirror.gnu.org/gnu/nettle/
     nettle_build "3.9.1" # "3.8.1"
 
     # https://www.cairographics.org/releases/
@@ -463,7 +463,7 @@ function application_build_versioned_components()
     # ld: symbol(s) not found for architecture x86_64
     # clang-16: error: linker command failed with exit code 1 (use -v to see invocation)
 
-    # https://ftp.gnu.org/gnu/libunistring/
+    # https://ftpmirror.gnu.org/gnu/libunistring/
     libunistring_build "1.1"
 
     # required by glib
@@ -473,12 +473,12 @@ function application_build_versioned_components()
     if [ "${XBB_REQUESTED_HOST_PLATFORM}" == "win32" ]
     then
       # required by readline
-      # https://ftp.gnu.org/gnu/termcap/
+      # https://ftpmirror.gnu.org/gnu/termcap/
       termcap_build "1.3.1"
     fi
 
     # required by pcre2
-    # https://ftp.gnu.org/gnu/readline/
+    # https://ftpmirror.gnu.org/gnu/readline/
     # x86_64-w64-mingw32/bin/ld: cannot find -ltermcap
     readline_build "8.1.2"
 
@@ -510,7 +510,7 @@ function application_build_versioned_components()
       libssh_build "0.10.4" # "0.10.1"
 
       # meson checks for ncursesw, make this explicit.
-      # https://ftp.gnu.org/gnu/ncurses/
+      # https://ftpmirror.gnu.org/gnu/ncurses/
       ncurses_build "6.4" --enable-lib-suffixes # "6.3"
     fi
 
@@ -527,7 +527,7 @@ function application_build_versioned_components()
     # https://www.oberhumer.com/opensource/lzo/
     lzo_build "2.10"
 
-    # https://ftp.gnu.org/gnu/nettle/
+    # https://ftpmirror.gnu.org/gnu/nettle/
     nettle_build "3.8.1"
 
     # https://www.cairographics.org/releases/
@@ -657,12 +657,12 @@ function application_build_versioned_components()
     if [ "${XBB_REQUESTED_HOST_PLATFORM}" == "win32" ]
     then
       # required by readline
-      # https://ftp.gnu.org/gnu/termcap/
+      # https://ftpmirror.gnu.org/gnu/termcap/
       termcap_build "1.3.1"
     fi
 
     # required by pcre2
-    # https://ftp.gnu.org/gnu/readline/
+    # https://ftpmirror.gnu.org/gnu/readline/
     # x86_64-w64-mingw32/bin/ld: cannot find -ltermcap
     readline_build "8.1.2"
 
@@ -694,7 +694,7 @@ function application_build_versioned_components()
       libssh_build "0.10.1" # "0.9.6"
 
       # meson checks for ncursesw, make this explicit.
-      # https://ftp.gnu.org/gnu/ncurses/
+      # https://ftpmirror.gnu.org/gnu/ncurses/
       ncurses_build "6.3" --enable-lib-suffixes
     fi
 
@@ -711,7 +711,7 @@ function application_build_versioned_components()
     # https://www.oberhumer.com/opensource/lzo/
     lzo_build "2.10"
 
-    # https://ftp.gnu.org/gnu/nettle/
+    # https://ftpmirror.gnu.org/gnu/nettle/
     nettle_build "3.8.1" # "3.7.3"
 
     # https://www.cairographics.org/releases/

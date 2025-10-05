@@ -13,10 +13,10 @@
   "xpack": {
     "minimumXpmRequired": "0.20.5",
     "devDependencies": {
-      "@xpack-dev-tools/xbb-helper": "^3.1.13"
+      "@xpack-dev-tools/xbb-helper": "github:xpack-dev-tools/xbb-helper-xpack#v4.2.0"
     },
     "properties": {
-      "$platforms": "linux-x64,linux-arm64,linux-arm,darwin-x64,darwin-arm64,win32-x64",
+      "$platforms": "linux-x64,linux-arm64,darwin-x64,darwin-arm64,win32-x64",
       "platforms": "all",
       "buildFolderRelativePath": "{{'build' | path_join: configuration.name | to_filename | downcase}}",
       "buildFolderRelativePathPosix": "{{'build' | path_posix_join: configuration.name | downcase}}",
@@ -48,16 +48,13 @@
       "trigger-workflow-build-linux-x64": "bash xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-build.sh --workflow build-linux-x64.yml --xpm-version {{properties.xpm-version}} --loglevel {{properties.xpm-install-loglevel}}",
       "trigger-workflow-build-win32-x64": "bash xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-build.sh --workflow build-win32-x64.yml --xpm-version {{properties.xpm-version}} --loglevel {{properties.xpm-install-loglevel}}",
       "trigger-workflow-build-linux-arm64": "bash xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-build.sh --workflow build-linux-arm64.yml --xpm-version {{properties.xpm-version}} --loglevel {{properties.xpm-install-loglevel}}",
-      "trigger-workflow-build-linux-arm": "bash xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-build.sh --workflow build-linux-arm.yml --xpm-version {{properties.xpm-version}} --loglevel {{properties.xpm-install-loglevel}}",
       "trigger-workflow-test-prime": "bash xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-test-prime.sh",
       "trigger-workflow-test-docker-linux-x64": "bash xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-test-docker-linux-x64.sh",
       "trigger-workflow-test-docker-linux-arm": "bash xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-test-docker-linux-arm.sh",
-      "trigger-travis-macos": "bash xpacks/@xpack-dev-tools/xbb-helper/travis/trigger-travis-macos.sh",
       "trigger-workflow-publish-release": "bash xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-publish-release.sh",
       "generate-website-blog-post": "cd ../website; npm run generate-website-blog-post",
       "update-package-binaries": "bash xpacks/@xpack-dev-tools/xbb-helper/github-actions/update-package-binaries.sh",
       "trigger-workflow-test-xpm": "bash xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-test-xpm.sh",
-      "trigger-workflow-deep-clean": "bash xpacks/@xpack-dev-tools/xbb-helper/github-actions/trigger-workflow-deep-clean.sh",
       "test-native": "bash {{properties.dbg}} scripts/test.sh",
       "test-pre-release": "bash {{properties.dbg}} scripts/test.sh --base-url pre-release --development --cache",
       "test-release": "bash {{properties.dbg}} scripts/test.sh --base-url pre-release --development --cache",
