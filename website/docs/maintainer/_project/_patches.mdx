@@ -3,6 +3,7 @@
 
 ### Patches
 
-The build uses two patches, one done with `sed` directly in the source tree,
-to add `xPack` to the greeting message, and one generated with `git diff`,
-to add support for macOS 10.13 (located in the helper `patches` folder).
+The build applies patches using `sed` directly in the source tree
+to add `xPack` to the greeting message.
+
+The patches that previously added support for macOS 10.13 are no longer used.
