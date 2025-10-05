@@ -152,7 +152,7 @@ function application_build_versioned_components()
     nettle_build "3.9.1"
 
     # https://www.cairographics.org/releases/
-    pixman_build  "0.46.4" # "0.43.4"
+    pixman_build "0.43.4" # "0.46.4" - downgraded due to Meson iwmmxt option issue
 
     # https://github.com/Homebrew/homebrew-core/blob/master/Formula/snappy.rb
     # snappy - Compression/decompression library aiming for high speed
