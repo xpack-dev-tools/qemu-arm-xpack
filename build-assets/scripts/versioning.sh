@@ -53,6 +53,10 @@ function application_build_versioned_components()
     # https://www.ijg.org/files/
     jpeg_build "9f"
 
+    # required by libxml2
+    # https://github.com/unicode-org/icu/releases
+    icu4c_build "77.1"
+
     # https://gitlab.gnome.org/GNOME/libxml2/-/releases
     libxml2_build "2.15.0" # "2.12.6"
 
@@ -95,6 +99,7 @@ function application_build_versioned_components()
     # required by pcre2
     # https://ftpmirror.gnu.org/gnu/readline/
     # x86_64-w64-mingw32/bin/ld: cannot find -ltermcap
+    # PATCH!
     readline_build "8.3" # "8.1.2" # ! "8.2" fails on mingw
 
     # https://github.com/PCRE2Project/pcre2/releases
