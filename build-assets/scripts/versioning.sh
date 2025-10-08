@@ -104,8 +104,26 @@ function application_build_versioned_components()
     # required by pcre2
     # https://ftpmirror.gnu.org/gnu/readline/
     # x86_64-w64-mingw32/bin/ld: cannot find -ltermcap
+
+    # "8.3" ("8.2") fail on mingw
+    #     /home/ilg/Work/xpack-dev-tools/qemu-arm-xpack.git/build-assets/build/win32-x64/sources/readline-8.3/terminal.c:265:1: error: conflicting types for '_rl_tcgetwinsize'; have 'int(int,  struct winsize *)'
+    #   265 | _rl_tcgetwinsize (int tty, struct winsize *wp)
+    #       | ^~~~~~~~~~~~~~~~
+    # In file included from /home/ilg/Work/xpack-dev-tools/qemu-arm-xpack.git/build-assets/build/win32-x64/sources/readline-8.3/rltty.h:43,
+    #                  from /home/ilg/Work/xpack-dev-tools/qemu-arm-xpack.git/build-assets/build/win32-x64/sources/readline-8.3/terminal.c:58:
+    # /home/ilg/Work/xpack-dev-tools/qemu-arm-xpack.git/build-assets/build/win32-x64/sources/readline-8.3/rlwinsize.h:58:12: note: previous declaration of '_rl_tcgetwinsize' with type 'int(int,  struct winsize *)'
+    #    58 | extern int _rl_tcgetwinsize (int, struct winsize *);
+    #       |            ^~~~~~~~~~~~~~~~
+    # /home/ilg/Work/xpack-dev-tools/qemu-arm-xpack.git/build-assets/build/win32-x64/sources/readline-8.3/terminal.c:277:1: error: conflicting types for '_rl_tcsetwinsize'; have 'void(int,  struct winsize *)'
+    #   277 | _rl_tcsetwinsize (int tty, struct winsize *wp)
+    #       | ^~~~~~~~~~~~~~~~
+    # /home/ilg/Work/xpack-dev-tools/qemu-arm-xpack.git/build-assets/build/win32-x64/sources/readline-8.3/rlwinsize.h:59:13: note: previous declaration of '_rl_tcsetwinsize' with type 'void(int,  struct winsize *)'
+    #    59 | extern void _rl_tcsetwinsize (int, struct winsize *);
+    #       |             ^~~~~~~~~~~~~~~~
+    # make: *** [Makefile:111: terminal.o] Error 1
+
     # PATCH!
-    readline_build "8.3" # "8.1.2" # ! "8.2" fails on mingw
+    readline_build "8.1.2"
 
     # https://github.com/PCRE2Project/pcre2/releases
     pcre2_build "10.46" # "10.43" # "10.42"
