@@ -19,7 +19,12 @@ function application_build_versioned_components()
     # -------------------------------------------------------------------------
     # Build the native dependencies.
 
-    # None
+    if [ "${XBB_REQUESTED_HOST_PLATFORM}" == "win32" ]
+    then
+      # required by libxml2
+      # https://github.com/unicode-org/icu/releases
+      icu4c_build "77.1"
+    fi
 
     # -------------------------------------------------------------------------
     # Build the target dependencies.
