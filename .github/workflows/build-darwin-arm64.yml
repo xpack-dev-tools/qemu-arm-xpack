@@ -91,6 +91,10 @@ jobs:
       - name: 'Remove Homebrew'
         uses: xpack/remove-homebrew-action@v1
 
+      - name: 'Install Python packages'
+        run: |
+          pip3 install distlib
+
       - name: 'Setup Node.js'
         uses: actions/setup-node@v4
         with:
