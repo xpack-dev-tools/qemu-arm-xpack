@@ -1,14 +1,14 @@
 ---
 
-title: xPack {{packageConfig.descriptiveName}} v{{xpackVersion}} released
-seo_title: Version {{xpackVersion}} released
-description: Version {{xpackVersion}} is a TODO new/maintenance release.
+title: xPack xPack QEMU Arm v9.2.4-1 released
+seo_title: Version 9.2.4-1 released
+description: Version 9.2.4-1 is a new release.
 keywords:
   - xpack
-  - {{packageConfig.permalinkName}}
+  - qemu-arm
   - release
 
-date: {{releaseDate}}
+date: 2025-10-09 12:57:31 +0300
 
 authors: ilg-ul
 
@@ -18,13 +18,13 @@ tags:
 
 # ----- Custom properties -----------------------------------------------------
 
-qemu_version: "{{upstreamVersion}}"
-qemu_release_date: "{{packageWebsiteConfig.qemuReleaseDate}}"
+qemu_version: "9.2.4"
+qemu_release_date: "28 May 2025"
 
-version: "{{xpackVersion}}"
+version: "9.2.4-1"
 npm_subversion: "1"
 
-download_url: https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/tag/v{{xpackVersion}}/
+download_url: https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/tag/v9.2.4-1/
 
 ---
 
@@ -36,11 +36,7 @@ import Prerequisites from './_common/_prerequisites-glib-2.28.mdx';
 import DeprecationNotices from './_common/_deprecation-notices-glib-2.28.mdx';
 import DownloadAnalytics from './_common/_download-analytics.mdx';
 
-TODO: select one summary
-
-Version **{{releaseVersion}}** is a maintenance release; it fixes ...
-
-Version **{{releaseVersion}}** is a new release; it follows the upstream QEMU release.
+Version **9.2.4-1.1** is a new release; it follows the upstream QEMU release.
 
 <!-- truncate -->
 
@@ -74,10 +70,10 @@ The binary files are available from <a href={frontMatter.download_url}>GitHub Re
 The easiest way to install this specific version, is by using **xpm**:
 
 <CodeBlock language="console"> {
-`xpm install @xpack-dev-tools/{{packageConfig.permalinkName}}@${frontMatter.version}.${frontMatter.npm_subversion} -verbose
+`xpm install @xpack-dev-tools/qemu-arm@${frontMatter.version}.${frontMatter.npm_subversion} -verbose
 `} </CodeBlock>
 
-Comprehensive instructions for installing **xPack {{packageConfig.descriptiveName}}** on different platforms
+Comprehensive instructions for installing **xPack xPack QEMU Arm** on different platforms
 can be found in the [Install Guide](/docs/install/).
 
 ## Compliance
@@ -496,3 +492,25 @@ https://github.com/xpack-dev-tools/qemu-arm-xpack/raw/xpack/tests/mps2-an386-sam
 ## Checksums
 
 The SHA-256 hashes for the files are:
+
+```txt
+2752ae3bdff112a8574373157ef1e0eb51fd50b1ee8554275f2ff20ba1ff1b6d
+xpack-qemu-arm-9.2.4-1-darwin-arm64.tar.gz
+
+c8be02219b4328624f696942aff8d6d5b98dbf07c6f2eb61adca12b7a120a140
+xpack-qemu-arm-9.2.4-1-darwin-x64.tar.gz
+
+50fc7ccace24982bcf964a1b5286a05b63f185421f5e1018fb6cbaf78b42277b
+xpack-qemu-arm-9.2.4-1-linux-arm64.tar.gz
+
+203dc2c71e25fcf97b95181328e9b888cc8092ff404bffd4d267b9defabcb698
+xpack-qemu-arm-9.2.4-1-linux-x64.tar.gz
+
+f029d6549fabe5b0ddce07921832bb97a20f56d54b63c8f4d3d5e82c3c8eae33
+xpack-qemu-arm-9.2.4-1-win32-x64.zip
+
+```
+
+<DeprecationNotices/>
+
+<DownloadAnalytics version={frontMatter.version}/>
