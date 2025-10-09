@@ -2,6 +2,31 @@
 
 Entries in this file are in reverse chronological order.
 
+## 2025-10-09
+
+* v9.2.4-1 released
+* ea78829 website: update actions durations
+* ec57d5f workflows macos install distlib
+* a22e93e package.json bump deps
+
+## 2025-10-08
+
+* 9070f00 remove legacy test
+* 771eb17 website maintainer update
+* 69cf34f package.json bump deps
+* 30b1de4 website: update durations and folder hierarchies
+* b1eaf10 versioning.sh revert readline to 8.1.2
+* 3209583 add host build
+* 1322436 test-assets fix a72 and update all
+
+## 2025-10-05
+
+* ef0b9e3 versioning.sh downgrade pixman 0.43.4
+* 9bc075b package.json bump deps (meson)
+* 8cfa303 add icu4c
+* a541282 website update
+* e6006f1 prepare v9.2.4-1
+
 ## 2025-10-05
 
 * v9.2.4-1 prepared
