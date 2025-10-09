@@ -4,6 +4,10 @@ Entries in this file are in reverse chronological order.
 
 ## 2025-10-09
 
+* v9.2.4-1.1 published on npmjs.com
+* cfc3fc9 package.json: update URLs for 9.2.4-1.1 release
+* 9aa6277 website: blog post release 9.2.4-1.1 published
+* 73aed0b CHANGELOG update
 * v9.2.4-1 released
 * ea78829 website: update actions durations
 * ec57d5f workflows macos install distlib
