@@ -1,6 +1,6 @@
 ---
 
-title: xPack xPack QEMU Arm v9.2.4-1 released
+title: xPack QEMU Arm v9.2.4-1 released
 seo_title: Version 9.2.4-1 released
 description: Version 9.2.4-1 is a new release.
 keywords:
@@ -31,6 +31,10 @@ download_url: https://github.com/xpack-dev-tools/qemu-arm-xpack/releases/tag/v9.
 import {PageMetadata} from '@docusaurus/theme-common';
 import Image from '@theme/IdealImage';
 import CodeBlock from '@theme/CodeBlock';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import customField from '@site/src/libs/customField';
 
 import Prerequisites from './_common/_prerequisites-glib-2.28.mdx';
 import DeprecationNotices from './_common/_deprecation-notices-glib-2.28.mdx';
@@ -73,7 +77,7 @@ The easiest way to install this specific version, is by using **xpm**:
 `xpm install @xpack-dev-tools/qemu-arm@${frontMatter.version}.${frontMatter.npm_subversion} -verbose
 `} </CodeBlock>
 
-Comprehensive instructions for installing **xPack xPack QEMU Arm** on different platforms
+Comprehensive instructions for installing **xPack QEMU Arm** on different platforms
 can be found in the [Install Guide](/docs/install/).
 
 ## Compliance
@@ -499,6 +503,274 @@ f029d6549fabe5b0ddce07921832bb97a20f56d54b63c8f4d3d5e82c3c8eae33
 xpack-qemu-arm-9.2.4-1-win32-x64.zip
 
 ```
+
+## Folders hierarchy
+
+After install, the package creates a hierarchy of folders like the following
+(only the first two depth levels are shown):
+
+<Tabs groupId="operating-systems">
+
+<TabItem value="windows" label="Windows" default>
+
+<CodeBlock language="console"> {
+`C:\> tree /f %USERPROFILE%\\AppData\\Roaming\\xPacks\\@{{packageScope}}\\{{packageName}}\\${frontMatter.version}.${frontMatter.npm_subversion}\\.content
+Folder PATH listing
+Volume serial number is B02D-925C
+├── README.md
+├── bin
+│   ├── SDL2.dll
+│   ├── SDL2_image.dll
+│   ├── libffi-8.dll
+│   ├── libgio-2.0-0.dll
+│   ├── libglib-2.0-0.dll
+│   ├── libgmodule-2.0-0.dll
+│   ├── libgmp-10.dll
+│   ├── libgobject-2.0-0.dll
+│   ├── libhogweed-6.dll
+│   ├── libintl-8.dll
+│   ├── libjpeg-9.dll
+│   ├── liblzo2-2.dll
+│   ├── libnettle-8.dll
+│   ├── libpcre2-8-0.dll
+│   ├── libpixman-1-0.dll
+│   ├── libssp-0.dll
+│   ├── libzstd.dll
+│   ├── qemu-system-aarch64.exe
+│   ├── qemu-system-aarch64w.exe
+│   ├── qemu-system-arm.exe
+│   └── qemu-system-armw.exe
+├── distro-info
+│   └── licenses
+├── include
+│   ├── fdt.h
+│   ├── libfdt.h
+│   ├── libfdt_env.h
+│   └── qemu-plugin.h
+├── lib
+│   ├── libfdt.a
+│   ├── libqemu_plugin_api.a
+│   └── pkgconfig
+└── share
+    ├── QEMU,cgthree.bin
+    ├── QEMU,tcx.bin
+    ├── applications
+    ├── bamboo.dtb
+    ├── bios-256k.bin
+    ├── bios-microvm.bin
+    ├── bios.bin
+    ├── canyonlands.dtb
+    ├── edk2-aarch64-code.fd
+    ├── edk2-arm-code.fd
+    ├── edk2-arm-vars.fd
+    ├── edk2-i386-code.fd
+    ├── edk2-i386-secure-code.fd
+    ├── edk2-i386-vars.fd
+    ├── edk2-licenses.txt
+    ├── edk2-loongarch64-code.fd
+    ├── edk2-loongarch64-vars.fd
+    ├── edk2-riscv-code.fd
+    ├── edk2-riscv-vars.fd
+    ├── edk2-x86_64-code.fd
+    ├── edk2-x86_64-secure-code.fd
+    ├── efi-e1000.rom
+    ├── efi-e1000e.rom
+    ├── efi-eepro100.rom
+    ├── efi-ne2k_pci.rom
+    ├── efi-pcnet.rom
+    ├── efi-rtl8139.rom
+    ├── efi-virtio.rom
+    ├── efi-vmxnet3.rom
+    ├── firmware
+    ├── hppa-firmware.img
+    ├── hppa-firmware64.img
+    ├── icons
+    ├── keymaps
+    ├── kvmvapic.bin
+    ├── linuxboot.bin
+    ├── linuxboot_dma.bin
+    ├── multiboot.bin
+    ├── multiboot_dma.bin
+    ├── npcm7xx_bootrom.bin
+    ├── openbios-ppc
+    ├── openbios-sparc32
+    ├── openbios-sparc64
+    ├── opensbi-riscv32-generic-fw_dynamic.bin
+    ├── opensbi-riscv64-generic-fw_dynamic.bin
+    ├── palcode-clipper
+    ├── petalogix-ml605.dtb
+    ├── petalogix-s3adsp1800.dtb
+    ├── pvh.bin
+    ├── pxe-e1000.rom
+    ├── pxe-eepro100.rom
+    ├── pxe-ne2k_pci.rom
+    ├── pxe-pcnet.rom
+    ├── pxe-rtl8139.rom
+    ├── pxe-virtio.rom
+    ├── qboot.rom
+    ├── qemu-nsis.bmp
+    ├── qemu_vga.ndrv
+    ├── s390-ccw.img
+    ├── skiboot.lid
+    ├── slof.bin
+    ├── trace-events-all
+    ├── u-boot-sam460-20100605.bin
+    ├── u-boot.e500
+    ├── vgabios-ati.bin
+    ├── vgabios-bochs-display.bin
+    ├── vgabios-cirrus.bin
+    ├── vgabios-qxl.bin
+    ├── vgabios-ramfb.bin
+    ├── vgabios-stdvga.bin
+    ├── vgabios-virtio.bin
+    ├── vgabios-vmware.bin
+    ├── vgabios.bin
+    ├── vof-nvram.bin
+    └── vof.bin
+
+11 directories, 99 files
+`} </CodeBlock>
+
+</TabItem>
+
+<TabItem value="macos" label="macOS">
+
+<CodeBlock language="console"> {
+`$ tree -L 2 ~/Library/xPacks/\{{packageScopedName}}/${frontMatter.version}.${frontMatter.npm_subversion}/.content/
+/Users/ilg/Library/xPacks/\{{packageScopedName}}/${frontMatter.version}.${frontMatter.npm_subversion}/.content/
+├── README.md
+├── bin
+│   ├── qemu-system-aarch64
+│   └── qemu-system-arm
+├── distro-info
+│   └── licenses
+├── include
+│   ├── fdt.h
+│   ├── libfdt.h
+│   ├── libfdt_env.h
+│   └── qemu-plugin.h
+├── lib
+│   ├── libfdt.a
+│   └── pkgconfig
+├── libexec
+│   ├── libbz2.1.0.8.dylib
+│   ├── libcrypto.1.1.dylib
+│   ├── libffi.8.dylib
+│   ├── libgio-2.0.0.dylib
+│   ├── libglib-2.0.0.dylib
+│   ├── libgmodule-2.0.0.dylib
+│   ├── libgmp.10.dylib
+│   ├── libgobject-2.0.0.dylib
+│   ├── libhogweed.6.8.dylib
+│   ├── libhogweed.6.dylib -> libhogweed.6.8.dylib
+│   ├── libiconv.2.dylib
+│   ├── libintl.8.dylib
+│   ├── libjpeg.9.dylib
+│   ├── liblzo2.2.dylib
+│   ├── libncursesw.6.dylib
+│   ├── libnettle.8.8.dylib
+│   ├── libnettle.8.dylib -> libnettle.8.8.dylib
+│   ├── libpcre2-8.0.dylib
+│   ├── libpixman-1.0.dylib
+│   ├── libpng16.16.dylib
+│   ├── libssh.4.10.3.dylib
+│   ├── libusb-1.0.0.dylib
+│   ├── libvdeplug.3.dylib
+│   ├── libz.1.3.1.dylib
+│   ├── libz.1.dylib -> libz.1.3.1.dylib
+│   ├── libzstd.1.5.7.dylib
+│   └── libzstd.1.dylib -> libzstd.1.5.7.dylib
+└── share
+    ├── applications
+    ├── icons
+    └── qemu
+
+12 directories, 35 files
+`} </CodeBlock>
+
+</TabItem>
+
+<TabItem value="linux" label="GNU/Linux">
+
+<CodeBlock language="console"> {
+`$ tree -L 2 ~/.local/xPacks/\{{packageScopedName}}/${frontMatter.version}.${frontMatter.npm_subversion}/.content/
+/home/ilg/.local/xPacks/\{{packageScopedName}}/${frontMatter.version}.${frontMatter.npm_subversion}/.content/
+├── README.md
+├── bin
+│   ├── qemu-system-aarch64
+│   └── qemu-system-arm
+├── distro-info
+│   └── licenses
+├── include
+│   ├── fdt.h
+│   ├── libfdt.h
+│   ├── libfdt_env.h
+│   └── qemu-plugin.h
+├── lib
+│   └── x86_64-linux-gnu
+├── libexec
+│   ├── libSDL2-2.0.so.0 -> libSDL2-2.0.so.0.3200.10
+│   ├── libSDL2-2.0.so.0.3200.10
+│   ├── libSDL2_image-2.0.so.0 -> libSDL2_image-2.0.so.0.800.8
+│   ├── libSDL2_image-2.0.so.0.800.8
+│   ├── libcrypto.so.1.1
+│   ├── libffi.so.8 -> libffi.so.8.2.0
+│   ├── libffi.so.8.2.0
+│   ├── libgio-2.0.so.0 -> libgio-2.0.so.0.8600.0
+│   ├── libgio-2.0.so.0.8600.0
+│   ├── libglib-2.0.so.0 -> libglib-2.0.so.0.8600.0
+│   ├── libglib-2.0.so.0.8600.0
+│   ├── libgmodule-2.0.so.0 -> libgmodule-2.0.so.0.8600.0
+│   ├── libgmodule-2.0.so.0.8600.0
+│   ├── libgmp.so.10 -> libgmp.so.10.5.0
+│   ├── libgmp.so.10.5.0
+│   ├── libgobject-2.0.so.0 -> libgobject-2.0.so.0.8600.0
+│   ├── libgobject-2.0.so.0.8600.0
+│   ├── libhogweed.so.6 -> libhogweed.so.6.8
+│   ├── libhogweed.so.6.8
+│   ├── libiconv.so.2 -> libiconv.so.2.7.0
+│   ├── libiconv.so.2.7.0
+│   ├── libjpeg.so.9 -> libjpeg.so.9.6.0
+│   ├── libjpeg.so.9.6.0
+│   ├── liblzo2.so.2 -> liblzo2.so.2.0.0
+│   ├── liblzo2.so.2.0.0
+│   ├── libncursesw.so.6 -> libncursesw.so.6.5
+│   ├── libncursesw.so.6.5
+│   ├── libnettle.so.8 -> libnettle.so.8.8
+│   ├── libnettle.so.8.8
+│   ├── libpcre2-8.so.0 -> libpcre2-8.so.0.14.0
+│   ├── libpcre2-8.so.0.14.0
+│   ├── libpixman-1.so.0 -> libpixman-1.so.0.43.4
+│   ├── libpixman-1.so.0.43.4
+│   ├── libpng16.so.16 -> libpng16.so.16.50.0
+│   ├── libpng16.so.16.50.0
+│   ├── libresolv-2.28.so
+│   ├── libresolv.so.2 -> libresolv-2.28.so
+│   ├── libssh.so.4 -> libssh.so.4.10.3
+│   ├── libssh.so.4.10.3
+│   ├── libssp.so.0 -> libssp.so.0.0.0
+│   ├── libssp.so.0.0.0
+│   ├── libudev.so.1 -> libudev.so.1.6.13
+│   ├── libudev.so.1.6.13
+│   ├── libusb-1.0.so.0 -> libusb-1.0.so.0.5.0
+│   ├── libusb-1.0.so.0.5.0
+│   ├── libvdeplug.so.3 -> libvdeplug.so.3.0.1
+│   ├── libvdeplug.so.3.0.1
+│   ├── libz.so.1 -> libz.so.1.3.1
+│   ├── libz.so.1.3.1
+│   ├── libzstd.so.1 -> libzstd.so.1.5.7
+│   └── libzstd.so.1.5.7
+└── share
+    ├── applications
+    ├── icons
+    └── qemu
+
+11 directories, 58 files
+`} </CodeBlock>
+
+</TabItem>
+
+</Tabs>
 
 <DeprecationNotices/>
 
