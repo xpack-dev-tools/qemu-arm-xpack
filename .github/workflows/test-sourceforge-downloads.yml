@@ -11,6 +11,7 @@
 #
 # -----------------------------------------------------------------------------
 
+# https://github.com/xpack-dev-tools/qemu-arm-xpack/actions/workflows/test-sourceforge-downloads.yml
 name: 'Test SourceForge downloads'
 
 on:
@@ -43,12 +44,14 @@ jobs:
 
           date
 
+          # https://github.com/xpack-dev-tools/qemu-arm-xpack/tags
           # https://sourceforge.net/projects/qemu-arm-xpack/files/
           name="qemu-arm"
-          threshold=16383 # (50%)
+          threshold=13107 # (60%, i.e. 32767 * (100-60)/100)
 
           # 2025
           platforms="win32-x64,linux-x64,linux-arm64,darwin-x64,darwin-arm64"
+          download_sourceforge "${name}" "9.2.4-1" ${threshold} "${platforms}"
 
           # 2024-2022
           platforms="win32-x64,linux-x64,linux-arm64,linux-arm,darwin-x64,darwin-arm64"
