@@ -47,7 +47,13 @@ jobs:
           # https://github.com/xpack-dev-tools/qemu-arm-xpack/tags
           # https://sourceforge.net/projects/qemu-arm-xpack/files/
           name="qemu-arm"
-          threshold=100
+
+          if [ "${GITHUB_REF_NAME}" == "xpack-development" ]
+          then
+            threshold=100
+          else
+            threshold=66
+          fi
 
           # 2025
           platforms="win32-x64,linux-x64,linux-arm64,darwin-x64,darwin-arm64"
