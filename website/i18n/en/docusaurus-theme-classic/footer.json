@@ -60,7 +60,7 @@
     "description": "The label of footer link with label=GitHub xpack-dev-tools org linking to https://github.com/xpack-dev-tools/"
   },
   "copyright": {
-    "message": "Copyright © 2025 Liviu Ionescu. Built with Docusaurus v3.8.1 on Sun Oct 05 2025.",
+    "message": "Copyright © 2025-2025 Liviu Ionescu. Built with Docusaurus v3.8.1 on Sun Oct 05 2025.",
     "description": "The footer copyright"
   }
 }

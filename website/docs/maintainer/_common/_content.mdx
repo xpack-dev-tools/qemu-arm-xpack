@@ -154,19 +154,6 @@ triggered via the VS Code graphical interface, utilising the
 
 <ProjectPatches/>
 
-### Restart the Docker daemons
-
-If, for any reason, the Docker builds need to be cancelled, it is very
-likely that some processes will continue to execute in the background.
-
-To completely terminate them, and ensure that Docker executes
-from a clean slate, restart the Docker daemons on all GNU/Linux
-machines:
-
-```sh
-sudo systemctl restart docker
-```
-
 ### Verify if both projects are pushed
 
 Verify that both the **current project** and the **helper** are
@@ -197,7 +184,8 @@ rm -rf ~/Work/xpack-dev-tools/qemu-arm-xpack.git/package-lock.json
 rm -rf ~/Work/xpack-dev-tools/qemu-arm-xpack.git/build-assets/package-lock.json
 git -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git pull
 
-xpm run install -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git/build-assets
+npm --prefix ~/Work/xpack-dev-tools/qemu-arm-xpack.git/build-assets install
+xpm install -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git/build-assets
 
 git -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git pull
 xpm link -C ~/Work/xpack-dev-tools/xbb-helper-xpack.git
@@ -252,17 +240,6 @@ caffeinate ssh xbbli
 
 <CommonPlatformDockerBuild platform="linux-x64"/>
 
-### Build the x64 Windows binaries
-
-Execute the Docker build on the production machine (`xbbli`);
-start a VS Code remote session, or connect with a terminal:
-
-```sh
-caffeinate ssh xbbli
-```
-
-<CommonPlatformDockerBuild platform="win32-x64"/>
-
 ### Build the ARM64 GNU/Linux binaries
 
 Execute the Docker build on the production machine (`ampere`);
@@ -273,6 +250,17 @@ caffeinate ssh ampere
 ```
 
 <CommonPlatformDockerBuild platform="linux-arm64"/>
+
+### Build the x64 Windows binaries
+
+Execute the Docker build on the production machine (`xbbli`);
+start a VS Code remote session, or connect with a terminal:
+
+```sh
+caffeinate ssh xbbli
+```
+
+<CommonPlatformDockerBuild platform="win32-x64"/>
 
 ### Update the durations of the development builds
 
@@ -286,9 +274,11 @@ Commit with the message _**website: update development durations**_
 Copy the trees displayed at the end of the test builds and paste to the
 **Folder hierarchy** section within the web file:
 
-- `website/docs/_project/_folders-hierarchies-linux.mdx`
-- `website/docs/_project/_folders-hierarchies-macos.mdx`
-- `website/docs/_project/_folders-hierarchies-windows.mdx`
+<ul>
+<li> <code>website/docs/_project/_folders-hierarchies-linux.mdx</code></li>
+<li> <code>website/docs/_project/_folders-hierarchies-macos.mdx</code></li>
+<li> <code>website/docs/_project/_folders-hierarchies-windows.mdx</code></li>
+</ul>
 
 If present, replace the actual version
 (such as **9.2.4-1.1**) with the following expression:
@@ -341,7 +331,7 @@ place them in the XBB cache (`Work/cache`) and restart the build.
 
 ## Execute the production builds
 
-The automation is provided by GitHub Actions.
+The automation is provided by GitHub Actions on GitHub-hosted runners.
 
 ### Publish the helper
 
@@ -410,20 +400,20 @@ The resulting binaries are available for testing from
 
 ### Automated tests
 
-The automation is provided by GitHub Actions.
+The automation is provided by GitHub Actions on GitHub-hosted runners.
 
 To trigger the GitHub Actions tests, execute the xpm actions:
 
 <ul>
 <li><b>trigger-workflow-test-prime</b></li>
 <li><b>trigger-workflow-test-docker-linux-x64</b></li>
-<li><b>trigger-workflow-test-docker-linux-arm</b></li>
+<li><b>trigger-workflow-test-docker-linux-arm64</b></li>
 </ul>
 
 ```sh
 xpm run trigger-workflow-test-prime -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git/build-assets
 xpm run trigger-workflow-test-docker-linux-x64 -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git/build-assets
-xpm run trigger-workflow-test-docker-linux-arm -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git/build-assets
+xpm run trigger-workflow-test-docker-linux-arm64 -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git/build-assets
 ```
 
 The scripts behind these actions require the `GITHUB_API_DISPATCH_TOKEN` variable to be present
@@ -446,7 +436,8 @@ and execute the tests, utilise:
 
 ```sh
 git -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git pull
-xpm run install -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git/build-assets
+npm --prefix ~/Work/xpack-dev-tools/qemu-arm-xpack.git/build-assets install
+xpm install -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git/build-assets
 xpm run test-pre-release -C ~/Work/xpack-dev-tools/qemu-arm-xpack.git/build-assets
 ```
 
@@ -506,17 +497,10 @@ watching the qemu-arm-xpack project.
 
 <CommonPrepareNewBlogPost />
 
-### Update the web install page
-
-- Check and possibly update the output of the `--version` runs in
-  - `website/docs/install/_project/_automatic-install-quick-test.mdx`
-  - `website/docs/install/_project/_manual-install-quick-test.mdx`
-- **Commit** with the message _**website: update quick tests**_
-
 ### Check the list of links in top package.json
 
 - Open the top `package.json` file
-- Check if the links in the `bin` property cover the actual binaries
+- Check if the links in the `xpack.executables` property cover the actual binaries
 - If necessary, also check on Windows
 
 ### Update the package.json list of binaries

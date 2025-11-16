@@ -79,6 +79,7 @@ jobs:
         run: |
           uname -a
           lsb_release -sd
+          df -BG -H /
           echo "whoami: $(whoami)"
           echo "pwd: $(pwd)"
           ls -lLA
@@ -106,6 +107,9 @@ jobs:
           xpm install --loglevel ${{github.event.inputs.xpm_install_loglevel}} ${{github.event.inputs.xpm_install_options}} -C build-assets
           xpm run docker-prepare --config win32-x64 --loglevel ${{github.event.inputs.xpm_install_loglevel}} ${{github.event.inputs.xpm_install_options}} -C build-assets
           xpm run docker-build --config win32-x64 -C build-assets
+
+      - name: 'Show results'
+        run: |
           ls -l build-assets/build/win32-x64/application
           ls -l build-assets/build/win32-x64/deploy
 
@@ -150,6 +154,7 @@ jobs:
         run: |
           uname -a
           systeminfo # lsb_release -sd
+          df -BG -H /
           echo "whoami: $(whoami)"
           echo "pwd: $(pwd)"
           ls -lLA
@@ -169,5 +174,24 @@ jobs:
           ref: ${{github.event.inputs.helper-git-ref}}
           fetch-depth: 3
 
+      - name: 'Move workspace to short path for MinGW compatibility'
+        run: |
+          echo Creating D:\t short name folder...
+          mkdir D:\t
+
+          echo Moving workspace to D:\t...
+          robocopy "%GITHUB_WORKSPACE%" "D:\t" /E /MOVE /NFL /NDL /NJH /NJS /NC /NS
+
+          if %ERRORLEVEL% LEQ 3 (
+            echo ✓ Workspace successfully moved to D:\t
+            dir D:\t
+          ) else (
+            echo ✗ Failed to move workspace, robocopy exit code: %ERRORLEVEL%
+            exit /b 1
+          )
+        shell: cmd
+
       - name: 'Run ${{github.event.inputs.version}} native test'
+        working-directory: D:\t
+        # Run the test from the short path
         run: bash build-assets/scripts/test.sh --version ${{github.event.inputs.version}} --base-url pre-release

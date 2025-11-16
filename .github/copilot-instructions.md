@@ -2,12 +2,12 @@
 
 ## Project Overview
 
-This is the xPack QEMU Arm project, part of the
+This is the **xPack QEMU Arm** project, part of the
 xPack Development Tools.
 
 ## Folder Structure
 
-- `/build-assets`: Contains the build scripts, patches, etc
+
 - `/website`: Contains the Docusaurus web site
 
 ## Language and style
