@@ -1,0 +1,7 @@
+{
+  "branding": "xPack QEMU emulator version ",
+  "programName": "qemu-system-arm",
+  "$link": "https://gitlab.com/qemu-project/qemu/-/tags/",
+  "qemuReleaseDate": "28 May 2025",
+  "shareOnTwitter": true
+}
