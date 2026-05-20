@@ -2,7 +2,6 @@
   "name": "@xpack-dev-tools/qemu-arm",
   "version": "9.2.4-1.1",
   "description": "A binary xpm package with QEMU Arm executables",
-  "main": "",
   "scripts": {
     "generate-top-commons": "bash node_modules/@xpack/npm-packages-helper/maintenance-scripts/generate-top-commons.sh --xpack-dev-tools",
     "npm-install": "npm install",
@@ -66,12 +65,17 @@
       "qemu-system-aarch64": "./.content/bin/qemu-system-aarch64"
     }
   },
+  "$dependenciesUrls": {
+    "del-cli": "https://www.npmjs.com/package/del-cli",
+    "json": "https://www.npmjs.com/package/json",
+    "liquidjs": "https://www.npmjs.com/package/liquidjs"
+  },
   "devDependencies": {
     "del-cli": "^7.0.0",
     "json": "^11.0.0",
-    "liquidjs": "^10.23.0"
+    "liquidjs": "^10.27.0"
   },
-  "topConfig": {
+  "_topConfig": {
     "descriptiveName": "xPack QEMU Arm",
     "upstreamDescriptiveName": "QEMU Arm",
     "permalinkName": "qemu-arm",

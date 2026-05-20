@@ -1,0 +1,8 @@
+{
+  "descriptiveName": "xPack QEMU Arm",
+  "permalinkName": "qemu-arm",
+  "preferredName": "xPack QEMU Arm",
+  "upstreamDescriptiveName": "QEMU Arm",
+  "skipCiTests": true,
+  "useSelfHostedRunners": false
+}
